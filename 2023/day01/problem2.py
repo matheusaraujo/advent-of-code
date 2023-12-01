@@ -1,5 +1,4 @@
 import re
-import sys
 
 def get_digit(value):
     numbers_dict = {
@@ -16,10 +15,11 @@ def get_digit(value):
 
     return numbers_dict[value] if value in numbers_dict else int(value)
 
-ans = 0
+def problem2(lines):
+    ans = 0
 
-for line in sys.stdin:
-    digits = re.findall(r'(?=(one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9))', line)
-    ans = ans + 10 * int(get_digit(digits[0])) + int(get_digit(digits[-1]))
+    for line in lines:
+        digits = re.findall(r'(?=(one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9))', line)
+        ans = ans + 10 * int(get_digit(digits[0])) + int(get_digit(digits[-1]))
         
-print(ans)
+    return ans
