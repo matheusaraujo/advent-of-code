@@ -29,7 +29,7 @@ class Testing(unittest.TestCase):
         output = problem1(line)
         self.assertEqual(output, 74)
 
-    def test_problem2(self):
+    def test_problem2_sample(self):
         test_cases = (
             { 'input': ')',  'expected': 1 },
             { 'input': '()())',  'expected': 5 },
