@@ -3,9 +3,16 @@ name: on push
 on: [push]
     
 jobs:
-  tests:
-    name: Tests
+  execute:
+    name: Execute
     runs-on: ubuntu-latest
+    strategy:
+      matrix: { 
+        dir: [
+          '2023/day01', 
+          '2023/day02'
+        ]
+      }
     steps:
       - uses: actions/checkout@v4
       
@@ -14,11 +21,7 @@ jobs:
         with:
           python-version: '3.x'
       
-      - name: 2023 - Day 01
-        working-directory: ./2023/day01
-        run: python -m unittest tests.py
-
-      - name: 2023 - Day 02
-        working-directory: ./2023/day02
-        run: python -m unittest tests.py
+      - name: Execute
+        working-directory: ${{ matrix.dir }}
+        run: python -m unittest tests.py -vvv
           
