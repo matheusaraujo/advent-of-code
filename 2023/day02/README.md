@@ -29,6 +29,8 @@ Determine which games would have been possible if the bag had been loaded with o
 
 **What is the sum of the IDs of those games?**
 
+**Your puzzle answer was `2237`.**
+
 ## --- Part Two ---
 The Elf says they've stopped producing snow because they aren't getting any water! He isn't sure why the water stopped; however, he can show you how to get to the water source to check it out for yourself. It's just up ahead!
 
@@ -55,3 +57,5 @@ The power of a set of cubes is equal to the numbers of red, green, and blue cube
 For each game, find the minimum set of cubes that must have been present. 
 
 **What is the sum of the power of these sets?**
+
+**Your puzzle answer was `66681`.**
