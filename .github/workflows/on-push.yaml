@@ -3,6 +3,17 @@ name: on push
 on: [push]
     
 jobs:
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
   execute:
     name: Execute
     runs-on: ubuntu-latest
@@ -14,13 +25,6 @@ jobs:
         ]
       }
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      
       - name: Execute
         working-directory: ${{ matrix.dir }}
         run: python -m unittest tests.py -vvv
