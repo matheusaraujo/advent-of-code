@@ -22,7 +22,7 @@ jobs:
                 echo "----------------------------------------------------------------------"
                 echo -e "\033[0;32m Running tests for $year day $day ..."
                 cd "$year/day$day" || exit
-                python -m unittest tests.py -v
+                python -m unittest tests.py
                 cd ../.. || exit
               fi
             done
