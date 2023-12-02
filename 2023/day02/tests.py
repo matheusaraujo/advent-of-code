@@ -66,21 +66,17 @@ class Testing1(unittest.TestCase):
             "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red",
             "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green",
         ]
-
         limits = "12 red, 13 green, 14 blue"
 
         output = problem1(lines, limits)
-
         self.assertEqual(output, 8)
 
     def test_problem_1(self):
         with open("input.txt") as f:
             lines = f.readlines()
-
         limits = "12 red, 13 green, 14 blue"
 
         output = problem1(lines, limits)
-
         self.assertEqual(output, 2237)
 
     def test_problem_2_sample(self):
@@ -101,9 +97,7 @@ class Testing1(unittest.TestCase):
             lines = f.readlines()
 
         output = problem2(lines)
-
         self.assertEqual(output, 66681)
-
 
 if __name__ == '__main__':
     unittest.main()

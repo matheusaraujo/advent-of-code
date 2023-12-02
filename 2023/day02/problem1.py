@@ -1,25 +1,24 @@
 from fixtures import extract_line, extract_game
 
 def problem1(lines, limits_line):
-    limits = extract_line(limits_line)
+    rmax, gmax, bmax = extract_line(limits_line)
 
     ans = 0
 
     for line in lines:
-        r, g, b = 0, 0, 0
         game_id = extract_game(line)
         games = line.split(';')
 
-        flag = True
+        valid = True
 
         for game in games:
-            k = extract_line(game)
-            r, g, b = k[0], k[1], k[2]
-        
-            if r > limits[0] or g > limits[1] or b > limits[2]:
-                flag = False
+            r, g, b = extract_line(game)
+            
+            if r > rmax or g > gmax or b > bmax:
+                valid = False
+                break
 
-        if flag:
+        if valid:
             ans = ans + game_id
 
     return ans

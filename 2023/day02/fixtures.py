@@ -12,7 +12,7 @@ def extract_line(line):
     return [r, g, b]
 
 def extract_game(line):
-    sg = re.search('[Game ]\d+', line)
+    sg = re.search(r'[Game ]\d+', line)
     g = int(sg.group()) if sg != None else 0
 
     return g;
