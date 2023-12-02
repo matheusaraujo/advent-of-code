@@ -10,20 +10,20 @@ class Testing(unittest.TestCase):
 
     def test_problem1(self):
         with open("input.txt") as f:
-            line = f.readlines()
+            input = f.readlines()
         
-        output = problem1(line)
+        output = problem1(input)
         self.assertEqual(output, ["sample input"])
 
     def test_problem2_sample(self):
-        output = problem2("some input")
-        self.assertEqual(output, "problem2")
+        input = problem2("some input")
+        self.assertEqual(input, "problem2")
 
     def test_problem2(self):
         with open("input.txt") as f:
-            line = f.readlines()
+            input = f.readlines()
         
-        output = problem2(line)
+        output = problem2(input)
         self.assertEqual(output, "problem2")
 
 if __name__ == '__main__':
