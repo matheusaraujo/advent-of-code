@@ -6,7 +6,7 @@
 
 ## Usage
 
-```
+```bash
 $ cd [year]/[day]
 $ python -m unittest tests.py -vvv
 ```

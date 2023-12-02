@@ -14,14 +14,16 @@ jobs:
         with:
           python-version: '3.x'
       
-      - name: 2023
+      - name: Tests
         run: |
-          for day in $(seq -w 1 25); do
-            if [ -d "2023/day$day" ]; then
-              echo "Running tests for Day $day"
-              cd "2023/day$day" || exit
-              python -m unittest tests.py -vvv
-              cd ../.. || exit
-            fi
+          for year in $(seq -w 2015 2023); do
+            for day in $(seq -w 1 25); do
+              if [ -d "$year/day$day" ]; then
+                echo "Running tests for $year day $day"
+                cd "$year/day$day" || exit
+                python -m unittest tests.py -vvv
+                cd ../.. || exit
+              fi
+            done
           done
           
