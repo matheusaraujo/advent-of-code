@@ -18,16 +18,19 @@ class Testing(unittest.TestCase):
         output = problem1(line)
         self.assertEqual(output, 1598415)
 
-    # def test_problem2_sample(self):
-    #     output = problem2("some input")
-    #     self.assertEqual(output, "problem2")
+    def test_problem2_sample(self):
+        output = problem2(['2x3x4'])
+        self.assertEqual(output, 34)
 
-    # def test_problem2(self):
-    #     with open("input.txt") as f:
-    #         line = f.readlines()
+        output = problem2(['1x1x10'])
+        self.assertEqual(output, 14)
+
+    def test_problem2(self):
+        with open("input.txt") as f:
+            line = f.readlines()
         
-    #     output = problem2(line)
-    #     self.assertEqual(output, "problem2")
+        output = problem2(line)
+        self.assertEqual(output, 3812909)
 
 if __name__ == '__main__':
     unittest.main()
