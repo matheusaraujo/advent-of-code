@@ -17,4 +17,8 @@ jobs:
       - name: 2023 - Day 01
         working-directory: ./2023/day01
         run: python -m unittest tests.py
+
+      - name: 2023 - Day 02
+        working-directory: ./2023/day02
+        run: python -m unittest tests.py
           
