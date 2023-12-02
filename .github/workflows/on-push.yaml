@@ -20,7 +20,7 @@ jobs:
             for day in $(seq -w 1 25); do
               if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
-                echo -e "\033[0;32m Running tests for $year day $day ..."
+                echo -e "\033[0;32mRunning tests for $year day $day ..."
                 cd "$year/day$day" || exit
                 python -m unittest tests.py
                 cd ../.. || exit

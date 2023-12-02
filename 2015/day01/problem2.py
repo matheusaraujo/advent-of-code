@@ -1,11 +1,8 @@
 def problem2(input):
     floor = 0
-    for f in range(0, len(input)):
-        if input[f] == '(':
-            floor = floor + 1
-        if input[f] == ')':
-            floor = floor - 1
+    for i, c in enumerate(input, start = 1):
+        if c == '(': floor = floor + 1
+        if c == ')': floor = floor - 1
         
-        if floor == -1:
-            return f + 1
+        if floor == -1: return i
     return 0
