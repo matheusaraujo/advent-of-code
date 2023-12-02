@@ -11,6 +11,16 @@ $ cd [year]/[day]
 $ python -m unittest tests.py -vvv
 ```
 
+![8%](https://progress-bar.dev/8?title=2023)
+![0%](https://progress-bar.dev/0?title=2022)
+![0%](https://progress-bar.dev/0?title=2021)
+![0%](https://progress-bar.dev/0?title=2020)
+![0%](https://progress-bar.dev/0?title=2019)
+![0%](https://progress-bar.dev/0?title=2018)
+![0%](https://progress-bar.dev/0?title=2017)
+![0%](https://progress-bar.dev/0?title=2016)
+![8%](https://progress-bar.dev/8?title=2015)
+
 ## 2023
 
 | :christmas_tree: | 2 | 0 | 2 | 3 | 
