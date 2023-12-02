@@ -3,8 +3,8 @@ name: on push
 on: [push]
     
 jobs:
-  prepare:
-    name: Prepare
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,20 +13,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+      
+      - name: 2023 - Day 01
+        working-directory: ./2023/day01
+        run: python -m unittest tests.py
 
-  execute:
-    name: Execute
-    needs: prepare
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: { 
-        dir: [
-          '2023/day01', 
-          '2023/day02'
-        ]
-      }
-    steps:
-      - name: Execute
-        working-directory: ${{ matrix.dir }}
-        run: python -m unittest tests.py -vvv
+      - name: 2023 - Day 02
+        working-directory: ./2023/day02
+        run: python -m unittest tests.py
           
