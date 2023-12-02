@@ -16,6 +16,7 @@ jobs:
 
   execute:
     name: Execute
+    needs: prepare
     runs-on: ubuntu-latest
     strategy:
       matrix: { 
