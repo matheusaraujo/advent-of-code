@@ -91,7 +91,7 @@ $ python -m unittest tests.py -vvv
 | day10 | day09 | day08 | day07 | day06 |
 | day05 | day04 | day03 | day02 | day01 |
 
-## ![8%](https://progress-bar.dev/8?title=2015)
+## ![12%](https://progress-bar.dev/12?title=2015)
 
 | :christmas_tree: | 2 | 0 | 1 | 5 | 
 |:-----:|:-----:|:-----:|:-----:|:-----:|
@@ -99,4 +99,4 @@ $ python -m unittest tests.py -vvv
 | day20 | day19 | day18 | day17 | day16 |
 | day15 | day14 | day13 | day12 | day11 |
 | day10 | day09 | day08 | day07 | day06 |
-| day05 | day04 | day03 | [day02](2015/day02/) | [day01](2015/day01/) |
+| day05 | day04 | [day03](2015/day03/) | [day02](2015/day02/) | [day01](2015/day01/) |
