@@ -14,11 +14,14 @@ jobs:
         with:
           python-version: '3.x'
       
-      - name: 2023 - Day 01
-        working-directory: ./2023/day01
-        run: python -m unittest tests.py
-
-      - name: 2023 - Day 02
-        working-directory: ./2023/day02
-        run: python -m unittest tests.py
+      - name: 2023
+        run: |
+          for day in $(seq -w 1 25); do
+            if [ -d "2023/day$day" ]; then
+              echo "Running tests for Day $day"
+              cd "2023/day$day" || exit
+              python -m unittest tests.py -vvv
+              cd ../.. || exit
+            fi
+          done
           
