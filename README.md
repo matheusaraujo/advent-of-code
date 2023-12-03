@@ -14,7 +14,7 @@ $ make create year=${YEAR} day=${DAY}
 $ make test year=${YEAR} day=${DAY}
 ```
 
-## ![8%](https://progress-bar.dev/8?title=2023)
+## ![12%](https://progress-bar.dev/12?title=2023)
 
 | :christmas_tree: | 2 | 0 | 2 | 3 | 
 |:-----:|:-----:|:-----:|:-----:|:-----:|
@@ -22,7 +22,7 @@ $ make test year=${YEAR} day=${DAY}
 | day20 | day19 | day18 | day17 | day16 |
 | day15 | day14 | day13 | day12 | day11 |
 | day10 | day09 | day08 | day07 | day06 |
-| day05 | day04 | day03 | [day02](2023/day02/) | [day01](2023/day01/) |
+| day05 | day04 | [day03](2023/day03/) | [day02](2023/day02/) | [day01](2023/day01/) |
 
 ## ![0%](https://progress-bar.dev/0?title=2022)
 

@@ -5,7 +5,8 @@ def problem1(input):
     
     for i in range(0, N):
         for match in re.finditer(r'[^\d|.|\n]', input[i]):
-            symbols[(i, match.start())] = input[i][match.start():match.end()]
+            s, e = match.start(), match.end()
+            symbols[(i, s)] = input[i][s:e]
 
     for i in range(0, N):
         for match in re.finditer(r'\d+', input[i]):
