@@ -7,8 +7,11 @@
 ## Usage
 
 ```bash
-$ cd [year]/[day]
-$ python -m unittest tests.py -vvv
+# create a new solution based on `day00` template
+$ make create year=${YEAR} day=${DAY}
+
+# test a solution
+$ make test year=${YEAR} day=${DAY}
 ```
 
 ## ![8%](https://progress-bar.dev/8?title=2023)
@@ -93,7 +96,7 @@ $ python -m unittest tests.py -vvv
 
 ## ![20%](https://progress-bar.dev/20?title=2015)
 
-| :christmas_tree: | 2 | 0 | 1 | 5 | 
+| :christmas_tree: | 2 | 0 | 1 | 5 |
 |:-----:|:-----:|:-----:|:-----:|:-----:|
 | day25 | day24 | day23 | day22 | day21 |
 | day20 | day19 | day18 | day17 | day16 |
