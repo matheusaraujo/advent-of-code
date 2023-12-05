@@ -9,24 +9,25 @@ class Testing(unittest.TestCase):
             input = f.read()
         return input
 
-    def test_problem1_sample(self):
-        input = self.read_input('input-example.txt')
-        output = problem1(input)
-        self.assertEqual(output, 35)
+    # def test_problem1_sample(self):
+    #     input = self.read_input('input-example.txt')
+    #     output = problem1(input)
+    #     self.assertEqual(output, 35)
 
-    def test_problem1(self):
-        input = self.read_input()
-        output = problem1(input)
-        self.assertEqual(output, 309796150)
-
-    # def test_problem2_sample(self):
-    #     input = problem2(self.sample_input)
-    #     self.assertEqual(input, "problem2")
-
-    # def test_problem2(self):
+    # def test_problem1(self):
     #     input = self.read_input()
-    #     output = problem2(input)
-    #     self.assertEqual(output, "problem2")
+    #     output = problem1(input)
+    #     self.assertEqual(output, 309796150)
+
+    def test_problem2_sample(self):
+        input = self.read_input('input-example.txt')
+        output = problem2(input)
+        self.assertEqual(output, 46)
+
+    def test_problem2(self):
+        input = self.read_input()
+        output = problem2(input)
+        self.assertEqual(output, 0)
 
 if __name__ == '__main__':
     unittest.main()

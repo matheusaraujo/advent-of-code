@@ -21,8 +21,8 @@ class Testing(unittest.TestCase):
         self.assertEqual(output, ["sample input"])
 
     def test_problem2_sample(self):
-        input = problem2(self.sample_input)
-        self.assertEqual(input, "problem2")
+        output = problem2(self.sample_input)
+        self.assertEqual(output, "problem2")
 
     def test_problem2(self):
         input = self.read_input()
