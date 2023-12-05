@@ -1,2 +1,2 @@
 def problem2(input):
-    return "problem2"
+    return input * 2
