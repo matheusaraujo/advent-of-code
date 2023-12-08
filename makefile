@@ -44,5 +44,5 @@ lint: # Check code using isort and black
 	@cd src && isort --check-only . && black --check .
 
 .PHONY: lintfix
-fix: # Fix code using isort and black
+lintfix: # Fix code using isort and black
 	@cd src && isort . && black . -l 88
