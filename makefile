@@ -14,7 +14,9 @@ else ifneq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory already exists"
 else
 	@mkdir $(year)/day$(day)
-	@cp day00/* $(year)/day$(day)
+	@cp 0000/day00/* $(year)/day$(day)
+	@sed -i .bak 's/Testing_0000_Day00/Testing_${year}_Day${day}/g' $(year)/day$(day)/tests.py
+	@rm $(year)/day$(day)/tests.py.bak
 	@echo "$(year)/day$(day) created! good luck!"
 endif
 
@@ -27,7 +29,5 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
-	@cd $(year)/day$(day) && python3 -m unittest tests.py
+	@cd $(year)/day$(day) && python3 -m unittest tests.py -v
 endif
-
-
