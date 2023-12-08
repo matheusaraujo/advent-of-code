@@ -4,7 +4,7 @@ from part1 import part1
 actual_input = read_input_file("2015/day01/input.txt")
 
 
-class Test2015Day01Part1:
+class TestPart1:
     def test_with_sample_data(self):
         assert part1("(())") == 0
         assert part1("()()") == 0
