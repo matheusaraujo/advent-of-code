@@ -1,4 +1,5 @@
 # --- Day 2: Cube Conundrum ---
+
 You're launched high into the atmosphere! The apex of your trajectory just barely reaches the surface of a large island floating in the sky. You gently land in a fluffy pile of leaves. It's quite cold, but you don't see much snow. An Elf runs over to greet you.
 
 The Elf explains that you've arrived at Snow Island and apologizes for the lack of snow. He'll be happy to explain the situation, but it's a bit of a walk, so you have some time. They don't get many visitors up here; would you like to play a game in the meantime?
@@ -21,17 +22,18 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 
 In game 1, three sets of cubes are revealed from the bag (and then put back again). The first set is 3 blue cubes and 4 red cubes; the second set is 1 red cube, 2 green cubes, and 6 blue cubes; the third set is only 2 green cubes.
 
-The Elf would first like to know which games would have been possible if the bag contained ``only 12 red cubes, 13 green cubes, and 14 blue cubes``?
+The Elf would first like to know which games would have been possible if the bag contained `only 12 red cubes, 13 green cubes, and 14 blue cubes`?
 
 In the example above, games 1, 2, and 5 would have been possible if the bag had been loaded with that configuration. However, game 3 would have been impossible because at one point the Elf showed you 20 red cubes at once; similarly, game 4 would also have been impossible because the Elf showed you 15 blue cubes at once. If you add up the IDs of the games that would have been possible, you get 8.
 
-Determine which games would have been possible if the bag had been loaded with only ``12 red cubes, 13 green cubes, and 14 blue cubes``. 
+Determine which games would have been possible if the bag had been loaded with only `12 red cubes, 13 green cubes, and 14 blue cubes`.
 
 **What is the sum of the IDs of those games?**
 
-_Your puzzle answer was `2237`._
+> Your puzzle answer was `2237`.
 
 ## --- Part Two ---
+
 The Elf says they've stopped producing snow because they aren't getting any water! He isn't sure why the water stopped; however, he can show you how to get to the water source to check it out for yourself. It's just up ahead!
 
 As you continue your walk, the Elf poses a second question: in each game you played, what is the fewest number of cubes of each color that could have been in the bag to make the game possible?
@@ -54,8 +56,8 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 
 The power of a set of cubes is equal to the numbers of red, green, and blue cubes multiplied together. The power of the minimum set of cubes in game 1 is `48`. In games 2-5 it was `12`, `1560`, `630`, and `36`, respectively. Adding up these five powers produces the sum `2286`.
 
-For each game, find the minimum set of cubes that must have been present. 
+For each game, find the minimum set of cubes that must have been present.
 
 **What is the sum of the power of these sets?**
 
-_Your puzzle answer was `66681`._
+> Your puzzle answer was `66681`.

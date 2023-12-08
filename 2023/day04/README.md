@@ -1,4 +1,5 @@
 # --- Day 4: Scratchcards ---
+
 The gondola takes you up. Strangely, though, the ground doesn't seem to be coming with you; you're not climbing a mountain. As the circle of Snow Island recedes below you, an entire new landmass suddenly appears above you! The gondola carries you to the surface of the new island and lurches into the station.
 
 As you exit the gondola, the first thing you notice is that the air here is much warmer than it was on Snow Island. It's also quite humid. Is this where the water source is?
@@ -31,13 +32,14 @@ In the above example, card 1 has five winning numbers (`41`, `48`, `83`, `86`, a
 - Card 4 has one winning number (84), so it is worth 1 point.
 - Card 5 has no winning numbers, so it is worth no points.
 - Card 6 has no winning numbers, so it is worth no points.
-So, in this example, the Elf's pile of scratchcards is worth `13` points.
+  So, in this example, the Elf's pile of scratchcards is worth `13` points.
 
 Take a seat in the large pile of colorful cards. **How many points are they worth in total?**
 
-_Your puzzle answer was `24848`._
+> Your puzzle answer was `24848`.
 
 ## --- Part Two ---
+
 Just as you're about to report your findings to the Elf, one of you realizes that the rules have actually been printed on the back of every card this whole time.
 
 There's no such thing as "points". Instead, scratchcards only cause you to win more scratchcards equal to the number of winning numbers you have.
@@ -69,4 +71,4 @@ Once all of the originals and copies have been processed, you end up with `1` in
 
 Process all of the original and copied scratchcards until no more scratchcards are won. **Including the original set of scratchcards, how many total scratchcards do you end up with?**
 
-_Your puzzle answer was `7258152`._
+> Your puzzle answer was `7258152`.

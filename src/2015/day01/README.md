@@ -22,7 +22,7 @@ For example:
 
 **To what floor do the instructions take Santa?**
 
-_Your puzzle answer was `74`._
+> Your puzzle answer was `74`.
 
 ## --- Part Two ---
 
@@ -35,4 +35,4 @@ For example:
 
 **What is the position of the character that causes Santa to first enter the basement?**
 
-_Your puzzle answer was `1795`._
+> Your puzzle answer was `1795`.
