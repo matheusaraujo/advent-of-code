@@ -7,11 +7,17 @@
 ## Usage
 
 ```bash
+# install dependencies
+$ make install
+
 # create a new solution based on `day00` template
 $ make create year=${YEAR} day=${DAY}
 
 # test a solution
 $ make test year=${YEAR} day=${DAY}
+
+# to see all available commands
+$ make help
 ```
 
 ## ![32%](https://progress-bar.dev/32?title=2023)

@@ -10,14 +10,17 @@ ifndef year
 	@echo "[year] must be defined"
 else ifndef day
 	@echo "[day] must be defined"
-else ifneq ("$(wildcard $(year)/day$(day))", "")
+else ifneq ("$(wildcard src/$(year)/day$(day))", "")
 	@echo "directory already exists"
 else
-	@mkdir $(year)/day$(day)
-	@cp 0000/day00/* $(year)/day$(day)
-	@sed -i .bak 's/Testing_0000_Day00/Testing_${year}_Day${day}/g' $(year)/day$(day)/tests.py
-	@rm $(year)/day$(day)/tests.py.bak
-	@echo "$(year)/day$(day) created! good luck!"
+	@mkdir src/$(year)/day$(day)
+	@cp src/0000/day00/* src/$(year)/day$(day)
+	@sed -i .bak 's/0000/${year}/g' src/$(year)/day$(day)/test_part1.py
+	@sed -i .bak 's/00/${day}/g' src/$(year)/day$(day)/test_part1.py
+	@sed -i .bak 's/0000/${year}/g' src/$(year)/day$(day)/test_part2.py
+	@sed -i .bak 's/00/${day}/g' src/$(year)/day$(day)/test_part2.py
+	@rm src/$(year)/day$(day)/*.py.bak
+	@echo "$(year)/day$(day) created! good coding!"
 endif
 
 .PHONY: test
@@ -26,8 +29,20 @@ ifndef year
 	@echo "[year] must be defined"
 else ifndef day
 	@echo "[day] must be defined"
-else ifeq ("$(wildcard $(year)/day$(day))", "")
+else ifeq ("$(wildcard src/$(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
-	@cd $(year)/day$(day) && python3 -m unittest tests.py -v
+	@cd src && pytest --no-header -v $(year)/day$(day)
 endif
+
+.PHONY: install
+install: # Install all dependencies
+	@cd src && pip install -r requirements.txt -r requirements_dev.txt
+
+.PHONY: lint
+lint: # Check code using isort and black
+	@cd src && isort --check-only . && black --check .
+
+.PHONY: lintfix
+fix: # Fix code using isort and black
+	@cd src && isort . && black . -l 88
