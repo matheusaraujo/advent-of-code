@@ -13,7 +13,7 @@ else ifndef day
 else ifneq ("$(wildcard src/$(year)/day$(day))", "")
 	@echo "directory already exists"
 else
-	@mkdir src/$(year)/day$(day)
+	@mkdir -p src/$(year)/day$(day)
 	@cp src/0000/day00/* src/$(year)/day$(day)
 	@sed -i .bak 's/0000/${year}/g' src/$(year)/day$(day)/test_part1.py
 	@sed -i .bak 's/00/${day}/g' src/$(year)/day$(day)/test_part1.py
