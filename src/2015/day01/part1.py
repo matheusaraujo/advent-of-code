@@ -1,2 +1,2 @@
 def part1(puzzle_input):
-    return int(puzzle_input[0]) * 1
+    return puzzle_input.count("(") - puzzle_input.count(")")

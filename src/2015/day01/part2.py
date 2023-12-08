@@ -1,2 +1,11 @@
 def part2(puzzle_input):
-    return int(puzzle_input[0]) * 2
+    floor = 0
+    for i, c in enumerate(puzzle_input, start=1):
+        if c == "(":
+            floor = floor + 1
+        if c == ")":
+            floor = floor - 1
+
+        if floor == -1:
+            return i
+    return 0
