@@ -1,7 +1,8 @@
 from inputs import read_input_file
-from part1 import part1, calculate_module_fuel
+from part1 import calculate_module_fuel, part1
 
 actual_input = read_input_file("2019/day01/input.txt")
+
 
 class TestPart1:
     def test_with_sample_data(self):

@@ -1,7 +1,8 @@
 from inputs import read_input_file
-from part2 import part2, calculate_module_fuel
+from part2 import calculate_module_fuel, part2
 
 actual_input = read_input_file("2019/day01/input.txt")
+
 
 class TestPart2:
     def test_with_sample_data(self):
@@ -11,4 +12,4 @@ class TestPart2:
         assert calculate_module_fuel(100756) == 50346
 
     def test_with_actual_data(self):
-        assert part2(actual_input) == 0
+        assert part2(actual_input) == 5218616
