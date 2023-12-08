@@ -1,5 +1,5 @@
-from helpers import solve
+from helpers import get_santa_hash
 
 
 def part2(secret_key):
-    return solve(secret_key, "000000")
+    return get_santa_hash(secret_key, "000000")
