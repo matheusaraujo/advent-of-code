@@ -1,3 +1,2 @@
-def part2(input):
-    return int(input[0]) * 2
-    
+def part2(puzzle_input):
+    return int(puzzle_input[0]) * 2
