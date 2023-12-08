@@ -4,30 +4,20 @@ on:
   push:
     branches:
       - main
-      
+      - refactor/tests
+
 jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
-      
+          python-version: "3.x"
+
       - name: Tests
-        run: |
-          for year in $(seq -w 2015 2023); do
-            for day in $(seq -w 1 25); do
-              if [ -d "$year/day$day" ]; then
-                echo "----------------------------------------------------------------------"
-                echo -e "\033[0;32mRunning tests for $year day $day ..."
-                cd "$year/day$day" || exit
-                python -m unittest tests.py
-                cd ../.. || exit
-              fi
-            done
-          done
-          
+        working-directory: src
+        run: pytest -v
