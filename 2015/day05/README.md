@@ -1,4 +1,5 @@
 # --- Day 5: Doesn't He Have Intern-Elves For This? ---
+
 Santa needs help figuring out which strings in his text file are naughty or nice.
 
 A nice string is one with all of the following properties:
@@ -17,9 +18,10 @@ For example:
 
 **How many strings are nice?**
 
-_Your puzzle answer was `255`._
+> Your puzzle answer was `255`.
 
 ## --- Part Two ---
+
 Realizing the error of his ways, Santa has switched to a better model of determining whether a string is naughty or nice. None of the old rules apply, as they are all clearly ridiculous.
 
 Now, a nice string is one with all of the following properties:
@@ -36,4 +38,4 @@ For example:
 
 **How many strings are nice under these new rules?**
 
-_Your puzzle answer was `55`._
+> Your puzzle answer was `55`.

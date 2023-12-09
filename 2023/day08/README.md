@@ -36,7 +36,7 @@ ZZZ = (ZZZ, ZZZ)
 
 Starting at `AAA`, follow the left/right instructions. **How many steps are required to reach `ZZZ`?**
 
-_Your puzzle answer was `16697`._
+> Your puzzle answer was `16697`.
 
 ## --- Part Two ---
 
@@ -75,4 +75,4 @@ So, in this example, you end up entirely on nodes that end in `Z` after `6` step
 
 Simultaneously start on every node that ends with `A`. **How many steps does it take before you're only on nodes that end with `Z`?**
 
-_Your puzzle answer was `10668805667831`._
+> Your puzzle answer was `10668805667831`.

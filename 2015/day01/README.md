@@ -22,9 +22,10 @@ For example:
 
 **To what floor do the instructions take Santa?**
 
-_Your puzzle answer was `74`._
+> Your puzzle answer was `74`.
 
 ## --- Part Two ---
+
 Now, given the same instructions, find the position of the first character that causes him to enter the basement (floor `-1`). The first character in the instructions has position `1`, the second character has position `2`, and so on.
 
 For example:
@@ -34,4 +35,4 @@ For example:
 
 **What is the position of the character that causes Santa to first enter the basement?**
 
-_Your puzzle answer was `1795`._
+> Your puzzle answer was `1795`.

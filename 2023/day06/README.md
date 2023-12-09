@@ -1,4 +1,5 @@
 # --- Day 6: Wait For It ---
+
 The ferry quickly brings you across Island Island. After asking around, you discover that there is indeed normally a large pile of sand somewhere near here, but you don't see anything besides lots of water and the small island where the ferry has docked.
 
 As you try to figure out what to do next, you notice a poster on a wall near the ferry dock. "Boat races! Open to the public! Grand prize is an all-expenses-paid trip to Desert Island!" That must be where the sand comes from! Best of all, the boat races are starting in just a few minutes.
@@ -45,9 +46,10 @@ To see how much margin of error you have, determine the number of ways you can b
 
 Determine the number of ways you could beat the record in each race. **What do you get if you multiply these numbers together?**
 
-_Your puzzle answer was `1624896`._
+> Your puzzle answer was `1624896`.
 
 ## --- Part Two ---
+
 As the race is about to start, you realize the piece of paper with race times and record distances you got earlier actually just has very bad kerning. There's really only one race - ignore the spaces between the numbers on each line.
 
 So, the example from before:
@@ -56,6 +58,7 @@ So, the example from before:
 Time:      7  15   30
 Distance:  9  40  200
 ```
+
 ...now instead means this:
 
 ```
@@ -67,4 +70,4 @@ Now, you have to figure out how many ways there are to win this single race. In 
 
 **How many ways can you beat the record in this one much longer race?**
 
-_Your puzzle answer was `32583852`._
+> Your puzzle answer was `32583852`.
