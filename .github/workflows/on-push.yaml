@@ -22,24 +22,19 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install dependencies
-        working-directory: ./src
-        run: pip install -r requirements.txt -r requirements_dev.txt
+        run: make install
 
       - name: Lint
-        working-directory: ./src
-        run: |
-          isort --check-only .
-          black --check .
+        run: make lint
 
       - name: Tests
-        working-directory: ./src
         run: |
           for year in $(seq -w 2015 2023); do
             for day in $(seq -w 1 25); do
               if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
                 echo -e "\033[0;32mRunning tests for $year day $day ..."
-                pytest -v --no-header $year/day$day
+                make test year=$year day=$day
               fi
             done
           done
