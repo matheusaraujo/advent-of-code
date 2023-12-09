@@ -59,8 +59,8 @@ test-all: # Execute all tests
 install: # Install all dependencies
 	@pip install -r requirements.txt -r requirements_dev.txt
 
-.PHONY: format
-format: # Check code formating using isort and black
+.PHONY: format-check
+format-check: # Check code formating using isort and black
 	@isort --check-only . && black --check .
 
 .PHONY: format-fix
