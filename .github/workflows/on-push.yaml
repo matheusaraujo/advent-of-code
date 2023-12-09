@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - refactor/lint
 
 env:
   PYTHON_VERSION: 3.9
@@ -23,8 +24,11 @@ jobs:
       - name: Install dependencies
         run: make install
 
-      - name: Lint
-        run: make lint
+      - name: Format
+        run: make format
+
+      - name: Linting
+        run: make lint-all
 
       - name: Tests
         run: make test-all
