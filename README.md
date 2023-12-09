@@ -19,6 +19,9 @@ $ make test-all
 # test a specific day
 $ make test year=${YEAR} day=${DAY}
 
+# validate (format, lint, test) a specific day
+$ make validate year=${YEAR} day=${DAY}
+
 # to see all available commands
 $ make help
 ```

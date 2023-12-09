@@ -41,8 +41,6 @@ else
 	@pytest -v $(year)/day$(day) -s
 endif
 
-
-
 .PHONY: test-all
 test-all: # Execute all tests
 	@for year in $(YEARS); do \
@@ -90,3 +88,17 @@ lint-all: # Analysis the entire code
             fi; \
         done; \
     done
+
+.PHONY: validate
+validate: # Runs tests, format and lint for a given year and day
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exist"
+else
+	@isort $(year)/day$(day) && black -l 88 $(year)/day$(day)
+	@pylint --init-hook="import sys; sys.path.append('utils')" $(year)/day$(day)/*.py
+	@pytest -v $(year)/day$(day) -s
+endif
