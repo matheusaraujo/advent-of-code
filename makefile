@@ -35,7 +35,7 @@ else
 	@cd src && pytest -v $(year)/day$(day) -s
 endif
 
-YEARS := $(shell seq -w 2015 2023)
+YEARS := $(shell seq -w 2015 2035)
 DAYS := $(shell seq -w 1 25)
 
 .PHONY: test-all
