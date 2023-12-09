@@ -28,13 +28,4 @@ jobs:
         run: make lint
 
       - name: Tests
-        run: |
-          for year in $(seq -w 2015 2023); do
-            for day in $(seq -w 1 25); do
-              if [ -d "$year/day$day" ]; then
-                echo "----------------------------------------------------------------------"
-                echo -e "\033[0;32mRunning tests for $year day $day ..."
-                make test year=$year day=$day
-              fi
-            done
-          done
+        run: make test-all

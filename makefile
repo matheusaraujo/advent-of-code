@@ -35,6 +35,21 @@ else
 	@cd src && pytest --no-header -v $(year)/day$(day) -s
 endif
 
+YEARS := $(shell seq -w 2015 2023)
+DAYS := $(shell seq -w 1 25)
+
+.PHONY: test-all
+test-all: # Execute all tests
+	@for year in $(YEARS); do \
+        for day in $(DAYS); do \
+            if [ -d "src/$$year/day$$day" ]; then \
+                echo "----------------------------------------------------------------------"; \
+                echo -e "\033[0;32mRunning tests for $$year day $$day ..."; \
+                make test year=$$year day=$$day; \
+            fi; \
+        done; \
+    done
+
 .PHONY: install
 install: # Install all dependencies
 	@cd src && pip install -r requirements.txt -r requirements_dev.txt
@@ -43,6 +58,6 @@ install: # Install all dependencies
 lint: # Check code using isort and black
 	@cd src && isort --check-only . && black --check .
 
-.PHONY: lintfix
-lintfix: # Fix code using isort and black
+.PHONY: lint-fix
+lint-fix: # Fix code using isort and black
 	@cd src && isort . && black . -l 88
