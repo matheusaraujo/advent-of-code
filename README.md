@@ -13,14 +13,14 @@ $ make install
 # create a new solution based on `day00` template
 $ make create year=${YEAR} day=${DAY}
 
-# test everything
-$ make test-all
-
 # test a specific day
 $ make test year=${YEAR} day=${DAY}
 
 # validate (format, lint, test) a specific day
 $ make validate year=${YEAR} day=${DAY}
+
+# test everything
+$ make test-all
 
 # to see all available commands
 $ make help

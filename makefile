@@ -26,6 +26,7 @@ else
 	@sed -i .bak 's/1988/${year}/g' $(year)/day$(day)/test_part2.py
 	@sed -i .bak 's/00/${day}/g' $(year)/day$(day)/test_part2.py
 	@rm $(year)/day$(day)/*.py.bak
+	@python3 utils/get_puzzle_input.py $(year) $(day)
 	@echo "$(year)/day$(day) created! good coding!"
 endif
 
@@ -55,7 +56,7 @@ test-all: # Execute all tests
 
 .PHONY: install
 install: # Install all dependencies
-	@pip install -r requirements.txt -r requirements_dev.txt
+	@pip install -r requirements_dev.txt
 
 .PHONY: format-check
 format-check: # Check code formating using isort and black
