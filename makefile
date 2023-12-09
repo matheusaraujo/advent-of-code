@@ -32,7 +32,7 @@ else ifndef day
 else ifeq ("$(wildcard src/$(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
-	@cd src && pytest --no-header -v $(year)/day$(day)
+	@cd src && pytest --no-header -v $(year)/day$(day) -s
 endif
 
 .PHONY: install
