@@ -1,8 +1,10 @@
 from helpers import extract_game, extract_line
 
+LIMITS = "12 red, 13 green, 14 blue"
 
-def part1(lines, limits_line):
-    r_max, g_max, b_max = extract_line(limits_line)
+
+def part1(lines):
+    r_max, g_max, b_max = extract_line(LIMITS)
 
     ans = 0
 

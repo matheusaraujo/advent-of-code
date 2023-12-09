@@ -27,16 +27,14 @@ def define_hand_value(hand):
 
     if labels[0][1] == 1:
         return 0
-    elif labels[0][1] == 2:
+    if labels[0][1] == 2:
         return 20 if labels[1][1] == 2 else 10
-    elif labels[0][1] == 3:
+    if labels[0][1] == 3:
         return 40 if labels[1][1] == 2 else 30
-    elif labels[0][1] == 4:
+    if labels[0][1] == 4:
         return 50
-    elif labels[0][1] == 5:
-        return 60
 
-    return 0
+    return 60
 
 
 def compare(hand_a, hand_b):

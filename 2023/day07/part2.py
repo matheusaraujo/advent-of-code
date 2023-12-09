@@ -20,6 +20,37 @@ def define_label_value(label):
     return labels[label]
 
 
+def define_hand_value_no_joker(labels):
+    if labels[0][1] == 1:
+        return 0
+    if labels[0][1] == 2:
+        return 20 if labels[1][1] == 2 else 10
+    if labels[0][1] == 3:
+        return 40 if labels[1][1] == 2 else 30
+    if labels[0][1] == 4:
+        return 50
+
+    return 60
+
+
+def define_hand_value_joker(j, labels):
+    if j[1] == 5 or j[1] == 4:
+        return 60
+    if j[1] == 3:
+        return 60 if labels[1][1] == 2 else 50
+    if j[1] == 2:
+        if labels[0][1] == 3:
+            return 60
+        if (labels[0][0] != "J" and labels[0][1] == 2) or (
+            labels[1][0] != "J" and labels[1][1] == 2
+        ):
+            return 50
+        return 30
+
+    labels[0] = (labels[0][0], labels[0][1] + 1)
+    return define_hand_value_no_joker(labels)
+
+
 def define_hand_value(hand):
     labels = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
     labels = [(l, hand.count(l)) for l in labels]
@@ -27,37 +58,10 @@ def define_hand_value(hand):
 
     j = next(filter(lambda x: x[0] == "J", labels), None)
 
-    def no_j():
-        if labels[0][1] == 1:
-            return 0
-        elif labels[0][1] == 2:
-            return 20 if labels[1][1] == 2 else 10
-        elif labels[0][1] == 3:
-            return 40 if labels[1][1] == 2 else 30
-        elif labels[0][1] == 4:
-            return 50
-        elif labels[0][1] == 5:
-            return 60
-
     if j[1] == 0:
-        return no_j()
+        return define_hand_value_no_joker(labels)
 
-    if j[1] == 5 or j[1] == 4:
-        return 60
-    elif j[1] == 3:
-        return 60 if labels[1][1] == 2 else 50
-    elif j[1] == 2:
-        if labels[0][1] == 3:
-            return 60
-        elif labels[0][0] != "J" and labels[0][1] == 2:
-            return 50
-        elif labels[1][0] != "J" and labels[1][1] == 2:
-            return 50
-        return 30
-    else:
-        labels[0] = (labels[0][0], labels[0][1] + 1)
-        return no_j()
-    return 0
+    return define_hand_value_joker(j, labels)
 
 
 def compare(hand_a, hand_b):

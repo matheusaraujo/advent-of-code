@@ -1,3 +1,9 @@
+YEARS:=$(shell seq -w 2015 2035)
+DAYS:=$(shell seq -w 1 25)
+GREEN=\033[0;32m
+NC=\033[0m
+RED=\033[0;31m
+
 default: help
 
 .PHONY: help
@@ -35,8 +41,7 @@ else
 	@pytest -v $(year)/day$(day) -s
 endif
 
-YEARS := $(shell seq -w 2015 2035)
-DAYS := $(shell seq -w 1 25)
+
 
 .PHONY: test-all
 test-all: # Execute all tests
@@ -44,8 +49,8 @@ test-all: # Execute all tests
         for day in $(DAYS); do \
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
-                echo -e "\033[0;32mRunning tests for $$year day $$day ..."; \
-                make test year=$$year day=$$day || { echo "Test failed for $$year day $$day"; exit 1; }; \
+            	echo "${GREEN}Running tests for $$year day $$day ...{NC}"; \
+                make test year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
     done
@@ -54,10 +59,34 @@ test-all: # Execute all tests
 install: # Install all dependencies
 	@pip install -r requirements.txt -r requirements_dev.txt
 
-.PHONY: lint
-lint: # Check code using isort and black
+.PHONY: format
+format: # Check code formating using isort and black
 	@isort --check-only . && black --check .
 
-.PHONY: lint-fix
-lint-fix: # Fix code using isort and black
+.PHONY: format-fix
+format-fix: # Format code using isort and black
 	@isort . && black . -l 88
+
+.PHONY: lint
+lint: # Analysis code using pylint for given year and day
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exist"
+else
+	@pylint --init-hook="import sys; sys.path.append('utils')" $(year)/day$(day)/*.py
+endif
+
+.PHONY: lint-all
+lint-all: # Analysis the entire code
+	@for year in $(YEARS); do \
+        for day in $(DAYS); do \
+            if [ -d "$$year/day$$day" ]; then \
+                echo "----------------------------------------------------------------------"; \
+                echo "${GREEN}Running lint for $$year day $$day ...${NC}"; \
+                make lint year=$$year day=$$day || { echo "${RED}Lint failed for $$year day $$day${NC}"; exit 1; }; \
+            fi; \
+        done; \
+    done
