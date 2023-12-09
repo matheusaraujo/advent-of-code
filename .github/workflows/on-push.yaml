@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - refactor/tests
 
 env:
   PYTHON_VERSION: 3.9
