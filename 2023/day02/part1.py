@@ -1,8 +1,8 @@
 from helpers import extract_game, extract_line
 
 
-def part1(lines, limits_line):
-    r_max, g_max, b_max = extract_line(limits_line)
+def part1(lines, limits):
+    r_max, g_max, b_max = extract_line(limits)
 
     ans = 0
 

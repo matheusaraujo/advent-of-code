@@ -1,5 +1,3 @@
-import re
-
 from helpers import get_integer_roots
 
 

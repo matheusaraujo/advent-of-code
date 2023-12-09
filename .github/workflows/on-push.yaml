@@ -23,8 +23,25 @@ jobs:
       - name: Install dependencies
         run: make install
 
-      - name: Lint
-        run: make lint
-
       - name: Tests
         run: make test-all
+
+  lint:
+    name: Formating and linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Formating
+        run: make format-check
+
+      - name: Linting
+        run: make lint-all
