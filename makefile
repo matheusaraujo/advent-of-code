@@ -32,7 +32,7 @@ else ifndef day
 else ifeq ("$(wildcard src/$(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
-	@cd src && pytest --no-header -v $(year)/day$(day) -s
+	@cd src && pytest -v $(year)/day$(day) -s
 endif
 
 YEARS := $(shell seq -w 2015 2023)
@@ -45,7 +45,7 @@ test-all: # Execute all tests
             if [ -d "src/$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
                 echo -e "\033[0;32mRunning tests for $$year day $$day ..."; \
-                make test year=$$year day=$$day; \
+                make test year=$$year day=$$day || { echo "Test failed for $$year day $$day"; exit 1; }; \
             fi; \
         done; \
     done
