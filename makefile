@@ -20,10 +20,10 @@ else ifneq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory already exists"
 else
 	@mkdir -p $(year)/day$(day)
-	@cp 0000/day00/* $(year)/day$(day)
-	@sed -i .bak 's/0000/${year}/g' $(year)/day$(day)/test_part1.py
+	@cp 1988/day00/* $(year)/day$(day)
+	@sed -i .bak 's/1988/${year}/g' $(year)/day$(day)/test_part1.py
 	@sed -i .bak 's/00/${day}/g' $(year)/day$(day)/test_part1.py
-	@sed -i .bak 's/0000/${year}/g' $(year)/day$(day)/test_part2.py
+	@sed -i .bak 's/1988/${year}/g' $(year)/day$(day)/test_part2.py
 	@sed -i .bak 's/00/${day}/g' $(year)/day$(day)/test_part2.py
 	@rm $(year)/day$(day)/*.py.bak
 	@echo "$(year)/day$(day) created! good coding!"
