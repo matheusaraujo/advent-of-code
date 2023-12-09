@@ -6,7 +6,7 @@ import urllib.request
 
 def get_session_cookie():
     if not os.path.exists("session.cookie"):
-        print("session.cookie file not found, input will not be downloaded!")
+        print("> session.cookie file not found, input will not be downloaded!")
         os._exit(0)
 
     with open("session.cookie", encoding="utf-8") as f:
@@ -37,10 +37,10 @@ def download_file(year, day):
     urllib.request.install_opener(opener)
 
     urllib.request.urlretrieve(url, destination)
-    print(f"input file downloaded successfully to {destination}")
+    print(f"> input file downloaded successfully to {destination}")
 
 
 if len(sys.argv) != 3:
-    print("invalid arguments")
+    print("> invalid arguments")
 else:
     download_file(sys.argv[1], sys.argv[2])

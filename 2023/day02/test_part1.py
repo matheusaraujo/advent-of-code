@@ -2,8 +2,8 @@ from inputs import read_input_file
 from part1 import part1
 
 LIMITS = "12 red, 13 green, 14 blue"
-actual_input = read_input_file("2023/day02/input.txt")
 sample_input = read_input_file("2023/day02/sample-input.txt")
+actual_input = read_input_file("2023/day02/input.txt")
 
 
 class TestPart1:

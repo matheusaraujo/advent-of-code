@@ -1,8 +1,8 @@
 from inputs import read_input_file
 from part2 import part2
 
-actual_input = read_input_file("2023/day04/input.txt")
 sample_input = read_input_file("2023/day04/sample-input.txt")
+actual_input = read_input_file("2023/day04/input.txt")
 
 
 class TestPart2:

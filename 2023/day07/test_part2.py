@@ -1,8 +1,8 @@
 from inputs import read_input_file
 from part2 import define_hand_value, part2
 
-actual_input = read_input_file("2023/day07/input.txt")
 sample_input = read_input_file("2023/day07/sample-input.txt")
+actual_input = read_input_file("2023/day07/input.txt")
 
 
 class TestPart2:

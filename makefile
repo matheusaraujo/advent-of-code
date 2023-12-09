@@ -127,7 +127,7 @@ test-all: # Execute all tests
         for day in $(DAYS); do \
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
-            	echo "${GREEN}Running tests for $$year day $$day ...{NC}"; \
+            	echo "${GREEN}Running tests for $$year day $$day ...${NC}"; \
                 make test year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
