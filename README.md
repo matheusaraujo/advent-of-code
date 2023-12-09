@@ -25,13 +25,13 @@ $ make help
 
 ## ![36%](https://progress-bar.dev/36?title=2023)
 
-|    :christmas_tree:     |            2             |            0             |            2             |            3             |
-| :---------------------: | :----------------------: | :----------------------: | :----------------------: | :----------------------: |
-|          day25          |          day24           |          day23           |          day22           |          day21           |
-|          day20          |          day19           |          day18           |          day17           |          day16           |
-|          day15          |          day14           |          day13           |          day12           |          day11           |
-|          day10          | [day09](src/2023/day09/) | [day08](src/2023/day08)  | [day07](src/2023/day07/) | [day06](src/2023/day06/) |
-| [day05](src/2023day05/) | [day04](src/2023/day04/) | [day03](src/2023/day03/) | [day02](src/2023/day02/) | [day01](src/2023/day01/) |
+|   :christmas_tree:   |           2           |           0           |           2           |           3           |
+| :------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
+|        day25         |         day24         |         day23         |         day22         |         day21         |
+|        day20         |         day19         |         day18         |         day17         |         day16         |
+|        day15         |         day14         |         day13         |         day12         |         day11         |
+|        day10         | [day09](/2023/day09/) | [day08](/2023/day08)  | [day07](/2023/day07/) | [day06](/2023/day06/) |
+| [day05](/2023day05/) | [day04](/2023/day04/) | [day03](/2023/day03/) | [day02](/2023/day02/) | [day01](/2023/day01/) |
 
 ## ![0%](https://progress-bar.dev/0?title=2022)
 
@@ -65,13 +65,13 @@ $ make help
 
 ## ![4%](https://progress-bar.dev/4?title=2019)
 
-| :christmas_tree: |   2   |   0   |   1   |            9             |
-| :--------------: | :---: | :---: | :---: | :----------------------: |
-|      day25       | day24 | day23 | day22 |          day21           |
-|      day20       | day19 | day18 | day17 |          day16           |
-|      day15       | day14 | day13 | day12 |          day11           |
-|      day10       | day09 | day08 | day07 |          day06           |
-|      day05       | day04 | day03 | day02 | [day01](src/2019/day01/) |
+| :christmas_tree: |   2   |   0   |   1   |           9           |
+| :--------------: | :---: | :---: | :---: | :-------------------: |
+|      day25       | day24 | day23 | day22 |         day21         |
+|      day20       | day19 | day18 | day17 |         day16         |
+|      day15       | day14 | day13 | day12 |         day11         |
+|      day10       | day09 | day08 | day07 |         day06         |
+|      day05       | day04 | day03 | day02 | [day01](/2019/day01/) |
 
 ## ![0%](https://progress-bar.dev/0?title=2018)
 
@@ -105,10 +105,10 @@ $ make help
 
 ## ![24%](https://progress-bar.dev/24?title=2015)
 
-|     :christmas_tree:     |            2             |            0             |            1             |            5             |
-| :----------------------: | :----------------------: | :----------------------: | :----------------------: | :----------------------: |
-|          day25           |          day24           |          day23           |          day22           |          day21           |
-|          day20           |          day19           |          day18           |          day17           |          day16           |
-|          day15           |          day14           |          day13           |          day12           |          day11           |
-|          day10           |          day09           |          day08           |          day07           | [day06](src/2015/day06/) |
-| [day05](src/2015/day05/) | [day04](src/2015/day04/) | [day03](src/2015/day03/) | [day02](src/2015/day02/) | [day01](src/2015/day01/) |
+|   :christmas_tree:    |           2           |           0           |           1           |           5           |
+| :-------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
+|         day25         |         day24         |         day23         |         day22         |         day21         |
+|         day20         |         day19         |         day18         |         day17         |         day16         |
+|         day15         |         day14         |         day13         |         day12         |         day11         |
+|         day10         |         day09         |         day08         |         day07         | [day06](/2015/day06/) |
+| [day05](/2015/day05/) | [day04](/2015/day04/) | [day03](/2015/day03/) | [day02](/2015/day02/) | [day01](/2015/day01/) |

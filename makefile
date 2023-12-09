@@ -10,16 +10,16 @@ ifndef year
 	@echo "[year] must be defined"
 else ifndef day
 	@echo "[day] must be defined"
-else ifneq ("$(wildcard src/$(year)/day$(day))", "")
+else ifneq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory already exists"
 else
-	@mkdir -p src/$(year)/day$(day)
-	@cp src/0000/day00/* src/$(year)/day$(day)
-	@sed -i .bak 's/0000/${year}/g' src/$(year)/day$(day)/test_part1.py
-	@sed -i .bak 's/00/${day}/g' src/$(year)/day$(day)/test_part1.py
-	@sed -i .bak 's/0000/${year}/g' src/$(year)/day$(day)/test_part2.py
-	@sed -i .bak 's/00/${day}/g' src/$(year)/day$(day)/test_part2.py
-	@rm src/$(year)/day$(day)/*.py.bak
+	@mkdir -p $(year)/day$(day)
+	@cp 0000/day00/* $(year)/day$(day)
+	@sed -i .bak 's/0000/${year}/g' $(year)/day$(day)/test_part1.py
+	@sed -i .bak 's/00/${day}/g' $(year)/day$(day)/test_part1.py
+	@sed -i .bak 's/0000/${year}/g' $(year)/day$(day)/test_part2.py
+	@sed -i .bak 's/00/${day}/g' $(year)/day$(day)/test_part2.py
+	@rm $(year)/day$(day)/*.py.bak
 	@echo "$(year)/day$(day) created! good coding!"
 endif
 
@@ -29,10 +29,10 @@ ifndef year
 	@echo "[year] must be defined"
 else ifndef day
 	@echo "[day] must be defined"
-else ifeq ("$(wildcard src/$(year)/day$(day))", "")
+else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
-	@cd src && pytest -v $(year)/day$(day) -s
+	@pytest -v $(year)/day$(day) -s
 endif
 
 YEARS := $(shell seq -w 2015 2035)
@@ -42,7 +42,7 @@ DAYS := $(shell seq -w 1 25)
 test-all: # Execute all tests
 	@for year in $(YEARS); do \
         for day in $(DAYS); do \
-            if [ -d "src/$$year/day$$day" ]; then \
+            if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
                 echo -e "\033[0;32mRunning tests for $$year day $$day ..."; \
                 make test year=$$year day=$$day || { echo "Test failed for $$year day $$day"; exit 1; }; \
@@ -52,12 +52,12 @@ test-all: # Execute all tests
 
 .PHONY: install
 install: # Install all dependencies
-	@cd src && pip install -r requirements.txt -r requirements_dev.txt
+	@pip install -r requirements.txt -r requirements_dev.txt
 
 .PHONY: lint
 lint: # Check code using isort and black
-	@cd src && isort --check-only . && black --check .
+	@isort --check-only . && black --check .
 
 .PHONY: lint-fix
 lint-fix: # Fix code using isort and black
-	@cd src && isort . && black . -l 88
+	@isort . && black . -l 88
