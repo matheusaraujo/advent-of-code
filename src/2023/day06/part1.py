@@ -8,9 +8,13 @@ def extract_numbers(s):
 
 
 def part1(puzzle_input):
-    times, distances, ans = extract_numbers(puzzle_input[0]), extract_numbers(puzzle_input[1]), 1
+    times, distances, ans = (
+        extract_numbers(puzzle_input[0]),
+        extract_numbers(puzzle_input[1]),
+        1,
+    )
 
-    for i,t in enumerate(times):
+    for i, t in enumerate(times):
         # Tt - t^2 > D
         # - t^2 + Tt - D > 0
         x1, x2 = get_integer_roots(-1, t, -distances[i])
