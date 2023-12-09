@@ -3,8 +3,8 @@ import sys
 from helpers import mapping, read_input
 
 
-def part2(input):
-    seeds, maps = read_input(input, 2)
+def part2(puzzle_input):
+    seeds, maps = read_input(puzzle_input, 2)
     ans = sys.maxsize
 
     for s in seeds:

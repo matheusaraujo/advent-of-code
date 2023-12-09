@@ -1,4 +1,4 @@
-def problem2(puzzle_input):
+def part2(puzzle_input):
     cards = [1] * len(puzzle_input)
     for card, card_number in enumerate(puzzle_input):
         numbers = card.split(':')[1].split('|')
