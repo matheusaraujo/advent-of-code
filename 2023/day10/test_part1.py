@@ -13,6 +13,5 @@ class TestPart1:
     def test_with_sample_data_b(self):
         assert part1(sample_input_b) == 8
 
-    # def test_with_actual_data(self):
-    #     # 6730 too low
-    #     assert part1(actual_input) == 0
+    def test_with_actual_data(self):
+        assert part1(actual_input) == 6733

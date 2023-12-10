@@ -1,51 +1,47 @@
+from helpers import mapping
+
+
+def connect(g, x, y, s):
+    if (x, y) not in g:
+        g[(x, y)] = []
+    m = mapping[s]
+    g[(x, y)].append((x + m[0][0], y + m[0][1]))
+    g[(x, y)].append((x + m[1][0], y + m[1][1]))
+
+
 def part1(puzzle_input):
     s = [list((x.replace("\n", ""))) for x in puzzle_input]
 
-    moves = {"E": (0, 1), "S": (1, 0), "W": (0, -1), "N": (-1, 0)}
-
-    changes = {
-        "7": {"E": "S", "N": "W"},
-        "J": {"S": "W", "E": "N"},
-        "L": {"W": "N", "S": "E"},
-        "F": {"N": "E", "W": "S"},
-        "|": {"E": "E", "S": "S", "W": "W", "N": "N"},
-        "-": {"E": "E", "S": "S", "W": "W", "N": "N"},
-    }
-
-    def move(i, j, d):
-        k = 0
-        while True:
-            k += 1
-            di, dj = moves[d]
-            i, j = i + di, j + dj
-
-            if s[i][j][0] == "." or i < 0 or j < 0:
-                break
-
-            if s[i][j][0] == "S":
-                break
-
-            s[i][j] = (s[i][j][0], k if s[i][j][1] == -1 else min(k, s[i][j][1]))
-
-            d = changes[s[i][j][0]][d]
-
-    m, n = len(s), len(s[0])
+    i0, j0, m, n, g, v = 0, 0, len(s), len(s[0]), {}, {}
 
     for x in range(m):
         for y in range(n):
-            s[x][y] = (s[x][y], -1)
-            if s[x][y][0] == "S":
+            if s[x][y] == "S":
                 i0, j0 = x, y
-                s[x][y] = (s[x][y][0], 0)
-
-    move(i0, j0, "E")
-    move(i0, j0, "S")
-    move(i0, j0, "N")
-    move(i0, j0, "W")
+            elif s[x][y] != ".":
+                connect(g, x, y, s[x][y])
 
     ans = 0
-    for t in s:
-        for u in t:
-            ans = max(ans, u[1])
 
-    return ans
+    for x in mapping:
+        connect(g, i0, j0, x[0])
+        v, st = {}, [(i0, j0)]
+        a = 0
+
+        while st:
+            n = st.pop()
+
+            if n in v:
+                continue
+
+            v[n] = True
+            if n in g:
+                for x in g[n]:
+                    if x not in v:
+                        st.append(x)
+                a += 1
+
+        del g[(i0, j0)]
+        ans = max(ans, a)
+
+    return ans / 2
