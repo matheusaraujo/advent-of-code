@@ -8,9 +8,13 @@ actual_input = read_input_file("2019/day03/input.txt")
 
 
 class TestPart1:
-    def test_with_sample_data(self):
+    def test_with_sample_data_a(self):
         assert part1(sample_input_a) == 6
+
+    def test_with_sample_data_b(self):
         assert part1(sample_input_b) == 159
+
+    def test_with_sample_data_c(self):
         assert part1(sample_input_c) == 135
 
     def test_with_actual_data(self):

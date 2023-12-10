@@ -5,8 +5,10 @@ actual_input = read_input_file("2015/day04/input.txt")
 
 
 class TestPart1:
-    def test_with_sample_data(self):
+    def test_with_sample_data_1(self):
         assert part1("abcdef") == 609043
+
+    def test_with_sample_data_2(self):
         assert part1("pqrstuv") == 1048970
 
     def test_with_actual_data(self):
