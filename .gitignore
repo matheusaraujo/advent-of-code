@@ -1,2 +1,4 @@
 .pytest_cache
 session.cookie
+.coverage
+.DS_Store

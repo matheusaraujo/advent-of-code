@@ -84,6 +84,22 @@ else
 endif
 
 ###
+### coverage
+###
+
+.PHONY: test-coverage
+test-coverage: # Execute the solution tests for given [year] and [day] calculating the code coverage
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exist"
+else
+	@pytest -v $(year)/day$(day) -s --cov=$(year)/day$(day)
+endif
+
+###
 ### test
 ###
 
@@ -144,7 +160,7 @@ test-all: # Execute all tests
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
             	echo "${GREEN}Running tests for $$year day $$day ...${NC}"; \
-                make test year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+                make test-coverage year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
     done
