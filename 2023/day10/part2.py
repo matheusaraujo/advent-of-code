@@ -12,6 +12,7 @@ def map_to_edges(path, s):
     edges.append([last, (path[0][0], path[0][1])])
     return edges
 
+
 def is_inside_polygon(xp, yp, edges):
     cnt = 0
     for edge in edges:
@@ -19,6 +20,7 @@ def is_inside_polygon(xp, yp, edges):
         if (yp < y1) != (yp < y2) and xp < x1 + ((yp - y1) / (y2 - y1)) * (x2 - x1):
             cnt += 1
     return cnt % 2 == 1
+
 
 # Using Ray Casting Algorithm: https://en.wikipedia.org/wiki/Point_in_polygon
 def part2(puzzle_input):
