@@ -72,13 +72,15 @@ endif
 ###
 
 .PHONY: test
-test: # Execute the solution tests for given [year] and [day]
+test: # Execute the solution tests for given [year] and [day], -w for watch mode
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
 	@echo "[day] must be defined"
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
+else ifneq (,$(findstring w,$(MAKEFLAGS)))
+	@ptw $(year)/day$(day)
 else
 	@pytest -v $(year)/day$(day) -s
 endif
