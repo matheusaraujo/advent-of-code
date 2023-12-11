@@ -2,6 +2,12 @@
 
 [![tests](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml)
 [![linting](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml)
+&nbsp;
+![44%](https://progress-bar.dev/44?title=2023)
+&nbsp;
+![16%](https://progress-bar.dev/16?title=2019)
+&nbsp;
+![24%](https://progress-bar.dev/24?title=2015)
 
 ![AOC](docs/logo.png)
 
@@ -17,7 +23,9 @@ $ make install
 # create a new solution based on `day00` template
 $ make create year=${YEAR} day=${DAY}
 
-# test a specific day, `test-watch` for watch mode
+# test a specific day
+# or `test-watch` for watch mode
+# or `test-coverage` for coverage report
 $ make test year=${YEAR} day=${DAY}
 
 # validate (format, lint, test) a specific day
@@ -34,7 +42,7 @@ $ make help
 > This file must contain a valid session cookie obtained during a authenticated session on the Advent of Code website <br>
 > Important Reminder: If the `session.cookie` file is missing, manual downloading of the input file is necessary.
 
-## ![44%](https://progress-bar.dev/44?title=2023)
+## 2023
 
 |   :christmas_tree:    |           2           |           0           |           2           |           3           |
 | :-------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
@@ -44,7 +52,7 @@ $ make help
 | [day10](/2023/day10/) | [day09](/2023/day09/) | [day08](/2023/day08)  | [day07](/2023/day07/) | [day06](/2023/day06/) |
 | [day05](/2023/day05/) | [day04](/2023/day04/) | [day03](/2023/day03/) | [day02](/2023/day02/) | [day01](/2023/day01/) |
 
-## ![16%](https://progress-bar.dev/16?title=2019)
+## 2019
 
 | :christmas_tree: |          2           |          0           |          1           |           9           |
 | :--------------: | :------------------: | :------------------: | :------------------: | :-------------------: |
@@ -54,7 +62,7 @@ $ make help
 |      day10       |        day09         |        day08         |        day07         |         day06         |
 |      day05       | [day04](2019/day04/) | [day03](2019/day03/) | [day02](/2019/day02) | [day01](/2019/day01/) |
 
-## ![24%](https://progress-bar.dev/24?title=2015)
+## 2015
 
 |   :christmas_tree:    |           2           |           0           |           1           |           5           |
 | :-------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |

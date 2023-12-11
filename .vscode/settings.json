@@ -12,6 +12,7 @@
     "addheaders",
     "clsname",
     "hookwrapper",
+    "markdownify",
     "maxsplit",
     "mcsname",
     "pytest",

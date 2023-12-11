@@ -40,8 +40,16 @@ configure-hooks: # Configure git hooks
 ###
 
 .PHONY: install
-install: # Install all dependencies
+install: # Install common dependencies
 	@pip install -r requirements.txt
+
+###
+### install-dev
+###
+
+.PHONY: install-dev
+install-dev: # Install development dependencies
+	@pip install -r requirements_dev.txt
 
 ###
 ### create
@@ -147,6 +155,18 @@ else
 	@isort $(year)/day$(day) && black -l 88 $(year)/day$(day)
 	@pylint --init-hook="import sys; sys.path.append('utils')" $(year)/day$(day)/*.py
 	@pytest -v $(year)/day$(day) -s
+endif
+
+.PHONY: markdown
+markdown: # Create the readme file for a solved puzzle for given [year] and [day]
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exist"
+else
+	@python3 utils/get_puzzle_readme.py $(year) $(day)
 endif
 
 ###
