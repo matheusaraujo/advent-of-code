@@ -1,6 +1,7 @@
 # Advent of Code Solutions
 
-[![on push](https://github.com/matheusaraujo/advent-of-code/actions/workflows/on-push.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/on-push.yaml)
+[![tests](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml)
+[![linting](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml)
 
 ![AOC](docs/logo.png)
 
