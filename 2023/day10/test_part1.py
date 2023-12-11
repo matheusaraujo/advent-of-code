@@ -7,10 +7,10 @@ actual_input = read_input_file("2023/day10/input.txt")
 
 
 class TestPart1:
-    def test_with_sample_data_a(self):
+    def test_with_sample_data_1a(self):
         assert part1(sample_input_1a) == 4
 
-    def test_with_sample_data_b(self):
+    def test_with_sample_data_1b(self):
         assert part1(sample_input_1b) == 8
 
     def test_with_actual_data(self):
