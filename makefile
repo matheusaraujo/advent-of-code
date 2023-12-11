@@ -41,7 +41,7 @@ configure-hooks: # Configure git hooks
 
 .PHONY: install
 install: # Install all dependencies
-	@pip install -r requirements_dev.txt
+	@pip install -r requirements.txt
 
 ###
 ### create
