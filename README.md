@@ -17,7 +17,7 @@ $ make install
 # create a new solution based on `day00` template
 $ make create year=${YEAR} day=${DAY}
 
-# test a specific day , -w for watch mode
+# test a specific day, `test-watch` for watch mode
 $ make test year=${YEAR} day=${DAY}
 
 # validate (format, lint, test) a specific day
