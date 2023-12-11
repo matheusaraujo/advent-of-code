@@ -5,6 +5,7 @@ def meets_criteria(n):
         if n[i] > n[i + 1]:
             return False
         has_double = has_double or n[i] == n[i + 1]
+
     return has_double
 
 
