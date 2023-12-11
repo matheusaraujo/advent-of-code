@@ -30,8 +30,8 @@ $ make help
 ```
 
 > A `session.cookie` plain text file on root directory (not versioned) is utilized to facilitate the automated download of the input file from https://adventofcode.com <br>
-> This file must a valid session cookie obtained during a authenticated session on the Advent of Code website <br>
-> Important Reminder: If the session.cookie file is missing, manual downloading of the input file is necessary.
+> This file must contain a valid session cookie obtained during a authenticated session on the Advent of Code website <br>
+> Important Reminder: If the `session.cookie` file is missing, manual downloading of the input file is necessary.
 
 ## ![40%](https://progress-bar.dev/40?title=2023)
 

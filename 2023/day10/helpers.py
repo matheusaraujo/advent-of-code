@@ -22,7 +22,7 @@ def connect(g, x, y, s):
 
 
 def find_longest_cycle(puzzle_input):
-    s = [list((x.replace("\n", ""))) for x in puzzle_input]
+    s = puzzle_input
 
     i0, j0, m, n, g, v, path = 0, 0, len(s), len(s[0]), {}, {}, []
 

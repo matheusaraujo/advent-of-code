@@ -52,7 +52,7 @@ def compare(hand_a, hand_b, define_label_value):
 
 
 def solve(hands, define_hand_value, define_label_value):
-    hands = [h.replace("\n", "").split(" ") for h in hands]
+    hands = [h.split(" ") for h in hands]
     hands = [(h[0], h[1], define_hand_value(h[0])) for h in hands]
 
     def compare_wrapper(hand_a, hand_b):

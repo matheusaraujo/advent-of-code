@@ -2,7 +2,7 @@ from helpers import move
 
 
 def part1(puzzle_input):
-    [w1, w2] = [x.replace("\n", "").split(",") for x in puzzle_input]
+    [w1, w2] = [x.split(",") for x in puzzle_input]
     v, c = {}, []
 
     def f1(x, y, _):

@@ -2,7 +2,7 @@ import re
 
 
 def part1(puzzle_input):
-    d, m, c, i, ans = puzzle_input[0].replace("\n", ""), {}, "AAA", 0, 0
+    d, m, c, i, ans = puzzle_input[0], {}, "AAA", 0, 0
 
     for j in range(2, len(puzzle_input)):
         f, l, r = re.findall(r"(.*) = \((.*),\s(.*)\)", puzzle_input[j])[0]
