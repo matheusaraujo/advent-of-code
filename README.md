@@ -33,15 +33,15 @@ $ make help
 > This file must a valid session cookie obtained during a authenticated session on the Advent of Code website <br>
 > Important Reminder: If the session.cookie file is missing, manual downloading of the input file is necessary.
 
-## ![36%](https://progress-bar.dev/36?title=2023)
+## ![40%](https://progress-bar.dev/40?title=2023)
 
-|   :christmas_tree:   |           2           |           0           |           2           |           3           |
-| :------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
-|        day25         |         day24         |         day23         |         day22         |         day21         |
-|        day20         |         day19         |         day18         |         day17         |         day16         |
-|        day15         |         day14         |         day13         |         day12         |         day11         |
-|        day10         | [day09](/2023/day09/) | [day08](/2023/day08)  | [day07](/2023/day07/) | [day06](/2023/day06/) |
-| [day05](/2023day05/) | [day04](/2023/day04/) | [day03](/2023/day03/) | [day02](/2023/day02/) | [day01](/2023/day01/) |
+|   :christmas_tree:    |           2           |           0           |           2           |           3           |
+| :-------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
+|         day25         |         day24         |         day23         |         day22         |         day21         |
+|         day20         |         day19         |         day18         |         day17         |         day16         |
+|         day15         |         day14         |         day13         |         day12         |         day11         |
+| [day10](/2023/day10/) | [day09](/2023/day09/) | [day08](/2023/day08)  | [day07](/2023/day07/) | [day06](/2023/day06/) |
+| [day05](/2023day05/)  | [day04](/2023/day04/) | [day03](/2023/day03/) | [day02](/2023/day02/) | [day01](/2023/day01/) |
 
 ## ![12%](https://progress-bar.dev/12?title=2019)
 

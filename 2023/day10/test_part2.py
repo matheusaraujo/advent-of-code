@@ -22,5 +22,4 @@ class TestPart2:
         assert part2(sample_input_2d) == 10
 
     def test_with_actual_data(self):
-        # 242 too low
         assert part2(actual_input) == 435
