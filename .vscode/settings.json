@@ -8,4 +8,14 @@
       "source.organizeImports": "explicit"
     }
   },
+  "cSpell.words": [
+    "addheaders",
+    "clsname",
+    "hookwrapper",
+    "maxsplit",
+    "mcsname",
+    "pytest",
+    "sessionstart",
+    "tryfirst"
+  ]
 }
