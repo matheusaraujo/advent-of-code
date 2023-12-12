@@ -45,8 +45,7 @@ def recursive(springs, groups):
 def count_arrangement_part2(line):
     [springs, groups] = line.split(" ")
     springs = "?".join([springs] * 5)
-    groups = tuple(int(x) for x in groups.split(","))
-    groups = groups * 5
+    groups = tuple(int(x) for x in groups.split(",")) * 5
     return cached_recursive(springs, groups)
 
 
