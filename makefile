@@ -88,6 +88,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
+	@[ -f "$(year)/day$(day)/input.txt" ] || python3 utils/get_puzzle_input.py $(year) $(day)
 	@pytest -v $(year)/day$(day) -s
 endif
 
@@ -104,6 +105,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
+	@[ -f "$(year)/day$(day)/input.txt" ] || python3 utils/get_puzzle_input.py $(year) $(day)
 	@pytest -v $(year)/day$(day) -s --cov=$(year)/day$(day)
 endif
 
@@ -120,6 +122,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
+	@[ -f "$(year)/day$(day)/input.txt" ] || python3 utils/get_puzzle_input.py $(year) $(day)
 	@ptw $(year)/day$(day)
 endif
 
@@ -155,18 +158,6 @@ else
 	@isort $(year)/day$(day) && black -l 88 $(year)/day$(day)
 	@pylint --init-hook="import sys; sys.path.append('utils')" $(year)/day$(day)/*.py
 	@pytest -v $(year)/day$(day) -s
-endif
-
-.PHONY: markdown
-markdown: # Create the readme file for a solved puzzle for given [year] and [day]
-ifndef year
-	@echo "[year] must be defined"
-else ifndef day
-	@echo "[day] must be defined"
-else ifeq ("$(wildcard $(year)/day$(day))", "")
-	@echo "directory does not exist"
-else
-	@python3 utils/get_puzzle_readme.py $(year) $(day)
 endif
 
 ###

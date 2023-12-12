@@ -3,13 +3,16 @@ import subprocess
 
 
 def get_session_cookie():
-    if not os.path.exists("session.cookie"):
-        print("> session.cookie file not found, input will not be downloaded!")
-        os._exit(0)
+    if os.path.exists("session.cookie"):
+        with open("session.cookie", encoding="utf-8") as f:
+            line = f.read()
+        return line
 
-    with open("session.cookie", encoding="utf-8") as f:
-        line = f.read()
-    return line
+    if os.environ.get("AOC_SESSION_COOKIE"):
+        return os.environ.get("AOC_SESSION_COOKIE")
+
+    print("> session.cookie not found, input will not be downloaded!")
+    os._exit(0)
 
 
 def get_current_repo_remote_url():
