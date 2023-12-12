@@ -157,8 +157,8 @@ else
 	@pytest -v $(year)/day$(day) -s
 endif
 
-.PHONY: markdown
-markdown: # Create the readme file for a solved puzzle for given [year] and [day]
+.PHONY: readme
+readme: # Create the readme file for a solved puzzle for given [year] and [day]
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
