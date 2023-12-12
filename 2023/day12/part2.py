@@ -1,10 +1,4 @@
-memory = {}
-
-
-def cached_recursive(springs, groups):
-    if (springs, groups) not in memory:
-        memory[(springs, groups)] = recursive(springs, groups)
-    return memory[(springs, groups)]
+from functools import lru_cache
 
 
 def should_keep_checking(springs, groups):
@@ -20,25 +14,28 @@ def should_keep_checking(springs, groups):
     return True
 
 
-def recursive(springs, groups):
+# lru_cache is used to memorize solutions based on springs and groups
+# previously it was implemented by a homemade solution with a mapping and a wrapper function
+@lru_cache
+def backtracking(springs, groups):
     if len(springs) == 0:
         return 1 if len(groups) == 0 else 0
 
     if springs[0] == ".":
-        return cached_recursive(springs[1:], groups)
+        return backtracking(springs[1:], groups)
 
     if springs[0] == "?":
-        return (cached_recursive("." + springs[1:], groups)) + (
-            cached_recursive("#" + springs[1:], groups)
+        return (backtracking("." + springs[1:], groups)) + (
+            backtracking("#" + springs[1:], groups)
         )
 
     if not should_keep_checking(springs, groups):
         return 0
 
     return (
-        (cached_recursive(springs[groups[0] :], groups[1:]))
+        (backtracking(springs[groups[0] :], groups[1:]))
         if len(groups) == 1
-        else (cached_recursive(springs[groups[0] + 1 :], groups[1:]))
+        else (backtracking(springs[groups[0] + 1 :], groups[1:]))
     )
 
 
@@ -46,7 +43,7 @@ def count_arrangement_part2(line):
     [springs, groups] = line.split(" ")
     springs = "?".join([springs] * 5)
     groups = tuple(int(x) for x in groups.split(",")) * 5
-    return cached_recursive(springs, groups)
+    return backtracking(springs, groups)
 
 
 def part2(puzzle_input):
