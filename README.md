@@ -5,7 +5,7 @@
 [![tests](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml)
 &nbsp;
 [![linting](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml)
-&nbsp;
+
 ![48%](https://progress-bar.dev/48?title=2023)
 &nbsp;
 ![16%](https://progress-bar.dev/16?title=2019)
