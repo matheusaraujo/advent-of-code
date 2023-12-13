@@ -8,7 +8,7 @@
 
 ![52%](https://progress-bar.dev/52?title=2023)
 &nbsp;
-![16%](https://progress-bar.dev/16?title=2019)
+![20%](https://progress-bar.dev/20?title=2019)
 &nbsp;
 ![24%](https://progress-bar.dev/24?title=2015)
 
@@ -57,13 +57,13 @@ $ make help
 
 ## 2019
 
-| :christmas_tree: |          2           |          0           |          1           |           9           |
-| :--------------: | :------------------: | :------------------: | :------------------: | :-------------------: |
-|      day25       |        day24         |        day23         |        day22         |         day21         |
-|      day20       |        day19         |        day18         |        day17         |         day16         |
-|      day15       |        day14         |        day13         |        day12         |         day11         |
-|      day10       |        day09         |        day08         |        day07         |         day06         |
-|      day05       | [day04](2019/day04/) | [day03](2019/day03/) | [day02](/2019/day02) | [day01](/2019/day01/) |
+|   :christmas_tree:    |           2           |           0           |          1           |           9           |
+| :-------------------: | :-------------------: | :-------------------: | :------------------: | :-------------------: |
+|         day25         |         day24         |         day23         |        day22         |         day21         |
+|         day20         |         day19         |         day18         |        day17         |         day16         |
+|         day15         |         day14         |         day13         |        day12         |         day11         |
+|         day10         |         day09         |         day08         |        day07         |         day06         |
+| [day05](/2019/day05/) | [day04](/2019/day04/) | [day03](/2019/day03/) | [day02](/2019/day02) | [day01](/2019/day01/) |
 
 ## 2015
 
