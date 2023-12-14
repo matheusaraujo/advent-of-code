@@ -12,7 +12,7 @@ def part1(puzzle_input):
     for arrangement in arrangements:
         signal = 0
         for i in range(5):
-            signal = int_code(program[:], [arrangement[i], signal])
+            signal = int_code(program[:], 0, [arrangement[i], signal])[0]
         ans = max(ans, signal)
 
     return ans

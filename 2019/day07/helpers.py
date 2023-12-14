@@ -4,41 +4,56 @@ def g(arr, i, mode):
     return arr[i]
 
 
-def s(arr, i, v):
-    arr[arr[i]] = v
+def s(arr, i, mode, v):
+    if mode == 0:
+        arr[arr[i]] = v
+    else:
+        arr[i] = v
 
 
-def int_code(memory, input_array):
-    i, di, output = 0, 0, -1
+def int_code(memory, i, input_array, output):
+    di = 0
+
     while memory[i] != 99:
         opcode = memory[i] % 100
-        _ = (memory[i] // 10000) % 10
-        b = (memory[i] // 1000) % 10
-        c = (memory[i] // 100) % 10
+        m3 = (memory[i] // 10000) % 10
+        m2 = (memory[i] // 1000) % 10
+        m1 = (memory[i] // 100) % 10
 
         if opcode == 1:  # sum
-            s(memory, i + 3, g(memory, i + 1, c) + g(memory, i + 2, b))
+            s(memory, i + 3, m3, g(memory, i + 1, m1) + g(memory, i + 2, m2))
             di = 4
         elif opcode == 2:  # multiply
-            s(memory, i + 3, g(memory, i + 1, c) * g(memory, i + 2, b))
+            s(memory, i + 3, m3, g(memory, i + 1, m1) * g(memory, i + 2, m2))
             di = 4
         elif opcode == 3:  # get input
-            s(memory, i + 1, input_array.pop(0))
+            s(memory, i + 1, m1, input_array.pop(0))
             di = 2
         elif opcode == 4:  # set output
-            output = g(memory, i + 1, 0)
-            di = 2
+            output = g(memory, i + 1, m1)
+            i += 2
+            break
         elif opcode == 5:  # jump-if-true
-            di = g(memory, i + 2, b) - i if g(memory, i + 1, c) != 0 else 3
+            di = g(memory, i + 2, m2) - i if g(memory, i + 1, m1) != 0 else 3
         elif opcode == 6:  # jump-if-false
-            di = g(memory, i + 2, b) - i if g(memory, i + 1, c) == 0 else 3
+            di = g(memory, i + 2, m2) - i if g(memory, i + 1, m1) == 0 else 3
         elif opcode == 7:  # less than
-            s(memory, i + 3, 1 if g(memory, i + 1, c) < g(memory, i + 2, b) else 0)
+            s(
+                memory,
+                i + 3,
+                m3,
+                1 if g(memory, i + 1, m1) < g(memory, i + 2, m2) else 0,
+            )
             di = 4
         elif opcode == 8:  # equals
-            s(memory, i + 3, 1 if g(memory, i + 1, c) == g(memory, i + 2, b) else 0)
+            s(
+                memory,
+                i + 3,
+                m3,
+                1 if g(memory, i + 1, m1) == g(memory, i + 2, m2) else 0,
+            )
             di = 4
 
         i += di
 
-    return output
+    return (output, i, memory[i] == 99)
