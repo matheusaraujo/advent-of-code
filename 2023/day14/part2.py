@@ -33,9 +33,7 @@ def part2(puzzle_input, limit):
 
     while True:
         i = i + 1
-
         matrix = do_cycle(matrix)
-
         s = map_to_string(matrix)
 
         if s in memory:
@@ -44,6 +42,5 @@ def part2(puzzle_input, limit):
 
         memory[s] = (i, count(matrix))
 
-    return next(
-        (v[1] for _, v in memory.items() if v[0] == i - length + (limit - i) % length)
-    )
+    index_to_limit = i - length + (limit - i) % length
+    return next((v[1] for _, v in memory.items() if v[0] == index_to_limit))
