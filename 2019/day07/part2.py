@@ -1,6 +1,6 @@
 from itertools import permutations
 
-from helpers import int_code
+from int_code import IntCode
 
 
 def part2(puzzle_input):
@@ -10,37 +10,18 @@ def part2(puzzle_input):
 
     ans = 0
 
-    print("begin")
-
     for arrangement in arrangements:
-        memories, memories_i, outputs_i, halted_i = [], [], [], []
-        result = (0, 0, False)
+        amps = []
 
         for i in range(5):
-            memories.append(program[:])
-            memories_i.append(0)
-            outputs_i.append(0)
-            halted_i.append(False)
+            amps.append(IntCode(program[:], [arrangement[i]]))
 
-        while True:
-            _input = 0
+        signal = 0
+
+        while any(not amp.halt for amp in amps):
             for i in range(5):
-                result = int_code(
-                    memories[i],
-                    memories_i[i],
-                    [arrangement[i], result[0]],
-                    outputs_i[i],
-                )
-                outputs_i[i] = result[0]
-                memories_i[i] = result[1]
-                halted_i[i] = result[2]
+                signal = amps[i].execute([signal])
 
-                _input = result[0]
-
-            if all(halted_i):
-                break
-
-        print(">>>>>>", arrangement, result)
-        ans = max(ans, _input)
+        ans = max(ans, signal)
 
     return ans

@@ -1,6 +1,6 @@
 from itertools import permutations
 
-from int_code import int_code
+from int_code import IntCode
 
 
 def part1(puzzle_input):
@@ -12,7 +12,7 @@ def part1(puzzle_input):
     for arrangement in arrangements:
         signal = 0
         for i in range(5):
-            signal = int_code(program[:], [arrangement[i], signal])
+            signal = IntCode(program[:], [arrangement[i]]).execute([signal])
         ans = max(ans, signal)
 
     return ans
