@@ -45,9 +45,7 @@ def solve(contraption, x, y, d):
         v[(x, y)].append(d)
 
         next_dir = mapping[contraption[x][y]][d](x, y)
-        for nd in next_dir:
-            nx, ny, nd = nd
-
+        for [nx, ny, nd] in next_dir:
             if -1 < nx < rows and -1 < ny < cols and nd not in v[(nx, ny)]:
                 q.append((nx, ny, nd))
 
