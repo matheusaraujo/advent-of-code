@@ -20,19 +20,19 @@ class Operation(Enum):
     EQUALS = 8
     ADJUST_RELATIVE_BASE = 9
 
-
-operation_sizes = {
-    Operation.HALT: 1,
-    Operation.ADDS: 4,
-    Operation.MULTIPLIES: 4,
-    Operation.READ_INPUT: 2,
-    Operation.WRITE_OUTPUT: 2,
-    Operation.LESS_THAN: 4,
-    Operation.EQUALS: 4,
-    Operation.JUMP_IF_TRUE: 3,
-    Operation.JUMP_IF_FALSE: 3,
-    Operation.ADJUST_RELATIVE_BASE: 2,
-}
+    def size(self):
+        return {
+            Operation.HALT: 1,
+            Operation.ADDS: 4,
+            Operation.MULTIPLIES: 4,
+            Operation.READ_INPUT: 2,
+            Operation.WRITE_OUTPUT: 2,
+            Operation.LESS_THAN: 4,
+            Operation.EQUALS: 4,
+            Operation.JUMP_IF_TRUE: 3,
+            Operation.JUMP_IF_FALSE: 3,
+            Operation.ADJUST_RELATIVE_BASE: 2,
+        }[self]
 
 
 @dataclass
@@ -57,7 +57,7 @@ class Command:
         self.parameter_3 = Parameter(
             self.address + 3, ParameterMode((self.value // 10000) % 10)
         )
-        self.size = operation_sizes[self.operation]
+        self.size = self.operation.size()
 
 
 class IntCode:
