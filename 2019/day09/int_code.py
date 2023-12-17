@@ -1,4 +1,4 @@
-import json
+import dataclasses
 from enum import Enum
 
 
@@ -21,40 +21,29 @@ class Operation(Enum):
     ADJUST_RELATIVE_BASE = 9
 
 
+@dataclasses.dataclass
 class Parameter:
     def __init__(self, address: int, mode: ParameterMode):
-        self.__address = address
-        self.__mode = mode
-
-    def address(self):
-        return self.__address
-
-    def mode(self):
-        return self.__mode
+        self.address = address
+        self.mode = mode
 
 
+@dataclasses.dataclass
 class Command:
-    def __init__(self, pointer, memory_value):
-        self.address = pointer
+    def __init__(self, __pointer, memory_value):
+        self.address = __pointer
         self.value = memory_value
-
-    def __str__(self):
-        return json.dumps({"operation": self.operation().name})
-
-    def operation(self) -> Operation:
-        return Operation(self.value % 100)
-
-    def parameter_1(self) -> Parameter:
-        return Parameter(self.address + 1, ParameterMode((self.value // 100) % 10))
-
-    def parameter_2(self) -> Parameter:
-        return Parameter(self.address + 2, ParameterMode((self.value // 1000) % 10))
-
-    def parameter_3(self) -> Parameter:
-        return Parameter(self.address + 3, ParameterMode((self.value // 10000) % 10))
-
-    def size(self):
-        return {
+        self.operation = Operation(self.value % 100)
+        self.parameter_1 = Parameter(
+            self.address + 1, ParameterMode((self.value // 100) % 10)
+        )
+        self.parameter_2 = Parameter(
+            self.address + 2, ParameterMode((self.value // 1000) % 10)
+        )
+        self.parameter_3 = Parameter(
+            self.address + 3, ParameterMode((self.value // 10000) % 10)
+        )
+        self.size = {
             Operation.HALT: 1,
             Operation.ADDS: 4,
             Operation.MULTIPLIES: 4,
@@ -65,153 +54,150 @@ class Command:
             Operation.JUMP_IF_TRUE: 3,
             Operation.JUMP_IF_FALSE: 3,
             Operation.ADJUST_RELATIVE_BASE: 2,
-        }[self.operation()]
+        }[self.operation]
 
 
 class IntCode:
     def __init__(self, program: list[int], input_array: list[int]):
-        self.pointer = 0  # memory pointer
-        self.relative_base = 0
-        self.command = None
-        self.memory = {idx: val for idx, val in enumerate(program)}
-        self.input = input_array
-        self.output = None
-        self.halt = False
+        self.__pointer = 0  # memory pointer
+        self.__relative_base = 0
+        self.__command = None
+        self.__memory = dict(enumerate(program))
+        self.__input = input_array
+        self.__output = None
+        self.__halted = False
 
     def execute(self, input_array: list[int]):
-        self.input += input_array
+        self.__input += input_array
 
         while True:
-            self.command = Command(self.pointer, self.memory[self.pointer])
+            self.__command = Command(self.__pointer, self.__memory[self.__pointer])
+            self.__pointer += self.__map_operation()()
 
-            if self.command.operation() == Operation.ADDS:
-                self.pointer += self.__adds()
-            elif self.command.operation() == Operation.MULTIPLIES:
-                self.pointer += self.__multiplies()
-            elif self.command.operation() == Operation.READ_INPUT:
-                self.pointer += self.__read_input()
-            elif self.command.operation() == Operation.JUMP_IF_TRUE:
-                self.pointer += self.__jump_if_true()
-            elif self.command.operation() == Operation.JUMP_IF_FALSE:
-                self.pointer += self.__jump_if_false()
-            elif self.command.operation() == Operation.LESS_THAN:
-                self.pointer += self.__less_than()
-            elif self.command.operation() == Operation.EQUALS:
-                self.pointer += self.__equals()
-            elif self.command.operation() == Operation.ADJUST_RELATIVE_BASE:
-                self.pointer += self.__adjust_relative_base()
-            elif self.command.operation() == Operation.WRITE_OUTPUT:
-                self.pointer += self.__write_output()
-                break
-            elif self.command.operation() == Operation.HALT:
-                self.pointer += self.__halt()
+            if self.__command.operation in (Operation.WRITE_OUTPUT, Operation.HALT):
                 break
 
-        return self.output
+        return self.__output
 
-    def __str__(self):
-        return json.dumps(
-            {
-                "pointer": self.pointer,
-                "value": self.memory[self.pointer],
-            }
-        )
+    def halted(self) -> bool:
+        return self.__halted
+
+    def __map_operation(self):
+        mapping = {
+            Operation.ADDS: self.__adds,
+            Operation.MULTIPLIES: self.__multiplies,
+            Operation.READ_INPUT: self.__read_input,
+            Operation.JUMP_IF_TRUE: self.__jump_if_true,
+            Operation.JUMP_IF_FALSE: self.__jump_if_false,
+            Operation.LESS_THAN: self.__less_than,
+            Operation.EQUALS: self.__equals,
+            Operation.ADJUST_RELATIVE_BASE: self.__adjust_relative_base,
+            Operation.WRITE_OUTPUT: self.__write_output,
+            Operation.HALT: self.__halt,
+        }
+
+        if self.__command.operation not in mapping:
+            raise ValueError("invalid operation")
+
+        return mapping[self.__command.operation]
 
     def __adds(self):
         self.__set(
-            self.command.parameter_3(),
+            self.__command.parameter_3,
             (
-                self.__get(self.command.parameter_1())
-                + self.__get(self.command.parameter_2())
+                self.__get(self.__command.parameter_1)
+                + self.__get(self.__command.parameter_2)
             ),
         )
-        return self.command.size()
+        return self.__command.size
 
     def __multiplies(self):
         self.__set(
-            self.command.parameter_3(),
+            self.__command.parameter_3,
             (
-                self.__get(self.command.parameter_1())
-                * self.__get(self.command.parameter_2())
+                self.__get(self.__command.parameter_1)
+                * self.__get(self.__command.parameter_2)
             ),
         )
-        return self.command.size()
+        return self.__command.size
 
     def __read_input(self):
-        self.__set(self.command.parameter_1(), self.input.pop(0))
-        return self.command.size()
+        self.__set(self.__command.parameter_1, self.__input.pop(0))
+        return self.__command.size
 
     def __write_output(self):
-        self.output = self.__get(self.command.parameter_1())
-        return self.command.size()
+        self.__output = self.__get(self.__command.parameter_1)
+        return self.__command.size
 
     def __jump_if_true(self):
         return (
-            self.__get(self.command.parameter_2()) - self.pointer
-            if self.__get(self.command.parameter_1()) > 0
-            else self.command.size()
+            self.__get(self.__command.parameter_2) - self.__pointer
+            if self.__get(self.__command.parameter_1) > 0
+            else self.__command.size
         )
 
     def __jump_if_false(self):
         return (
-            self.__get(self.command.parameter_2()) - self.pointer
-            if self.__get(self.command.parameter_1()) == 0
-            else self.command.size()
+            self.__get(self.__command.parameter_2) - self.__pointer
+            if self.__get(self.__command.parameter_1) == 0
+            else self.__command.size
         )
 
     def __less_than(self):
         self.__set(
-            self.command.parameter_3(),
+            self.__command.parameter_3,
             1
             if (
-                self.__get(self.command.parameter_1())
-                < self.__get(self.command.parameter_2())
+                self.__get(self.__command.parameter_1)
+                < self.__get(self.__command.parameter_2)
             )
             else 0,
         )
-        return self.command.size()
+        return self.__command.size
 
     def __equals(self):
         self.__set(
-            self.command.parameter_3(),
+            self.__command.parameter_3,
             1
             if (
-                self.__get(self.command.parameter_1())
-                == self.__get(self.command.parameter_2())
+                self.__get(self.__command.parameter_1)
+                == self.__get(self.__command.parameter_2)
             )
             else 0,
         )
-        return self.command.size()
+        return self.__command.size
 
     def __adjust_relative_base(self):
-        self.relative_base += self.__get(self.command.parameter_1())
-        return self.command.size()
+        self.__relative_base += self.__get(self.__command.parameter_1)
+        return self.__command.size
 
     def __halt(self):
-        self.halt = True
-        return self.command.size()
+        self.__halted = True
+        return self.__command.size
 
     def __get(self, parameter: Parameter):
         idx = -1
-        if parameter.mode() == ParameterMode.IMMEDIATE:
-            idx = parameter.address()
-        elif parameter.mode() == ParameterMode.POSITION:
-            idx = self.memory[parameter.address()]
-        elif parameter.mode() == ParameterMode.RELATIVE:
-            idx = self.relative_base + self.memory[parameter.address()]
+        if parameter.mode == ParameterMode.IMMEDIATE:
+            idx = parameter.address
+        elif parameter.mode == ParameterMode.POSITION:
+            idx = self.__memory[parameter.address]
+        elif parameter.mode == ParameterMode.RELATIVE:
+            idx = self.__relative_base + self.__memory[parameter.address]
         else:
             raise ValueError("invalid parameter mode")
 
-        if idx not in self.memory:
-            self.memory[idx] = 0
-        return self.memory[idx]
+        if idx not in self.__memory:
+            self.__memory[idx] = 0
+        return self.__memory[idx]
 
     def __set(self, parameter: Parameter, value: int):
-        if parameter.mode() == ParameterMode.IMMEDIATE:
-            self.memory[parameter.address()] = value
-        elif parameter.mode() == ParameterMode.POSITION:
-            self.memory[self.memory[parameter.address()]] = value
-        elif parameter.mode() == ParameterMode.RELATIVE:
-            self.memory[self.relative_base + self.memory[parameter.address()]] = value
+        if parameter.mode == ParameterMode.IMMEDIATE:
+            self.__memory[parameter.address] = value
+        elif parameter.mode == ParameterMode.POSITION:
+            self.__memory[self.__memory[parameter.address]] = value
+        elif parameter.mode == ParameterMode.RELATIVE:
+            self.__memory[
+                self.__relative_base + self.__memory[parameter.address]
+            ] = value
         else:
             raise ValueError("invalid parameter mode")

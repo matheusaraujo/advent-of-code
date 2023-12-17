@@ -8,9 +8,9 @@ def part1(puzzle_input, single_input):
 
     outputs = []
 
-    while not computer.halt:
+    while not computer.halted():
         output = computer.execute([])
-        if not computer.halt:
+        if not computer.halted():
             outputs.append(str(output))
 
     return ",".join(outputs)
