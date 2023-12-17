@@ -19,6 +19,8 @@ jobs:
   lint:
     name: Formating and linting
     runs-on: ubuntu-latest
+    env:
+      AOC_SESSION: ${{ secrets.AOC_SESSION }}
     steps:
       - uses: actions/checkout@v4
 
