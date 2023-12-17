@@ -1,11 +1,14 @@
 # Advent of Code Solutions
 
+[![works badge](https://cdn.jsdelivr.net/gh/nikku/works-on-my-machine@v0.2.0/badge.svg)](https://github.com/nikku/works-on-my-machine)
+&nbsp;
 [![tests](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/tests.yaml)
+&nbsp;
 [![linting](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml)
+
+![68%](https://progress-bar.dev/68?title=2023)
 &nbsp;
-![44%](https://progress-bar.dev/44?title=2023)
-&nbsp;
-![16%](https://progress-bar.dev/16?title=2019)
+![36%](https://progress-bar.dev/36?title=2019)
 &nbsp;
 ![24%](https://progress-bar.dev/24?title=2015)
 
@@ -47,20 +50,20 @@ $ make help
 |   :christmas_tree:    |           2           |           0           |           2           |           3           |
 | :-------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
 |         day25         |         day24         |         day23         |         day22         |         day21         |
-|         day20         |         day19         |         day18         |         day17         |         day16         |
-|         day15         |         day14         |         day13         |         day12         | [day11](/2023/day11/) |
+|         day20         |         day19         |         day18         | [day17](/2023/day17/) | [day16](/2023/day16)  |
+| [day15](/2023/day15/) | [day14](/2023/day/14) | [day13](/2023/day13/) | [day12](/2023/day12/) | [day11](/2023/day11/) |
 | [day10](/2023/day10/) | [day09](/2023/day09/) | [day08](/2023/day08)  | [day07](/2023/day07/) | [day06](/2023/day06/) |
 | [day05](/2023/day05/) | [day04](/2023/day04/) | [day03](/2023/day03/) | [day02](/2023/day02/) | [day01](/2023/day01/) |
 
 ## 2019
 
-| :christmas_tree: |          2           |          0           |          1           |           9           |
-| :--------------: | :------------------: | :------------------: | :------------------: | :-------------------: |
-|      day25       |        day24         |        day23         |        day22         |         day21         |
-|      day20       |        day19         |        day18         |        day17         |         day16         |
-|      day15       |        day14         |        day13         |        day12         |         day11         |
-|      day10       |        day09         |        day08         |        day07         |         day06         |
-|      day05       | [day04](2019/day04/) | [day03](2019/day03/) | [day02](/2019/day02) | [day01](/2019/day01/) |
+|   :christmas_tree:    |           2           |           0           |           1           |           9            |
+| :-------------------: | :-------------------: | :-------------------: | :-------------------: | :--------------------: |
+|         day25         |         day24         |         day23         |         day22         |         day21          |
+|         day20         |         day19         |         day18         |         day17         |         day16          |
+|         day15         |         day14         |         day13         |         day12         |         day11          |
+|         day10         | [day09](/2019/day09/) | [day08](/2019/day08/) | [day07](/2019/day07/) | [day06](/2019//day06/) |
+| [day05](/2019/day05/) | [day04](/2019/day04/) | [day03](/2019/day03/) | [day02](/2019/day02)  | [day01](/2019/day01/)  |
 
 ## 2015
 
