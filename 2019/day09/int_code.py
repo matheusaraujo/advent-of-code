@@ -70,12 +70,12 @@ class IntCode:
         self.__output = None
         self.__halted = False
 
-    def execute(self, input_array: list[int]):
+    def run(self, input_array: list[int]):
         self.__input += input_array
 
         while True:
             self.__command = Command(self.__pointer, self.__memory[self.__pointer])
-            self.__pointer += self.__map_operation()()
+            self.__pointer += self.__execute_command()
 
             if self.__command.operation in (Operation.WRITE_OUTPUT, Operation.HALT):
                 break
@@ -85,7 +85,7 @@ class IntCode:
     def halted(self) -> bool:
         return self.__halted
 
-    def __map_operation(self):
+    def __execute_command(self):
         functions = {
             Operation.ADDS: self.__adds,
             Operation.MULTIPLIES: self.__multiplies,
@@ -102,7 +102,7 @@ class IntCode:
         if self.__command.operation not in functions:
             raise ValueError("invalid operation")
 
-        return functions[self.__command.operation]
+        return functions[self.__command.operation]()
 
     def __adds(self):
         self.__set(

@@ -9,7 +9,7 @@ def part1(puzzle_input, single_input):
     outputs = []
 
     while not computer.halted():
-        output = computer.execute([])
+        output = computer.run([])
         if not computer.halted():
             outputs.append(str(output))
 
