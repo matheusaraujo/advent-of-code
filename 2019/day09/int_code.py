@@ -1,4 +1,4 @@
-import dataclasses
+from dataclasses import dataclass
 from enum import Enum
 
 
@@ -21,14 +21,28 @@ class Operation(Enum):
     ADJUST_RELATIVE_BASE = 9
 
 
-@dataclasses.dataclass
+operation_sizes = {
+    Operation.HALT: 1,
+    Operation.ADDS: 4,
+    Operation.MULTIPLIES: 4,
+    Operation.READ_INPUT: 2,
+    Operation.WRITE_OUTPUT: 2,
+    Operation.LESS_THAN: 4,
+    Operation.EQUALS: 4,
+    Operation.JUMP_IF_TRUE: 3,
+    Operation.JUMP_IF_FALSE: 3,
+    Operation.ADJUST_RELATIVE_BASE: 2,
+}
+
+
+@dataclass
 class Parameter:
     def __init__(self, address: int, mode: ParameterMode):
         self.address = address
         self.mode = mode
 
 
-@dataclasses.dataclass
+@dataclass
 class Command:
     def __init__(self, __pointer, memory_value):
         self.address = __pointer
@@ -43,18 +57,7 @@ class Command:
         self.parameter_3 = Parameter(
             self.address + 3, ParameterMode((self.value // 10000) % 10)
         )
-        self.size = {
-            Operation.HALT: 1,
-            Operation.ADDS: 4,
-            Operation.MULTIPLIES: 4,
-            Operation.READ_INPUT: 2,
-            Operation.WRITE_OUTPUT: 2,
-            Operation.LESS_THAN: 4,
-            Operation.EQUALS: 4,
-            Operation.JUMP_IF_TRUE: 3,
-            Operation.JUMP_IF_FALSE: 3,
-            Operation.ADJUST_RELATIVE_BASE: 2,
-        }[self.operation]
+        self.size = operation_sizes[self.operation]
 
 
 class IntCode:
@@ -83,7 +86,7 @@ class IntCode:
         return self.__halted
 
     def __map_operation(self):
-        mapping = {
+        functions = {
             Operation.ADDS: self.__adds,
             Operation.MULTIPLIES: self.__multiplies,
             Operation.READ_INPUT: self.__read_input,
@@ -96,10 +99,10 @@ class IntCode:
             Operation.HALT: self.__halt,
         }
 
-        if self.__command.operation not in mapping:
+        if self.__command.operation not in functions:
             raise ValueError("invalid operation")
 
-        return mapping[self.__command.operation]
+        return functions[self.__command.operation]
 
     def __adds(self):
         self.__set(
