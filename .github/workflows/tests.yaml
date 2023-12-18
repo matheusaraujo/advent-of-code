@@ -1,4 +1,4 @@
-name: online-tests
+name: tests
 
 on:
   push:
