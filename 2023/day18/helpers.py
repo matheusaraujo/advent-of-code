@@ -21,18 +21,18 @@ def calculate_perimeter(c):
     return perimeter
 
 
-# using pick's theorem
-# https://en.wikipedia.org/wiki/Pick%27s_theorem
-# A = i + b / 2 - 1
-#   A = area is given by _shoelace formula_
+# from pick's theorem https://en.wikipedia.org/wiki/Pick%27s_theorem
+# a = i + b / 2 - 1
+#   a = area is given by _shoelace formula_
 #   b = number of boundary points is given by _perimeter_
-#   i = number of internal points, is unknown
-#   therefore: i = A - b / 2 + 1
-#   the answer for the problem is:
-#     number of internal points (i) + number of boundary points (b): i + b
-#   therefore:
-#     i + b => A - b / 2 + 1 + b
-#     A + b / 2 + 1
+#   i = number of internal points is unknown
+# therefore:
+#   i = a - b / 2 + 1
+# the answer for the problem is:
+#   number of internal points (i) + number of boundary points (b)
+# therefore:
+#   i + b => a - b / 2 + 1 + b
+#   a + b / 2 + 1
 def solve(coords):
     a = calculate_area(coords)
     b = calculate_perimeter(coords)
