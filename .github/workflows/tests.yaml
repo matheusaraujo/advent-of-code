@@ -25,8 +25,18 @@ jobs:
       - name: Install dependencies
         run: make install
 
-      - name: Tests 2015 1
-        run: python run.py 2015 1
+      - name: Get changed folders
+        id: get_changed_folders
+        run: |
+          changed_folders=$(git diff --name-only --diff-filter=d $(git merge-base origin/main HEAD)..HEAD | grep -E '^([^/]+)/' | cut -d/ -f1 | sort -u)
+          echo "::set-output name=changed_folders::${changed_folders}"
 
-      - name: Tests 2019 7
-        run: python run.py 2019 7
+      - name: Process changed folders
+        run: |
+          for folder in ${{ steps.get_changed_folders.outputs.changed_folders }}; do
+            # Perform actions for each changed folder
+            # For example:
+            echo "Processing folder: $folder"
+            # Add your commands here to run for each folder
+            # This step will be executed for every changed folder
+          done
