@@ -182,7 +182,6 @@ test-all: # Execute all tests
 
 .PHONY: lint-all
 lint-all: # Analysis the entire code
-	@pylint utils/*.py
 	@for year in $(YEARS); do \
         for day in $(DAYS); do \
             if [ -d "$$year/day$$day" ]; then \

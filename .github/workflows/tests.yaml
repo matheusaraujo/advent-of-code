@@ -1,12 +1,9 @@
-name: tests
+name: online-tests
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
-      - main
+      - chore/no-input-no-readme
 
 env:
   PYTHON_VERSION: 3.9
@@ -15,6 +12,8 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
+    env:
+      AOC_SESSION: ${{ secrets.AOC_SESSION }}
     steps:
       - uses: actions/checkout@v4
 
@@ -26,5 +25,8 @@ jobs:
       - name: Install dependencies
         run: make install
 
-      - name: Tests
-        run: make test-all
+      - name: Tests 2015 1
+        run: python run.py 2015 1
+
+      - name: Tests 2019 7
+        run: python run.py 2019 7
