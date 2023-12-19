@@ -1,20 +1,9 @@
+from helpers import read_workflows
+
+
 def read_parts(line):
     pairs = line.strip("{}").split(",")
     return {p.split("=")[0]: int(p.split("=")[1]) for p in pairs}
-
-
-def read_workflow(line):
-    key, parts = line.split("{")
-    parts = parts[:-1].split(",")
-    r_parts = []
-    for part in parts:
-        p = part.split(":")
-        if len(p) == 1:
-            r_parts.append((True, p[0]))
-        else:
-            r_parts.append((p[0], p[1]))
-
-    return key, r_parts
 
 
 def evaluate_operation(op, part):
@@ -33,14 +22,7 @@ def evaluate_operation(op, part):
 
 
 def part1(puzzle_input):
-    i_empty = puzzle_input.index("")
-
-    workflows = {}
-
-    for i in range(0, i_empty):
-        key, parts = read_workflow(puzzle_input[i])
-        workflows[key] = parts
-
+    workflows, i_empty = read_workflows(puzzle_input)
     ans = 0
 
     for i in range(i_empty + 1, len(puzzle_input)):
