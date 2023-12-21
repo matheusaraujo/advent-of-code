@@ -15,6 +15,7 @@
     "markdownify",
     "maxsplit",
     "mcsname",
+    "popleft",
     "pytest",
     "sessionstart",
     "tryfirst"
