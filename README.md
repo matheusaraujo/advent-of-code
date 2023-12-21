@@ -6,7 +6,7 @@
 &nbsp;
 [![linting](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml)
 
-![76%](https://progress-bar.dev/76?title=2023)
+![80%](https://progress-bar.dev/80?title=2023)
 &nbsp;
 ![36%](https://progress-bar.dev/36?title=2019)
 &nbsp;

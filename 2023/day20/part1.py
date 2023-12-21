@@ -33,7 +33,7 @@ class Module:
         )
 
 
-# pylint: disable=R0903
+# pylint: disable=too-few-public-methods
 class Broadcast(Module):
     def receives(self, pulse: Pulse) -> [Pulse]:
         return [
@@ -42,7 +42,7 @@ class Broadcast(Module):
         ]
 
 
-# pylint: disable=R0903
+# pylint: disable=too-few-public-methods
 class FlipFlop(Module):
     def receives(self, pulse: Pulse) -> [Pulse]:
         if pulse.signal == 1:
@@ -56,7 +56,7 @@ class FlipFlop(Module):
         ]
 
 
-# pylint: disable=R0903
+# pylint: disable=too-few-public-methods
 class Conjunction(Module):
     def __init__(self, identifier: str, connections: [str]):
         super().__init__(identifier, connections)
