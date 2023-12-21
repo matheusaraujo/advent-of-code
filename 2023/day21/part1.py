@@ -6,12 +6,16 @@ def part1(_map, steps_limit):
     pos = set()
     pos.add((i, j))
 
-    for i in range(steps_limit):
+    for _ in range(steps_limit):
         n_pos = set()
 
         for p in pos:
             for d in directions:
                 i, j = p[0] + d[0], p[1] + d[1]
+
+                i = max(0, min(i, len(_map) - 1))
+                j = max(0, min(j, len(_map[i]) - 1))
+
                 if _map[i][j] != "#":
                     n_pos.add((i, j))
 
