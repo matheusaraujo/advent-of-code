@@ -1,21 +1,29 @@
-directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+from helpers import solve
 
 
-def part2(_map, steps_limit):
-    i, j = len(_map) // 2, len(_map[0]) // 2
-    pos = set()
-    pos.add((i, j))
+# for part2, the simulation is impractical due to the number of steps:
+#    26501365 = 65 + (131 * 202300)
+# so i ran the simulation for first 500 steps and looked for the pattern empirically
+# the input is a grid 131x131 and the starting point is exactly on the middle (65)
+# based on that, we have for every n repetition of the map S = 65 + (131 * n) steps
+# so we can calculate the first 3 n elements, n_0, n_1, n_2
+# and use a simplified version of lagrange to extrapolate this equation until n_s
+# for x = [0, 1, 2] and y = [y0, y1, u2] we can reduce lagrange to:
+#    f(x) = (x^2 - 3x + 2) * y0/2 - (x^2 - 2x) * y1 + (x^2 - x) * y2/2
+#    f(x) = x^2 (y0/2 - y1 + y2/2) + x (-3 * y0/2 + 2 * y1 - y2/2) + y0
+#  therefore:
+#    a = y0 / 2 - y1 + y2 / 2
+#    b = -3 * y0/2 + 2 * y1 - y2/2
+#    c = y0
+def part2(_map, steps):
+    points = [65 + 131 * i for i in range(3)]
+    n_s = (steps - 65) / 131
 
-    for _ in range(steps_limit):
-        n_pos = set()
+    y0, y1, y2 = [solve(_map, p) for p in points]
 
-        for p in pos:
-            for d in directions:
-                i, j = p[0] + d[0], p[1] + d[1]
+    # lagrange
+    a = y0 / 2 - y1 + y2 / 2
+    b = -3 * y0 / 2 + 2 * y1 - y2 / 2
+    c = y0
 
-                if _map[i % len(_map)][j % len(_map[0])] != "#":
-                    n_pos.add((i, j))
-
-        pos = n_pos
-
-    return len(pos)
+    return a * n_s**2 + b * n_s + c
