@@ -13,10 +13,7 @@ def part2(_map, steps_limit):
             for d in directions:
                 i, j = p[0] + d[0], p[1] + d[1]
 
-                i = max(0, min(i, len(_map) - 1))
-                j = max(0, min(j, len(_map[i]) - 1))
-
-                if _map[i][j] != "#":
+                if _map[i % len(_map)][j % len(_map[0])] != "#":
                     n_pos.add((i, j))
 
         pos = n_pos

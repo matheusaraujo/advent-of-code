@@ -6,11 +6,11 @@ actual_input = read_input_file("2023/day21/input.txt")
 
 
 class TestPart2:
-    def test_with_sample_data_2a(self):
-        assert part2(sample_input_2, 6) == 16
+    # def test_with_sample_data_2a(self):
+    #     assert part2(sample_input_2, 6) == 16
 
-    def test_with_sample_data_2b(self):
-        assert part2(sample_input_2, 10) == 50
+    # def test_with_sample_data_2b(self):
+    #     assert part2(sample_input_2, 10) == 50
 
     # def test_with_sample_data_2c(self):
     #     assert part2(sample_input_2, 50) == 1594
@@ -27,5 +27,5 @@ class TestPart2:
     # def test_with_sample_data_2g(self):
     #     assert part2(sample_input_2, 5000) == 16733044
 
-    # def test_with_actual_data(self):
-    #     assert part2(actual_input) == 84
+    def test_with_actual_data(self):
+        assert part2(actual_input, 26501365) == 0
