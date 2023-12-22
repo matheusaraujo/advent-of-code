@@ -1,16 +1,11 @@
 name: linting
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "**.py"
   push:
-    branches:
-      - main
     paths:
       - "**.py"
+      - ".github/workflows/linting.yaml"
+      - "requirements.txt"
 
 env:
   PYTHON_VERSION: 3.9
