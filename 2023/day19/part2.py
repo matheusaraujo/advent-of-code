@@ -2,12 +2,10 @@ from helpers import read_workflows
 
 
 def invert_op(op):
-    if "<" in op:
-        k, n = op.split("<")
-        return f"{k}>{str(int(n)-1)}"
-
-    k, n = op.split(">")
-    return f"{k}<{str(int(n)+1)}"
+    k, d, v = op[0], op[1], int(op[2:])
+    if d == "<":
+        return f"{k}>{str(int(v)-1)}"
+    return f"{k}<{str(int(v)+1)}"
 
 
 def create_graph(workflows):
@@ -31,7 +29,6 @@ def calculate_combinations_in_path(path):
             continue
 
         k, d, v = p[0], p[1], int(p[2:])
-
         if d == ">":
             ranges[k][0] = max(ranges[k][0], v + 1)
         elif d == "<":

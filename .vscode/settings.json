@@ -8,10 +8,12 @@
   "cSpell.words": [
     "addheaders",
     "clsname",
+    "graphviz",
     "hookwrapper",
     "markdownify",
     "maxsplit",
     "mcsname",
+    "popleft",
     "pytest",
     "sessionstart",
     "tryfirst"
