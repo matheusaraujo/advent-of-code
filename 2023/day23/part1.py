@@ -22,7 +22,7 @@ def part1(puzzle_input):
         puzzle_input[-1].index("."),
     )
 
-    max_path, queue = [], [(source, [])]
+    max_path, queue = [], [(source, set())]
 
     while queue:
         current, path = queue.pop(0)
@@ -34,6 +34,6 @@ def part1(puzzle_input):
 
         for neighbor in get_neighbors(puzzle_input, current):
             if neighbor not in path:
-                queue.append((neighbor, path + [current]))
+                queue.append((neighbor, path | set([neighbor])))
 
     return len(max_path)

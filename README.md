@@ -6,7 +6,7 @@
 &nbsp;
 [![linting](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/linting.yaml)
 
-![88%](https://progress-bar.dev/88?title=2023)
+![92%](https://progress-bar.dev/92?title=2023)
 &nbsp;
 ![36%](https://progress-bar.dev/36?title=2019)
 &nbsp;
@@ -49,7 +49,7 @@ $ make help
 
 |   :christmas_tree:    |           2           |           0           |           2           |           3           |
 | :-------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
-|         day25         |         day24         |         day23         | [day22](/2023/day22/) | [day21](/2023/day21/) |
+|         day25         |         day24         | [day23](/2023/day/23) | [day22](/2023/day22/) | [day21](/2023/day21/) |
 | [day20](/2023/day20/) | [day19](/2023/day19/) | [day18](/2023/day18/) | [day17](/2023/day17/) | [day16](/2023/day16/) |
 | [day15](/2023/day15/) | [day14](/2023/day/14) | [day13](/2023/day13/) | [day12](/2023/day12/) | [day11](/2023/day11/) |
 | [day10](/2023/day10/) | [day09](/2023/day09/) | [day08](/2023/day08)  | [day07](/2023/day07/) | [day06](/2023/day06/) |

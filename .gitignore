@@ -2,3 +2,4 @@
 session.cookie
 .coverage
 .DS_Store
+__pycache__
