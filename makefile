@@ -80,6 +80,22 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
+	@pytest -v $(year)/day$(day) -s
+endif
+
+###
+### test-pypy
+###
+
+.PHONY: test-pypy
+test-pypy: # Execute the solution tests for given [year] and [day] using pypy
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exist"
+else
 	@pypy3 -m pytest -v $(year)/day$(day) -s
 endif
 
@@ -156,7 +172,7 @@ test-all: # Execute all tests
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
             	echo "${GREEN}Running tests for $$year day $$day ...${NC}"; \
-                make test-coverage year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+                make test year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
     done
