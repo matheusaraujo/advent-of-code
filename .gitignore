@@ -2,4 +2,6 @@
 session.cookie
 .coverage
 .DS_Store
+__pycache__
+*.pyc
 input.txt

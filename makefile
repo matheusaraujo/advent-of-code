@@ -44,14 +44,6 @@ install: # Install common dependencies
 	@pip install -r requirements.txt
 
 ###
-### install-dev
-###
-
-.PHONY: install-dev
-install-dev: # Install development dependencies
-	@pip install -r requirements_dev.txt
-
-###
 ### create
 ###
 
@@ -93,11 +85,11 @@ else
 endif
 
 ###
-### coverage
+### test-pypy
 ###
 
-.PHONY: test-coverage
-test-coverage: # Execute the solution tests for given [year] and [day] calculating the code coverage
+.PHONY: test-pypy
+test-pypy: # Execute the solution tests for given [year] and [day] using pypy
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
@@ -110,7 +102,7 @@ else
 endif
 
 ###
-### test
+### test-watch
 ###
 
 .PHONY: test-watch
@@ -160,6 +152,18 @@ else
 	@pytest -v $(year)/day$(day) -s
 endif
 
+.PHONY: readme
+readme: # Create the readme file for a solved puzzle for given [year] and [day]
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exist"
+else
+	@python3 utils/get_puzzle_readme.py $(year) $(day)
+endif
+
 ###
 ### test-all
 ###
@@ -171,7 +175,7 @@ test-all: # Execute all tests
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
             	echo "${GREEN}Running tests for $$year day $$day ...${NC}"; \
-                make test-coverage year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+                make test year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
     done
