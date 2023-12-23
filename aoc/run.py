@@ -1,4 +1,5 @@
 import subprocess
+
 from aocd.models import Puzzle
 
 
