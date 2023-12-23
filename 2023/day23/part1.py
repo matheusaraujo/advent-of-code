@@ -1,7 +1,3 @@
-import sys
-
-sys.setrecursionlimit(10000)
-
 directions = [
     (1, 0, [".", "v"]),
     (-1, 0, [".", "^"]),
@@ -14,28 +10,10 @@ def get_neighbors(graph, node):
     neighbors = []
     for d in directions:
         x, y = node[0] + d[0], node[1] + d[1]
-        if graph[x][y] in d[2]:
+        if 0 <= x < len(graph) and 0 <= y < len(graph[0]) and graph[x][y] in d[2]:
             neighbors.append((x, y))
 
     return neighbors
-
-
-def dfs(graph, current, target, path):
-    if current == target:
-        path += [current]
-        return path
-
-    if current in path:
-        return path
-
-    max_path = path
-
-    for neighbor in get_neighbors(graph, current):
-        new_path = dfs(graph, neighbor, target, path + [current])
-        if len(new_path) > len(max_path):
-            max_path = new_path
-
-    return max_path
 
 
 def part1(puzzle_input):
@@ -44,6 +22,18 @@ def part1(puzzle_input):
         puzzle_input[-1].index("."),
     )
 
-    max_path = dfs(puzzle_input, source, target, [])
+    max_path, queue = [], [(source, [])]
 
-    return len(max_path) - 1
+    while queue:
+        current, path = queue.pop(0)
+
+        if current == target:
+            if len(path) > len(max_path):
+                max_path = path
+            continue
+
+        for neighbor in get_neighbors(puzzle_input, current):
+            if neighbor not in path:
+                queue.append((neighbor, path + [current]))
+
+    return len(max_path)
