@@ -28,7 +28,6 @@ $ make create year=${YEAR} day=${DAY}
 
 # test a specific day
 # or `test-watch` for watch mode
-# or `test-coverage` for coverage report
 $ make test year=${YEAR} day=${DAY}
 
 # validate (format, lint, test) a specific day

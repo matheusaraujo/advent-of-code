@@ -3,10 +3,7 @@
   "python.analysis.extraPaths": ["./utils"],
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+    "editor.formatOnSave": true
   },
   "cSpell.words": [
     "addheaders",

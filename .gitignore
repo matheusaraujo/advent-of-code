@@ -4,3 +4,4 @@ session.cookie
 .DS_Store
 __pycache__
 *.pyc
+input.txt

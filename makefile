@@ -80,6 +80,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
+	@[ -f "$(year)/day$(day)/input.txt" ] || python3 utils/get_puzzle_input.py $(year) $(day)
 	@pytest -v $(year)/day$(day) -s
 endif
 
@@ -96,7 +97,8 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
-	@pypy3 -m pytest -v $(year)/day$(day) -s
+	@[ -f "$(year)/day$(day)/input.txt" ] || python3 utils/get_puzzle_input.py $(year) $(day)
+	@pytest -v $(year)/day$(day) -s --cov=$(year)/day$(day)
 endif
 
 ###
@@ -112,6 +114,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
+	@[ -f "$(year)/day$(day)/input.txt" ] || python3 utils/get_puzzle_input.py $(year) $(day)
 	@ptw $(year)/day$(day)
 endif
 
@@ -146,7 +149,7 @@ else ifeq ("$(wildcard $(year)/day$(day))", "")
 else
 	@isort $(year)/day$(day) && black -l 88 $(year)/day$(day)
 	@pylint --init-hook="import sys; sys.path.append('utils')" $(year)/day$(day)/*.py
-	@pypy3 -m pytest -v $(year)/day$(day) -s
+	@pytest -v $(year)/day$(day) -s
 endif
 
 .PHONY: readme
@@ -183,7 +186,6 @@ test-all: # Execute all tests
 
 .PHONY: lint-all
 lint-all: # Analysis the entire code
-	@pylint utils/*.py
 	@for year in $(YEARS); do \
         for day in $(DAYS); do \
             if [ -d "$$year/day$$day" ]; then \
