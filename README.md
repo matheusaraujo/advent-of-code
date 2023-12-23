@@ -34,9 +34,6 @@ $ make test year=${YEAR} day=${DAY}
 # validate (format, lint, test) a specific day
 $ make validate year=${YEAR} day=${DAY}
 
-# test everything
-$ make test-all
-
 # to see all available commands
 $ make help
 ```
@@ -49,9 +46,9 @@ $ make help
 
 |   :christmas_tree:    |           2           |           0           |           2           |           3           |
 | :-------------------: | :-------------------: | :-------------------: | :-------------------: | :-------------------: |
-|         day25         |         day24         | [day23](/2023/day/23) | [day22](/2023/day22/) | [day21](/2023/day21/) |
+|         day25         |         day24         | [day23](/2023/day23)  | [day22](/2023/day22/) | [day21](/2023/day21/) |
 | [day20](/2023/day20/) | [day19](/2023/day19/) | [day18](/2023/day18/) | [day17](/2023/day17/) | [day16](/2023/day16/) |
-| [day15](/2023/day15/) | [day14](/2023/day/14) | [day13](/2023/day13/) | [day12](/2023/day12/) | [day11](/2023/day11/) |
+| [day15](/2023/day15/) | [day14](/2023/day14)  | [day13](/2023/day13/) | [day12](/2023/day12/) | [day11](/2023/day11/) |
 | [day10](/2023/day10/) | [day09](/2023/day09/) | [day08](/2023/day08)  | [day07](/2023/day07/) | [day06](/2023/day06/) |
 | [day05](/2023/day05/) | [day04](/2023/day04/) | [day03](/2023/day03/) | [day02](/2023/day02/) | [day01](/2023/day01/) |
 

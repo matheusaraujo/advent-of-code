@@ -44,14 +44,6 @@ install: # Install common dependencies
 	@pip install -r requirements.txt
 
 ###
-### install-dev
-###
-
-.PHONY: install-dev
-install-dev: # Install development dependencies
-	@pip install -r requirements_dev.txt
-
-###
 ### create
 ###
 
@@ -88,27 +80,11 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 else
-	@pytest -v $(year)/day$(day) -s
+	@pypy3 -m pytest -v $(year)/day$(day) -s
 endif
 
 ###
-### coverage
-###
-
-.PHONY: test-coverage
-test-coverage: # Execute the solution tests for given [year] and [day] calculating the code coverage
-ifndef year
-	@echo "[year] must be defined"
-else ifndef day
-	@echo "[day] must be defined"
-else ifeq ("$(wildcard $(year)/day$(day))", "")
-	@echo "directory does not exist"
-else
-	@pytest -v $(year)/day$(day) -s --cov=$(year)/day$(day)
-endif
-
-###
-### test
+### test-watch
 ###
 
 .PHONY: test-watch
@@ -154,7 +130,7 @@ else ifeq ("$(wildcard $(year)/day$(day))", "")
 else
 	@isort $(year)/day$(day) && black -l 88 $(year)/day$(day)
 	@pylint --init-hook="import sys; sys.path.append('utils')" $(year)/day$(day)/*.py
-	@pytest -v $(year)/day$(day) -s
+	@pypy3 -m pytest -v $(year)/day$(day) -s
 endif
 
 .PHONY: readme
