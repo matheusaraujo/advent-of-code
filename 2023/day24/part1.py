@@ -1,6 +1,6 @@
-# x1 + t1 * dx1 = xf1, y1 + t1 * dy1 = yf1
-# x2 + t2 * dx2 = xf2, y2 + t2 * dy2 = yf2
-# for xf1 = xf2 and yf1 = yf2
+# x1 + t1 * dx1 = x1f, y1 + t1 * dy1 = y1f
+# x2 + t2 * dx2 = x2f, y2 + t2 * dy2 = y2f
+# for x1f = x2f and y1f = y2f
 # { x1 + t1 * dx1 = x2 + t2 * dx2
 # { y1 + t1 * yx1 = y2 + t2 * yx2
 # therefore
