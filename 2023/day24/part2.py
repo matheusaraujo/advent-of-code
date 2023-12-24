@@ -1,32 +1,42 @@
 from sympy import solve, symbols
 
 
+# for a given hailstone n with position (x, y, z) and velocity (dx, dy, dz)
+# and the rock with initial position (x0, y0, z0) and velocity (dx0, dy0, dz0)
+# they will collide at Tn:
+# { x0 + Tn * dx0 = x + Tn * dx
+# { y0 + Tn * dy0 = y + Tn * yx
+# { z0 + Tn * dz0 = z + Tn * zx
+# therefore:
+# { x + Tn * dx - x0 - dx0 * Tn = 0
+# { y + Tn * dy - y0 - dy0 * Tn = 0
+# { z + Tn * dz - z0 - dz0 * Tn = 0
+# for each hailstone we have 3 equations and 7 variables
+#   Tn and rock position and velocity (6 variables)
+# so if we have 3 hailstone, we have 9 equations and 9 variables
+# (3 for rock initial position, 3 for rock position and 3 Tn for each hailstone)
+# it's enough to do the maths
+# instead of manually implement the system solver, it was used `sympy`
+# after all, it's christmas
 # pylint: disable=too-many-locals
 def part2(puzzle_input):
-    points = []
+    points_to_use, points = 3, []
 
-    for line in puzzle_input:
-        pos, vel = line.split(" @ ")
+    for i in range(points_to_use):
+        pos, vel = puzzle_input[i].split(" @ ")
         (x, y, z), (dx, dy, dz) = pos.split(", "), vel.split(", ")
         points.append([int(x), int(y), int(z), int(dx), int(dy), int(dz)])
 
-    p, v, t = (symbols(f"{ch}(:3)") for ch in "pvt")
-    print(p, v, t)
+    x0, y0, z0, dx0, dy0, dz0 = symbols("x0 y0 z0 dx0 dy0 dz0")
+    t = symbols(f"t(:{points_to_use})")
 
     equations = []
-    for i in range(3):
-        x, y, z, dx, dy, dz = (
-            points[i][0],
-            points[i][1],
-            points[i][2],
-            points[i][3],
-            points[i][4],
-            points[i][5],
-        )
-        equations.append(x + t[i] * dx - p[0] - v[0] * t[i])
-        equations.append(y + t[i] * dy - p[1] - v[1] * t[i])
-        equations.append(z + t[i] * dz - p[2] - v[2] * t[i])
+    for i in range(points_to_use):
+        x, y, z, dx, dy, dz = points[i]
+        equations.append(x + t[i] * dx - x0 - dx0 * t[i])
+        equations.append(y + t[i] * dy - y0 - dy0 * t[i])
+        equations.append(z + t[i] * dz - z0 - dz0 * t[i])
 
-    solution = solve(equations, (*p, *v, *t))
-    print(solution)
-    return sum(solution[0][:3])
+    x0, y0, z0 = solve(equations, (x0, y0, z0, dx0, dy0, dz0, *t))[0][:3]
+
+    return x0 + y0 + z0
