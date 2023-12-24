@@ -16,7 +16,7 @@ from sympy import solve, symbols
 # for each hailstone we have 3 equations and 7 variables
 #   Tn and rock position and velocity (6 variables)
 # so if we have 3 hailstone, we have 9 equations and 9 variables
-# (3 for rock initial position, 3 for rock velocity and 3 Tn for each hailstone)
+# (3 for rock initial position, 3 for rock velocity and 3 Tn, 1 for each hailstone)
 # it's enough to do the maths
 # instead of manually implement the system solver, it was used `sympy`
 # after all, it's christmas
