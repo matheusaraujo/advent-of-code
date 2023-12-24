@@ -4,6 +4,11 @@ hello-world:
 prepare:
 	@cd aoc && pip install -r requirements.txt
 
-get-data:
-	@python aoc/load_puzzl_json.py 2015 1
-	# run the program using generated json file
+load-puzzle:
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else
+	@python3 aoc/load-puzzle.py $(year) $(day)
+endif

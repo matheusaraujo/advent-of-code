@@ -1,3 +1,6 @@
 .DS_Store
 *.puzzle.in
 *.puzzle.json
+session.cookie
+data/*.in
+data/*.out
