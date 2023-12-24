@@ -22,7 +22,7 @@ from sympy import solve, symbols
 # after all, it's christmas
 # pylint: disable=too-many-locals
 def part2(puzzle_input):
-    number_of_points_to_use, points = 3, []
+    number_of_points_to_use, points = min(3, len(puzzle_input)), []
     points_to_use = random.sample(range(0, len(puzzle_input)), number_of_points_to_use)
 
     for i in points_to_use:
