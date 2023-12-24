@@ -1,3 +1,5 @@
+import random
+
 from sympy import solve, symbols
 
 
@@ -14,25 +16,26 @@ from sympy import solve, symbols
 # for each hailstone we have 3 equations and 7 variables
 #   Tn and rock position and velocity (6 variables)
 # so if we have 3 hailstone, we have 9 equations and 9 variables
-# (3 for rock initial position, 3 for rock position and 3 Tn for each hailstone)
+# (3 for rock initial position, 3 for rock velocity and 3 Tn for each hailstone)
 # it's enough to do the maths
 # instead of manually implement the system solver, it was used `sympy`
 # after all, it's christmas
 # pylint: disable=too-many-locals
 def part2(puzzle_input):
-    points_to_use, points = 3, []
+    number_of_points_to_use, points = 3, []
+    points_to_use = random.sample(range(0, len(puzzle_input)), number_of_points_to_use)
 
-    for i in range(points_to_use):
+    for i in points_to_use:
         pos, vel = puzzle_input[i].split(" @ ")
         (x, y, z), (dx, dy, dz) = pos.split(", "), vel.split(", ")
         points.append([int(x), int(y), int(z), int(dx), int(dy), int(dz)])
 
     x0, y0, z0, dx0, dy0, dz0 = symbols("x0 y0 z0 dx0 dy0 dz0")
-    t = symbols(f"t(:{points_to_use})")
+    t = symbols(f"t(:{number_of_points_to_use})")
 
     equations = []
-    for i in range(points_to_use):
-        x, y, z, dx, dy, dz = points[i]
+    for i, point in enumerate(points):
+        x, y, z, dx, dy, dz = point
         equations.append(x + t[i] * dx - x0 - dx0 * t[i])
         equations.append(y + t[i] * dy - y0 - dy0 * t[i])
         equations.append(z + t[i] * dz - z0 - dz0 * t[i])
