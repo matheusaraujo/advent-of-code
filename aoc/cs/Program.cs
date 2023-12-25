@@ -43,7 +43,7 @@ public class Program
         }
 
         Console.WriteLine(
-            $"csharp: Running AOC {data.Year} Day {data.Day} - {data.Title}\n"
+            $"csharp: Running AOC {data.Year} Day {data.Day} - {data.Title}"
         );
 
         var input = File.ReadAllText(data.Input_file);
@@ -68,9 +68,9 @@ public class Program
 
     static void PrintAnswer(string part, object answer, TimeSpan executionTime)
     {
-        AnsiConsole.Markup($"[magenta]Part {part}:[/] " +
+        AnsiConsole.Markup($"[purple]Part {part}:[/] " +
             $"[green]{answer}[/]" +
-            $"[#909090 italic] (executed in {executionTime.TotalMilliseconds}ms)[/]" + "\n");
+            $"[#808080 italic] (executed in {executionTime.TotalMilliseconds}ms)[/]" + "\n");
     }
 
 }

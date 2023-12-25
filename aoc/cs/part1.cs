@@ -6,4 +6,5 @@ public static class Part1
     {
         return 0;
     }
+
 }
