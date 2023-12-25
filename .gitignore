@@ -4,3 +4,7 @@
 session.cookie
 data/*.in
 data/*.out
+__pycache__
+
+aoc/cs/obj/
+aoc/cs/bin

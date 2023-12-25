@@ -57,6 +57,11 @@ def load_puzzle(year, day):
 
     write_json_file(f"{file_prefix}.json", puzzle_json)
 
+    print("Puzzle loaded!")
+    print(
+        f"AOC {puzzle_json['year']} Day {puzzle_json['day']} - {puzzle_json['title']}"
+    )
+
 
 if __name__ == "__main__":
     arg_year, arg_day = get_puzzle()
