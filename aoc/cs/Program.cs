@@ -1,5 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 using Xunit;
+using Spectre.Console;
 
 namespace aoc;
 
@@ -18,12 +20,10 @@ public class Puzzle
 
     public required PuzzlePart Part1 { get; set; }
     public required PuzzlePart Part2 { get; set; }
-
 }
 
 public class Program
 {
-
     static readonly JsonSerializerOptions serializerOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -43,7 +43,7 @@ public class Program
         }
 
         Console.WriteLine(
-            $"csharp: Running AOC ${data.Year} Day {data.Day} - {data.Title}"
+            $"csharp: Running AOC {data.Year} Day {data.Day} - {data.Title}\n"
         );
 
         var input = File.ReadAllText(data.Input_file);
@@ -56,32 +56,21 @@ public class Program
         TimeSpan ts1 = end1 - start1;
         PrintAnswer("1", answerPart1, ts1);
 
-
-        var expectedAnswerPart2 = File.ReadAllText(data.Part1.Output_file);
+        var expectedAnswerPart2 = File.ReadAllText(data.Part2.Output_file);
         DateTime start2 = DateTime.Now;
-        var answerPart2 = Part1.Solve(input);
+        var answerPart2 = Part2.Solve(input);
         DateTime end2 = DateTime.Now;
         Assert.Equal(expectedAnswerPart2.ToString(), answerPart2.ToString());
         TimeSpan ts2 = end2 - start2;
         PrintAnswer("2", answerPart2, ts2);
 
-
     }
 
     static void PrintAnswer(string part, object answer, TimeSpan executionTime)
     {
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.Write($"Part {part}: ");
-
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write(answer);
-
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.Write($" (executed in {executionTime.TotalMilliseconds} ms) ");
-
-        Console.ResetColor();
-        Console.WriteLine();
+        AnsiConsole.Markup($"[magenta]Part {part}:[/] " +
+            $"[green]{answer}[/]" +
+            $"[#909090 italic] (executed in {executionTime.TotalMilliseconds}ms)[/]" + "\n");
     }
 
 }
