@@ -1,0 +1,47 @@
+name: run
+
+on:
+  push:
+
+env:
+  PYTHON_VERSION: 3.9
+  NODE_VERSION: 20.10
+  DOTNET_VERSION: 8.0
+
+jobs:
+  tests:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Load Puzzle
+        run: |
+          make prepare-py
+          make load-puzzle year=2015 day=01
+
+      - name: Run Python
+        run: make run-py year=2015 day=01
+
+      - name: Run JS
+        run: make run-js year=2015 day=01
+
+      - name: Run dotnet
+        run: |
+          make prepare-cs
+          make run-cs year=2015 day=01

@@ -4,6 +4,12 @@ prepare:
 load-puzzle: check_year_and_day
 	@python3 aoc/py/load_puzzle.py $(year) $(day)
 
+prepare-py:
+	@pip install -r aoc/py/requirements.txt
+
+prepare-cs:
+	@dotnet restore aoc/cs/run.csproj
+
 run-py: check_year_and_day
 	@python3 aoc/py/run.py $(year) $(day)
 
