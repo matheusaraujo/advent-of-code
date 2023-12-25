@@ -1,0 +1,14 @@
+{
+    "title": "Not Quite Lisp",
+    "year": "2015",
+    "day": "01",
+    "part1": {
+        "solved": true,
+        "output_file": "data/2015-01-part1.out"
+    },
+    "part2": {
+        "solved": true,
+        "output_file": "data/2015-01-part2.out"
+    },
+    "input_file": "data/2015-01.in"
+}
