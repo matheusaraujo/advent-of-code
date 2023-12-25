@@ -43,7 +43,7 @@ public class Program
         }
 
         Console.WriteLine(
-            $"csharp: Running AOC {data.Year} Day {data.Day} - {data.Title}"
+            $"csharp: Running AoC {data.Year} Day {data.Day} - {data.Title}"
         );
 
         var input = File.ReadAllText(data.Input_file);
@@ -70,7 +70,7 @@ public class Program
     {
         AnsiConsole.Markup($"[purple]Part {part}:[/] " +
             $"[green]{answer}[/]" +
-            $"[#808080 italic] (executed in {executionTime.TotalMilliseconds}ms)[/]" + "\n");
+            $"[#909090 italic] (executed in {executionTime.TotalMilliseconds}ms)[/]" + "\n");
     }
 
 }
