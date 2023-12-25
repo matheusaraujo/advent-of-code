@@ -6,4 +6,4 @@ function part1(data) {
     return countOccurrences(data, "(") - countOccurrences(data, ")")
 }
 
-module.exports = part1
+module.exports = part1;

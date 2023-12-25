@@ -18,7 +18,9 @@ from part2 import part2
 def run(year, day):
     puzzle = read_json_file(f"data/{year}-{day:02d}.json")
 
-    print(f"Running AOC {puzzle['year']} Day {puzzle['day']} - {puzzle['title']}")
+    print(
+        f"python: Running AOC {puzzle['year']} Day {puzzle['day']} - {puzzle['title']}"
+    )
 
     puzzle_input = read_plain_txt_file(puzzle["input_file"])
 
