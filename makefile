@@ -146,7 +146,7 @@ else ifeq ("$(wildcard $(year)/day$(day))", "")
 else
 	@isort $(year)/day$(day) && black -l 88 $(year)/day$(day)
 	@pylint --init-hook="import sys; sys.path.append('utils')" $(year)/day$(day)/*.py
-	@pypy3 -m pytest -v $(year)/day$(day) -s
+	@pytest -v $(year)/day$(day) -s
 endif
 
 .PHONY: readme
