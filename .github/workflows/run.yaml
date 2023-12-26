@@ -12,7 +12,7 @@ env:
 
 jobs:
   load-puzzle:
-    name: Run
+    name: Load Puzzle
     runs-on: ubuntu-latest
     env:
       AOC_SESSION: ${{ secrets.AOC_SESSION }}
@@ -26,7 +26,7 @@ jobs:
           make prepare-py
           make load-puzzle year=2015 day=01
       - name: Upload files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: data
           path: data
