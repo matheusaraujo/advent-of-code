@@ -17,3 +17,6 @@ aoc/java/*.class
 
 # c
 aoc/c/run
+
+# cpp
+aoc/cpp/run

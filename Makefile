@@ -1,4 +1,5 @@
 include make/c.mk
+include make/cpp.mk
 include make/csharp.mk
 include make/go.mk
 include make/java.mk
@@ -26,6 +27,8 @@ else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@exit 1
 else ifeq ($(lang), c)
 	$(call run-c)
+else ifeq ($(lang), cpp)
+	$(call run-cpp)
 else ifeq ($(lang), csharp)
 	$(call run-csharp)
 else ifeq ($(lang), go)
@@ -38,7 +41,7 @@ else ifeq ($(lang), python)
 	$(call run-python)
 else
 	@echo "invalid value for [lang]"
-	@echo "supported: c|csharp|go|java|js|python"
+	@echo "supported: c|cpp|csharp|go|java|js|python"
 endif
 
 
