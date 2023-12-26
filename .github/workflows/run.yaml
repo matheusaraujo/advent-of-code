@@ -51,4 +51,4 @@ jobs:
 
       - name: Run Java
         run: |
-          make run-cs year=2015 day=01
+          make run-java year=2015 day=01
