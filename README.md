@@ -1,8 +1,8 @@
 ### c
 
-`part1.c`
-
 ```c
+// part1.c
+
 int part1(const char* puzzle_input) {
     return 0;
 }
@@ -10,9 +10,9 @@ int part1(const char* puzzle_input) {
 
 ### cpp
 
-`part1.cpp`
-
 ```cpp
+// part1.cpp
+
 #include <iostream>
 #include <cstring>
 
@@ -25,9 +25,9 @@ int part1(const string& puzzle_input) {
 
 ### csharp
 
-`Part1.cs`
-
 ```csharp
+// Part1.cs
+
 namespace aoc;
 
 public static class Part1
@@ -41,9 +41,9 @@ public static class Part1
 
 ### go
 
-`part1.go`
-
 ```go
+// part1.go
+
 package main
 
 import (
@@ -58,9 +58,9 @@ func part1(puzzleInput string) interface{} {
 
 ### java
 
-`Part1.java`
-
 ```java
+// Part1.java
+
 public class Part1 {
     public static Object solve(String puzzleInput) {
         return 0;
@@ -71,9 +71,9 @@ public class Part1 {
 
 ### js
 
-`part1.js`
-
 ```js
+// part1.js
+
 function part1(data) {
   return 0;
 }
@@ -83,9 +83,9 @@ module.exports = part1;
 
 ### python
 
-`part1.py`
-
 ```python
+# part1.py
+
 def part1(puzzle_input):
     return 0
 ```
