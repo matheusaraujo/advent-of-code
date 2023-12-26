@@ -1,9 +1,1 @@
-namespace aoc;
-
-public static class Part2
-{
-    public static object Solve(string puzzleInput)
-    {
-        return 0;
-    }
-}
+/Users/matheus.araujo/github/advent-of-code/2015/day01/Part2.cs
