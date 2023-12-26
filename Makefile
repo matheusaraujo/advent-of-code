@@ -8,7 +8,7 @@ prepare-py:
 	@pip install -r aoc/py/requirements.txt
 
 prepare-cs:
-	@dotnet restore aoc/cs/run.csproj
+	@dotnet restore aoc/csharp/run.csproj
 
 run-py: check_year_and_day
 	@python3 aoc/py/run.py $(year) $(day)
@@ -16,16 +16,16 @@ run-py: check_year_and_day
 run-js: check_year_and_day
 	@node aoc/js/run.js ${year} ${day}
 
-run-cs: check_year_and_day
-	@mv aoc/cs/Part1.cs aoc/cs/_Part1.tmp
-	@mv aoc/cs/Part2.cs aoc/cs/_Part2.tmp
-	@cp ${year}/day${day}/Part1.cs aoc/cs/Part1.cs
-	@cp ${year}/day${day}/Part2.cs aoc/cs/Part2.cs
-	@dotnet run --project aoc/cs/run.csproj ${year} ${day} || true
-	@rm aoc/cs/Part1.cs
-	@rm aoc/cs/Part2.cs
-	@mv aoc/cs/_Part1.tmp aoc/cs/Part1.cs
-	@mv aoc/cs/_Part2.tmp aoc/cs/Part2.cs
+run-csharp: check_year_and_day
+	@mv aoc/csharp/Part1.cs aoc/csharp/_Part1.tmp
+	@mv aoc/csharp/Part2.cs aoc/csharp/_Part2.tmp
+	@cp ${year}/day${day}/Part1.cs aoc/csharp/Part1.cs
+	@cp ${year}/day${day}/Part2.cs aoc/csharp/Part2.cs
+	@dotnet run --project aoc/csharp/run.csproj ${year} ${day} || true
+	@rm aoc/csharp/Part1.cs
+	@rm aoc/csharp/Part2.cs
+	@mv aoc/csharp/_Part1.tmp aoc/csharp/Part1.cs
+	@mv aoc/csharp/_Part2.tmp aoc/csharp/Part2.cs
 
 run-java: check_year_and_day
 	@mv aoc/java/Part1.java aoc/java/_Part1.tmp

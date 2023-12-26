@@ -9,8 +9,8 @@ data/*.out
 __pycache__
 
 # csharp
-aoc/cs/obj/
-aoc/cs/bin/
+aoc/csharp/obj/
+aoc/csharp/bin/
 
 # java
 aoc/java/*.class
