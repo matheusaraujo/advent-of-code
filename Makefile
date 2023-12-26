@@ -17,25 +17,25 @@ ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 	@exit 1
 endif
-ifneq ("$(wildcard $(year)/day$(day))/part1.c", "")
+ifneq ($(wildcard $(year)/day$(day)/part1.c),)
 	$(call run-c)
 endif
-ifneq ("$(wildcard $(year)/day$(day))/part1.cpp", "")
+ifneq ($(wildcard $(year)/day$(day)/part1.cpp),)
 	$(call run-cpp)
 endif
-ifneq ("$(wildcard $(year)/day$(day))/Part1.cs", "")
+ifneq ($(wildcard $(year)/day$(day)/Part1.cs),)
 	$(call run-csharp)
 endif
-ifneq ("$(wildcard $(year)/day$(day))/part1.go", "")
+ifneq ($(wildcard $(year)/day$(day)/part1.go),)
 	$(call run-go)
 endif
-ifneq ("$(wildcard $(year)/day$(day))/Part1.java", "")
+ifneq ($(wildcard $(year)/day$(day)/Part1.java),)
 	$(call run-java)
 endif
-ifneq ("$(wildcard $(year)/day$(day))/part.js", "")
+ifneq ($(wildcard $(year)/day$(day)/part1.js),)
 	$(call run-js)
 endif
-ifneq ("$(wildcard $(year)/day$(day))/part.pt", "")
+ifneq ($(wildcard $(year)/day$(day)/part1.py),)
 	$(call run-python)
 endif
 
