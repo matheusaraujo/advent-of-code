@@ -25,5 +25,6 @@ aoc/csharp/obj/
 aoc/csharp/bin/
 
 # java
-aoc/java/*.class
+*.class
+*.class
 
