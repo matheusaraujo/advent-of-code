@@ -5,6 +5,16 @@ session.cookie
 data/*.in
 data/*.out
 
+# c
+aoc/c/run
+
+# cpp
+aoc/cpp/run
+
+# go
+aoc/go/part1.go
+aoc/go/part2.go
+
 # python
 __pycache__
 
@@ -15,8 +25,3 @@ aoc/csharp/bin/
 # java
 aoc/java/*.class
 
-# c
-aoc/c/run
-
-# cpp
-aoc/cpp/run
