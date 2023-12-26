@@ -14,3 +14,6 @@ aoc/csharp/bin/
 
 # java
 aoc/java/*.class
+
+# c
+aoc/c/run

@@ -60,3 +60,7 @@ jobs:
       - name: Run Go
         run: |
           make run-go year=2015 day=01
+
+      - name: Run C
+        run: |
+          make run-c year=2015 day=01
