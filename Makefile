@@ -12,36 +12,31 @@ prepare:
 load-puzzle: check_year_and_day
 	@python3 aoc/py/load_puzzle.py $(year) $(day)
 
-prepare-py:
-	@pip install -r aoc/py/requirements.txt
-
-prepare-csharp:
-	@dotnet restore aoc/csharp/run.csproj
-
 run: check_year_and_day
-ifndef lang
-	@echo "[lang] must be defined"
-	@exit 1
-else ifeq ("$(wildcard $(year)/day$(day))", "")
+ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 	@exit 1
-else ifeq ($(lang), c)
+endif
+ifneq ("$(wildcard $(year)/day$(day))/part1.c", "")
 	$(call run-c)
-else ifeq ($(lang), cpp)
+endif
+ifneq ("$(wildcard $(year)/day$(day))/part1.cpp", "")
 	$(call run-cpp)
-else ifeq ($(lang), csharp)
+endif
+ifneq ("$(wildcard $(year)/day$(day))/Part1.cs", "")
 	$(call run-csharp)
-else ifeq ($(lang), go)
+endif
+ifneq ("$(wildcard $(year)/day$(day))/part1.go", "")
 	$(call run-go)
-else ifeq ($(lang), java)
+endif
+ifneq ("$(wildcard $(year)/day$(day))/Part1.java", "")
 	$(call run-java)
-else ifeq ($(lang), js)
+endif
+ifneq ("$(wildcard $(year)/day$(day))/part.js", "")
 	$(call run-js)
-else ifeq ($(lang), python)
+endif
+ifneq ("$(wildcard $(year)/day$(day))/part.pt", "")
 	$(call run-python)
-else
-	@echo "invalid value for [lang]"
-	@echo "supported: c|cpp|csharp|go|java|js|python"
 endif
 
 
