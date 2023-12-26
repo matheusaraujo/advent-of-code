@@ -42,25 +42,25 @@ jobs:
 
       - name: Run Python
         run: |
-          make run-py year=2015 day=01
+          make run year=2015 day=01 lang=python
 
       - name: Run JavaScript
         run: |
-          make run-js year=2015 day=01
+          make run year=2015 day=01 lang=js
 
       - name: Run CSharp
         run: |
           make prepare-csharp
-          make run-csharp year=2015 day=01
+          make run year=2015 day=01 lang=csharp
 
       - name: Run Java
         run: |
-          make run-java year=2015 day=01
+          make run year=2015 day=01 lang=java
 
       - name: Run Go
         run: |
-          make run-go year=2015 day=01
+          make run year=2015 day=01 lang=go
 
       - name: Run C
         run: |
-          make run-c year=2015 day=01
+          make run year=2015 day=01 lang=c
