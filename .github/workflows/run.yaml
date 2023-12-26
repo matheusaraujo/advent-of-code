@@ -150,6 +150,7 @@ jobs:
           make run year=2015 day=01 lang=python
 
   delete-data-files:
+    name: Clean up
     runs-on: ubuntu-latest
     needs: [run-c, run-cpp, run-csharp, run-go, run-java, run-js, run-python]
     if: always()
