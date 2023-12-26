@@ -4,10 +4,11 @@ on:
   push:
 
 env:
-  PYTHON_VERSION: 3.9
-  NODE_VERSION: 20.10
-  DOTNET_VERSION: 8.0
-  JAVA_VERSION: 21
+  PYTHON_VERSION: "3.9"
+  NODE_VERSION: "20.10"
+  DOTNET_VERSION: "8.0"
+  JAVA_VERSION: "21.0"
+  GO_VERSION: "1.21"
 
 jobs:
   load-puzzle:
@@ -30,6 +31,9 @@ jobs:
         with:
           distribution: "temurin"
           java-version: ${{ env.JAVA_VERSION }}
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.GO_VERSION }}
 
       - name: Load Puzzle
         run: |
@@ -38,11 +42,11 @@ jobs:
 
       - name: Run Python
         run: |
-          make prepare-py
           make run-py year=2015 day=01
 
       - name: Run JavaScript
-        run: make run-js year=2015 day=01
+        run: |
+          make run-js year=2015 day=01
 
       - name: Run CSharp
         run: |
@@ -52,3 +56,7 @@ jobs:
       - name: Run Java
         run: |
           make run-java year=2015 day=01
+
+      - name: Run Go
+        run: |
+          make run-go year=2015 day=01

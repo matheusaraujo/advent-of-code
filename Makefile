@@ -40,6 +40,9 @@ run-java: check_year_and_day
 	@mv aoc/java/_Part1.tmp aoc/java/Part1.java
 	@mv aoc/java/_Part2.tmp aoc/java/Part2.java
 
+run-go: check_year_and_day
+	@go run aoc/go/part1.go aoc/go/part2.go aoc/go/run.go ${year} ${day}
+
 check_year_and_day:
 ifndef year
 	@echo "[year] must be defined"
