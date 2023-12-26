@@ -1,10 +1,5 @@
 from aocd.models import Puzzle
-from utils import (
-    write_plain_txt_file,
-    write_json_file,
-    number_to_string,
-    get_puzzle,
-)
+from utils import get_puzzle, number_to_string, write_json_file, write_plain_txt_file
 
 
 def load_puzzle(year, day):
