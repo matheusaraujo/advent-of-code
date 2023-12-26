@@ -19,8 +19,8 @@ aoc/go/part2.go
 __pycache__
 
 # csharp
-aoc/csharp/part1.go
-aoc/csharp/part2.go
+aoc/csharp/Part1.cs
+aoc/csharp/Part2.cs
 aoc/csharp/obj/
 aoc/csharp/bin/
 
