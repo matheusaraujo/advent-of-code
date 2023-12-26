@@ -11,8 +11,8 @@ env:
   GO_VERSION: "1.21"
 
 jobs:
-  load-puzzle:
-    name: Load Puzzle
+  run:
+    name: Run
     runs-on: ubuntu-latest
     env:
       AOC_SESSION: ${{ secrets.AOC_SESSION }}
