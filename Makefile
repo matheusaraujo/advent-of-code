@@ -7,7 +7,7 @@ load-puzzle: check_year_and_day
 prepare-py:
 	@pip install -r aoc/py/requirements.txt
 
-prepare-cs:
+prepare-csharp:
 	@dotnet restore aoc/csharp/run.csproj
 
 run-py: check_year_and_day

@@ -50,8 +50,8 @@ jobs:
 
       - name: Run CSharp
         run: |
-          make prepare-cs
-          make run-cs year=2015 day=01
+          make prepare-csharp
+          make run-csharp year=2015 day=01
 
       - name: Run Java
         run: |
