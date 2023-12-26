@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "aocd"
-    ]
+    ],
+    "java.errors.incompleteClasspath.severity": "ignore"
 }

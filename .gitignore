@@ -1,10 +1,16 @@
 .DS_Store
-*.puzzle.in
-*.puzzle.json
 session.cookie
+
+# data
 data/*.in
 data/*.out
+
+# python
 __pycache__
 
+# csharp
 aoc/cs/obj/
-aoc/cs/bin
+aoc/cs/bin/
+
+# java
+aoc/java/*.class
