@@ -7,7 +7,7 @@ include make/js.mk
 include make/python.mk
 
 prepare:
-	@cd aoc && pip install -r requirements.txt
+	@pip install -r aoc/py/requirements.txt
 
 load-puzzle: check_year_and_day
 	@python3 aoc/py/load_puzzle.py $(year) $(day)
