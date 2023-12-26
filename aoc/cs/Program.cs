@@ -29,9 +29,9 @@ public class Program
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
     };
 
-    static void Main()
+    static void Main(string[] args)
     {
-        var filePath = "data/2015-01.json";
+        var filePath = $"data/{args[0]}-{args[1]}.json";
 
         var jsonString = File.ReadAllText(filePath);
         var data = JsonSerializer.Deserialize<Puzzle>(jsonString, serializerOptions);

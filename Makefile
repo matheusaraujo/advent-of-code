@@ -21,7 +21,7 @@ run-cs: check_year_and_day
 	@mv aoc/cs/Part2.cs aoc/cs/_Part2.tmp
 	@cp ${year}/day${day}/Part1.cs aoc/cs/Part1.cs
 	@cp ${year}/day${day}/Part2.cs aoc/cs/Part2.cs
-	@dotnet run --project aoc/cs/run.csproj ${year} ${day}
+	@dotnet run --project aoc/cs/run.csproj ${year} ${day} || true
 	@rm aoc/cs/Part1.cs
 	@rm aoc/cs/Part2.cs
 	@mv aoc/cs/_Part1.tmp aoc/cs/Part1.cs
@@ -34,7 +34,7 @@ run-java: check_year_and_day
 	@cp ${year}/day${day}/Part2.java aoc/java/Part2.java
 	@rm -f aoc/java/*.class
 	@javac aoc/java/Run.java aoc/java/Part1.java aoc/java/Part2.java
-	@java -cp aoc/java Run
+	@java -cp aoc/java Run ${year} ${day} || true
 	@rm aoc/java/Part1.java
 	@rm aoc/java/Part2.java
 	@mv aoc/java/_Part1.tmp aoc/java/Part1.java

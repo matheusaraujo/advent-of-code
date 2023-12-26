@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Run {
     public static void main(String[] args) {
-        String filePath = "data/2015-01.json";
+        String filePath = "data/" + args[0] + "-" + args[1] + ".json";
 
         String fileContent = readFile(filePath);
         String[] extractedProperties = extractProperties(fileContent);
