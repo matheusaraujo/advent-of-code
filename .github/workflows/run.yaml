@@ -7,6 +7,7 @@ env:
   PYTHON_VERSION: 3.9
   NODE_VERSION: 20.10
   DOTNET_VERSION: 8.0
+  JAVA_VERSION: 21
 
 jobs:
   load-puzzle:
@@ -16,18 +17,19 @@ jobs:
       AOC_SESSION: ${{ secrets.AOC_SESSION }}
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Load Puzzle
         run: |
@@ -42,7 +44,11 @@ jobs:
       - name: Run JavaScript
         run: make run-js year=2015 day=01
 
-      - name: Run dotnet
+      - name: Run CSharp
         run: |
           make prepare-cs
+          make run-cs year=2015 day=01
+
+      - name: Run Java
+        run: |
           make run-cs year=2015 day=01
