@@ -12,9 +12,7 @@ const formatTime = function (executionTime) {
 
 const data = JSON.parse(fs.readFileSync("data/2015-01.json", "utf8"));
 
-console.log(
-  `javascript: Running AoC ${data.year} Day ${data.day} - ${data.title}`
-);
+console.log(`js: Running AoC ${data.year} Day ${data.day} - ${data.title}`);
 
 const input = fs.readFileSync(data.inputFile, "utf8");
 
