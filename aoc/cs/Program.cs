@@ -70,7 +70,7 @@ public class Program
     {
         AnsiConsole.Markup($"[purple]Part {part}:[/] " +
             $"[green]{answer}[/]" +
-            $"[#909090 italic] (executed in {executionTime.TotalMilliseconds}ms)[/]" + "\n");
+            $"[#909090 italic] (executed in {string.Format("{0:N2}", executionTime.TotalMilliseconds)}ms)[/]" + "\n");
     }
 
 }
