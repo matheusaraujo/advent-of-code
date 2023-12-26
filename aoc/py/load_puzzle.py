@@ -59,7 +59,7 @@ def load_puzzle(year, day):
 
     print("Puzzle loaded!")
     print(
-        f"AOC {puzzle_json['year']} Day {puzzle_json['day']} - {puzzle_json['title']}"
+        f"AoC {puzzle_json['year']} Day {puzzle_json['day']} - {puzzle_json['title']}"
     )
 
 

@@ -22,9 +22,9 @@ def run(year, day):
         f"python: Running AoC {puzzle['year']} Day {puzzle['day']} - {puzzle['title']}"
     )
 
-    puzzle_input = read_plain_txt_file(puzzle["input_file"])
+    puzzle_input = read_plain_txt_file(puzzle["inputFile"])
 
-    part1_expected_answer = read_plain_txt_file(puzzle["part1"]["output_file"])
+    part1_expected_answer = read_plain_txt_file(puzzle["part1"]["outputFile"])
 
     start_time = time.time()
     part1_received_answer = part1(puzzle_input)
@@ -37,7 +37,7 @@ def run(year, day):
 
     assert str(part1_expected_answer) == str(part1_received_answer)
 
-    part2_expected_answer = read_plain_txt_file(puzzle["part2"]["output_file"])
+    part2_expected_answer = read_plain_txt_file(puzzle["part2"]["outputFile"])
 
     start_time = time.time()
     part2_received_answer = part2(puzzle_input)

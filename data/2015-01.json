@@ -4,11 +4,11 @@
     "day": "01",
     "part1": {
         "solved": true,
-        "output_file": "data/2015-01-part1.out"
+        "outputFile": "data/2015-01-part1.out"
     },
     "part2": {
         "solved": true,
-        "output_file": "data/2015-01-part2.out"
+        "outputFile": "data/2015-01-part2.out"
     },
-    "input_file": "data/2015-01.in"
+    "inputFile": "data/2015-01.in"
 }

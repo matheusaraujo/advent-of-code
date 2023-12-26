@@ -16,9 +16,9 @@ console.log(
   `javascript: Running AoC ${data.year} Day ${data.day} - ${data.title}`
 );
 
-const input = fs.readFileSync(data.input_file, "utf8");
+const input = fs.readFileSync(data.inputFile, "utf8");
 
-const expectedOutputPar1 = fs.readFileSync(data.part1.output_file, "utf8");
+const expectedOutputPar1 = fs.readFileSync(data.part1.outputFile, "utf8");
 const startTime1 = performance.now();
 const answer1 = part1(input);
 const endTime1 = performance.now();
@@ -32,7 +32,7 @@ console.log(
 );
 assert.equal(answer1, expectedOutputPar1);
 
-const expectedOutputPar2 = fs.readFileSync(data.part2.output_file, "utf8");
+const expectedOutputPar2 = fs.readFileSync(data.part2.outputFile, "utf8");
 const startTime2 = performance.now();
 const answer2 = part2(input);
 const endTime2 = performance.now();

@@ -21,7 +21,7 @@ def read_json_file(file_name):
 
 def write_json_file(file_name, content):
     with open(f"{file_name}", "w", encoding="utf-8") as json_file:
-        json.dump(content, json_file, indent=4)
+        json.dump(convert_keys_to_camel_case(content), json_file, indent=4)
 
 
 def number_to_string(n):
@@ -49,3 +49,22 @@ def get_puzzle():
 
 def import_puzzle_code(year, day):
     sys.path.append(f"{year}/day{day:02d}")
+
+
+def to_camel_case(snake_str):
+    components = snake_str.split("_")
+    return components[0] + "".join(x.title() for x in components[1:])
+
+
+def convert_keys_to_camel_case(obj):
+    if isinstance(obj, dict):
+        camel_case_dict = {}
+        for key, value in obj.items():
+            camel_case_key = to_camel_case(key)
+            camel_case_dict[camel_case_key] = convert_keys_to_camel_case(value)
+        return camel_case_dict
+
+    if isinstance(obj, list):
+        return [convert_keys_to_camel_case(item) for item in obj]
+
+    return obj

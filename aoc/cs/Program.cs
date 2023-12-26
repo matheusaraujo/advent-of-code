@@ -8,7 +8,7 @@ namespace aoc;
 public class PuzzlePart
 {
     public required Boolean Solved { get; set; }
-    public required String Output_file { get; set; }
+    public required String OutputFile { get; set; }
 }
 
 public class Puzzle
@@ -16,7 +16,7 @@ public class Puzzle
     public required string Title { get; set; }
     public required string Year { get; set; }
     public required string Day { get; set; }
-    public required string Input_file { get; set; }
+    public required string InputFile { get; set; }
 
     public required PuzzlePart Part1 { get; set; }
     public required PuzzlePart Part2 { get; set; }
@@ -46,9 +46,9 @@ public class Program
             $"csharp: Running AoC {data.Year} Day {data.Day} - {data.Title}"
         );
 
-        var input = File.ReadAllText(data.Input_file);
+        var input = File.ReadAllText(data.InputFile);
 
-        var expectedAnswerPart1 = File.ReadAllText(data.Part1.Output_file);
+        var expectedAnswerPart1 = File.ReadAllText(data.Part1.OutputFile);
         DateTime start1 = DateTime.Now;
         var answerPart1 = Part1.Solve(input);
         DateTime end1 = DateTime.Now;
@@ -56,7 +56,7 @@ public class Program
         TimeSpan ts1 = end1 - start1;
         PrintAnswer("1", answerPart1, ts1);
 
-        var expectedAnswerPart2 = File.ReadAllText(data.Part2.Output_file);
+        var expectedAnswerPart2 = File.ReadAllText(data.Part2.OutputFile);
         DateTime start2 = DateTime.Now;
         var answerPart2 = Part2.Solve(input);
         DateTime end2 = DateTime.Now;
