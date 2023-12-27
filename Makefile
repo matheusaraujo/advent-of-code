@@ -1,10 +1,10 @@
-include make/c.mk
-include make/cpp.mk
-include make/csharp.mk
-include make/go.mk
-include make/java.mk
-include make/js.mk
-include make/python.mk
+include aoc/make/c.mk
+include aoc/make/cpp.mk
+include aoc/make/csharp.mk
+include aoc/make/go.mk
+include aoc/make/java.mk
+include aoc/make/js.mk
+include aoc/make/python.mk
 
 prepare:
 	$(call install-dependencies-python)
