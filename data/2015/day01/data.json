@@ -58,14 +58,14 @@
         "outputFile": "data/2015/day01/part2.out",
         "examples": [
             {
-                "example": "j",
-                "inputFile": "data/2015/day01/part2.example-j.in",
-                "outputFile": "data/2015/day01/part2.example-j.out"
+                "example": "a",
+                "inputFile": "data/2015/day01/part2.example-a.in",
+                "outputFile": "data/2015/day01/part2.example-a.out"
             },
             {
-                "example": "k",
-                "inputFile": "data/2015/day01/part2.example-k.in",
-                "outputFile": "data/2015/day01/part2.example-k.out"
+                "example": "b",
+                "inputFile": "data/2015/day01/part2.example-b.in",
+                "outputFile": "data/2015/day01/part2.example-b.out"
             }
         ]
     },

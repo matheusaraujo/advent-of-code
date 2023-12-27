@@ -22,27 +22,26 @@ endif
 endif
 
 run: check_year_and_day check_directory
-ifneq ($(wildcard $(year)/day$(day)/part1.c),)
-	$(call run-c)
-endif
-ifneq ($(wildcard $(year)/day$(day)/part1.cpp),)
-	$(call run-cpp)
-endif
-ifneq ($(wildcard $(year)/day$(day)/Part1.cs),)
-	$(call run-csharp)
-endif
-ifneq ($(wildcard $(year)/day$(day)/part1.go),)
-	$(call run-go)
-endif
-ifneq ($(wildcard $(year)/day$(day)/Part1.java),)
-	$(call run-java)
-endif
-ifneq ($(wildcard $(year)/day$(day)/part1.js),)
-	$(call run-js)
-endif
-ifneq ($(wildcard $(year)/day$(day)/part1.py),)
-	$(call read-json,"data/$(year)-$(day).json")
-	$(call run-python)
+# ifneq ($(wildcard $(year)/day$(day)/part1.c),)
+# 	$(call run-c)
+# endif
+# ifneq ($(wildcard $(year)/day$(day)/part1.cpp),)
+# 	$(call run-cpp)
+# endif
+# ifneq ($(wildcard $(year)/day$(day)/Part1.cs),)
+# 	$(call run-csharp)
+# endif
+# ifneq ($(wildcard $(year)/day$(day)/part1.go),)
+# 	$(call run-go)
+# endif
+# ifneq ($(wildcard $(year)/day$(day)/Part1.java),)
+# 	$(call run-java)
+# endif
+# ifneq ($(wildcard $(year)/day$(day)/part1.js),)
+# 	$(call run-js)
+# endif
+ifneq ($(wildcard solutions/$(year)/day$(day)/part1.py),)
+	$(call run-python, "data/$(year)/day$(day)/data.json")
 endif
 
 check_year_and_day:
@@ -55,7 +54,7 @@ else ifndef day
 endif
 
 check_directory:
-ifeq ("$(wildcard $(year)/day$(day))", "")
+ifeq ($(wildcard solutions/$(year)/day$(day)),)
 	@echo "directory does not exist"
 	@exit 1
 endif

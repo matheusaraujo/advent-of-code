@@ -1,72 +1,74 @@
 import sys
-from aocd.models import Puzzle
-from utils import number_to_string, write_json_file, write_plain_txt_file
+from aocd.models import Puzzle as AocdPuzzle
+from utils import number_to_string
+from utils_json import write_puzzle_to_json
+from utils_txt_file import write_plain_txt_file
+from models import Puzzle, Part, Example
 
 
 def load_puzzle(year, day):
-    puzzle = Puzzle(year, day)
+    aocd_puzzle = AocdPuzzle(year, day)
 
-    file_prefix = f"data/{puzzle.year:04d}/day{puzzle.day:02d}"
+    file_prefix = f"data/{aocd_puzzle.year:04d}/day{aocd_puzzle.day:02d}"
 
-    puzzle_json = {
-        "title": puzzle.title,
-        "year": f"{puzzle.year:04d}",
-        "day": f"{puzzle.day:02d}",
-        "part1": {
-            "solved": puzzle.answered_a,
-            "output_file": f"{file_prefix}/part1.out" if puzzle.answered_a else None,
-            "examples": [],
-        },
-        "part2": {
-            "solved": puzzle.answered_b,
-            "output_file": f"{file_prefix}/part2.out" if puzzle.answered_b else None,
-            "examples": [],
-        },
-        "input_file": f"{file_prefix}/puzzle.in",
-    }
+    puzzle = Puzzle(
+        title=aocd_puzzle.title,
+        year=f"{aocd_puzzle.year:04d}",
+        day=f"{aocd_puzzle.day:02d}",
+        input_file=f"{file_prefix}/puzzle.in",
+        part1=Part(
+            solved=aocd_puzzle.answered_a,
+            output_file=f"{file_prefix}/part1.out" if aocd_puzzle.answered_a else None,
+            examples=[],
+        ),
+        part2=Part(
+            solved=aocd_puzzle.answered_b,
+            output_file=f"{file_prefix}/part2.out" if aocd_puzzle.answered_b else None,
+            examples=[],
+        ),
+    )
 
-    for idx, example in enumerate(puzzle.examples):
+    for example in aocd_puzzle.examples:
         if example.answer_a is not None:
+            idx = len(puzzle.part1.examples)
             input_file = f"{file_prefix}/part1.example-{number_to_string(idx)}.in"
             output_file = f"{file_prefix}/part1.example-{number_to_string(idx)}.out"
             write_plain_txt_file(input_file, example.input_data)
             write_plain_txt_file(output_file, example.answer_a)
 
-            puzzle_json["part1"]["examples"].append(
-                {
-                    "example": number_to_string(idx),
-                    "input_file": input_file,
-                    "output_file": output_file,
-                }
+            puzzle.part1.examples.append(
+                Example(
+                    example=number_to_string(idx),
+                    input_file=input_file,
+                    output_file=output_file,
+                )
             )
         if example.answer_b is not None:
+            idx = len(puzzle.part2.examples)
             input_file = f"{file_prefix}/part2.example-{number_to_string(idx)}.in"
             output_file = f"{file_prefix}/part2.example-{number_to_string(idx)}.out"
             write_plain_txt_file(input_file, example.input_data)
             write_plain_txt_file(output_file, example.answer_b)
 
-            puzzle_json["part2"]["examples"].append(
-                {
-                    "example": number_to_string(idx),
-                    "input_file": input_file,
-                    "output_file": output_file,
-                }
+            puzzle.part2.examples.append(
+                Example(
+                    example=number_to_string(idx),
+                    input_file=input_file,
+                    output_file=output_file,
+                )
             )
 
-    write_plain_txt_file(puzzle_json["input_file"], puzzle.input_data)
+    write_plain_txt_file(puzzle.input_file, aocd_puzzle.input_data)
 
-    if puzzle.answered_a:
-        write_plain_txt_file(f"{file_prefix}/part1.out", puzzle.answer_a)
+    if aocd_puzzle.answered_a:
+        write_plain_txt_file(f"{file_prefix}/part1.out", aocd_puzzle.answer_a)
 
-    if puzzle.answered_b:
-        write_plain_txt_file(f"{file_prefix}/part2.out", puzzle.answer_b)
+    if aocd_puzzle.answered_b:
+        write_plain_txt_file(f"{file_prefix}/part2.out", aocd_puzzle.answer_b)
 
-    write_json_file(f"{file_prefix}/data.json", puzzle_json)
+    write_puzzle_to_json(f"{file_prefix}/data.json", puzzle)
 
-    print("Puzzle loaded!")
-    print(
-        f"AoC {puzzle_json['year']} Day {puzzle_json['day']} - {puzzle_json['title']}"
-    )
+    print(f"Puzzle loaded!\n{puzzle}")
 
 
 if __name__ == "__main__":
