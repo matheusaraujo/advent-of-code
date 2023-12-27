@@ -1,16 +1,8 @@
 int part1(const char* puzzle_input) {
-    int open_count = 0;
-    int close_count = 0;
-    int i = 0;
+    int count = 0;
 
-    while (puzzle_input[i] != '\0') {
-        if (puzzle_input[i] == '(') {
-            open_count++;
-        } else if (puzzle_input[i] == ')') {
-            close_count++;
-        }
-        i++;
-    }
+    for(int i = 0; puzzle_input[i] != '\0'; i++)
+        count += puzzle_input[i] == '(' ? 1 : -1;
 
-    return open_count - close_count;
+    return count;
 }
