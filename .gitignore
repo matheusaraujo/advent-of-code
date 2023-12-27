@@ -2,8 +2,8 @@
 session.cookie
 
 # data
-data/*.in
-data/*.out
+data/**/*.in
+data/**/*.out
 
 # c
 aoc/c/run

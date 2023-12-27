@@ -1,7 +1,6 @@
 include aoc/c/Makefile
 include aoc/cpp/Makefile
 include aoc/csharp/Makefile
-include aoc/data/Makefile
 include aoc/go/Makefile
 include aoc/java/Makefile
 include aoc/js/Makefile

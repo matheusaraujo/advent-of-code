@@ -1,4 +1,5 @@
 import json
+import os
 
 
 def read_plain_txt_file(file_name):
@@ -8,13 +9,15 @@ def read_plain_txt_file(file_name):
 
 
 def write_plain_txt_file(file_name, content):
+    directory = os.path.dirname(file_name)
+    os.makedirs(directory, exist_ok=True)
     with open(f"{file_name}", "w", encoding="utf-8") as file:
         file.write(content)
 
 
 def number_to_string(n):
     n += 1
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
 
     result = ""
     while n > 0:
