@@ -1,9 +1,9 @@
 define run-python
-	@python3 aoc/py/run.py ${year} ${day} ${ARGS}
+	@python3 aoc/python/run.py ${year} ${day} ${ARGS}
 endef
 
 define install-dependencies-python
-	@pip install -r aoc/py/requirements.txt
+	@pip install -r aoc/python/requirements.txt
 endef
 
 define lint-python

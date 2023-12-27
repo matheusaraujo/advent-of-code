@@ -1,17 +1,17 @@
-include aoc/make/c.mk
-include aoc/make/cpp.mk
-include aoc/make/csharp.mk
-include aoc/make/go.mk
-include aoc/make/java.mk
-include aoc/make/js.mk
-include aoc/make/json.mk
-include aoc/make/python.mk
+include aoc/c/Makefile
+include aoc/cpp/Makefile
+include aoc/csharp/Makefile
+include aoc/data/Makefile
+include aoc/go/Makefile
+include aoc/java/Makefile
+include aoc/js/Makefile
+include aoc/python/Makefile
 
 prepare:
 	$(call install-dependencies-python)
 
 load-puzzle: check_year_and_day
-	@python3 aoc/py/load_puzzle.py ${year} ${day}
+	@python3 aoc/python/load_puzzle.py ${year} ${day}
 
 lint: check_year_and_day
 ifneq ($(wildcard ${year}/day${day}/part1.py),)
