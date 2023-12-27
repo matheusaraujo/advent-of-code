@@ -35,10 +35,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Load Puzzle
+      - name: Prepare
         run: |
           make prepare
+      - name: Load Puzzle
+        run: |
           make load-puzzle year=2015 day=01
-      - name: Run Tests
+      - name: Lint
+        run: |
+          make lint year=2015 day=01
+      - name: Run
         run: |
           make run year=2015 day=01

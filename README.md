@@ -1,3 +1,20 @@
+## Usage
+
+```bash
+# language is auto detected based on existence of part1 file on day folder
+# multiple languages per day is supported
+
+# run a specific day
+$ make run year=${year} day={day}
+
+# lint for a specific day
+$ make lint year=${year} day={day}
+$ make lint year=${year} day={day} fix=true
+
+```
+
+## Supported languages
+
 ### c
 
 ```c
