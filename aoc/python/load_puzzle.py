@@ -13,6 +13,7 @@ def load_puzzle(year, day):
 
     puzzle = Puzzle(
         title=aocd_puzzle.title,
+        full_title=f"AoC {aocd_puzzle.year:04d} Day {aocd_puzzle.day:02d} - {aocd_puzzle.title}",
         year=f"{aocd_puzzle.year:04d}",
         day=f"{aocd_puzzle.day:02d}",
         input_file=f"{file_prefix}/puzzle.in",
@@ -53,7 +54,8 @@ def load_puzzle(year, day):
 
     write_puzzle_to_json(f"{file_prefix}/data.json", puzzle)
 
-    print(f"Puzzle loaded!\n{puzzle}")
+    print(puzzle.full_title)
+    print("Puzzle loaded!")
 
 
 if __name__ == "__main__":

@@ -1,45 +1,44 @@
 const fs = require("fs");
-const [year, day] = process.argv.slice(2);
-const part1path = "../../" + year + "/day" + day + "/part1";
-const part2path = "../../" + year + "/day" + day + "/part2";
+
+const solutionDir = process.argv[2];
+const jsonFile = process.argv[3];
+
+const part1path = "../../" + solutionDir + "/part1.js";
+const part2path = "../../" + solutionDir + "/part2.js";
 const part1 = require(part1path);
 const part2 = require(part2path);
-const assert = require("assert");
 
 const formatTime = function (executionTime) {
   return executionTime.toFixed(2) + "ms";
 };
 
-const data = JSON.parse(fs.readFileSync("data/2015-01.json", "utf8"));
+const puzzle = JSON.parse(fs.readFileSync(jsonFile, "utf8"));
 
-console.log(`js: Running AoC ${data.year} Day ${data.day} - ${data.title}`);
+const run = function (part, input, f, outputFile) {
+  const expectedAnswer = fs.readFileSync(outputFile, "utf8");
+  const startTime = performance.now();
+  const receivedAnswer = f(input);
+  const endTime = performance.now();
+  const executionTime = formatTime(endTime - startTime);
 
-const input = fs.readFileSync(data.inputFile, "utf8");
+  console.log(
+    `\x1b[35m${part}: \x1b[32m${receivedAnswer}\x1b[3;90m (executed in ${executionTime})\x1b[0m`
+  );
 
-const expectedOutputPar1 = fs.readFileSync(data.part1.outputFile, "utf8");
-const startTime1 = performance.now();
-const answer1 = part1(input);
-const endTime1 = performance.now();
-const executionTime1 = endTime1 - startTime1;
-console.log(
-  "\033[35mPart 1: \033[32m" +
-    answer1 +
-    "\033[3;90m (executed in " +
-    formatTime(executionTime1) +
-    ") \033[0m"
-);
-assert.equal(answer1, expectedOutputPar1);
+  if (expectedAnswer != receivedAnswer) {
+    console.log(
+      `${part} Failed - Expected: ${expectedAnswer} != received: ${receivedAnswer}`
+    );
+    process.exit(1);
+  }
+};
 
-const expectedOutputPar2 = fs.readFileSync(data.part2.outputFile, "utf8");
-const startTime2 = performance.now();
-const answer2 = part2(input);
-const endTime2 = performance.now();
-const executionTime2 = endTime2 - startTime2;
-console.log(
-  "\033[35mPart 2: \033[32m" +
-    answer2 +
-    "\033[3;90m (executed in " +
-    formatTime(executionTime2) +
-    ") \033[0m"
-);
-assert.equal(answer2, expectedOutputPar2);
+const main = function () {
+  console.log(`js: ${puzzle.fullTitle}`);
+  const input = fs.readFileSync(puzzle.inputFile, "utf8");
+
+  run("Part 1", input, part1, puzzle.part1.outputFile);
+  run("Part 2", input, part2, puzzle.part2.outputFile);
+};
+
+main();

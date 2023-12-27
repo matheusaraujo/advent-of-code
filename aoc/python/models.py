@@ -19,11 +19,9 @@ class Part:
 @dataclass
 class Puzzle:
     title: str
+    full_title: str
     year: str
     day: str
     part1: Part
     part2: Part
     input_file: str
-
-    def __str__(self):
-        return f"AoC {self.year} Day {self.day} - {self.title}"

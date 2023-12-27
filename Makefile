@@ -37,9 +37,9 @@ endif
 # ifneq ($(wildcard $(year)/day$(day)/Part1.java),)
 # 	$(call run-java)
 # endif
-# ifneq ($(wildcard $(year)/day$(day)/part1.js),)
-# 	$(call run-js)
-# endif
+ifneq ($(wildcard solutions/$(year)/day$(day)/part1.js),)
+	$(call run-js, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+endif
 ifneq ($(wildcard solutions/$(year)/day$(day)/part1.py),)
 	$(call run-python, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
 endif

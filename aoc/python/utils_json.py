@@ -8,6 +8,7 @@ def read_puzzle_from_json(file_name) -> Puzzle:
         content = json.load(file)
     return Puzzle(
         title=content["title"],
+        full_title=content["fullTitle"],
         year=content["year"],
         day=content["day"],
         input_file=content["inputFile"],
