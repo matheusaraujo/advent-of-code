@@ -32,6 +32,7 @@ int main(int argc, char* argv[]) {
 
 int run(char* part, const char* input, int(*f)(const char*), char* outputFile) {
     int expected_answer = atoi(read_file(outputFile));
+
     clock_t start_time = clock();
     int received_answer = (*f)(input);
     clock_t end_time = clock();
