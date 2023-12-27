@@ -8,8 +8,6 @@
 #include "puzzle.c"
 
 int run(char* part, const char* input, int(*f)(const char*), char* outputFile);
-int run_part1(struct Puzzle puzzle, const char* input);
-int run_part2(struct Puzzle puzzle, const char* input);
 
 int main(int argc, char* argv[]) {
     struct Puzzle puzzle = read_puzzle(argv[1]);
