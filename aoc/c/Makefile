@@ -1,4 +1,4 @@
 define run-c
-	@gcc -o aoc/c/run $(year)/day$(day)/part1.c $(year)/day$(day)/part2.c aoc/c/run.c
-	@./aoc/c/run $(year) $(day)
+	@gcc -o aoc/c/run $(1)/part1.c $(1)/part2.c aoc/c/run.c
+	@./aoc/c/run $(2)
 endef

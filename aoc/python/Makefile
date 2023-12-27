@@ -1,5 +1,5 @@
 define run-python
-	@python3 aoc/python/run.py $(1)
+	@python3 aoc/python/run.py $(1) $(2)
 endef
 
 define install-dependencies-python

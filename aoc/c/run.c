@@ -5,10 +5,20 @@
 #include "part1.h"
 #include "part2.h"
 
+struct Puzzle {
+    int initialized;
+    char* title;
+    char* year;
+    char* day;
+    char* inputFile;
+    char* part1_outputFile;
+    char* part2_outputFile;
+};
+
 char* read_file(const char* file_path) {
     FILE* file = fopen(file_path, "r");
     if (file == NULL) {
-        printf("File not found.\n");
+        printf("File not found - %s.\n", file_path);
         return NULL;
     }
 
@@ -85,70 +95,45 @@ char* extract_nested_value(const char* content, const char* parent_tag, const ch
     return extracted_value;
 }
 
-char** extract_properties(const char* file_content) {
+struct Puzzle read_puzzle(const char* file_content) {
+
+    struct Puzzle puzzle;
+
     if (file_content == NULL || strlen(file_content) == 0) {
         printf("File content is empty.\n");
-        return NULL;
+        puzzle.initialized = 0;
+        return puzzle;
     }
 
-    char* title = extract_value(file_content, "\"title\": \"", "\"");
-    char* year = extract_value(file_content, "\"year\": \"", "\"");
-    char* day = extract_value(file_content, "\"day\": \"", "\"");
-    char* input_file = extract_value(file_content, "\"inputFile\": \"", "\"");
-    char* part1_output_file = extract_nested_value(file_content, "\"part1\":", "\"outputFile\": \"", "\"");
-    char* part2_output_file = extract_nested_value(file_content, "\"part2\":", "\"outputFile\": \"", "\"");
+    puzzle.initialized = 1;
+    puzzle.title = extract_value(file_content, "\"title\": \"", "\"");
+    puzzle.year = extract_value(file_content, "\"year\": \"", "\"");
+    puzzle.day = extract_value(file_content, "\"day\": \"", "\"");
+    puzzle.inputFile = extract_value(file_content, "\"inputFile\": \"", "\"");
+    puzzle.part1_outputFile = extract_nested_value(file_content, "\"part1\":", "\"outputFile\": \"", "\"");
+    puzzle.part2_outputFile = extract_nested_value(file_content, "\"part2\":", "\"outputFile\": \"", "\"");
 
-    char** properties = (char**)malloc(6 * sizeof(char*));
-    properties[0] = title;
-    properties[1] = year;
-    properties[2] = day;
-    properties[3] = input_file;
-    properties[4] = part1_output_file;
-    properties[5] = part2_output_file;
-
-    return properties;
+    return puzzle;
 }
 
-int main(int argc, char* argv[]) {
-    char file_path[100];
-    snprintf(file_path, sizeof(file_path), "data/%s-%s.json", argv[1], argv[2]);
-
-    char* file_content = read_file(file_path);
-    if (file_content == NULL) {
-        return 1;
-    }
-
-    char** extracted_properties = extract_properties(file_content);
-    if (extracted_properties == NULL) {
-        free(file_content);
-        return 1;
-    }
-
-    char* title = extracted_properties[0];
-    char* year = extracted_properties[1];
-    char* day = extracted_properties[2];
-    char* input_file = extracted_properties[3];
-    char* part1_output_file = extracted_properties[4];
-    char* part2_output_file = extracted_properties[5];
-
-    printf("c: Running AoC %s Day %s - %s\n", year, day, title);
-
-    char* input = read_file(input_file);
-
-    int expected_result_part1 = atoi(read_file(part1_output_file));
+int run_part1(struct Puzzle puzzle, const char* input) {
+    int expected_result_part1 = atoi(read_file(puzzle.part1_outputFile));
     clock_t start_time1 = clock();
     int answer1 = part1(input);
     clock_t end_time1 = clock();
     double execution_time1 = ((double)(end_time1 - start_time1)) / CLOCKS_PER_SEC * 1000;
 
     if (answer1 != expected_result_part1) {
-        printf("Part 1 Failed\n");
+        printf("Part 1 Failed\n%d != %d\n", answer1, expected_result_part1);
         return 1;
     }
 
     printf("\033[35mPart 1: \033[32m%d\033[3;90m (executed in %.2fms) \033[0m\n", answer1, execution_time1);
+    return 0;
+}
 
-    int expected_result_part2 = atoi(read_file(part2_output_file));
+int run_part2(struct Puzzle puzzle, const char* input) {
+    int expected_result_part2 = atoi(read_file(puzzle.part2_outputFile));
     clock_t start_time2 = clock();
     int answer2 = part2(input);
     clock_t end_time2 = clock();
@@ -160,14 +145,33 @@ int main(int argc, char* argv[]) {
     }
 
     printf("\033[35mPart 2: \033[32m%d\033[3;90m (executed in %.2fms) \033[0m\n", answer2, execution_time2);
+    return 0;
+}
 
-    free(title);
-    free(year);
-    free(day);
-    free(input_file);
-    free(part1_output_file);
-    free(part2_output_file);
-    free(extracted_properties);
+int main(int argc, char* argv[]) {
+    char* file_content = read_file(argv[1]);
+    if (file_content == NULL) {
+        return 1;
+    }
+
+    struct Puzzle puzzle = read_puzzle(file_content);
+    if (!puzzle.initialized) {
+        free(file_content);
+        return 1;
+    }
+
+    printf("c: Running AoC %s Day %s - %s\n", puzzle.year, puzzle.day, puzzle.title);
+
+    char* input = read_file(puzzle.inputFile);
+
+    if (run_part1(puzzle, input) != 0) {
+        return 1;
+    }
+
+    if (run_part2(puzzle, input) != 0) {
+        return 1;
+    }
+
     free(file_content);
     free(input);
 

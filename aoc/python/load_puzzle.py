@@ -36,27 +36,12 @@ def load_puzzle(year, day):
             write_plain_txt_file(input_file, example.input_data)
             write_plain_txt_file(output_file, example.answer_a)
 
-            puzzle.part1.examples.append(
-                Example(
-                    example=number_to_string(idx),
-                    input_file=input_file,
-                    output_file=output_file,
-                )
-            )
         if example.answer_b is not None:
             idx = len(puzzle.part2.examples)
             input_file = f"{file_prefix}/part2.example-{number_to_string(idx)}.in"
             output_file = f"{file_prefix}/part2.example-{number_to_string(idx)}.out"
             write_plain_txt_file(input_file, example.input_data)
             write_plain_txt_file(output_file, example.answer_b)
-
-            puzzle.part2.examples.append(
-                Example(
-                    example=number_to_string(idx),
-                    input_file=input_file,
-                    output_file=output_file,
-                )
-            )
 
     write_plain_txt_file(puzzle.input_file, aocd_puzzle.input_data)
 

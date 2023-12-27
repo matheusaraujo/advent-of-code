@@ -22,9 +22,9 @@ endif
 endif
 
 run: check_year_and_day check_directory
-# ifneq ($(wildcard $(year)/day$(day)/part1.c),)
-# 	$(call run-c)
-# endif
+ifneq ($(wildcard solutions/$(year)/day$(day)/part1.c),)
+	$(call run-c, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+endif
 # ifneq ($(wildcard $(year)/day$(day)/part1.cpp),)
 # 	$(call run-cpp)
 # endif
@@ -41,7 +41,7 @@ run: check_year_and_day check_directory
 # 	$(call run-js)
 # endif
 ifneq ($(wildcard solutions/$(year)/day$(day)/part1.py),)
-	$(call run-python, "data/$(year)/day$(day)/data.json")
+	$(call run-python, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
 endif
 
 check_year_and_day:

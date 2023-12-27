@@ -6,10 +6,10 @@ from utils import format_time
 from utils_json import read_puzzle_from_json
 from utils_txt_file import read_plain_txt_file
 
-puzzle = read_puzzle_from_json(sys.argv[1])
+puzzle = read_puzzle_from_json(sys.argv[2])
 
 
-sys.path.append(f"solutions/{puzzle.year}/day{puzzle.day}")
+sys.path.append(sys.argv[1])
 
 from part1 import part1
 from part2 import part2
