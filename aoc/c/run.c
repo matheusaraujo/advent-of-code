@@ -7,6 +7,7 @@
 
 #include "puzzle.c"
 
+int run(char* part, const char* input, int(*f)(const char*), char* outputFile);
 int run_part1(struct Puzzle puzzle, const char* input);
 int run_part2(struct Puzzle puzzle, const char* input);
 
@@ -21,47 +22,26 @@ int main(int argc, char* argv[]) {
 
     char* input = read_file(puzzle.inputFile);
 
-    if (run_part1(puzzle, input) != 0) {
-        return 1;
-    }
-
-    if (run_part2(puzzle, input) != 0) {
-        return 1;
-    }
+    run("Part 1", input, part1, puzzle.part1_outputFile);
+    run("Part 2", input, part2, puzzle.part2_outputFile);
 
     free(input);
 
     return 0;
 }
 
-int run_part1(struct Puzzle puzzle, const char* input) {
-    int expected_result_part1 = atoi(read_file(puzzle.part1_outputFile));
-    clock_t start_time1 = clock();
-    int answer1 = part1(input);
-    clock_t end_time1 = clock();
-    double execution_time1 = ((double)(end_time1 - start_time1)) / CLOCKS_PER_SEC * 1000;
+int run(char* part, const char* input, int(*f)(const char*), char* outputFile) {
+    int expected_answer = atoi(read_file(outputFile));
+    clock_t start_time = clock();
+    int received_answer = (*f)(input);
+    clock_t end_time = clock();
+    double execution_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC * 1000;
 
-    if (answer1 != expected_result_part1) {
-        printf("Part 1 Failed\n%d != %d\n", answer1, expected_result_part1);
+    if (expected_answer != received_answer) {
+        printf("%s Failed - Expected: %d != received: %d\n", part, expected_answer, received_answer);
         return 1;
     }
 
-    printf("\033[35mPart 1: \033[32m%d\033[3;90m (executed in %.2fms) \033[0m\n", answer1, execution_time1);
-    return 0;
-}
-
-int run_part2(struct Puzzle puzzle, const char* input) {
-    int expected_result_part2 = atoi(read_file(puzzle.part2_outputFile));
-    clock_t start_time2 = clock();
-    int answer2 = part2(input);
-    clock_t end_time2 = clock();
-    double execution_time2 = ((double)(end_time2 - start_time2)) / CLOCKS_PER_SEC * 1000;
-
-    if (answer2 != expected_result_part2) {
-        printf("Part 2 Failed\n");
-        return 1;
-    }
-
-    printf("\033[35mPart 2: \033[32m%d\033[3;90m (executed in %.2fms) \033[0m\n", answer2, execution_time2);
+    printf("\033[35m%s: \033[32m%d\033[3;90m (executed in %.2fms) \033[0m\n", part, received_answer, execution_time);
     return 0;
 }
