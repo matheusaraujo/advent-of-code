@@ -8,6 +8,7 @@ from utils import (
     read_plain_txt_file,
 )
 
+
 arg_year, arg_day = get_puzzle()
 import_puzzle_code(arg_year, arg_day)
 
@@ -55,4 +56,5 @@ def run(year, day):
 
 
 if __name__ == "__main__":
-    run(arg_year, arg_day)
+    print()
+    # run(arg_year, arg_day)

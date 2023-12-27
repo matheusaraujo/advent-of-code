@@ -4,6 +4,7 @@ include aoc/make/csharp.mk
 include aoc/make/go.mk
 include aoc/make/java.mk
 include aoc/make/js.mk
+include aoc/make/json.mk
 include aoc/make/python.mk
 
 prepare:
@@ -20,6 +21,14 @@ else
 	$(call lint-python-fix)
 endif
 endif
+
+run-python: check_year_and_day
+ifeq ("$(wildcard ${year}/day${day})", "")
+	@echo "directory does not exist"
+	@exit 1
+endif
+	$(call read-json,"data/$(year)-$(day).json")
+	$(call run-python)
 
 run: check_year_and_day
 ifeq ("$(wildcard ${year}/day${day})", "")
@@ -47,7 +56,6 @@ endif
 ifneq ($(wildcard ${year}/day${day}/part1.py),)
 	$(call run-python)
 endif
-
 
 check_year_and_day:
 ifndef year

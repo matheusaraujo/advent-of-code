@@ -1,5 +1,5 @@
 define run-python
-	@python3 aoc/py/run.py ${year} ${day}
+	@python3 aoc/py/run.py ${year} ${day} ${ARGS}
 endef
 
 define install-dependencies-python

@@ -44,6 +44,7 @@ def format_time(execution_time):
 
 
 def get_puzzle():
+    print("run.py", sys.argv)
     return int(sys.argv[1]), int(sys.argv[2])
 
 
