@@ -22,19 +22,7 @@ else
 endif
 endif
 
-run-python: check_year_and_day
-ifeq ("$(wildcard ${year}/day${day})", "")
-	@echo "directory does not exist"
-	@exit 1
-endif
-	$(call read-json,"data/$(year)-$(day).json")
-	$(call run-python)
-
-run: check_year_and_day
-ifeq ("$(wildcard ${year}/day${day})", "")
-	@echo "directory does not exist"
-	@exit 1
-endif
+run: check_year_and_day check_directory
 ifneq ($(wildcard ${year}/day${day}/part1.c),)
 	$(call run-c)
 endif
@@ -54,6 +42,7 @@ ifneq ($(wildcard ${year}/day${day}/part1.js),)
 	$(call run-js)
 endif
 ifneq ($(wildcard ${year}/day${day}/part1.py),)
+	$(call read-json,"data/$(year)-$(day).json")
 	$(call run-python)
 endif
 
@@ -63,5 +52,11 @@ ifndef year
 	@exit 1
 else ifndef day
 	@echo "[day] must be defined"
+	@exit 1
+endif
+
+check_directory:
+ifeq ("$(wildcard ${year}/day${day})", "")
+	@echo "directory does not exist"
 	@exit 1
 endif
