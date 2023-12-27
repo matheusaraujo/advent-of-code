@@ -5,11 +5,11 @@
 # multiple languages per day is supported
 
 # run a specific day
-$ make run year=${year} day={day}
+$ make run year=$(year) day=(day)
 
 # lint for a specific day
-$ make lint year=${year} day={day}
-$ make lint year=${year} day={day} fix=true
+$ make lint year=$(year) day=(day)
+$ make lint year=$(year) day=(day) fix=true
 
 ```
 

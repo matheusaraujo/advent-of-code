@@ -11,10 +11,10 @@ prepare:
 	$(call install-dependencies-python)
 
 load-puzzle: check_year_and_day
-	@python3 aoc/python/load_puzzle.py ${year} ${day}
+	@python3 aoc/python/load_puzzle.py $(year) $(day)
 
 lint: check_year_and_day
-ifneq ($(wildcard ${year}/day${day}/part1.py),)
+ifneq ($(wildcard $(year)/day$(day)/part1.py),)
 ifndef fix
 	$(call lint-python)
 else
@@ -23,25 +23,25 @@ endif
 endif
 
 run: check_year_and_day check_directory
-ifneq ($(wildcard ${year}/day${day}/part1.c),)
+ifneq ($(wildcard $(year)/day$(day)/part1.c),)
 	$(call run-c)
 endif
-ifneq ($(wildcard ${year}/day${day}/part1.cpp),)
+ifneq ($(wildcard $(year)/day$(day)/part1.cpp),)
 	$(call run-cpp)
 endif
-ifneq ($(wildcard ${year}/day${day}/Part1.cs),)
+ifneq ($(wildcard $(year)/day$(day)/Part1.cs),)
 	$(call run-csharp)
 endif
-ifneq ($(wildcard ${year}/day${day}/part1.go),)
+ifneq ($(wildcard $(year)/day$(day)/part1.go),)
 	$(call run-go)
 endif
-ifneq ($(wildcard ${year}/day${day}/Part1.java),)
+ifneq ($(wildcard $(year)/day$(day)/Part1.java),)
 	$(call run-java)
 endif
-ifneq ($(wildcard ${year}/day${day}/part1.js),)
+ifneq ($(wildcard $(year)/day$(day)/part1.js),)
 	$(call run-js)
 endif
-ifneq ($(wildcard ${year}/day${day}/part1.py),)
+ifneq ($(wildcard $(year)/day$(day)/part1.py),)
 	$(call read-json,"data/$(year)-$(day).json")
 	$(call run-python)
 endif
@@ -56,7 +56,7 @@ else ifndef day
 endif
 
 check_directory:
-ifeq ("$(wildcard ${year}/day${day})", "")
+ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exist"
 	@exit 1
 endif
