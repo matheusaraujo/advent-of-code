@@ -28,31 +28,30 @@ def main():
     run("Part 2", puzzle_input, part2, puzzle.part2.output_file)
 
 
-def run(part, puzzle_input, f, output_file):
-    start_time1 = time.time()
+def run(part, puzzle_input, f, output_file=None):
+    start_time = time.time()
     received_answer = f(puzzle_input)
-    end_time1 = time.time()
-    execution_time1 = end_time1 - start_time1
+    end_time = time.time()
+    execution_time = end_time - start_time
 
-    checked, expected_answer = "", ""
-
-    if output_file is not None:
+    if output_file is None:
+        print_result(part, received_answer, execution_time)
+    else:
         expected_answer = read_plain_txt_file(output_file)
-        checked = (
-            CHECK_SYMBOL
-            if str(expected_answer) == str(received_answer)
-            else CROSS_SYMBOL
-        )
+        if str(received_answer) == str(expected_answer):
+            print_result(part, received_answer, execution_time, CHECK_SYMBOL)
+        else:
+            print_result(part, received_answer, execution_time, CROSS_SYMBOL)
+            print(f"Failed! Expected result: {expected_answer}")
+            sys.exit(1)
 
+
+def print_result(part, received_answer, execution_time, checked=None):
     print(
         f"{PURPLE}{part}: {GREEN}{received_answer} "
-        + f"{GREY}(executed in {format_time(execution_time1)}) {RESET}"
-        + checked
+        + f"{GREY}(executed in {format_time(execution_time)}) {RESET}"
+        + (checked if checked is not None else "")
     )
-
-    if checked is CROSS_SYMBOL:
-        print(f"Failed! Expected result: {expected_answer}")
-        sys.exit(1)
 
 
 if __name__ == "__main__":
