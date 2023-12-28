@@ -37,13 +37,17 @@ def run(part, puzzle_input, f, output_file=None):
     if output_file is None:
         print_result(part, received_answer, execution_time)
     else:
-        expected_answer = read_plain_txt_file(output_file)
-        if str(received_answer) == str(expected_answer):
-            print_result(part, received_answer, execution_time, CHECK_SYMBOL)
-        else:
-            print_result(part, received_answer, execution_time, CROSS_SYMBOL)
-            print(f"Failed! Expected result: {expected_answer}")
-            sys.exit(1)
+        handle_expected_result(part, output_file, received_answer, execution_time)
+
+
+def handle_expected_result(part, output_file, received_answer, execution_time):
+    expected_answer = read_plain_txt_file(output_file)
+    if str(received_answer) == str(expected_answer):
+        print_result(part, received_answer, execution_time, CHECK_SYMBOL)
+    else:
+        print_result(part, received_answer, execution_time, CROSS_SYMBOL)
+        print(f"Failed! Expected result: {expected_answer}")
+        sys.exit(1)
 
 
 def print_result(part, received_answer, execution_time, checked=None):
