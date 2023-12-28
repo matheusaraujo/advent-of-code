@@ -12,8 +12,8 @@
 #define GREY "\033[3;90m"
 #define RESET "\033[0m"
 #define RED "\033[91m"
-#define CHECK_SYMBOL GREEN "\u2714\uFE0E" RESET
-#define CROSS_SYMBOL RED "\u2717\uFE0E" RESET
+#define CHECK_SYMBOL GREEN "\u2714" RESET
+#define CROSS_SYMBOL RED "\u2717" RESET
 
 void run(char *part, const char *input, int (*f)(const char *), char *outputFile);
 

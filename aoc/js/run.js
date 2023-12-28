@@ -33,9 +33,10 @@ const run = function (part, input, f, outputFile) {
   const executionTime = formatTime(endTime - startTime);
 
   let checked = "";
+  let expectedAnswer = "";
 
   if (outputFile != undefined) {
-    const expectedAnswer = fs.readFileSync(outputFile, "utf8");
+    expectedAnswer = fs.readFileSync(outputFile, "utf8");
     checked = receivedAnswer == expectedAnswer ? symbols.CHECK : symbols.CROSS;
   }
 

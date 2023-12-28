@@ -27,9 +27,9 @@ endif
 # ifneq ($(wildcard $(year)/day$(day)/part1.cpp),)
 # 	$(call run-cpp)
 # endif
-# ifneq ($(wildcard $(year)/day$(day)/Part1.cs),)
-# 	$(call run-csharp)
-# endif
+ifneq ($(wildcard solutions/$(year)/day$(day)/Part1.cs),)
+	$(call run-csharp, "$(CURDIR)/solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+endif
 # ifneq ($(wildcard $(year)/day$(day)/part1.go),)
 # 	$(call run-go)
 # endif

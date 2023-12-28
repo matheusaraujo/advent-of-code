@@ -1,26 +1,7 @@
-﻿using System.Text;
+﻿using Spectre.Console;
 using System.Text.Json;
-using Xunit;
-using Spectre.Console;
 
 namespace aoc;
-
-public class PuzzlePart
-{
-    public required Boolean Solved { get; set; }
-    public required String OutputFile { get; set; }
-}
-
-public class Puzzle
-{
-    public required string Title { get; set; }
-    public required string Year { get; set; }
-    public required string Day { get; set; }
-    public required string InputFile { get; set; }
-
-    public required PuzzlePart Part1 { get; set; }
-    public required PuzzlePart Part2 { get; set; }
-}
 
 public class Program
 {
@@ -31,47 +12,50 @@ public class Program
 
     static void Main(string[] args)
     {
-        var filePath = $"data/{args[0]}-{args[1]}.json";
+        var jsonString = File.ReadAllText(args[0]);
+        var puzzle = JsonSerializer.Deserialize<Puzzle>(jsonString, serializerOptions);
 
-        var jsonString = File.ReadAllText(filePath);
-        var data = JsonSerializer.Deserialize<Puzzle>(jsonString, serializerOptions);
-
-        if (data == null)
+        if (puzzle == null)
         {
             Console.WriteLine("File not found!");
-            return;
+            Environment.Exit(1);
         }
 
-        Console.WriteLine(
-            $"csharp: Running AoC {data.Year} Day {data.Day} - {data.Title}"
+        Console.WriteLine($"csharp: {puzzle.Title}");
+
+        var input = File.ReadAllText(puzzle.InputFile);
+
+        Run("Part 1", input, Part1.Solve, puzzle.Part1.OutputFile);
+        Run("Part 1", input, Part2.Solve, puzzle.Part2.OutputFile);
+    }
+
+    public static void Run(string part, string input, Func<string, object> f, string outputFile = "")
+    {
+        var startTime = DateTime.Now;
+        var receivedAnswer = f(input);
+        var endTime = DateTime.Now;
+        var executionTime = endTime - startTime;
+
+        var checkedResult = "";
+        string expectedAnswer;
+
+        if (outputFile != "")
+        {
+            expectedAnswer = File.ReadAllText(outputFile);
+            checkedResult = receivedAnswer.ToString() == expectedAnswer ? "[green]\u2714\uFE0E[/]" : "[red]\u2717\uFE0E[/]";
+        }
+
+        AnsiConsole.Markup($"[purple]{part}:[/] " +
+            $"[green]{receivedAnswer}[/]" +
+            $"[#909090 italic] (executed in {string.Format("{0:N2}", executionTime.TotalMilliseconds)}ms)[/] "
+            + $" {checkedResult}\n"
         );
 
-        var input = File.ReadAllText(data.InputFile);
-
-        var expectedAnswerPart1 = File.ReadAllText(data.Part1.OutputFile);
-        DateTime start1 = DateTime.Now;
-        var answerPart1 = Part1.Solve(input);
-        DateTime end1 = DateTime.Now;
-        Assert.Equal(expectedAnswerPart1.ToString(), answerPart1.ToString());
-        TimeSpan ts1 = end1 - start1;
-        PrintAnswer("1", answerPart1, ts1);
-
-        var expectedAnswerPart2 = File.ReadAllText(data.Part2.OutputFile);
-        DateTime start2 = DateTime.Now;
-        var answerPart2 = Part2.Solve(input);
-        DateTime end2 = DateTime.Now;
-        Assert.Equal(expectedAnswerPart2.ToString(), answerPart2.ToString());
-        TimeSpan ts2 = end2 - start2;
-        PrintAnswer("2", answerPart2, ts2);
-
+        if (checkedResult == "")
+        {
+            Console.WriteLine($"{part} Failed - Expected result: {receivedAnswer}");
+            Environment.Exit(1);
+        }
     }
-
-    static void PrintAnswer(string part, object answer, TimeSpan executionTime)
-    {
-        AnsiConsole.Markup($"[purple]Part {part}:[/] " +
-            $"[green]{answer}[/]" +
-            $"[#909090 italic] (executed in {string.Format("{0:N2}", executionTime.TotalMilliseconds)}ms)[/]" + "\n");
-    }
-
 }
 

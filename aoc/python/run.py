@@ -34,7 +34,7 @@ def run(part, puzzle_input, f, output_file):
     end_time1 = time.time()
     execution_time1 = end_time1 - start_time1
 
-    checked = ""
+    checked, expected_answer = "", ""
 
     if output_file is not None:
         expected_answer = read_plain_txt_file(output_file)
