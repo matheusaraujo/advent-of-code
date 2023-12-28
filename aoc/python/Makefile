@@ -7,13 +7,13 @@ define install-dependencies-python
 endef
 
 define lint-python
-	@isort --check-only $(year)/day$(day)
-	@black --check $(year)/day$(day)
-	@pylint $(year)/day$(day)/*.py
+	@isort --check-only $(1)
+	@black --check $(1)
+	@pylint $(1)/*.py
 endef
 
 define lint-python-fix
-	@isort $(year)/day$(day)
-	@black $(year)/day$(day) -l 88
-	@pylint $(year)/day$(day)/*.py
+	@isort $(1)
+	@black $(1) -l 88
+	@pylint $(1)/*.py
 endef

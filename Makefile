@@ -12,14 +12,13 @@ prepare:
 load-puzzle: check_year_and_day
 	@python3 aoc/python/load_puzzle.py $(year) $(day)
 
-lint: check_year_and_day
-ifneq ($(wildcard $(year)/day$(day)/part1.py),)
+lint: check_year_and_day check_directory
 ifndef fix
-	$(call lint-python)
+	$(call lint-python, "solutions/$(year)/day$(day)",)
 else
-	$(call lint-python-fix)
+	$(call lint-python-fix, "solutions/$(year)/day$(day)",)
 endif
-endif
+
 
 run: check_year_and_day check_directory
 ifneq ($(wildcard solutions/$(year)/day$(day)/part1.c),)
