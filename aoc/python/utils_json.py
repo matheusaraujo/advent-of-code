@@ -1,6 +1,6 @@
 import json
 from dataclasses import asdict
-from models import Puzzle, Part
+from models import Puzzle, Part, Example
 
 
 def read_puzzle_from_json(file_name) -> Puzzle:
@@ -13,14 +13,22 @@ def read_puzzle_from_json(file_name) -> Puzzle:
         day=content["day"],
         input_file=content["inputFile"],
         part1=Part(
+            part=content["part1"]["part"],
             solved=content["part1"]["solved"],
             output_file=content["part1"]["outputFile"],
-            examples=[],
+            examples=[
+                Example(e["example"], e["inputFile"], e["outputFile"])
+                for e in content["part1"]["examples"]
+            ],
         ),
         part2=Part(
+            part=content["part2"]["part"],
             solved=content["part2"]["solved"],
             output_file=content["part2"]["outputFile"],
-            examples=[],
+            examples=[
+                Example(e["example"], e["inputFile"], e["outputFile"])
+                for e in content["part2"]["examples"]
+            ],
         ),
     )
 

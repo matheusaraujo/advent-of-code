@@ -12,6 +12,21 @@ prepare:
 load-puzzle: check_year_and_day
 	@python3 aoc/python/load_puzzle.py $(year) $(day)
 
+
+init:
+ifndef year
+	@echo "[year] must be defined"
+	@exit 1
+else ifndef day
+	@echo "[day] must be defined"
+	@exit 1
+endif
+	@echo "todo: call load_puzzle and set env vars"
+
+finish:
+	@echo "todo: call clean env vars"
+
+
 lint: check_year_and_day check_directory
 ifndef fix
 	$(call lint-python, "solutions/$(year)/day$(day)",)
@@ -21,26 +36,26 @@ endif
 
 
 run: check_year_and_day check_directory
-ifneq ($(wildcard solutions/$(year)/day$(day)/part1.c),)
-	$(call run-c, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
-endif
+# ifneq ($(wildcard solutions/$(year)/day$(day)/part1.c),)
+# 	$(call run-c, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+# endif
 # ifneq ($(wildcard $(year)/day$(day)/part1.cpp),)
 # 	$(call run-cpp)
 # endif
-ifneq ($(wildcard solutions/$(year)/day$(day)/Part1.cs),)
-	$(call run-csharp, "$(CURDIR)/solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
-endif
+# ifneq ($(wildcard solutions/$(year)/day$(day)/Part1.cs),)
+# 	$(call run-csharp, "$(CURDIR)/solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+# endif
 # ifneq ($(wildcard $(year)/day$(day)/part1.go),)
 # 	$(call run-go)
 # endif
 # ifneq ($(wildcard $(year)/day$(day)/Part1.java),)
 # 	$(call run-java)
 # endif
-ifneq ($(wildcard solutions/$(year)/day$(day)/part1.js),)
-	$(call run-js, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
-endif
+# ifneq ($(wildcard solutions/$(year)/day$(day)/part1.js),)
+# 	$(call run-js, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+# endif
 ifneq ($(wildcard solutions/$(year)/day$(day)/part1.py),)
-	$(call run-python, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+	$(call run-python, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json", "part1")
 endif
 
 check_year_and_day:

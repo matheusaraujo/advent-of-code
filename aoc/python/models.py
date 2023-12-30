@@ -11,6 +11,7 @@ class Example:
 
 @dataclass
 class Part:
+    part: str
     solved: bool
     output_file: str
     examples: List[Example]
