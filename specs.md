@@ -16,7 +16,7 @@ $ make update
 
 # (have fun) solve part 2
 $ make run
-
+c
 # part 2 solved, second star of day!
 $ make update
 
@@ -93,6 +93,7 @@ $ make run
 
 ## tests operations
 
+- `make test show`
 - `make test create`
 - `make test delete`
 - `make test inactivate`

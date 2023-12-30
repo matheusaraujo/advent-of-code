@@ -34,6 +34,9 @@ else
 	$(call lint-python-fix, "solutions/$(year)/day$(day)",)
 endif
 
+update: check_year_and_day check_directory
+	@python3 aoc/python/update_puzzle.py
+
 
 run: check_year_and_day check_directory
 # ifneq ($(wildcard solutions/$(year)/day$(day)/part1.c),)
