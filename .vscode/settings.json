@@ -1,8 +1,4 @@
 {
-    "cSpell.words": [
-        "adventofcode",
-        "aocd",
-        "unmarshalling"
-    ],
-    "java.errors.incompleteClasspath.severity": "ignore"
+  "cSpell.words": ["adventofcode", "aocd", "println", "unmarshalling"],
+  "java.errors.incompleteClasspath.severity": "ignore"
 }

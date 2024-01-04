@@ -55,11 +55,14 @@ run: check_year_and_day check_directory
 # 	$(call run-java)
 # endif
 # ifneq ($(wildcard solutions/$(year)/day$(day)/part1.js),)
-# 	$(call run-js, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json",)
+# 	$(call run-js, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json", "part1")
 # endif
 ifneq ($(wildcard solutions/$(year)/day$(day)/part1.py),)
 	$(call run-python, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json", "part1")
 endif
+
+example: check_year_and_day check_directory
+	@python3 aoc/python/examples.py "data/$(year)/day$(day)/data.json" show part1 a
 
 check_year_and_day:
 ifndef year

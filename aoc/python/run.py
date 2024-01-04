@@ -24,11 +24,11 @@ def main():
     puzzle = read_puzzle_from_json(sys.argv[2])
     mode = sys.argv[3]
 
-    print(f"python: {puzzle.full_title}")
+    print(f"python({mode}): {puzzle.full_title}")
 
-    modes = {"part1": run_part1, "part2": run_part2, "solved": run_solved}
+    modes_dict = {"part1": run_part1, "part2": run_part2, "solved": run_solved}
 
-    modes[mode](puzzle)
+    modes_dict[mode](puzzle)
 
 
 def run_part1(puzzle: Puzzle):
@@ -61,23 +61,35 @@ def run(title, input_file, f, output_file=None):
     if output_file is None:
         print_result(title, received_answer, execution_time)
     else:
-        handle_expected_result(title, output_file, received_answer, execution_time)
+        handle_expected_result(
+            title, puzzle_input, output_file, received_answer, execution_time
+        )
 
 
-def handle_expected_result(part, output_file, received_answer, execution_time):
+def handle_expected_result(
+    part,
+    puzzle_input,
+    output_file,
+    received_answer,
+    execution_time,
+):
     expected_answer = read_plain_txt_file(output_file)
     if str(received_answer) == str(expected_answer):
         print_result(part, received_answer, execution_time, CHECK_SYMBOL)
     else:
         print_result(part, received_answer, execution_time, CROSS_SYMBOL)
-        print(f"Failed! Expected result: {expected_answer}")
+        print("Failed!")
+        print(f"Input: {puzzle_input}")
+        print(f"Expected: {expected_answer}")
+        print(f"Received: {received_answer}")
         sys.exit(1)
 
 
 def print_result(part, received_answer, execution_time, checked=None):
     print(
-        f"{PURPLE}{part}: {GREEN}{received_answer} "
+        f"{PURPLE}{part} "
         + f"{GREY}(executed in {format_time(execution_time)}) {RESET}"
+        + f"{GREEN}{received_answer} "
         + (checked if checked is not None else "")
     )
 

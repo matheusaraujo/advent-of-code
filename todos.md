@@ -27,7 +27,7 @@
 
 - create update_tests.py
 
-  - create `shot` operation
+  - create `show` operation
   - create `create` operation
   - create `delete` operation
   - create `inactivate` operation
