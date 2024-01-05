@@ -15,6 +15,7 @@ load-puzzle: check_year_and_day
 
 abc:
 	@bash aoc/shell/run.sh python solutions/2015/day01 data/2015/day01/data.json
+	@bash aoc/shell/run.sh js solutions/2015/day01 data/2015/day01/data.json
 
 init:
 ifndef year

@@ -39,7 +39,14 @@ run() {
 
     local puzzle_input=$(<$input_file)
 
-    local result=$(python3 aoc/python/run2.py $part $solutions_dir $puzzle_input)
+    if [ "$language" = "python" ]; then
+        local result=$(python3 aoc/python/run2.py $part $solutions_dir $puzzle_input)
+    elif [ "$language" = "js" ]; then
+        local result=$(node aoc/js/run2.js $part $solutions_dir $puzzle_input)
+    else
+        echo "invalid language"
+        exit 1
+    fi
 
     local received_answer=$(echo "$result" | jq -r ".receivedAnswer")
     local execution_time=$(echo "$result" | jq -r ".executionTime")
@@ -59,7 +66,6 @@ run() {
             printf "${GREY}(executed in ${execution_time}ms) ${RESET}"
             printf "${RED}${received_answer} ${CROSS_SYMBOL} ${RESET}\n"
             printf "Expected: $expected_answer, Got $received_answer\n"
-
             exit 1
         fi
     fi
