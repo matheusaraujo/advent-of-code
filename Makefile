@@ -4,6 +4,7 @@ include aoc/csharp/Makefile
 include aoc/go/Makefile
 include aoc/java/Makefile
 include aoc/js/Makefile
+include aoc/kotlin/Makefile
 include aoc/python/Makefile
 
 prepare:
@@ -12,6 +13,8 @@ prepare:
 load-puzzle: check_year_and_day
 	@python3 aoc/python/load_puzzle.py $(year) $(day)
 
+abc:
+	@bash aoc/shell/run.sh python solutions/2015/day01 data/2015/day01/data.json
 
 init:
 ifndef year
@@ -58,8 +61,9 @@ run: check_year_and_day check_directory
 # 	$(call run-js, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json", "part1")
 # endif
 ifneq ($(wildcard solutions/$(year)/day$(day)/part1.py),)
-	$(call run-python, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json", "part1")
+	$(call run-python, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json", "solved")
 endif
+#$(call run-kotlin, "solutions/$(year)/day$(day)", "data/$(year)/day$(day)/data.json", "part1")
 
 example: check_year_and_day check_directory
 	@python3 aoc/python/examples.py "data/$(year)/day$(day)/data.json" show part1 a

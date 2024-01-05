@@ -11,20 +11,21 @@ aoc/c/run
 # cpp
 aoc/cpp/run
 
-# go
-aoc/go/part1.go
-aoc/go/part2.go
-
-# python
-__pycache__
-
 # csharp
 aoc/csharp/Part1.cs
 aoc/csharp/Part2.cs
 aoc/csharp/obj/
 aoc/csharp/bin/
 
+# go
+aoc/go/part1.go
+aoc/go/part2.go
+
 # java
 *.class
-*.class
 
+# kotlin
+aoc/kotlin/*.jar
+
+# python
+__pycache__

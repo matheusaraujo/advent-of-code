@@ -1,76 +1,76 @@
 {
-    "title": "Not Quite Lisp",
-    "fullTitle": "AoC 2015 Day 01 - Not Quite Lisp",
-    "year": "2015",
-    "day": "01",
-    "part1": {
-        "part": "Part 1",
-        "solved": true,
-        "outputFile": "data/2015/day01/part1.out",
-        "examples": [
-            {
-                "example": "Part 1 - Example A",
-                "inputFile": "data/2015/day01/part1.example-a.in",
-                "outputFile": "data/2015/day01/part1.example-a.out"
-            },
-            {
-                "example": "Part 1 - Example B",
-                "inputFile": "data/2015/day01/part1.example-b.in",
-                "outputFile": "data/2015/day01/part1.example-b.out"
-            },
-            {
-                "example": "Part 1 - Example C",
-                "inputFile": "data/2015/day01/part1.example-c.in",
-                "outputFile": "data/2015/day01/part1.example-c.out"
-            },
-            {
-                "example": "Part 1 - Example D",
-                "inputFile": "data/2015/day01/part1.example-d.in",
-                "outputFile": "data/2015/day01/part1.example-d.out"
-            },
-            {
-                "example": "Part 1 - Example E",
-                "inputFile": "data/2015/day01/part1.example-e.in",
-                "outputFile": "data/2015/day01/part1.example-e.out"
-            },
-            {
-                "example": "Part 1 - Example F",
-                "inputFile": "data/2015/day01/part1.example-f.in",
-                "outputFile": "data/2015/day01/part1.example-f.out"
-            },
-            {
-                "example": "Part 1 - Example G",
-                "inputFile": "data/2015/day01/part1.example-g.in",
-                "outputFile": "data/2015/day01/part1.example-g.out"
-            },
-            {
-                "example": "Part 1 - Example H",
-                "inputFile": "data/2015/day01/part1.example-h.in",
-                "outputFile": "data/2015/day01/part1.example-h.out"
-            },
-            {
-                "example": "Part 1 - Example I",
-                "inputFile": "data/2015/day01/part1.example-i.in",
-                "outputFile": "data/2015/day01/part1.example-i.out"
-            }
-        ]
-    },
-    "part2": {
-        "part": "Part 2",
-        "solved": true,
-        "outputFile": "data/2015/day01/part2.out",
-        "examples": [
-            {
-                "example": "Part 2 - Example A",
-                "inputFile": "data/2015/day01/part2.example-a.in",
-                "outputFile": "data/2015/day01/part2.example-a.out"
-            },
-            {
-                "example": "Part 2 - Example B",
-                "inputFile": "data/2015/day01/part2.example-b.in",
-                "outputFile": "data/2015/day01/part2.example-b.out"
-            }
-        ]
-    },
-    "inputFile": "data/2015/day01/puzzle.in"
+  "title": "Not Quite Lisp",
+  "fullTitle": "AoC 2015 Day 01 - Not Quite Lisp",
+  "year": "2015",
+  "day": "01",
+  "part1": {
+    "part": "Part 1",
+    "solved": true,
+    "outputFile": "data/2015/day01/part1.out",
+    "examples": [
+      {
+        "example": "Part 1 - Example A",
+        "inputFile": "data/2015/day01/part1.example-a.in",
+        "outputFile": "data/2015/day01/part1.example-a.out"
+      },
+      {
+        "example": "Part 1 - Example B",
+        "inputFile": "data/2015/day01/part1.example-b.in",
+        "outputFile": "data/2015/day01/part1.example-b.out"
+      },
+      {
+        "example": "Part 1 - Example C",
+        "inputFile": "data/2015/day01/part1.example-c.in",
+        "outputFile": "data/2015/day01/part1.example-c.out"
+      },
+      {
+        "example": "Part 1 - Example D",
+        "inputFile": "data/2015/day01/part1.example-d.in",
+        "outputFile": "data/2015/day01/part1.example-d.out"
+      },
+      {
+        "example": "Part 1 - Example E",
+        "inputFile": "data/2015/day01/part1.example-e.in",
+        "outputFile": "data/2015/day01/part1.example-e.out"
+      },
+      {
+        "example": "Part 1 - Example F",
+        "inputFile": "data/2015/day01/part1.example-f.in",
+        "outputFile": "data/2015/day01/part1.example-f.out"
+      },
+      {
+        "example": "Part 1 - Example G",
+        "inputFile": "data/2015/day01/part1.example-g.in",
+        "outputFile": "data/2015/day01/part1.example-g.out"
+      },
+      {
+        "example": "Part 1 - Example H",
+        "inputFile": "data/2015/day01/part1.example-h.in",
+        "outputFile": "data/2015/day01/part1.example-h.out"
+      },
+      {
+        "example": "Part 1 - Example I",
+        "inputFile": "data/2015/day01/part1.example-i.in",
+        "outputFile": "data/2015/day01/part1.example-i.out"
+      }
+    ]
+  },
+  "part2": {
+    "part": "Part 2",
+    "solved": true,
+    "outputFile": "data/2015/day01/part2.out",
+    "examples": [
+      {
+        "example": "Part 2 - Example A",
+        "inputFile": "data/2015/day01/part2.example-a.in",
+        "outputFile": "data/2015/day01/part2.example-a.out"
+      },
+      {
+        "example": "Part 2 - Example B",
+        "inputFile": "data/2015/day01/part2.example-b.in",
+        "outputFile": "data/2015/day01/part2.example-b.out"
+      }
+    ]
+  },
+  "inputFile": "data/2015/day01/puzzle.in"
 }
