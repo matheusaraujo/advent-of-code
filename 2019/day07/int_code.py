@@ -156,24 +156,28 @@ class IntCode:
     def __less_than(self):
         self.__set(
             self.command.parameter_3(),
-            1
-            if (
-                self.__get(self.command.parameter_1())
-                < self.__get(self.command.parameter_2())
-            )
-            else 0,
+            (
+                1
+                if (
+                    self.__get(self.command.parameter_1())
+                    < self.__get(self.command.parameter_2())
+                )
+                else 0
+            ),
         )
         return self.command.size()
 
     def __equals(self):
         self.__set(
             self.command.parameter_3(),
-            1
-            if (
-                self.__get(self.command.parameter_1())
-                == self.__get(self.command.parameter_2())
-            )
-            else 0,
+            (
+                1
+                if (
+                    self.__get(self.command.parameter_1())
+                    == self.__get(self.command.parameter_2())
+                )
+                else 0
+            ),
         )
         return self.command.size()
 

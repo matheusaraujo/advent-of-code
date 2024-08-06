@@ -149,24 +149,28 @@ class IntCode:
     def __less_than(self):
         self.__set(
             self.__command.parameter_3,
-            1
-            if (
-                self.__get(self.__command.parameter_1)
-                < self.__get(self.__command.parameter_2)
-            )
-            else 0,
+            (
+                1
+                if (
+                    self.__get(self.__command.parameter_1)
+                    < self.__get(self.__command.parameter_2)
+                )
+                else 0
+            ),
         )
         return self.__command.size
 
     def __equals(self):
         self.__set(
             self.__command.parameter_3,
-            1
-            if (
-                self.__get(self.__command.parameter_1)
-                == self.__get(self.__command.parameter_2)
-            )
-            else 0,
+            (
+                1
+                if (
+                    self.__get(self.__command.parameter_1)
+                    == self.__get(self.__command.parameter_2)
+                )
+                else 0
+            ),
         )
         return self.__command.size
 
@@ -199,8 +203,8 @@ class IntCode:
         elif parameter.mode == ParameterMode.POSITION:
             self.__memory[self.__memory[parameter.address]] = value
         elif parameter.mode == ParameterMode.RELATIVE:
-            self.__memory[
-                self.__relative_base + self.__memory[parameter.address]
-            ] = value
+            self.__memory[self.__relative_base + self.__memory[parameter.address]] = (
+                value
+            )
         else:
             raise ValueError("invalid parameter mode")
