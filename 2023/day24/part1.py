@@ -18,7 +18,7 @@
 # t_2 = det t_2 / det (A)
 
 
-# pylint: disable=too-many-arguments, too-many-locals
+# pylint: disable=too-many-arguments, too-many-locals, too-many-positional-arguments
 def will_intersect(x1, dx1, y1, dy1, x2, dx2, y2, dy2, lim_min, lim_max):
     det = dx1 * (-dy2) - (-dx2) * dy1
     det_t1 = (x2 - x1) * (-dy2) - (-dx2) * (y2 - y1)
