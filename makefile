@@ -57,12 +57,12 @@ else ifneq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory already exists"
 else
 	@mkdir -p $(year)/day$(day)
-	@cp 1988/day00/* $(year)/day$(day)
-	@sed -i .bak 's/1988/${year}/g' $(year)/day$(day)/test_part1.py
-	@sed -i .bak 's/00/${day}/g' $(year)/day$(day)/test_part1.py
-	@sed -i .bak 's/1988/${year}/g' $(year)/day$(day)/test_part2.py
-	@sed -i .bak 's/00/${day}/g' $(year)/day$(day)/test_part2.py
-	@rm $(year)/day$(day)/*.py.bak
+	@cp -r 1988/day00/* $(year)/day$(day)
+	@sed -i 's/1988/${year}/g' $(year)/day$(day)/test_part1.py
+	@sed -i 's/00/${day}/g' $(year)/day$(day)/test_part1.py
+	@sed -i 's/1988/${year}/g' $(year)/day$(day)/test_part2.py
+	@sed -i 's/00/${day}/g' $(year)/day$(day)/test_part2.py
+	@rm -f $(year)/day$(day)/*.py.bak
 	@python3 utils/get_puzzle_input.py $(year) $(day)
 	@echo "$(year)/day$(day) created! good coding!"
 endif

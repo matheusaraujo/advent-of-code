@@ -1,6 +1,8 @@
 {
   "editor.formatOnSave": true,
-  "python.analysis.extraPaths": ["./utils"],
+  "python.analysis.extraPaths": [
+    "./utils"
+  ],
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
@@ -20,5 +22,10 @@
     "sessionstart",
     "sympy",
     "tryfirst"
-  ]
+  ],
+  "python.testing.pytestArgs": [
+    "."
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }
