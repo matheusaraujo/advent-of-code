@@ -1,10 +1,9 @@
 def part2(puzzle_input):
-    input = puzzle_input[0]
-    diff, result = len(input) // 2, 0
+    digits = puzzle_input[0]
+    diff, result = len(digits) // 2, 0
 
-    for i in range(len(input)):
-        if input[i] == input[(i + diff) % len(input)]:
-            result += int(input[i])
+    for i in range(len(digits)):
+        if digits[i] == digits[(i + diff) % len(digits)]:
+            result += int(digits[i])
 
     return result
-

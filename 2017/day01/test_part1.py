@@ -19,4 +19,3 @@ class TestPart1:
 
     def test_with_actual_data(self):
         assert part1(actual_input) == 1182
-        
