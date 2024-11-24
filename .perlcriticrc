@@ -1,0 +1,13 @@
+severity = 1
+verbose = 8
+
+exclude = Modules::RequireVersionVar
+
+color-severity-highest = bold red underline
+color-severity-high = bold magenta
+color-severity-medium = blue
+color-severity-low =
+color-severity-lowest =
+
+[ValuesAndExpressions::ProhibitMagicNumbers]
+allowed_values = -1 0 1

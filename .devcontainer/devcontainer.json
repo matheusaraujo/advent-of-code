@@ -1,0 +1,14 @@
+{
+    "name": "Perl Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "zhiyuan-lin.simple-perl"
+            ]
+        }
+    }
+}
