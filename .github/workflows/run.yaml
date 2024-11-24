@@ -17,7 +17,7 @@ jobs:
           perl-version: "5.34"
 
       - name: Install critic
-        run: apt-get libperl-critic-perl
+        run: apt-get install libperl-critic-perl
 
       - name: Critic all
         run: make critic-all
