@@ -7,7 +7,7 @@ on:
 
 jobs:
   critic:
-    name: Critic all
+    name: Analysis all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,8 +19,8 @@ jobs:
       - name: Install critic
         run: sudo apt-get install libperl-critic-perl
 
-      - name: Critic all
-        run: make critic-all
+      - name: Analysis all
+        run: make analysis-all
 
   run:
     name: Run all
