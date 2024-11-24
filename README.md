@@ -1,5 +1,7 @@
 # advent-of-code 2024
 
+[![run](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml/badge.svg?branch=2024)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml)
+
 _Learning Perl ..._
 
 ```bash
