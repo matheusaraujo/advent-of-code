@@ -30,7 +30,7 @@ sub part2 {
         }
     }
 
-    return 'fgij';
+    return 'not found';
 }
 
 1;
