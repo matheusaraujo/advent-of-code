@@ -7,48 +7,22 @@ use feature 'say';
 use Carp;
 
 sub main {
-    my ( $year, $day, $file ) = @ARGV;
-    validate_inputs( $year, $day );
+    my ( $year, $day, $part, $input_file, $output_file ) = @ARGV;
 
-    my ( $input_file, $output_file ) = get_file_paths( $year, $day, $file );
     my @input = read_file($input_file);
     my $expected_output =
       $output_file ? read_file( $output_file, scalar => 1 ) : undef;
 
-    print_header( $year, $day, $file );
-
-    if ( !defined $file || $file =~ /^[1]/smx ) {
-        execute_part( 'part1', \&part1, \@input, $expected_output );
+    if ($part eq "part1") {
+        do "./$year/day$day/part1.pl" or croak 'could not load part1.pl';
     }
-
-    if ( !defined $file || $file =~ /^[2]/smx ) {
-        execute_part( 'part2', \&part2, \@input, $expected_output );
+    elsif ($part eq "part2") {
+        do "./$year/day$day/part2.pl" or croak 'could not load part2.pl';
     }
+    
+    execute_part( $part, $input_file, \&$part, \@input, $expected_output );
 
     return;
-}
-
-sub validate_inputs {
-    my ( $year, $day ) = @_;
-    if ( !$year ) {
-        croak 'year is required';
-    }
-    if ( !$day ) {
-        croak 'day is required';
-    }
-
-    do "./$year/day$day/part1.pl" or croak 'could not load part1.pl';
-    do "./$year/day$day/part2.pl" or croak 'could not load part2.pl';
-
-    return;
-}
-
-sub get_file_paths {
-    my ( $year, $day, $file ) = @_;
-    my $input_file =
-      defined $file ? "$year/day$day/$file.in" : "$year/day$day/input.txt";
-    my $output_file = defined $file ? "$year/day$day/$file.out" : undef;
-    return ( $input_file, $output_file );
 }
 
 sub read_file {
@@ -59,30 +33,36 @@ sub read_file {
     return $opts{scalar} ? $lines[0] : @lines;
 }
 
-sub print_header {
-    my ( $year, $day, $file ) = @_;
-    if ( defined $file ) {
-        say "Advent of Code - $year, Day $day - Test: $file";
-    }
-    else {
-        say "Advent of Code - $year, Day $day";
-    }
-    return;
-}
-
 sub execute_part {
-    my ( $part_name, $part_function, $input_ref, $expected_output ) = @_;
+    my ( $part_name, $input_file, $part_function, $input_ref, $expected_output ) = @_;
+    my $input_file_name = (split /\//, $input_file)[-1];
+    if ($input_file_name eq "input.txt") {
+        $input_file_name = "";
+    } else {
+        $input_file_name = "(" . (split /\./, $input_file_name)[-2] . ")";
+    }
+    
     my $start_time   = time;
     my $result       = $part_function->( @{$input_ref} );
     my $end_time     = time;
     my $elapsed_time = $end_time - $start_time;
 
-    say $part_name . ": $result - " . sprintf '%.4fms', $elapsed_time * 1000;
+    my $result_symbol = "";
 
-    if ( defined $expected_output && $result ne $expected_output ) {
-        say "Expected: $expected_output";
-        croak "$part_name: result does not match expected output";
+    if ( defined $expected_output) {
+        if( $result eq $expected_output ) {
+            $result_symbol = "\033[32m ✔ \033[0m";
+        }
+        else {
+            $result_symbol = "\033[91m ✘ \033[0m";
+        }
     }
+
+    say "\033[35m".$part_name . "$input_file_name: " . "\033[0m" . 
+        "\033[32m" . "$result" . "\033[3;90m (executed in " . (sprintf '%.4fms)', $elapsed_time * 1000) .
+        $result_symbol . "\033[0m";
+
+    
 }
 
 main();

@@ -63,7 +63,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exists"
 else
-	@lib/perl/run.sh $(year) $(day) $(input) $(test)
+	@lib/run.sh $(year) $(day) $(part) $(test)
 endif
 
 ###

@@ -4,6 +4,9 @@
 
 _Learning Perl ..._
 
+
+### running
+
 ```bash
 # help
 $ make help
@@ -23,3 +26,11 @@ $ make lint year=1988 day=00
 # analysis
 $ make analysis year=1988 day=00
 ```
+
+### test case
+- Default input: `input.txt`
+- Part 1 result: `output.part1.txt`
+- Part 2 result: `output.part2.txt`
+
+- Sample input: `input.part1.{id}.txt`
+- Sample output: `output.part1.{id}.txt`
