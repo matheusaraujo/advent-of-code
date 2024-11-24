@@ -64,7 +64,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exists"
 else
-	@./main.pl $(year) $(day)
+	@./main.pl $(year) $(day) $(input) $(test)
 endif
 
 ###
