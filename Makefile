@@ -2,6 +2,9 @@ GREEN:=\033[0;32m
 NC:=\033[0m
 RED:=\033[0;31m
 
+YEARS:=$(shell seq -w 2015 2035)
+DAYS:=$(shell seq -w 1 25)
+
 COMMIG_MSG_SCRIPT:=.githooks/commit-msg.sh
 GIT_HOOKS_DIR:=.git/hooks
 COMMIT_MSG_HOOK_NAME:=commit-msg
@@ -68,6 +71,22 @@ else
 endif
 
 ###
+### run-all
+###
+
+.PHONY: run-all
+run-all: # Execute all solutions
+	@for year in $(YEARS); do \
+        for day in $(DAYS); do \
+            if [ -d "$$year/day$$day" ]; then \
+                echo "----------------------------------------------------------------------"; \
+            	echo "${GREEN}Running $$year day $$day ...${NC}"; \
+                make run year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+            fi; \
+        done; \
+    done
+
+###
 ### tidy
 ###
 
@@ -99,4 +118,20 @@ else ifeq ("$(wildcard $(year)/day$(day))", "")
 else
 	@perlcritic $(year)/day$(day)/
 endif
+
+###
+### critic-all
+###
+
+.PHONY: critic-all
+critic-all: # Run perlcritic for all solutions
+	@for year in $(YEARS); do \
+        for day in $(DAYS); do \
+            if [ -d "$$year/day$$day" ]; then \
+                echo "----------------------------------------------------------------------"; \
+            	echo "${GREEN}Running $$year day $$day ...${NC}"; \
+                make critic year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+            fi; \
+        done; \
+    done
 

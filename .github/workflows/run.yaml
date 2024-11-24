@@ -1,0 +1,23 @@
+name: run
+
+on:
+  push:
+    branches:
+      - 2024
+
+jobs:
+  run:
+    name: Run all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: "5.34"
+
+      - name: Critic all
+        run: make critic-all
+      
+      - name: Run all
+        run: make run-all
