@@ -17,9 +17,9 @@ $ make run year=1988 day=00 test=1a
 # running
 $ make run year=1988 day=00
 
-# tidying
-$ make tidy year=1988 day=00
+# linting
+$ make lint year=1988 day=00
 
-# criticizing
-$ make critic year=1988 day=00
+# analysis
+$ make analysis year=1988 day=00
 ```

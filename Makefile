@@ -63,7 +63,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exists"
 else
-	@./main.pl $(year) $(day) $(input) $(test)
+	@lib/perl/run.sh $(year) $(day) $(input) $(test)
 endif
 
 ###
@@ -83,11 +83,11 @@ run-all: # Execute all solutions
     done
 
 ###
-### tidy
+### lint
 ###
 
-.PHONY: tidy
-tidy: # Run perltidy on the solution for given [year] and [day]
+.PHONY: lint
+lint: # Run perltidy on the solution for given [year] and [day]
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
@@ -95,16 +95,15 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exists"
 else
-	@perltidy -b $(year)/day$(day)/part1.pl
-	@perltidy -b $(year)/day$(day)/part2.pl
+	@lib/perl/lint.sh $(year) $(day)
 endif
 
 ###
-### critic
+### analysis
 ###
 
-.PHONY: critic
-critic: # Run perlcritic on the solution for given [year] and [day]
+.PHONY: analysis
+analysis: # Run perlcritic on the solution for given [year] and [day]
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
@@ -112,21 +111,21 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exists"
 else
-	@perlcritic $(year)/day$(day)/
+	@lib/perl/analysis.sh $(year) $(day)
 endif
 
 ###
-### critic-all
+### analysis-all
 ###
 
-.PHONY: critic-all
-critic-all: # Run perlcritic for all solutions
+.PHONY: analysis-all
+analysis-all: # Run perlcritic for all solutions
 	@for year in $(YEARS); do \
         for day in $(DAYS); do \
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
             	echo "${GREEN}Running $$year day $$day ...${NC}"; \
-                make critic year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+                make analysis year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
     done
