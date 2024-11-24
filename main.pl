@@ -4,74 +4,85 @@ use warnings;
 
 use Time::HiRes qw(time);
 use feature 'say';
-
-my $year = $ARGV[0];
-my $day  = $ARGV[1];
-my $file = $ARGV[2];
-
 use Carp;
 
-$year or croak 'year is required';
-$day  or croak 'day is required';
+sub main {
+    my ( $year, $day, $file ) = @ARGV;
+    validate_inputs( $year, $day );
 
-do "./$year/day$day/part1.pl" or croak 'could not load part1.pl';
-do "./$year/day$day/part2.pl" or croak 'could not load part2.pl';
+    my ( $input_file, $output_file ) = get_file_paths( $year, $day, $file );
+    my @input = read_file($input_file);
+    my $expected_output =
+      $output_file ? read_file( $output_file, scalar => 1 ) : undef;
 
-my $input_file;
-if (defined $file) {
-    $input_file = "$year/day$day/$file.in";
-} else {
-    $input_file = "$year/day$day/input.txt";
+    print_header( $year, $day, $file );
+
+    if ( !defined $file || $file =~ /^[1]/smx ) {
+        execute_part( 'part1', \&part1, \@input, $expected_output );
+    }
+
+    if ( !defined $file || $file =~ /^[2]/smx ) {
+        execute_part( 'part2', \&part2, \@input, $expected_output );
+    }
+
+    return;
 }
 
-my $output_file;
-if (defined $file) {
-    $output_file = "$year/day$day/$file.out";
+sub validate_inputs {
+    my ( $year, $day ) = @_;
+    if ( !$year ) {
+        croak 'year is required';
+    }
+    if ( !$day ) {
+        croak 'day is required';
+    }
+
+    do "./$year/day$day/part1.pl" or croak 'could not load part1.pl';
+    do "./$year/day$day/part2.pl" or croak 'could not load part2.pl';
+
+    return;
 }
 
-open my $fh_input, '<', $input_file
-  or croak 'could not open input file';
-my @input = <$fh_input>;
-close $fh_input or croak 'could not close input file';
-
-my $output;
-if (defined $output_file) {
-    open my $fh_output, '<', $output_file
-      or croak 'could not open output file';
-    $output = <$fh_output>;
-    close $fh_output or croak 'could not close output file';
+sub get_file_paths {
+    my ( $year, $day, $file ) = @_;
+    my $input_file =
+      defined $file ? "$year/day$day/$file.in" : "$year/day$day/input.txt";
+    my $output_file = defined $file ? "$year/day$day/$file.out" : undef;
+    return ( $input_file, $output_file );
 }
 
-if ( defined $file ) {
-    print "Advent of Code - $year, Day $day - Test: $file\n";
-} else {
-  print "Advent of Code - $year, Day $day\n";
+sub read_file {
+    my ( $file_path, %opts ) = @_;
+    open my $fh, '<', $file_path or croak "could not open file: $file_path";
+    my @lines = <$fh>;
+    close $fh or croak "could not close file: $file_path";
+    return $opts{scalar} ? $lines[0] : @lines;
 }
 
-if (!defined $file || $file=~ /^[1]/smx) {
-  my $start_time1   = time;
-  my $result1       = part1(@input);
-  my $end_time1     = time;
-  my $elapsed_time1 = $end_time1 - $start_time1;
-
-  print "part1.pl: $result1 - " . sprintf "%.4fms\n", $elapsed_time1 * 1000;
-
-  if ( defined $output && $result1 ne $output ) {
-      print "Expected: $output\n";
-      croak 'part1.pl: result does not match expected output';
-  }
+sub print_header {
+    my ( $year, $day, $file ) = @_;
+    if ( defined $file ) {
+        say "Advent of Code - $year, Day $day - Test: $file";
+    }
+    else {
+        say "Advent of Code - $year, Day $day";
+    }
+    return;
 }
 
-if (!defined $file || $file=~ /^[2]/smx) {
-  my $start_time2   = time;
-  my $result2       = part2(@input);
-  my $end_time2     = time;
-  my $elapsed_time2 = $end_time2 - $start_time2;
+sub execute_part {
+    my ( $part_name, $part_function, $input_ref, $expected_output ) = @_;
+    my $start_time   = time;
+    my $result       = $part_function->( @{$input_ref} );
+    my $end_time     = time;
+    my $elapsed_time = $end_time - $start_time;
 
-  print "part2.pl: $result2 - " . sprintf "%.4fms\n", $elapsed_time2 * 1000;
+    say $part_name . ": $result - " . sprintf '%.4fms', $elapsed_time * 1000;
 
-  if ( defined $output && $result2 ne $output ) {
-      print "Expected: $output\n";
-      croak 'part2.pl: result does not match expected output';
-  }
+    if ( defined $expected_output && $result ne $expected_output ) {
+        say "Expected: $expected_output";
+        croak "$part_name: result does not match expected output";
+    }
 }
+
+main();

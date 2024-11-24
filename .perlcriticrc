@@ -14,4 +14,4 @@ allowed_values = -1 0 1 2 1000
 
 [InputOutput::RequireCheckedSyscalls]
 functions = :builtins
-exclude_functions = print
+exclude_functions = print, say
