@@ -47,11 +47,7 @@ else ifndef day
 else ifneq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory already exists"
 else
-	@mkdir -p $(year)/day$(day)
-	@cp -r 1988/day00/part1.pl $(year)/day$(day)
-	@cp -r 1988/day00/part2.pl $(year)/day$(day)
-	@curl -b session=$(shell cat session.cookie) https://adventofcode.com/$(year)/day/$(shell echo $(day) | sed 's/^0*//')/input -o $(year)/day$(day)/input.txt
-	@echo "$(year)/day$(day) created! good coding!"
+	@lib/perl/create.sh $(year) $(day)
 endif
 
 ###
