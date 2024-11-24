@@ -1,6 +1,0 @@
-.pytest_cache
-session.cookie
-.coverage
-.DS_Store
-__pycache__
-*.pyc
