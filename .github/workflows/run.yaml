@@ -7,7 +7,7 @@ on:
 
 jobs:
   critic:
-    name: Analysis all
+    name: Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,11 +21,11 @@ jobs:
           sudo apt-get install libperl-critic-perl -y
           sudo apt-get install pylint isort black -y
 
-      - name: Analysis all
+      - name: Analysis
         run: make analysis-all
 
   run:
-    name: Run all
+    name: Run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +34,6 @@ jobs:
         with:
           perl-version: "5.34"
       
-      - name: Run all
+      - name: Run
         run: make run-all
   
