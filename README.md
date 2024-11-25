@@ -12,7 +12,8 @@ _Learning Perl ..._
 $ make help
 
 # starting
-$ make create year=1988 day=00
+# supported langs: perl, python
+$ make create year=1988 day=00 lang=perl
 
 # testing
 $ make run year=1988 day=00 test=1a
