@@ -17,8 +17,9 @@ jobs:
           perl-version: "5.34"
 
       - name: Install dependencies
-        run: sudo apt-get install libperl-critic-perl -y
-        run: sudo apt-get install pylint isort black -y
+        run: |
+          sudo apt-get install libperl-critic-perl -y
+          sudo apt-get install pylint isort black -y
 
       - name: Analysis all
         run: make analysis-all
