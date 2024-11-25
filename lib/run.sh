@@ -17,6 +17,10 @@ run() {
                 exit 1
             fi  
             lib/$lang/run.sh $year $day $part "$input_file" "$output_file"
+
+            if [ $? -ne 0 ]; then
+                exit 1
+            fi
         done
     fi
 
@@ -24,6 +28,10 @@ run() {
         lib/$lang/run.sh $year $day $part "$year/day$day/data/input.txt"  "$year/day$day/data/output.$part.txt"
     else  
         lib/$lang/run.sh $year $day $part "$year/day$day/data/input.txt"
+    fi
+
+    if [ $? -ne 0 ]; then
+        exit 1
     fi
 }
 

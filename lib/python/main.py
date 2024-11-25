@@ -33,9 +33,11 @@ def execute_part(part_name: str, input_file: str, part_function, input_data: Lis
     result = part_function(input_data)
     elapsed_time = (time.perf_counter() - start_time) * 1000  # ms
 
-    result_symbol = get_result_symbol(result, expected_output)
+    (result_check, result_symbol) = get_result_symbol(result, expected_output)
     print(format_result_message(part_name, input_label, result, elapsed_time, result_symbol))
 
+    if not result_check:
+        exit(1)
 
 def get_input_file_label(input_file: str) -> str:
     file_name = Path(input_file).name
@@ -43,8 +45,9 @@ def get_input_file_label(input_file: str) -> str:
 
 def get_result_symbol(result: str, expected_output: Optional[str]) -> str:
     if expected_output is None:
-        return ""
-    return "\033[32m✔\033[0m" if result == expected_output else "\033[91m✘\033[0m"
+        return (True , "")
+    
+    return (str(result) == str(expected_output), "\033[32m✔\033[0m" if str(result) == str(expected_output) else f"\033[91m ✘ {expected_output} \033[0m")
 
 def format_result_message(part_name: str, input_label: str, result: str, elapsed_time: float, result_symbol: str) -> str:
     return (

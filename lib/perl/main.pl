@@ -47,9 +47,13 @@ sub execute_part {
     my $end_time   = time;
 
     my $elapsed_time = sprintf '%.4fms', ($end_time - $start_time) * 1000;
-    my $result_symbol = get_result_symbol( $result, $expected_output );
+    my ($result_check, $result_symbol) = get_result_symbol( $result, $expected_output );
 
     say format_result_message( $part_name, $input_file_label, $result, $elapsed_time, $result_symbol );
+
+    if (!$result_check) {
+        exit 1;
+    }
 }
 
 sub get_input_file_label {
@@ -60,8 +64,10 @@ sub get_input_file_label {
 
 sub get_result_symbol {
     my ( $result, $expected_output ) = @_;
-    return '' unless defined $expected_output;
-    return $result eq $expected_output ? "\033[32m✔\033[0m" : "\033[91m✘\033[0m";
+    return (1, '') unless defined $expected_output;
+    my $is_equal = $result eq $expected_output;
+    my $symbol = $is_equal ? "\033[32m✔\033[0m" : "\033[91m✘ $expected_output\033[0m";
+    return ($is_equal, $symbol);
 }
 
 sub format_result_message {
