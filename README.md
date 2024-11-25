@@ -12,19 +12,17 @@ _Learning Perl ..._
 $ make help
 
 # starting
-$ make create year=1988 day=00
-
-# testing
-$ make run year=1988 day=00 test=1a
+# supported langs: perl, python
+$ make create year=2000 day=00 lang=perl
 
 # running
-$ make run year=1988 day=00
+$ make run year=2000 day=00
 
 # linting
-$ make lint year=1988 day=00
+$ make lint year=2000 day=00
 
 # analysis
-$ make analysis year=1988 day=00
+$ make analysis year=2000 day=00
 ```
 
 ### test case

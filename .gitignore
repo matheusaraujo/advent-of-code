@@ -1,3 +1,9 @@
+# perl
 *.pl.bak
 *.pl.tdy
+
+# python
+__pycache__/
+
+# session
 session.cookie
