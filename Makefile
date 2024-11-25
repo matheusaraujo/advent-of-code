@@ -39,7 +39,7 @@ configure-hooks: # Configure git hooks
 ###
 
 .PHONY: create
-create: # Create a new solution for given [year] and [day]
+create: # Create a new solution for given [year] and [day] using [lang]
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
@@ -89,7 +89,7 @@ run-all: # Execute all solutions
 ###
 
 .PHONY: lint
-lint: # Run perltidy on the solution for given [year] and [day]
+lint: # Run linters for given [year] and [day]
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
@@ -97,7 +97,7 @@ else ifndef day
 else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exists"
 else
-	@lib/perl/lint.sh $(year) $(day)
+	@lib/lint.sh $(year) $(day)
 endif
 
 ###
@@ -105,7 +105,7 @@ endif
 ###
 
 .PHONY: analysis
-analysis: # Run perlcritic on the solution for given [year] and [day]
+analysis: # Run static code analysis on the solution for given [year] and [day]
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
