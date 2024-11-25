@@ -48,8 +48,6 @@ else ifndef lang
 	@echo "[lang] must be defined"
 else ifeq (,$(filter $(lang),perl python))
 	@echo "[lang] must be either 'perl' or 'python'"
-else ifneq ("$(wildcard $(year)/day$(day))", "")
-	@echo "directory already exists"
 else
 	@lib/create.sh $(year) $(day) $(lang)
 endif

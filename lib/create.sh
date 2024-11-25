@@ -14,4 +14,4 @@ fi
 
 curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//')/input -o $year/day$day/data/input.txt
 
-echo "$year/day$day created! good coding!"
+echo "$year/day$day created using $lang! good coding!"
