@@ -15,9 +15,6 @@ $ make help
 # supported langs: perl, python
 $ make create year=1988 day=00 lang=perl
 
-# testing
-$ make run year=1988 day=00 test=1a
-
 # running
 $ make run year=1988 day=00
 

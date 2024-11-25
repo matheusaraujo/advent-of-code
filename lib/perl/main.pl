@@ -9,8 +9,6 @@ use Carp;
 sub main {
     my ( $year, $day, $part_name, $input_file, $output_file ) = @ARGV;
 
-    validate_args($year, $day, $part_name, $input_file);
-
     my @input = read_file($input_file);
     my $expected_output = $output_file ? read_file($output_file, scalar => 1) : undef;
 
@@ -19,12 +17,6 @@ sub main {
 
     my $part_function = \&{$part_name};
     execute_part( $part_name, $input_file, $part_function, \@input, $expected_output );
-}
-
-sub validate_args {
-    my ( $year, $day, $part_name, $input_file ) = @_;
-    croak "Usage: $0 <year> <day> <part1|part2> <input_file> [output_file]" 
-        unless $year && $day && $part_name && $input_file;
 }
 
 sub get_script_path {
