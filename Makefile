@@ -132,3 +132,18 @@ analysis-all: # Run perlcritic for all solutions
         done; \
     done
 
+###
+### readme
+###
+
+.PHONY: readme
+readme: # Generate README.md for given [year] and [day]
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exists"
+else
+	@lib/readme.sh $(year) $(day)
+endif
