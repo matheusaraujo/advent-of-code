@@ -3,5 +3,10 @@
 year=$1
 day=$2
 
-perltidy -b $year/day$day/part1.pl && echo -e "perltidy -b $year/day$day/part1.pl \033[32m✔\033[0m"
-perltidy -b $year/day$day/part2.pl && echo -e "perltidy -b $year/day$day/part2.pl \033[32m✔\033[0m"
+files=("part1.pl" "part2.pl")
+
+for file in "${files[@]}"; do
+    if [ -f "$year/day$day/$file" ]; then
+        perltidy -b $year/day$day/$file && echo -e "perltidy $year/day$day/$file \033[32m✔\033[0m"
+    fi
+done
