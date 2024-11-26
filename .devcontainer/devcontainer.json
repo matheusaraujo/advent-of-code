@@ -7,8 +7,20 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "zhiyuan-lin.simple-perl"
-            ]
+                "zhiyuan-lin.simple-perl",
+                "ms-python.python",
+                "ms-python.black-formatter"
+            ],
+            "settings": {
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.formatOnSave": true
+                },
+                "[perl]": {
+                    "editor.defaultFormatter": "zhiyuan-lin.simple-perl",
+                    "editor.formatOnSave": true
+                }
+            }
         }
     }
 }
