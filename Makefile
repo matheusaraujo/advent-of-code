@@ -79,7 +79,7 @@ run-all: # Execute all solutions
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
             	echo "${GREEN}Running $$year day $$day ...${NC}"; \
-                make run year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+                make run --no-print-directory year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
     done
@@ -127,7 +127,7 @@ analysis-all: # Run perlcritic for all solutions
             if [ -d "$$year/day$$day" ]; then \
                 echo "----------------------------------------------------------------------"; \
             	echo "${GREEN}Running $$year day $$day ...${NC}"; \
-                make analysis year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
+                make analysis --no-print-directory year=$$year day=$$day || { echo "${RED}Test failed for $$year day $$day${NC}"; exit 1; }; \
             fi; \
         done; \
     done
@@ -146,4 +146,19 @@ else ifeq ("$(wildcard $(year)/day$(day))", "")
 	@echo "directory does not exists"
 else
 	@lib/readme.sh $(year) $(day)
+endif
+
+.PHONY: all-tasks
+all-tasks: # Run all tasks for given [year] and [day]
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifeq ("$(wildcard $(year)/day$(day))", "")
+	@echo "directory does not exists"
+else
+	@make --no-print-directory run year=$(year) day=$(day)
+	@make --no-print-directory lint year=$(year) day=$(day)
+	@make --no-print-directory analysis year=$(year) day=$(day)
+	@make --no-print-directory readme year=$(year) day=$(day)
 endif

@@ -28,8 +28,8 @@ if [ ${#answers[@]} -ne 2 ]; then
   echo "Error: Unable to extract both answers"
   exit 1
 fi
-echo "${answers[0]}" > $year/day$day/data/output.part1.txt
-echo "${answers[1]}" > $year/day$day/data/output.part2.txt
+printf "%s" "${answers[0]}" > $year/day$day/data/output.part1.txt
+printf "%s" "${answers[1]}" > $year/day$day/data/output.part2.txt
 
 # clean up temporary files
 rm $year/day$day/_readme*.html
