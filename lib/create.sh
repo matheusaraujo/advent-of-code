@@ -8,4 +8,4 @@ mkdir -p $year/day$day/data
 lib/$lang/create.sh $year $day
 curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//')/input -o $year/day$day/data/input.txt
 
-echo -e "$year/day$day created using $lang! good coding! \033[32m✔\033[0m"
+echo -e "$year/day$day created using $lang! \033[32m✔\033[0m \ngood coding! 💻"

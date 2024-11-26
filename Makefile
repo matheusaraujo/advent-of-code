@@ -148,8 +148,12 @@ else
 	@lib/readme.sh $(year) $(day)
 endif
 
-.PHONY: all-tasks
-all-tasks: # Run all tasks for given [year] and [day]
+.PHONY: progress
+progress:
+	@lib/progress.sh
+
+.PHONY: commit
+commit: # Run all the validations and repare commit for given [year] and [day]
 ifndef year
 	@echo "[year] must be defined"
 else ifndef day
@@ -161,8 +165,6 @@ else
 	@make --no-print-directory lint year=$(year) day=$(day)
 	@make --no-print-directory analysis year=$(year) day=$(day)
 	@make --no-print-directory readme year=$(year) day=$(day)
+	@make --no-print-directory progress
+	@lib/commit.sh $(year) $(day)
 endif
-
-.PHONY: progress
-progress:
-	@lib/progress.sh
