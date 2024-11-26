@@ -162,3 +162,7 @@ else
 	@make --no-print-directory analysis year=$(year) day=$(day)
 	@make --no-print-directory readme year=$(year) day=$(day)
 endif
+
+.PHONY: progress
+progress:
+	@lib/progress.sh
