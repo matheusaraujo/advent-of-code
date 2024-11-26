@@ -3,4 +3,19 @@ disable=
     missing-module-docstring,
     missing-class-docstring,
     missing-function-docstring
-good-names=a,b,c,i,j,x,x1,x2,y,y1,y2,z,m,m1,m2,n,v,l,w,h,r,r1,r2,g,s
+good-names=
+    a,
+    b,
+    c,
+    f,f1,f2,
+    g,h,
+    i,j,k,l,
+    m,m1,m2,
+    n,
+    s,
+    r,r1,r2,
+    v,
+    w,w1,w2,
+    x,x1,x2,
+    y,y1,y2,
+    z,
