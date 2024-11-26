@@ -37,7 +37,7 @@ for year in {2015..2024}; do
 
     emoji=${emojis[$RANDOM % ${#emojis[@]}]}
     progress=$(generate_progress_bar $solved_days)
-    new_content+=$"\n| $emoji $year | $progress | $solved_days of 25 ($((solved_days * 100 / 25))%) |"
+    new_content+=$"\n| $emoji $year | $progress | $solved_days ($((solved_days * 100 / 25))%) |"
 done
 
 new_content+=$"\n<!-- progress-end -->"
