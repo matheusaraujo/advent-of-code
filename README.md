@@ -1,9 +1,8 @@
-# advent-of-code 2024
+# advent-of-code
 
 [![run](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml/badge.svg?branch=2024)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml)
 
-_Learning Perl ..._
-
+![AOC](docs/logo.png)
 
 ### running
 
@@ -25,10 +24,17 @@ $ make lint year=2000 day=00
 $ make analysis year=2000 day=00
 ```
 
-### test case
-- Default input: `input.txt`
-- Part 1 result: `output.part1.txt`
-- Part 2 result: `output.part2.txt`
+### solutions
 
-- Sample input: `input.part1.{id}.txt`
-- Sample output: `output.part1.{id}.txt`
+|      | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  | 18  | 19  | 20  | 21  | 22  | 23  | 24  | 25  |
+| ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2015 | 🎅  | 🎅  | 🎅  | 🎅  | 🎅  | 🎅  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2016 | 🤶  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2017 | 🧑‍🎄  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2018 | 🦌  | 🦌  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2019 | 🎄  | 🎄  | 🎄  | 🎄  | 🎄  | 🎄  | 🎄  | 🎄  | 🎄  |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2020 |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2021 |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2022 |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| 2023 | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  | ✨  |
+| 2024 |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |

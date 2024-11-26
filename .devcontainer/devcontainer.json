@@ -1,5 +1,5 @@
 {
-    "name": "Perl Dev Container",
+    "name": "Advent of Code",
     "build": {
         "dockerfile": "Dockerfile",
         "context": "."
