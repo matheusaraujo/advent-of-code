@@ -3,3 +3,4 @@ disable=
     missing-module-docstring,
     missing-class-docstring,
     missing-function-docstring
+good-names=i,j,x,x1,x2,y,y1,y2,z,m,m1,m2,v,l,w,h
