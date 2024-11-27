@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y perl libperl-critic-perl cpanminus
 
 # python dependencies
-RUN apt-get install pylint isort black -y
+RUN apt-get install pip pylint isort black -y
 
 # general dependencies
 RUN apt-get install pandoc -y
