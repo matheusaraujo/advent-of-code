@@ -40,6 +40,13 @@ for lang in python perl; do
     if [ $? -eq 0 ]; then
         echo "$lang: AoC $year - Day $day"
         run "$lang" "part1"
-        run "$lang" "part2"
+        
+        # todo: @matheusaraujo - refactor this
+        if [ "$lang" == "python" ] && [ -f "$year/day$day/part2.py" ]; then
+            run "$lang" "part2"
+        elif [ "$lang" == "perl" ] && [ -f "$year/day$day/part2.pl" ]; then
+            run "$lang" "part2"
+        fi
+
     fi
 done

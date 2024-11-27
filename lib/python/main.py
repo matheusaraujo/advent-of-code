@@ -20,23 +20,13 @@ def main():
     input_data = read_file(input_file)
     expected_output = read_file(output_file, single_line=True) if output_file else None
 
-    if part_name == "part1":
-        execute_part(
-            part_name,
-            input_file,
-            part1,
-            input_data,
-            expected_output,
-        )
-    # todo: @matheusaraujo - this validation should not be here, move it to lib/run.sh
-    elif part_name == "part2" and Path(f"{solution_path}/part2.py").exists():
-        execute_part(
-            part_name,
-            input_file,
-            part2,
-            input_data,
-            expected_output,
-        )
+    execute_part(
+        part_name,
+        input_file,
+        part1 if part_name == "part1" else part2,
+        input_data,
+        expected_output,
+    )
 
 
 def read_file(
