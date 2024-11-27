@@ -17,6 +17,14 @@ if [ -z "$puzzle_title" ]; then
     exit 1
 fi
 
+# Check if exactly README.md and files under $year/day$day are changed
+status=$(git status --porcelain)
+
+if [[ $status != " M README.md" ]] || [[ $(echo "$status" | grep -c " M $year/day$day/") -eq 0 ]]; then
+  echo "Error: Only README.md and files under $year/day$day should be changed."
+  exit 1
+fi
+
 git add "README.md"
 git add "$year/day$day"
 git commit -m "feat($year): $puzzle_title"
