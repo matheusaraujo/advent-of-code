@@ -4,7 +4,7 @@ year=$1
 day=$2
 
 readme_path="$year/day$day/README.md"
-puzzle_folder="$year/day$day"
+puzzle_folder="$year/day$day/"
 
 if [ ! -f "$readme_path" ]; then
     echo "Error: README.md file does not exist at $readme_path"
