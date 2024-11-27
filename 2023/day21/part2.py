@@ -26,4 +26,4 @@ def part2(_map, steps=26501365):
     b = -3 * y0 / 2 + 2 * y1 - y2 / 2
     c = y0
 
-    return a * n_s ** 2 + b * n_s + c
+    return int(a * n_s**2 + b * n_s + c)

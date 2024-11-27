@@ -3,6 +3,10 @@
 year=$1
 day=$2
 
+if [ -f "$year/day$day/requirements.txt" ]; then
+    pip install -q -r "$year/day$day/requirements.txt"
+fi
+
 files=("part1.py" "part2.py" "helpers.py" "utils.py")
 
 for file in "${files[@]}"; do
