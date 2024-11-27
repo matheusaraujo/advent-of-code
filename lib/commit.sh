@@ -3,6 +3,7 @@
 year=$1
 day=$2
 
+root_readme_path="README.md"
 readme_path="$year/day$day/README.md"
 puzzle_folder="$year/day$day/"
 
@@ -19,9 +20,9 @@ if [ -z "$puzzle_title" ]; then
 fi
 
 changed_files=($(git status --porcelain | awk '{print $2}'))
-if [[ ${#changed_files[@]} -ne 2 || "${changed_files[0]}" != "$readme_path" || "${changed_files[1]}" != "$puzzle_folder" ]]; then
+if [[ ${#changed_files[@]} -ne 2 || "${changed_files[0]}" != "$root_readme_path" || "${changed_files[1]}" != "$puzzle_folder" ]]; then
     echo "Error: Unexpected changes detected. Expected only:"
-    echo "1. $readme_path"
+    echo "1. $root_readme_path"
     echo "2. $puzzle_folder"
     exit 1
 fi
