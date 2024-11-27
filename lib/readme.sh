@@ -24,12 +24,14 @@ sed -i '${/^:::$/d}' $year/day$day/README.md
 
 # extract the answers and generate the output files
 answers=($(grep -oP '<p>Your puzzle answer was <code>\K[^<]+' $year/day$day/_readme1.html))
-if [ ${#answers[@]} -ne 2 ]; then
-  echo "Error: Unable to extract both answers"
+if [ ${#answers[@]} -eq 0 ]; then
+  echo "Error: Unable to extract any answers"
   exit 1
 fi
 printf "%s" "${answers[0]}" > $year/day$day/data/output.part1.txt
-printf "%s" "${answers[1]}" > $year/day$day/data/output.part2.txt
+if [ ${#answers[@]} -eq 2 ]; then
+  printf "%s" "${answers[1]}" > $year/day$day/data/output.part2.txt
+fi
 
 # clean up temporary files
 rm $year/day$day/_readme*.html
