@@ -19,4 +19,4 @@ def part2(puzzle_input):
         distance, direction = int(matches.group(1), 16), matches.group(2)
         x, y = delta_dir[direction](x, y, int(distance))
 
-    return solve(coords)
+    return int(solve(coords))

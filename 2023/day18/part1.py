@@ -16,4 +16,4 @@ def part1(puzzle_input):
         [direction, distance, _] = line.split(" ")
         x, y = delta_dir[direction](x, y, int(distance))
 
-    return solve(coords)
+    return int(solve(coords))
