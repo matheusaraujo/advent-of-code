@@ -21,7 +21,7 @@ status=$(git status --porcelain)
 
 echo $status
 
-if [[ $status != " M README.md" ]] || [[ $(echo "$status" | grep -c " M $year/day$day/") -eq 0 ]]; then
+if [[ $status != "M README.md ?? $year/day$day/" ]]; then
   echo "Error: Only README.md and files under $year/day$day should be changed."
   exit 1
 fi
