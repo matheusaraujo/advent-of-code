@@ -27,7 +27,7 @@ if [[ ${#changed_files[@]} -ne 2 || "${changed_files[0]}" != "$root_readme_path"
     exit 1
 fi
 
-git add "$readme_path"
+git add "$root_readme_path"
 git add "$puzzle_folder"
 git commit -m "feat($year): $puzzle_title"
 
