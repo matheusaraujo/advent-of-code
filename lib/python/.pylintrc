@@ -4,7 +4,8 @@ disable=
     missing-class-docstring,
     missing-function-docstring
 good-names=
-    a,b,
+    a,a1,a2,
+    b,bb,
     c,c0,c1,c2,
     d,di,
     e,
