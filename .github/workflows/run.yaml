@@ -22,7 +22,7 @@ jobs:
           sudo apt-get install pylint isort black -y
 
       - name: Analysis
-        run: make analysis-all
+        run: lib/main.sh analysis-all
 
   run:
     name: Run
@@ -35,5 +35,5 @@ jobs:
           perl-version: "5.34"
       
       - name: Run
-        run: make run-all
+        run: lib/main.sh run-all
   

@@ -8,20 +8,17 @@
 
 ``` {.bash}
 # help
-$ make help
+$ aoc help
 
 # starting
 # supported langs: perl, python
-$ make create year=2000 day=00 lang=perl
+$ aoc create year=2000 day=00 lang=perl
 
 # running
-$ make run year=2000 day=00
+$ aoc run year=2000 day=00
 
-# linting
-$ make lint year=2000 day=00
-
-# analysis
-$ make analysis year=2000 day=00
+# commiting
+$ aoc commit year=2000 day=00
 ```
 
 ## progress
