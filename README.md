@@ -1,6 +1,6 @@
 # advent-of-code
 
-[![run](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml/badge.svg?branch=2024)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml)
+[![run](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml/badge.svg?branch=main)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml)
 
 ![AOC](docs/logo.png)
 
