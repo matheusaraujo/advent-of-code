@@ -168,3 +168,15 @@ else
 	@make --no-print-directory progress
 	@lib/commit.sh $(year) $(day)
 endif
+
+.PHONY: generate-input
+generate-input: # Generate input for given [year], [day] and [part]
+ifndef year
+	@echo "[year] must be defined"
+else ifndef day
+	@echo "[day] must be defined"
+else ifndef part
+	@echo "[part] must be defined as part1 or part2"
+else
+	@lib/generate-input.sh $(year) $(day) $(part)
+endif
