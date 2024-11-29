@@ -21,32 +21,32 @@ help() {
 
 parse_args() {
     while [[ $# -gt 0 ]]; do
-        case $1 in
-            year)
-                year="$2"
-                shift 2
-                ;;
-            day)
-                day="$2"
-                shift 2
-                ;;
-            lang)
-                lang="$2"
-                shift 2
-                ;;
-            part)
-                part="$2"
-                shift 2
-                ;;
-            test)
-                test="$2"
-                shift 2
-                ;;
-            *)
-                echo "Unknown option: $1"
-                exit 1
-                ;;
-        esac
+        # If the argument is a number between 2015 and 2024, it's the $year
+        if [[ $1 =~ ^[2][0][1-9][5-9]$ || $1 =~ ^[2][0][2][0-4]$ ]]; then
+            year="$1"
+        
+        # If the argument is a number between 1 and 25 (1-9 as two digits, 10-25 as is), it's the $day
+        elif [[ $1 =~ ^[0-9]{1,2}$ && $1 -ge 1 && $1 -le 25 ]]; then
+            # If day is between 1 and 9, add leading zero
+            if [[ $1 -ge 1 && $1 -le 9 ]]; then
+                day=$(printf "%02d" $1)
+            else
+                day="$1"
+            fi
+        
+        # Check if the argument is part1 or part2
+        elif [[ $1 == "part1" || $1 == "part2" ]]; then
+            part="$1"
+        
+        # Check if the argument is python or perl
+        elif [[ $1 == "python" || $1 == "perl" ]]; then
+            lang="$1"
+        
+        else
+            echo "Unknown option: $1"
+            exit 1
+        fi
+        shift
     done
 }
 

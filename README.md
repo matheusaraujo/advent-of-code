@@ -12,13 +12,13 @@ $ aoc help
 
 # starting
 # supported langs: perl, python
-$ aoc create year 2000 day 00 lang perl
+$ aoc create 2001 1 perl
 
 # running
-$ aoc run year 2000 day 00
+$ aoc run 2001 1
 
 # commiting
-$ aoc commit year 2000 day 00
+$ aoc commit 2001 1
 ```
 
 ## progress
