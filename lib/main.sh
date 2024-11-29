@@ -22,23 +22,23 @@ help() {
 parse_args() {
     while [[ $# -gt 0 ]]; do
         case $1 in
-            --year)
+            year)
                 year="$2"
                 shift 2
                 ;;
-            --day)
+            day)
                 day="$2"
                 shift 2
                 ;;
-            --lang)
+            lang)
                 lang="$2"
                 shift 2
                 ;;
-            --part)
+            part)
                 part="$2"
                 shift 2
                 ;;
-            --test)
+            test)
                 test="$2"
                 shift 2
                 ;;
