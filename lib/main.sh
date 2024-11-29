@@ -98,7 +98,7 @@ run_all() {
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
                 echo -e "${GREEN}Running $year day $day ...${NC}"
-                run year="$year" day="$day" || {
+                run "$year" "$day" || {
                     echo -e "${RED}Test failed for $year day $day${NC}"
                     exit 1
                 }
@@ -140,7 +140,7 @@ analysis_all() {
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
                 echo -e "${GREEN}Running analysis for $year day $day ...${NC}"
-                analysis year="$year" day="$day" || {
+                analysis "$year" "$day" || {
                     echo -e "${RED}Analysis failed for $year day $day${NC}"
                     exit 1
                 }
