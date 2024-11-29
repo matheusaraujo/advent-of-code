@@ -121,7 +121,7 @@ create() {
 
 # COMMAND: run: Execute the solution for given year and day
 run() {
-    if ! validate_year_day_lang; then
+    if ! validate_year_day; then
         return 1
     elif [ ! -d "$year/day$day" ]; then
         echo -e "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
