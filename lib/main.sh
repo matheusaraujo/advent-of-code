@@ -11,13 +11,42 @@ COMMIG_MSG_SCRIPT=".githooks/commit-msg.sh"
 GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
 
-# Helper function to display help
 help() {
-    echo -e "${GREEN}help${NC}: Show help for each command."
+    # General help header
+    echo -e "${GREEN}Usage:${NC} aoc <command> [options]"
+
+    # Description of the tool
+    echo -e "\n${GREEN}Commands:${NC}"
+    echo -e "  help                              Show help for each command."
+    echo -e "  create <year> <day> <language>    Create a new challenge for the given year, day, and language."
+    echo -e "  run <year> <day>                  Run the solution for the given year and day."
+    echo -e "  commit <year> <day>               Commit the solution for the given year and day."
+
+    # Example usage section
+    echo -e "\n${GREEN}Examples:${NC}"
+    echo -e "  aoc help"
+    echo -e "    Show this help message."
+
+    echo -e "  aoc create 2001 1 perl"
+    echo -e "    Create a new challenge for 2001, Day 1, using Perl."
+
+    echo -e "  aoc run 2001 1"
+    echo -e "    Run the solution for 2001, Day 1."
+
+    echo -e "  aoc commit 2001 1"
+    echo -e "    Commit the solution for 2001, Day 1."
+
+    # Adding the starting section for clarity
+    echo -e "\n${GREEN}Starting:${NC}"
+    echo -e "  Supported languages: perl, python"
+
+    # Command-specific help from script
+    echo -e "\n${GREEN}Available Commands:${NC}"
     grep -E '^# COMMAND: ' "$0" | sed 's/# COMMAND: //' | while read -r cmd desc; do
-        printf "${GREEN}%s${NC}: %s\n" "$cmd" "$desc"
+        printf "  ${GREEN}%s${NC} %s\n" "$cmd" "$desc"
     done
 }
+
 
 parse_args() {
     while [[ $# -gt 0 ]]; do
