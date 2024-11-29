@@ -12,7 +12,7 @@ input=$(cat)
 mkdir -p $year/day$day/data
 echo "$input" > $year/day$day/data/input.$part.$letter.txt
 
-echo "output:"
+echo -e "\noutput:"
 read output
 
 echo "$output" > $year/day$day/data/output.$part.$letter.txt
