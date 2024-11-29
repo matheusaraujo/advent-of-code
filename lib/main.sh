@@ -1,53 +1,72 @@
 #!/bin/bash
 
+# Color definitions
 GREEN="\033[0;32m"
 NC="\033[0m"
 RED="\033[0;31m"
 
+# Constants
 YEARS=$(seq -w 2015 2035)
 DAYS=$(seq -w 1 25)
-
 COMMIG_MSG_SCRIPT=".githooks/commit-msg.sh"
 GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
 
-help() {
-    # General help header
-    echo -e "${GREEN}Usage:${NC} aoc <command> [options]"
+# Utility function to validate year, day, and language
+validate_year_day() {
+    if [ -z "$year" ]; then
+        echo -e "${RED}[ERROR] Year must be defined.${NC}"
+        return 1
+    elif [ -z "$day" ]; then
+        echo -e "${RED}[ERROR] Day must be defined.${NC}"
+        return 1
+    fi
+    return 0
+}
 
-    # Description of the tool
+validate_year_day_lang() {
+    if [ -z "$year" ]; then
+        echo -e "${RED}[ERROR] Year must be defined.${NC}"
+        return 1
+    elif [ -z "$day" ]; then
+        echo -e "${RED}[ERROR] Day must be defined.${NC}"
+        return 1
+    elif [ -z "$lang" ]; then
+        echo -e "${RED}[ERROR] Language must be defined.${NC}"
+        return 1
+    elif [[ "$lang" != "perl" && "$lang" != "python" ]]; then
+        echo -e "${RED}[ERROR] Language must be either 'perl' or 'python'.${NC}"
+        return 1
+    fi
+    return 0
+}
+
+# Help function: Display usage and commands
+help() {
+    echo -e "${GREEN}Usage:${NC} aoc <command> [options]"
     echo -e "\n${GREEN}Commands:${NC}"
     echo -e "  help                              Show help for each command."
     echo -e "  create <year> <day> <language>    Create a new challenge for the given year, day, and language."
     echo -e "  run <year> <day>                  Run the solution for the given year and day."
     echo -e "  commit <year> <day>               Commit the solution for the given year and day."
-
-    # Example usage section
     echo -e "\n${GREEN}Examples:${NC}"
     echo -e "  aoc help"
     echo -e "    Show this help message."
-
     echo -e "  aoc create 2001 1 perl"
     echo -e "    Create a new challenge for 2001, Day 1, using Perl."
-
     echo -e "  aoc run 2001 1"
     echo -e "    Run the solution for 2001, Day 1."
-
     echo -e "  aoc commit 2001 1"
     echo -e "    Commit the solution for 2001, Day 1."
-
-    # Adding the starting section for clarity
     echo -e "\n${GREEN}Starting:${NC}"
     echo -e "  Supported languages: perl, python"
-
-    # Command-specific help from script
     echo -e "\n${GREEN}Available Commands:${NC}"
     grep -E '^# COMMAND: ' "$0" | sed 's/# COMMAND: //' | while read -r cmd desc; do
         printf "  ${GREEN}%s${NC} %s\n" "$cmd" "$desc"
     done
 }
 
-
+# Parse arguments and set year, day, lang, part
 parse_args() {
     while [[ $# -gt 0 ]]; do
         # If the argument is a number between 2015 and 2024, it's the $year
@@ -83,7 +102,7 @@ parse_args() {
 configure_hooks() {
     echo "Installing Git hooks..."
     if [ ! -f "$COMMIG_MSG_SCRIPT" ]; then
-        echo "Error: Pre-commit script not found."
+        echo -e "${RED}[ERROR] Commit-msg script not found.${NC}"
         exit 1
     fi
     cp "$COMMIG_MSG_SCRIPT" "$GIT_HOOKS_DIR/$COMMIT_MSG_HOOK_NAME"
@@ -92,43 +111,34 @@ configure_hooks() {
     [ ! -f ".session.cookie" ] && touch "session.cookie"
 }
 
-# COMMAND: create: Create a new solution for given [year], [day], and [lang]
+# COMMAND: create: Create a new solution for the given year, day, and lang
 create() {
-    if [ -z "$year" ]; then
-        echo "[year] must be defined"
-    elif [ -z "$day" ]; then
-        echo "[day] must be defined"
-    elif [ -z "$lang" ]; then
-        echo "[lang] must be defined"
-    elif [[ "$lang" != "perl" && "$lang" != "python" ]]; then
-        echo "[lang] must be either 'perl' or 'python'"
-    else
-        lib/create.sh "$year" "$day" "$lang"
+    if ! validate_year_day_lang; then
+        return 1
     fi
+    lib/create.sh "$year" "$day" "$lang"
 }
 
-# COMMAND: run: Execute the solution for given [year] and [day]
+# COMMAND: run: Execute the solution for given year and day
 run() {
-    if [ -z "$year" ]; then
-        echo "[year] must be defined"
-    elif [ -z "$day" ]; then
-        echo "[day] must be defined"
+    if ! validate_year_day_lang; then
+        return 1
     elif [ ! -d "$year/day$day" ]; then
-        echo "Directory does not exist"
-    else
-        lib/run.sh "$year" "$day" "$part" "$test"
+        echo -e "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
+        return 1
     fi
+    lib/run.sh "$year" "$day" "$part"
 }
 
-# COMMAND: run-all: Execute all solutions
+# COMMAND: run-all: Execute all solutions for all years and days
 run_all() {
     for year in $YEARS; do
         for day in $DAYS; do
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
-                echo -e "${GREEN}Running $year day $day ...${NC}"
+                echo -e "${GREEN}Running $year day $day...${NC}"
                 run "$year" "$day" || {
-                    echo -e "${RED}Test failed for $year day $day${NC}"
+                    echo -e "${RED}[ERROR] Test failed for $year day $day.${NC}"
                     exit 1
                 }
             fi
@@ -136,30 +146,20 @@ run_all() {
     done
 }
 
-# COMMAND: lint: Run linters for given [year] and [day]
+# COMMAND: lint: Run linters for given year and day
 lint() {
-    if [ -z "$year" ]; then
-        echo "[year] must be defined"
-    elif [ -z "$day" ]; then
-        echo "[day] must be defined"
-    elif [ ! -d "$year/day$day" ]; then
-        echo "Directory does not exist"
-    else
-        lib/lint.sh "$year" "$day"
+    if ! validate_year_day; then
+        return 1
     fi
+    lib/lint.sh "$year" "$day"
 }
 
-# COMMAND: analysis: Run static code analysis for given [year] and [day]
+# COMMAND: analysis: Run static code analysis for given year and day
 analysis() {
-    if [ -z "$year" ]; then
-        echo "[year] must be defined"
-    elif [ -z "$day" ]; then
-        echo "[day] must be defined"
-    elif [ ! -d "$year/day$day" ]; then
-        echo "Directory does not exist"
-    else
-        lib/analysis.sh "$year" "$day"
+    if ! validate_year_day; then
+        return 1
     fi
+    lib/analysis.sh "$year" "$day"
 }
 
 # COMMAND: analysis-all: Run static code analysis for all solutions
@@ -168,9 +168,9 @@ analysis_all() {
         for day in $DAYS; do
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
-                echo -e "${GREEN}Running analysis for $year day $day ...${NC}"
+                echo -e "${GREEN}Running analysis for $year day $day...${NC}"
                 analysis "$year" "$day" || {
-                    echo -e "${RED}Analysis failed for $year day $day${NC}"
+                    echo -e "${RED}[ERROR] Analysis failed for $year day $day.${NC}"
                     exit 1
                 }
             fi
@@ -178,57 +178,28 @@ analysis_all() {
     done
 }
 
-# COMMAND: readme: Generate README.md for given [year] and [day]
-readme() {
-    if [ -z "$year" ]; then
-        echo "[year] must be defined"
-    elif [ -z "$day" ]; then
-        echo "[day] must be defined"
-    elif [ ! -d "$year/day$day" ]; then
-        echo "Directory does not exist"
-    else
-        lib/readme.sh "$year" "$day"
-    fi
-}
-
-# COMMAND: progress: Display progress
-progress() {
-    lib/progress.sh
-}
-
-# COMMAND: commit: Validate and prepare commit for given [year] and [day]
+# COMMAND: commit: Validate and commit for given year and day
 commit() {
-    if [ -z "$year" ]; then
-        echo "[year] must be defined"
-    elif [ -z "$day" ]; then
-        echo "[day] must be defined"
-    elif [ ! -d "$year/day$day" ]; then
-        echo "Directory does not exist"
-    else
-        run
-        lint
-        analysis
-        readme
-        progress
-        lib/commit.sh "$year" "$day"
+    if ! validate_year_day; then
+        return 1
     fi
+    run
+    lint
+    analysis
+    readme
+    progress
+    lib/commit.sh "$year" "$day"
 }
 
-# COMMAND: generate-input: Generate input for given [year], [day], and [part]
+# COMMAND: generate-input: Generate input for given year, day, and part
 generate_input() {
-    if [ -z "$year" ]; then
-        echo "[year] must be defined"
-    elif [ -z "$day" ]; then
-        echo "[day] must be defined"
+    if ! validate_year_day; then
+        return 1
     elif [ -z "$part" ]; then
-        echo "[part] must be defined as part1 or part2"
-    else
-        lib/generate-input.sh "$year" "$day" "$part"
+        echo -e "${RED}[ERROR] Part must be defined (part1 or part2).${NC}"
+        return 1
     fi
-}
-
-tree() {
-    lib/tree.sh
+    lib/generate-input.sh "$year" "$day" "$part"
 }
 
 # Parse the command and run the corresponding function
@@ -247,11 +218,9 @@ else
         lint) lint ;;
         analysis) analysis ;;
         analysis-all) analysis_all ;;
-        readme) readme ;;
-        progress) progress ;;
         commit) commit ;;
         generate-input) generate_input ;;
-        tree) tree ;;
-        *) echo "Unknown command: $cmd"; help ;;
+        tree) lib/tree.sh ;;
+        *) echo -e "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
     esac
 fi
