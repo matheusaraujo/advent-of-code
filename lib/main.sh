@@ -20,8 +20,8 @@ help() {
     aoc_help
 }
 
-# COMMAND: configure-hooks: Configure git hooks
-configure_hooks() {
+# COMMAND: setup: Configure git hooks
+setup() {
     aoc_configure_hooks
 }
 
@@ -33,6 +33,11 @@ create() {
 # COMMAND: run: Execute the solution for given year and day
 run() {
     aoc_run
+}
+
+# COMMAND: generate-input: Generate sample input for given year, day, and part
+generate_input() {
+    aoc_generate_input
 }
 
 # COMMAND: run-all: Execute all solutions for all years and days
@@ -88,11 +93,6 @@ commit() {
     aoc_progress
     aoc_puzzle_text
     aoc_commit
-}
-
-# COMMAND: generate-input: Generate input for given year, day, and part
-generate_input() {
-    aoc_generate_input
 }
 
 # Parse the command and run the corresponding function
