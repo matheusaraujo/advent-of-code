@@ -4,6 +4,7 @@ source lib/aoc/analysis.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/consts.sh
 source lib/aoc/create.sh
+source lib/aoc/generate_input.sh
 source lib/aoc/help.sh
 source lib/aoc/lint.sh
 source lib/aoc/parse_args.sh
@@ -88,34 +89,32 @@ commit() {
 
 # COMMAND: generate-input: Generate input for given year, day, and part
 generate_input() {
-    if ! validate_year_day; then
-        return 1
-    elif [ -z "$part" ]; then
-        echo -e "${RED}[ERROR] Part must be defined (part1 or part2).${NC}"
-        return 1
-    fi
-    lib/generate-input.sh "$year" "$day" "$part"
+    aoc_generate_input
 }
 
 # Parse the command and run the corresponding function
-if [ $# -eq 0 ]; then
-    help
-else
-    cmd="$1"
-    shift
-    parse_args "$@"
-    case "$cmd" in
-        help) help ;;
-        configure-hooks) configure_hooks ;;
-        create) create ;;
-        run) run ;;
-        run-all) run_all ;;
-        lint) lint ;;
-        analysis) analysis ;;
-        analysis-all) analysis_all ;;
-        commit) commit ;;
-        generate-input) generate_input ;;
-        tree) lib/tree.sh ;;
-        *) echo -e "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
-    esac
-fi
+main() {
+    if [ $# -eq 0 ]; then
+        help
+    else
+        cmd="$1"
+        shift
+        parse_args "$@"
+        case "$cmd" in
+            help) help ;;
+            configure-hooks) configure_hooks ;;
+            create) create ;;
+            run) run ;;
+            run-all) run_all ;;
+            lint) lint ;;
+            analysis) analysis ;;
+            analysis-all) analysis_all ;;
+            commit) commit ;;
+            generate-input) generate_input ;;
+            tree) lib/tree.sh ;;
+            *) echo -e "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
+        esac
+    fi
+}
+
+main "$@"
