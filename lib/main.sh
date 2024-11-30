@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source lib/aoc/analysis.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/consts.sh
 source lib/aoc/create.sh
@@ -53,10 +54,7 @@ lint() {
 
 # COMMAND: analysis: Run static code analysis for given year and day
 analysis() {
-    if ! validate_year_day; then
-        return 1
-    fi
-    lib/analysis.sh "$year" "$day"
+    aoc_analysis
 }
 
 # COMMAND: analysis-all: Run static code analysis for all solutions
