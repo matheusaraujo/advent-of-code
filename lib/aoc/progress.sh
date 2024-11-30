@@ -27,10 +27,10 @@ aoc_progress() {
     | YEAR          | PROGRESS                      | COMPLETED (Out of 25) |
     |---------------|-------------------------------|-----------------------|"
 
-    for year in {2015..2024}; do
+    for local year in {2015..2024}; do
         solved_days=0
         
-        for day in $(seq -f "%02g" 1 25); do
+        for local day in $(seq -f "%02g" 1 25); do
             if [ -d "$year/day$day" ] && [ -f "$year/day$day/README.md" ]; then
                 solved_days=$((solved_days + 1))
             fi
