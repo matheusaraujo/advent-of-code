@@ -7,7 +7,7 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "zhiyuan-lin.simple-perl",
+                "zairian-lin.simple-perl",
                 "ms-python.python",
                 "ms-python.black-formatter"
             ],

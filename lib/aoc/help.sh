@@ -19,7 +19,7 @@ aoc_help() {
     echo -e "  aoc commit 2001 1"
     echo -e "    Commit the solution for 2001, Day 1."
     echo -e "\n${GREEN}Starting:${NC}"
-    echo -e "  Supported languages: perl, python"
+    echo -e "  Supported languages: perl, python" # todo @matheusaraujo: use $languages array
     echo -e "\n${GREEN}All available commands:${NC}"
     grep -E '^# COMMAND: ' "$0" | sed 's/# COMMAND: //' | while read -r cmd desc; do
         printf "  ${GREEN}%s${NC} %s\n" "$cmd" "$desc"

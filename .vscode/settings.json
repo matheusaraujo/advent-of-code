@@ -1,8 +1,15 @@
 {
     "cSpell.words": [
+        "cpanminus",
+        "devcontainers",
+        "inotify",
         "inotifywait",
         "isort",
+        "libperl",
+        "matheusaraujo",
         "pandoc",
-        "perltidy"
+        "perltidy",
+        "pylint",
+        "zhiyuan"
     ]
 }

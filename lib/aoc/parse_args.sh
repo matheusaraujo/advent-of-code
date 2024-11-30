@@ -8,7 +8,7 @@ parse_args() {
             day=$(printf "%02d" $1)
         elif [[ $1 == "part1" || $1 == "part2" ]]; then
             part="$1"
-        elif [[ $1 == "python" || $1 == "perl" ]]; then
+        elif [[ $1 == "python" || $1 == "perl" ]]; then # todo @matheusaraujo: use $languages array
             lang="$1"
         elif [[ $1 == "--watch" || $1 == "-w" ]]; then
             watch_mode="true"
