@@ -82,6 +82,16 @@ analysis_all() {
     done
 }
 
+# COMMAND: puzzle-text: Fetch puzzle text for given year and day
+puzzle_text() {
+    aoc_puzzle_text
+}
+
+# COMMAND: progress: Update progress in README
+progress() {
+    aoc_progress
+}
+
 # COMMAND: commit: Validate and commit for given year and day
 commit() {
     if ! validate_year_day; then
@@ -90,8 +100,8 @@ commit() {
     run
     lint
     analysis
-    aoc_progress
-    aoc_puzzle_text
+    puzzle_text
+    progress
     aoc_commit
 }
 
@@ -105,7 +115,7 @@ main() {
         parse_args "$@"
         case "$cmd" in
             help) help ;;
-            configure-hooks) configure_hooks ;;
+            setup) setup ;;
             create) create ;;
             run) run ;;
             run-all) run_all ;;
@@ -115,6 +125,8 @@ main() {
             commit) commit ;;
             generate-input) generate_input ;;
             tree) lib/tree.sh ;;
+            puzzle-text) puzzle_text ;;
+            progress) progress ;;
             *) print_error "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
         esac
     fi
