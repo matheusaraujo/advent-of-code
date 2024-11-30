@@ -12,64 +12,9 @@ COMMIG_MSG_SCRIPT=".githooks/commit-msg.sh"
 GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
 
-source lib/parse_args.sh
-
-# Utility function to validate year, day, and language
-validate_year_day() {
-    if [ -z "$year" ]; then
-        echo -e "${RED}[ERROR] Year must be defined.${NC}"
-        return 1
-    elif [ -z "$day" ]; then
-        echo -e "${RED}[ERROR] Day must be defined.${NC}"
-        return 1
-    fi
-    return 0
-}
-
-validate_year_day_lang() {
-    if [ -z "$year" ]; then
-        echo -e "${RED}[ERROR] Year must be defined.${NC}"
-        return 1
-    elif [ -z "$day" ]; then
-        echo -e "${RED}[ERROR] Day must be defined.${NC}"
-        return 1
-    elif [ -z "$lang" ]; then
-        echo -e "${RED}[ERROR] Language must be defined.${NC}"
-        return 1
-    elif [[ "$lang" != "perl" && "$lang" != "python" ]]; then
-        echo -e "${RED}[ERROR] Language must be either 'perl' or 'python'.${NC}"
-        return 1
-    fi
-    return 0
-}
-
-# Help function: Display usage and commands
-help() {
-    echo -e "${GREEN}Usage:${NC} aoc <command> [options]"
-    echo -e "\n${GREEN}Commands:${NC}"
-    echo -e "  help                              Show help for each command."
-    echo -e "  create <year> <day> <language>    Create a new challenge for the given year, day, and language."
-    echo -e "  run <year> <day> [--watch]        Run the solution for the given year and day. Use '--watch' to enable watch mode."
-    echo -e "  commit <year> <day>               Commit the solution for the given year and day."
-    echo -e "\n${GREEN}Examples:${NC}"
-    echo -e "  aoc help"
-    echo -e "    Show this help message."
-    echo -e "  aoc create 2001 1 perl"
-    echo -e "    Create a new challenge for 2001, Day 1, using Perl."
-    echo -e "  aoc run 2001 1"
-    echo -e "    Run the solution for 2001, Day 1."
-    echo -e "  aoc run 2001 1 --watch"
-    echo -e "    Run the solution for 2001, Day 1 in watch mode."
-    echo -e "  aoc commit 2001 1"
-    echo -e "    Commit the solution for 2001, Day 1."
-    echo -e "\n${GREEN}Starting:${NC}"
-    echo -e "  Supported languages: perl, python"
-    echo -e "\n${GREEN}Available Commands:${NC}"
-    grep -E '^# COMMAND: ' "$0" | sed 's/# COMMAND: //' | while read -r cmd desc; do
-        printf "  ${GREEN}%s${NC} %s\n" "$cmd" "$desc"
-    done
-}
-
+source lib/aoc/help.sh
+source lib/aoc/parse_args.sh
+source lib/aoc/validate_args.sh
 
 # COMMAND: configure-hooks: Configure git hooks
 configure_hooks() {
