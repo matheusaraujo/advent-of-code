@@ -2,10 +2,10 @@
 
 aoc_run() {
     if ! validate_year_day; then
-        return 1
+        exit 1
     elif [ ! -d "$year/day$day" ]; then
         print_error "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
-        return 1
+        exit 1
     fi
 
     if [ "$watch_mode" == "true" ]; then
@@ -18,12 +18,12 @@ aoc_run() {
 run_watch_mode() {
     local watch_dir="$year/day$day"
     print_error "${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
-    run_full_puzzle
+    (run_full_puzzle) || true
 
     inotifywait -m -r -e close_write,create,delete "$watch_dir" --exclude '\.pyc(\..*)?$' 2>/dev/null |
     while read -r directory events filename; do
         clear
-        run_full_puzzle
+        (run_full_puzzle) || true
         print_success "\n${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
     done
 }
