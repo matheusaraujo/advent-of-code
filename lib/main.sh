@@ -1,20 +1,10 @@
 #!/bin/bash
 
-# Color definitions
-GREEN="\033[0;32m"
-NC="\033[0m"
-RED="\033[0;31m"
-
-# Constants
-YEARS=$(seq -w 2015 2035)
-DAYS=$(seq -w 1 25)
-COMMIG_MSG_SCRIPT=".githooks/commit-msg.sh"
-GIT_HOOKS_DIR=".git/hooks"
-COMMIT_MSG_HOOK_NAME="commit-msg"
-
 source lib/aoc/configure_hooks.sh
+source lib/aoc/consts.sh
 source lib/aoc/create.sh
 source lib/aoc/help.sh
+source lib/aoc/lint.sh
 source lib/aoc/parse_args.sh
 source lib/aoc/run.sh
 source lib/aoc/utils.sh
@@ -47,7 +37,7 @@ run_all() {
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
                 echo -e "${GREEN}Running $year day $day...${NC}"
-                run "$year" "$day" || {
+                run || {
                     echo -e "${RED}[ERROR] Test failed for $year day $day.${NC}"
                     exit 1
                 }
@@ -58,10 +48,7 @@ run_all() {
 
 # COMMAND: lint: Run linters for given year and day
 lint() {
-    if ! validate_year_day; then
-        return 1
-    fi
-    lib/lint.sh "$year" "$day"
+    aoc_lint
 }
 
 # COMMAND: analysis: Run static code analysis for given year and day
