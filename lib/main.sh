@@ -12,11 +12,12 @@ COMMIG_MSG_SCRIPT=".githooks/commit-msg.sh"
 GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
 
-source lib/utils.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/create.sh
 source lib/aoc/help.sh
 source lib/aoc/parse_args.sh
+source lib/aoc/run.sh
+source lib/aoc/utils.sh
 source lib/aoc/validate_args.sh
 
 # COMMAND: help: Show help message
@@ -34,34 +35,9 @@ create() {
     aoc_create
 }
 
-# Watch function: Monitors changes in the directory and triggers the run function
-watch() {
-    local watch_dir="$year/day$day"
-    
-    echo -e "${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
-
-    lib/run.sh "$year" "$day" "$part"
-
-    inotifywait -m -r -e close_write,create,delete "$watch_dir" --exclude '\.pyc(\..*)?$' 2>/dev/null |
-    while read -r directory events filename; do
-        clear
-        lib/run.sh "$year" "$day" "$part"
-    done
-}
-
 # COMMAND: run: Execute the solution for given year and day
 run() {
-    if ! validate_year_day; then
-        return 1
-    elif [ ! -d "$year/day$day" ]; then
-        echo -e "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
-        return 1
-    fi
-    if [ "$watch_mode" == "true" ]; then
-        watch
-    else
-        lib/run.sh "$year" "$day" "$part"
-    fi
+    aoc_run
 }
 
 # COMMAND: run-all: Execute all solutions for all years and days
