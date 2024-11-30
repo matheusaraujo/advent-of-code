@@ -1,9 +1,9 @@
 #!/bin/bash
 
-help() {
+aoc_help() {
     echo -e "${GREEN}Usage:${NC} aoc <command> [options]"
     echo -e "\n${GREEN}Commands:${NC}"
-    echo -e "  help                              Show help for each command."
+    echo -e "  help                              Show help message."
     echo -e "  create <year> <day> <language>    Create a new challenge for the given year, day, and language."
     echo -e "  run <year> <day> [--watch]        Run the solution for the given year and day. Use '--watch' to enable watch mode."
     echo -e "  commit <year> <day>               Commit the solution for the given year and day."
@@ -20,7 +20,7 @@ help() {
     echo -e "    Commit the solution for 2001, Day 1."
     echo -e "\n${GREEN}Starting:${NC}"
     echo -e "  Supported languages: perl, python"
-    echo -e "\n${GREEN}Available Commands:${NC}"
+    echo -e "\n${GREEN}All available commands:${NC}"
     grep -E '^# COMMAND: ' "$0" | sed 's/# COMMAND: //' | while read -r cmd desc; do
         printf "  ${GREEN}%s${NC} %s\n" "$cmd" "$desc"
     done

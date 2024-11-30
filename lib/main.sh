@@ -12,29 +12,26 @@ COMMIG_MSG_SCRIPT=".githooks/commit-msg.sh"
 GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
 
+source lib/utils.sh
+source lib/aoc/configure_hooks.sh
+source lib/aoc/create.sh
 source lib/aoc/help.sh
 source lib/aoc/parse_args.sh
 source lib/aoc/validate_args.sh
 
+# COMMAND: help: Show help message
+help() {
+    aoc_help
+}
+
 # COMMAND: configure-hooks: Configure git hooks
 configure_hooks() {
-    echo "Installing Git hooks..."
-    if [ ! -f "$COMMIG_MSG_SCRIPT" ]; then
-        echo -e "${RED}[ERROR] Commit-msg script not found.${NC}"
-        exit 1
-    fi
-    cp "$COMMIG_MSG_SCRIPT" "$GIT_HOOKS_DIR/$COMMIT_MSG_HOOK_NAME"
-    chmod +x "$GIT_HOOKS_DIR/$COMMIT_MSG_HOOK_NAME"
-    echo -e "${GREEN}Git hooks installed successfully.${NC}"
-    [ ! -f ".session.cookie" ] && touch "session.cookie"
+    aoc_configure_hooks
 }
 
 # COMMAND: create: Create a new solution for the given year, day, and lang
 create() {
-    if ! validate_year_day_lang; then
-        return 1
-    fi
-    lib/create.sh "$year" "$day" "$lang"
+    aoc_create
 }
 
 # Watch function: Monitors changes in the directory and triggers the run function
