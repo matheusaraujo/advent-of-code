@@ -115,7 +115,7 @@ main() {
             commit) commit ;;
             generate-input) generate_input ;;
             tree) lib/tree.sh ;;
-            *) echo -e "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
+            *) print_error -e "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
         esac
     fi
 }

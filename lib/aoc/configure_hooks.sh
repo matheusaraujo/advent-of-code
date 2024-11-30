@@ -1,13 +1,13 @@
 #!/bin/bash
 
 aoc_configure_hooks() {
-    echo "Installing Git hooks..."
-    if [ ! -f "$COMMIG_MSG_SCRIPT" ]; then
-        echo -e "${RED}[ERROR] Commit-msg script not found.${NC}"
+    print_success "Installing Git hooks..."
+    if [ ! -f "$COMMIT_MSG_SCRIPT" ]; then
+        print_error -e "${RED}[ERROR] Commit-msg script not found.${NC}"
         exit 1
     fi
-    cp "$COMMIG_MSG_SCRIPT" "$GIT_HOOKS_DIR/$COMMIT_MSG_HOOK_NAME"
+    cp "$COMMIT_MSG_SCRIPT" "$GIT_HOOKS_DIR/$COMMIT_MSG_HOOK_NAME"
     chmod +x "$GIT_HOOKS_DIR/$COMMIT_MSG_HOOK_NAME"
-    echo -e "${GREEN}Git hooks installed successfully.${NC}"
+    print_success "${GREEN}Git hooks installed successfully.${NC}"
     [ ! -f ".session.cookie" ] && touch "session.cookie"
 }

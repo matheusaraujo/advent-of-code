@@ -13,7 +13,7 @@ parse_args() {
         elif [[ $1 == "--watch" || $1 == "-w" ]]; then
             watch_mode="true"
         else
-            echo "Unknown option: $1"
+            print_error "Unknown option: $1"
             exit 1
         fi
         shift

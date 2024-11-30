@@ -10,7 +10,7 @@ aoc_analysis() {
         local ext=${lang_extensions[$lang]}
 
         if [ -f "$year/day$day/part1.$ext" ]; then
-            echo "analysis($lang): AoC $year - Day $day"
+            print_success "analysis($lang): AoC $year - Day $day"
             lib/$lang/analysis.sh $year $day
 
             if [ $? -ne 0 ]; then

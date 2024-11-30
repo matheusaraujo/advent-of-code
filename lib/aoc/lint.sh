@@ -10,7 +10,7 @@ aoc_lint() {
         local ext=${lang_extensions[$lang]}
 
         if [ -f "$year/day$day/part1.$ext" ]; then
-            echo "lint($lang): AoC $year - Day $day"
+            print_success "lint($lang): AoC $year - Day $day"
             lib/$lang/lint.sh $year $day
 
             if [ $? -ne 0 ]; then

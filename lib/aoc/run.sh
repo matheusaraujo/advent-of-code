@@ -4,7 +4,7 @@ aoc_run() {
     if ! validate_year_day; then
         return 1
     elif [ ! -d "$year/day$day" ]; then
-        echo -e "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
+        print_error -e "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
         return 1
     fi
 
@@ -17,14 +17,14 @@ aoc_run() {
 
 run_watch_mode() {
     local watch_dir="$year/day$day"
-    echo -e "${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
+    print_error -e "${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
     run_full_puzzle
 
     inotifywait -m -r -e close_write,create,delete "$watch_dir" --exclude '\.pyc(\..*)?$' 2>/dev/null |
     while read -r directory events filename; do
         clear
         run_full_puzzle
-        echo -e "\n${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
+        print_success -e "\n${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
     done
 }
 
@@ -39,7 +39,7 @@ process_language_puzzle() {
     local ext=${lang_extensions[$lang]}
 
     if [ -f "$year/day$day/part1.$ext" ]; then
-        echo "$lang: AoC $year - Day $day"
+        print_success "$lang: AoC $year - Day $day"
 
         process_language_part "$lang" "part1"
 
@@ -95,19 +95,19 @@ execute_solution_script() {
         local expected_output=$(cat "$output_file")
 
         if [ "$script_output" != "$expected_output" ]; then
-            echo -e "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_time}ms)\033[91m ✘ Expected: $expected_output \033[0m"
+            print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_time}ms)\033[91m ✘ Expected: $expected_output \033[0m"
             exit 1
         fi
         result_symbol="\033[32m✔\033[0m"
     fi
 
-    echo -e "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_time}ms) $result_symbol\033[0m"
+    print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_time}ms) $result_symbol\033[0m"
 }
 
 validate_output_file() {
     local output_file=$1
     if [ ! -f "$output_file" ]; then
-        echo "Error: Output file $output_file does not exist."
+        print_success "Error: Output file $output_file does not exist."
         exit 1
     fi
 }
