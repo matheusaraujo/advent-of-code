@@ -17,6 +17,9 @@ $ aoc create 2001 1 perl
 # running
 $ aoc run 2001 1
 
+# watch mode
+$ aoc run 2001 1 --watch
+
 # commiting
 $ aoc commit 2001 1
 ```
