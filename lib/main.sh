@@ -12,6 +12,8 @@ COMMIG_MSG_SCRIPT=".githooks/commit-msg.sh"
 GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
 
+source lib/parse_args.sh
+
 # Utility function to validate year, day, and language
 validate_year_day() {
     if [ -z "$year" ]; then
@@ -66,38 +68,6 @@ help() {
     done
 }
 
-# Parse arguments and set year, day, lang, part
-parse_args() {
-    while [[ $# -gt 0 ]]; do
-        # If the argument is a number between 2015 and 2024, it's the $year
-        if [[ $1 =~ ^[2][0][1-9][5-9]$ || $1 =~ ^[2][0][2][0-4]$ ]]; then
-            year="$1"
-        
-        # If the argument is a number between 1 and 25 (1-9 as two digits, 10-25 as is), it's the $day
-        elif [[ $1 =~ ^[0-9]{1,2}$ && $1 -ge 1 && $1 -le 25 ]]; then
-            # If day is between 1 and 9, add leading zero
-            if [[ $1 -ge 1 && $1 -le 9 ]]; then
-                day=$(printf "%02d" $1)
-            else
-                day="$1"
-            fi
-        
-        # Check if the argument is part1 or part2
-        elif [[ $1 == "part1" || $1 == "part2" ]]; then
-            part="$1"
-        
-        # Check if the argument is python or perl
-        elif [[ $1 == "python" || $1 == "perl" ]]; then
-            lang="$1"
-        
-        else
-            echo "Unknown option: $1"
-            exit 1
-        fi
-        shift
-    done
-}
-
 # COMMAND: configure-hooks: Configure git hooks
 configure_hooks() {
     echo "Installing Git hooks..."
@@ -119,6 +89,21 @@ create() {
     lib/create.sh "$year" "$day" "$lang"
 }
 
+# Watch function: Monitors changes in the directory and triggers the run function
+watch() {
+    local watch_dir="$year/day$day"
+    
+    echo -e "${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
+
+    lib/run.sh "$year" "$day" "$part"
+
+    inotifywait -m -r -e close_write,create,delete "$watch_dir" --exclude '\.pyc(\..*)?$' 2>/dev/null |
+    while read -r directory events filename; do
+        clear
+        lib/run.sh "$year" "$day" "$part"
+    done
+}
+
 # COMMAND: run: Execute the solution for given year and day
 run() {
     if ! validate_year_day; then
@@ -127,7 +112,11 @@ run() {
         echo -e "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
         return 1
     fi
-    lib/run.sh "$year" "$day" "$part"
+    if [ "$watch_mode" == "true" ]; then
+        watch
+    else
+        lib/run.sh "$year" "$day" "$part"
+    fi
 }
 
 # COMMAND: run-all: Execute all solutions for all years and days
