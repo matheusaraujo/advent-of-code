@@ -24,8 +24,8 @@ aoc_progress() {
     README_FILE="README.md"
 
     new_content="<!-- progress-begin -->\n
-    | YEAR          | PROGRESS                      | COMPLETED (Out of 25) |
-    |---------------|-------------------------------|-----------------------|"
+| YEAR          | PROGRESS                      | COMPLETED (Out of 25) |
+|---------------|-------------------------------|-----------------------|"
 
     for year in {2015..2024}; do
         solved_days=0
