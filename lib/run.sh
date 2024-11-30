@@ -3,6 +3,12 @@
 year=$1
 day=$2
 
+declare -A lang_extensions
+lang_extensions=(
+    ["perl"]="pl"
+    ["python"]="py"
+)
+
 get_input_file_label() {
     file_name=$(basename "$1")
     if [ "$file_name" == "input.txt" ]; then
@@ -82,17 +88,16 @@ run() {
 
 
 for lang in python perl; do
-    lib/$lang/created.sh $year $day
-    if [ $? -eq 0 ]; then
+    ext=${lang_extensions[$lang]}
+
+    if [ -f "$year/day$day/part1.$ext" ]; then
         echo "$lang: AoC $year - Day $day"
-        run "$lang" "part1"
         
-        # todo: @matheusaraujo - refactor this
-        if [ "$lang" == "python" ] && [ -f "$year/day$day/part2.py" ]; then
-            run "$lang" "part2"
-        elif [ "$lang" == "perl" ] && [ -f "$year/day$day/part2.pl" ]; then
+        run "$lang" "part1"
+
+        part2_file="$year/day$day/part2.$ext"
+        if [ -f "$part2_file" ]; then
             run "$lang" "part2"
         fi
-
     fi
 done
