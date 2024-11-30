@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source lib/aoc/analysis.sh
+source lib/aoc/commit.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/consts.sh
 source lib/aoc/create.sh
@@ -86,7 +87,7 @@ commit() {
     analysis
     aoc_progress
     aoc_puzzle_text
-    lib/commit.sh "$year" "$day"
+    aoc_commit
 }
 
 # COMMAND: generate-input: Generate input for given year, day, and part
