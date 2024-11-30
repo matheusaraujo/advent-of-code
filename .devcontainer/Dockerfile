@@ -9,7 +9,7 @@ RUN apt-get install -y perl libperl-critic-perl cpanminus
 RUN apt-get install pip pylint isort black -y
 
 # general dependencies
-RUN apt-get install pandoc -y
+RUN apt-get install pandoc inotify-tools -y
 
 # cleanup
 RUN apt-get clean && \
