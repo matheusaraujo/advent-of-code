@@ -63,7 +63,11 @@ process_language_part() {
     done
 
     local output_txt="$year/day$day/data/output.$part.txt"
-    execute_solution_script "$lang" "$year" "$day" "$part" "$year/day$day/data/input.txt" "$output_txt"
+    if [ ! -f "$output_file" ]; then
+        execute_solution_script "$lang" "$year" "$day" "$part" "$year/day$day/data/input.txt"
+    else
+        execute_solution_script "$lang" "$year" "$day" "$part" "$year/day$day/data/input.txt"
+    fi
 }
 
 execute_solution_script() {
