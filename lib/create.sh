@@ -1,14 +1,11 @@
 #!/bin/bash
 
+source lib/utils.sh
+
 year=$1
 day=$2
 lang=$3
 
-declare -A lang_extensions
-lang_extensions=(
-    ["perl"]="pl"
-    ["python"]="py"
-)
 ext=${lang_extensions[$lang]}
 
 mkdir -p $year/day$day/data

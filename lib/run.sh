@@ -1,13 +1,9 @@
 #!/bin/bash
 
+source lib/utils.sh
+
 year=$1
 day=$2
-
-declare -A lang_extensions
-lang_extensions=(
-    ["perl"]="pl"
-    ["python"]="py"
-)
 
 get_input_file_label() {
     file_name=$(basename "$1")
