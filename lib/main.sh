@@ -8,6 +8,7 @@ source lib/aoc/generate_input.sh
 source lib/aoc/help.sh
 source lib/aoc/lint.sh
 source lib/aoc/parse_args.sh
+source lib/aoc/progress.sh
 source lib/aoc/run.sh
 source lib/aoc/utils.sh
 source lib/aoc/validate_args.sh
@@ -83,7 +84,7 @@ commit() {
     lint
     analysis
     readme
-    progress
+    aoc_progress
     lib/commit.sh "$year" "$day"
 }
 
