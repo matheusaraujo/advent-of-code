@@ -11,3 +11,11 @@ DAYS=$(seq -w 1 25)
 COMMIT_MSG_SCRIPT=".githooks/commit-msg.sh"
 GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
+
+# Languages
+languages=(python perl)
+declare -A lang_extensions
+lang_extensions=(
+    ["perl"]="pl"
+    ["python"]="py"
+)

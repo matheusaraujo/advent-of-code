@@ -1,12 +1,7 @@
 #/bin/bash
 
 aoc_generate_input() {
-    if ! validate_year_day; then
-        return 1
-    elif [ -z "$part" ]; then
-        print_error "${RED}[ERROR] Part must be defined (part1 or part2).${NC}"
-        return 1
-    fi
+    validate_year_day_directory_part
 
     letter=$(ls $year/day$day/data/input.$part.*.txt 2>/dev/null | wc -l | awk '{printf "%c", 97 + $1}')
 

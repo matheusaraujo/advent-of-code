@@ -1,9 +1,7 @@
 #!/bin/bash
 
 aoc_create() {
-    if ! validate_year_day_lang; then
-        return 1
-    fi
+    validate_year_day_lang
     
     ext=${lang_extensions[$lang]}
     mkdir -p $year/day$day/data

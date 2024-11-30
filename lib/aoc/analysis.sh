@@ -1,12 +1,9 @@
 #!/bin/bash
 
 aoc_analysis() {
-    if ! validate_year_day; then
-        return 1
-    fi
+    validate_year_day_directory
     
-    for lang in python perl; do
-        
+    for lang in "${languages[@]}"; do
         local ext=${lang_extensions[$lang]}
 
         if [ -f "$year/day$day/part1.$ext" ]; then

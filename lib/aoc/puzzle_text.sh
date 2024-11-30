@@ -1,6 +1,8 @@
 #!/bin/bash
 
 aoc_puzzle_text() {
+  validate_year_day_directory
+
   curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//') -o $year/day$day/_readme1.html
   if ! grep -q '<p class="day-success">Both parts of this puzzle are complete!' $year/day$day/_readme1.html; then
     print_error "puzzle is not complete yet"

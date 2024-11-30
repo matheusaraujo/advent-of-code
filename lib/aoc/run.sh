@@ -1,13 +1,8 @@
 #!/bin/bash
 
 aoc_run() {
-    if ! validate_year_day; then
-        exit 1
-    elif [ ! -d "$year/day$day" ]; then
-        print_error "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
-        exit 1
-    fi
-
+    validate_year_day_directory
+    
     if [ "$watch_mode" == "true" ]; then
         run_watch_mode
     else
@@ -29,7 +24,7 @@ run_watch_mode() {
 }
 
 run_full_puzzle() {
-    for lang in python perl; do
+    for lang in "${languages[@]}"; do
         process_language_puzzle "$lang"
     done
 }
@@ -62,9 +57,10 @@ process_language_part() {
         execute_solution_script "$lang" "$year" "$day" "$part" "$input_file" "$output_file"
     done
 
-    local output_txt="$year/day$day/data/output.$part.txt"
-    if [ ! -f "$output_file" ]; then
-        execute_solution_script "$lang" "$year" "$day" "$part" "$year/day$day/data/input.txt"
+    local input_file="$year/day$day/data/input.txt"
+    local output_file="$year/day$day/data/output.$part.txt"
+    if [ -f "$output_file" ]; then
+        execute_solution_script "$lang" "$year" "$day" "$part" "$year/day$day/data/input.txt" $output_file
     else
         execute_solution_script "$lang" "$year" "$day" "$part" "$year/day$day/data/input.txt"
     fi

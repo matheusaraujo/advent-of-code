@@ -1,6 +1,8 @@
 #!/bin/bash
 
 aoc_commit() {
+    validate_year_day_directory
+
     root_readme_path="README.md"
     readme_path="$year/day$day/README.md"
     puzzle_folder="$year/day$day/"
