@@ -28,6 +28,6 @@ aoc_puzzle_text() {
 
   rm $year/day$day/_readme*.html
 
-  print_success -e "readme $year/day$day generated \033[32m✔\033[0m"
+  print_success "readme $year/day$day generated \033[32m✔\033[0m"
 
 }

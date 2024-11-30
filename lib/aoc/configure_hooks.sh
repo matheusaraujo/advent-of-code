@@ -3,7 +3,7 @@
 aoc_configure_hooks() {
     print_success "Installing Git hooks..."
     if [ ! -f "$COMMIT_MSG_SCRIPT" ]; then
-        print_error -e "${RED}[ERROR] Commit-msg script not found.${NC}"
+        print_error "${RED}[ERROR] Commit-msg script not found.${NC}"
         exit 1
     fi
     cp "$COMMIT_MSG_SCRIPT" "$GIT_HOOKS_DIR/$COMMIT_MSG_HOOK_NAME"

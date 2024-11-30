@@ -46,6 +46,6 @@ aoc_progress() {
     sed -i -e '/<!-- progress-begin -->/,/<!-- progress-end -->/d' "$README_FILE"
     echo -e "$new_content" >> "$README_FILE"
 
-    print_success -e "progress updated! \033[32m✔\033[0m"
+    print_success "progress updated! \033[32m✔\033[0m"
 
 }
