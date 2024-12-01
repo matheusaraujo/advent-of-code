@@ -1,14 +1,14 @@
 #!/bin/bash
 
-aoc_lint() {
+aoc_format() {
     validate_year_day_directory
     
     for lang in "${available_languages[@]}"; do
         local ext=${language_extensions[$lang]}
 
         if [ -f "$year/day$day/part1.$ext" ]; then
-            print_success "lint($lang): AoC $year - Day $day"
-            lib/$lang/lint.sh $year $day
+            print_success "format($lang): AoC $year - Day $day"
+            lib/$lang/format.sh $year $day
 
             if [ $? -ne 0 ]; then
                 exit 1
