@@ -3,8 +3,8 @@
 YEARS=$(seq -w 2015 2035)
 DAYS=$(seq -w 1 25)
 
-source lib/aoc/commit.sh
 source lib/aoc/check.sh
+source lib/aoc/commit.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/create.sh
 source lib/aoc/format.sh
@@ -59,7 +59,7 @@ run_all() {
     done
 }
 
-# COMMAND: format: Run formaters for given year and day
+# COMMAND: format: Format for given year and day
 format() {
     aoc_format
 }
