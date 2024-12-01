@@ -18,6 +18,7 @@ jobs:
         run: |
           sudo apt-get install libperl-critic-perl -y
           sudo apt-get install pylint isort black -y
+          npm install -g eslint prettier
 
       - name: Check
         run: lib/main.sh check-all
