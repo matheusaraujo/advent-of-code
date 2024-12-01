@@ -15,7 +15,7 @@ run_watch_mode() {
     print_error "${GREEN}Running $watch_dir in watch mode...\nPress Ctrl+C to stop.${NC}"
     (run_full_puzzle) || true
 
-    inotifywait -m -r -e close_write,create,delete "$watch_dir" --exclude '\.pyc(\..*)?$' 2>/dev/null |
+    inotifywait -m -r -e close_write,create,delete "$watch_dir" --exclude '\.pyc(\..*)?$|\.bak$' 2>/dev/null |
     while read -r directory events filename; do
         clear
         (run_full_puzzle) || true

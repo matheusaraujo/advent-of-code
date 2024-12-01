@@ -3,7 +3,7 @@
 year=$1
 day=$2
 
-files=("part1.pl" "part2.pl")
+files=("part1.pl" "part2.pl" "helpers.pl")
 
 for file in "${files[@]}"; do
     if [ -f "$year/day$day/$file" ]; then
