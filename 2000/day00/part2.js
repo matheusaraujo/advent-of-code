@@ -2,4 +2,4 @@ function part2(input) {
   return input;
 }
 
-module.exports = { part2 };
+module.exports = part2;

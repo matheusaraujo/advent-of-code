@@ -11,10 +11,14 @@ npm --silent --prefix lib/javascript/ install lib/javascript/
 
 for file in "${files[@]}"; do
     if [ -f "$year/day$day/$file" ]; then
-        if npx eslint "$year/day$day/$file" --config lib/javascript/eslint.config.mjs; then
-            print_success "eslint $year/day$day/$file \033[32m✔\033[0m"
-        else
+        if ! npx eslint "$year/day$day/$file" --config lib/javascript/eslint.config.mjs; then
             exit 1
         fi
+
+        if ! prettier "$year/day$day/$file" --check; then
+            exit 1
+        fi
+
+        print_success "format $year/day$day/$file \033[32m✔\033[0m"
     fi
 done

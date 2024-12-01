@@ -10,7 +10,7 @@ RUN apt-get install -y \
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y \ 
     nodejs && \
-    npm install -g eslint
+    npm install -g eslint prettier
 
 # perl dependencies
 RUN apt-get install -y \
