@@ -4,9 +4,9 @@ YEARS=$(seq -w 2015 2035)
 DAYS=$(seq -w 1 25)
 
 source lib/aoc/commit.sh
+source lib/aoc/check.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/create.sh
-source lib/aoc/format.sh
 source lib/aoc/format.sh
 source lib/aoc/generate_input.sh
 source lib/aoc/help.sh

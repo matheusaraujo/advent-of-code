@@ -2,9 +2,15 @@ FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
 RUN apt-get update
 
-# javascript dependencies
+# general dependencies
 RUN apt-get install -y \
-    nodejs npm
+    pandoc inotify-tools
+
+# javascript dependencies
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
+    apt-get install -y \ 
+    nodejs && \
+    npm install -g eslint
 
 # perl dependencies
 RUN apt-get install -y \
@@ -13,10 +19,6 @@ RUN apt-get install -y \
 # python dependencies
 RUN apt-get install -y \
     pip pylint isort black
-
-# general dependencies
-RUN apt-get install -y \
-    pandoc inotify-tools
 
 # cleanup
 RUN apt-get clean && \
