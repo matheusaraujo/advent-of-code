@@ -11,8 +11,8 @@ sub part2 {
     my @list1 = @{$list1_ref};
     my @list2 = @{$list2_ref};
 
-    foreach my $item (@list2) {
-        $count{$item}++;
+    foreach my $n2 (@list2) {
+        $count{$n2}++;
     }
 
     foreach my $n1 (@list1) {
