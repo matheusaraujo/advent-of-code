@@ -15,13 +15,13 @@ $ aoc help
 $ aoc create 2001 1 perl
 
 # running
-$ aoc run 2001 1
+$ aoc run
 
 # watch mode
-$ aoc run 2001 1 --watch
+$ aoc run --watch|-w
 
 # commiting
-$ aoc commit 2001 1
+$ aoc commit
 ```
 
 ## progress
