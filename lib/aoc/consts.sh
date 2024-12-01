@@ -13,9 +13,18 @@ GIT_HOOKS_DIR=".git/hooks"
 COMMIT_MSG_HOOK_NAME="commit-msg"
 
 # Languages
-languages=(python perl)
-declare -A lang_extensions
-lang_extensions=(
+available_languages=(python perl)
+
+declare -A language_extensions
+language_extensions=(
     ["perl"]="pl"
     ["python"]="py"
+)
+
+declare -A language_aliases
+language_aliases=(
+    ["py"]="python"
+    ["python"]="python"
+    ["pl"]="perl"
+    ["perl"]="perl"
 )
