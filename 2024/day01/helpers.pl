@@ -6,6 +6,8 @@ sub parse_input {
     my @input = @_;
     my ( @list1, @list2 );
 
+    chomp @input;
+
     for my $line (@input) {
         my ( $item1, $item2 ) = split /\s\s\s/sxm, $line;
         push @list1, $item1;
