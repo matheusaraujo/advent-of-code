@@ -2,14 +2,21 @@ FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
 RUN apt-get update
 
+# javascript dependencies
+RUN apt-get install -y \
+    nodejs npm
+
 # perl dependencies
-RUN apt-get install -y perl libperl-critic-perl cpanminus
+RUN apt-get install -y \
+    perl libperl-critic-perl cpanminus
 
 # python dependencies
-RUN apt-get install pip pylint isort black -y
+RUN apt-get install -y \
+    pip pylint isort black
 
 # general dependencies
-RUN apt-get install pandoc inotify-tools -y
+RUN apt-get install -y \
+    pandoc inotify-tools
 
 # cleanup
 RUN apt-get clean && \

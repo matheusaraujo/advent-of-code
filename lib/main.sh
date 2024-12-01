@@ -1,13 +1,16 @@
 #!/bin/bash
 
+YEARS=$(seq -w 2015 2035)
+DAYS=$(seq -w 1 25)
+
 source lib/aoc/analysis.sh
 source lib/aoc/commit.sh
 source lib/aoc/configure_hooks.sh
-source lib/aoc/consts.sh
 source lib/aoc/create.sh
+source lib/aoc/format.sh
 source lib/aoc/generate_input.sh
 source lib/aoc/help.sh
-source lib/aoc/lint.sh
+source lib/aoc/langs.sh
 source lib/aoc/parse_args.sh
 source lib/aoc/progress.sh
 source lib/aoc/puzzle_text.sh
@@ -56,9 +59,9 @@ run_all() {
     done
 }
 
-# COMMAND: lint: Run linters for given year and day
-lint() {
-    aoc_lint
+# COMMAND: format: Run formaters for given year and day
+format() {
+    aoc_format
 }
 
 # COMMAND: analysis: Run static code analysis for given year and day
@@ -98,7 +101,7 @@ commit() {
         return 1
     fi
     run
-    lint
+    format
     analysis
     puzzle_text
     progress
@@ -120,7 +123,7 @@ main() {
             create) create ;;
             run) run ;;
             run-all) run_all ;;
-            lint) lint ;;
+            format) format ;;
             analysis) analysis ;;
             analysis-all) analysis_all ;;
             commit) commit ;;
