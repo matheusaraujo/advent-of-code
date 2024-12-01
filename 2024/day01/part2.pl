@@ -5,18 +5,20 @@ use warnings;
 sub part2 {
     my @input  = @_;
     my $result = 0;
-    my @list1;
-    my @list2;
 
-    for my $line (@input) {
-        my @l = split /\s\s\s/sxm, $line;
-        push @list1, $l[0];
-        push @list2, $l[1];
+    my ( $list1_ref, $list2_ref ) = parse_input(@input);
+    my @list1 = @{$list1_ref};
+    my @list2 = @{$list2_ref};
+
+    my %count;
+    foreach my $item (@list2) {
+        $count{$item}++;
     }
 
     foreach my $n1 (@list1) {
-        my $appears = grep { $_ == $n1 } @list2;
-        $result += $n1 * $appears;
+        if ( exists $count{$n1} ) {
+            $result += $n1 * $count{$n1};
+        }
     }
 
     return $result;

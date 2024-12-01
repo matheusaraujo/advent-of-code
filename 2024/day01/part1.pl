@@ -5,17 +5,11 @@ use warnings;
 sub part1 {
     my @input  = @_;
     my $result = 0;
-    my @list1;
-    my @list2;
 
-    for my $line (@input) {
-        my @l = split /\s\s\s/sxm, $line;
-        push @list1, $l[0];
-        push @list2, $l[1];
-    }
+    my ( $list1_ref, $list2_ref ) = parse_input(@input);
 
-    @list1 = sort { $a <=> $b } @list1;
-    @list2 = sort { $a <=> $b } @list2;
+    my @list1 = @{$list1_ref};
+    my @list2 = @{$list2_ref};
 
     foreach my $i ( 0 .. $#list1 ) {
         $result += abs $list1[$i] - $list2[$i];
