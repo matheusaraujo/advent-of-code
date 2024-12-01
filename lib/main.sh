@@ -3,10 +3,10 @@
 YEARS=$(seq -w 2015 2035)
 DAYS=$(seq -w 1 25)
 
-source lib/aoc/analysis.sh
 source lib/aoc/commit.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/create.sh
+source lib/aoc/format.sh
 source lib/aoc/format.sh
 source lib/aoc/generate_input.sh
 source lib/aoc/help.sh
@@ -16,6 +16,7 @@ source lib/aoc/progress.sh
 source lib/aoc/puzzle_text.sh
 source lib/aoc/run.sh
 source lib/aoc/utils.sh
+source lib/aoc/validate.sh
 source lib/aoc/validate_args.sh
 
 # COMMAND: help: Show help message
@@ -64,20 +65,20 @@ format() {
     aoc_format
 }
 
-# COMMAND: analysis: Run static code analysis for given year and day
-analysis() {
-    aoc_analysis
+# COMMAND: validate: Run validatiosn for given year and day
+validate() {
+    aoc_validate
 }
 
-# COMMAND: analysis-all: Run static code analysis for all solutions
-analysis_all() {
+# COMMAND: validate-all: Run validations for all solutions
+validate_all() {
     for year in $YEARS; do
         for day in $DAYS; do
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
-                echo -e "${GREEN}Running analysis for $year day $day...${NC}"
-                analysis || {
-                    echo -e "${RED}[ERROR] Analysis failed for $year day $day.${NC}"
+                echo -e "${GREEN}Running validation for $year day $day...${NC}"
+                validate || {
+                    echo -e "${RED}[ERROR] Validation failed for $year day $day.${NC}"
                     exit 1
                 }
             fi
@@ -101,6 +102,8 @@ commit() {
         return 1
     fi
     run
+    format
+    validate
     format
     analysis
     puzzle_text
