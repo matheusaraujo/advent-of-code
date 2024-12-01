@@ -18,7 +18,7 @@ validate_year_day_lang() {
         exit 1
     else
         local valid_lang=false
-        for valid in "${languages[@]}"; do
+        for valid in "${available_languages[@]}"; do
             if [[ "$lang" == "$valid" ]]; then
                 valid_lang=true
                 break
@@ -26,7 +26,7 @@ validate_year_day_lang() {
         done
 
         if [ "$valid_lang" == false ]; then
-            print_error "${RED}[ERROR] Language must be one of: ${languages[*]}.${NC}"
+            print_error "${RED}[ERROR] Language must be one of: ${available_languages[*]}.${NC}"
             exit 1
         fi
     fi

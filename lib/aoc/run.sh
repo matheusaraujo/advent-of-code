@@ -24,14 +24,14 @@ run_watch_mode() {
 }
 
 run_full_puzzle() {
-    for lang in "${languages[@]}"; do
+    for lang in "${available_languages[@]}"; do
         process_language_puzzle "$lang"
     done
 }
 
 process_language_puzzle() {
     local lang=$1
-    local ext=${lang_extensions[$lang]}
+    local ext=${language_extensions[$lang]}
 
     if [ -f "$year/day$day/part1.$ext" ]; then
         print_success "$lang: AoC $year - Day $day"

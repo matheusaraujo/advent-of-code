@@ -13,12 +13,14 @@ $ aoc help
 # starting
 # supported langs: perl, python
 $ aoc create 2001 1 perl
+$ aoc create 2001 1 pl
 
 # running
 $ aoc run
 
 # watch mode
 $ aoc run --watch
+$ aoc run -w
 
 # committing
 $ aoc commit

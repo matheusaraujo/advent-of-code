@@ -25,8 +25,8 @@ parse_args() {
             update_aoc_env "day" "$day"
         elif [[ $1 == "part1" || $1 == "part2" ]]; then
             part="$1"
-        elif [[ " ${languages[@]} " =~ " $1 " ]]; then
-            lang="$1"
+        elif [[ " ${!language_aliases[@]} " =~ " $1 " ]]; then
+            lang="${language_aliases[$1]}"
         elif [[ $1 == "--watch" || $1 == "-w" ]]; then
             watch_mode="true"
         else

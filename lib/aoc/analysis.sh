@@ -3,8 +3,8 @@
 aoc_analysis() {
     validate_year_day_directory
     
-    for lang in "${languages[@]}"; do
-        local ext=${lang_extensions[$lang]}
+    for lang in "${available_languages[@]}"; do
+        local ext=${language_extensions[$lang]}
 
         if [ -f "$year/day$day/part1.$ext" ]; then
             print_success "analysis($lang): AoC $year - Day $day"
