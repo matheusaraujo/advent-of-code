@@ -14,4 +14,5 @@ Supporting a new language:
 3. Update `Dockerfile` to install the dependencies
 4. Update `devcontainer.json` to include extensions and related settings
 5. Update the pipelines `.github/workflows` if necessary
+6. Have fun solving _2015 - Day 1_!
 
