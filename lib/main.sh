@@ -73,7 +73,7 @@ analysis_all() {
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
                 echo -e "${GREEN}Running analysis for $year day $day...${NC}"
-                analysis "$year" "$day" || {
+                analysis || {
                     echo -e "${RED}[ERROR] Analysis failed for $year day $day.${NC}"
                     exit 1
                 }
@@ -112,6 +112,7 @@ main() {
     else
         cmd="$1"
         shift
+        [ "$cmd" == "create" ] && rm -rf .aoc-env
         parse_args "$@"
         case "$cmd" in
             help) help ;;

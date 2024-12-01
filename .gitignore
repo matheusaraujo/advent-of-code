@@ -10,3 +10,6 @@ session.cookie
 
 # readme
 **/_readme*.html
+
+# env
+.aoc-env

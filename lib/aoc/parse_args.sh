@@ -1,14 +1,31 @@
 #!/bin/bash
 
+update_aoc_env() {
+    local key="$1"
+    local value="$2"
+
+    if [[ ! -f .aoc-env ]]; then
+        echo "$key=$value" >> .aoc-env
+    else
+        if grep -q "^$key=" .aoc-env; then
+            sed -i "/^$key=/c\\$key=$value" .aoc-env
+        else
+            echo "$key=$value" >> .aoc-env
+        fi
+    fi
+}
+
 parse_args() {
     while [[ $# -gt 0 ]]; do
         if [[ $1 =~ ^[2][0][1-9][5-9]$ || $1 =~ ^[2][0][2][0-4]$ ]]; then
             year="$1"
+            update_aoc_env "year" "$year"
         elif [[ $1 =~ ^[0-9]{1,2}$ && $1 -ge 1 && $1 -le 25 ]]; then 
             day=$(printf "%02d" $1)
+            update_aoc_env "day" "$day"
         elif [[ $1 == "part1" || $1 == "part2" ]]; then
             part="$1"
-        elif [[ $1 == "python" || $1 == "perl" ]]; then # todo @matheusaraujo: use $languages array
+        elif [[ " ${languages[@]} " =~ " $1 " ]]; then
             lang="$1"
         elif [[ $1 == "--watch" || $1 == "-w" ]]; then
             watch_mode="true"
@@ -18,4 +35,8 @@ parse_args() {
         fi
         shift
     done
+    
+    if [[ -z "$year" && -z "$day" ]]; then
+        source .aoc-env
+    fi
 }
