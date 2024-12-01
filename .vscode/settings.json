@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "closedir",
         "cpanminus",
         "devcontainers",
         "inotify",
@@ -7,7 +8,10 @@
         "isort",
         "libperl",
         "matheusaraujo",
+        "opendir",
         "pandoc",
+        "perlcritic",
+        "perlcriticrc",
         "perltidy",
         "pylint",
         "zhiyuan"
