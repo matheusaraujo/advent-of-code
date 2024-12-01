@@ -7,7 +7,6 @@ sub part1 {
     my $result = 0;
 
     my ( $list1_ref, $list2_ref ) = parse_input(@input);
-
     my @list1 = @{$list1_ref};
     my @list2 = @{$list2_ref};
 

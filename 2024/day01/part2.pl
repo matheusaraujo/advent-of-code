@@ -5,12 +5,12 @@ use warnings;
 sub part2 {
     my @input  = @_;
     my $result = 0;
+    my %count;
 
     my ( $list1_ref, $list2_ref ) = parse_input(@input);
     my @list1 = @{$list1_ref};
     my @list2 = @{$list2_ref};
 
-    my %count;
     foreach my $item (@list2) {
         $count{$item}++;
     }
