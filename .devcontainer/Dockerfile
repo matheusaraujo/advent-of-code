@@ -2,14 +2,23 @@ FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
 RUN apt-get update
 
+# general dependencies
+RUN apt-get install -y \
+    pandoc inotify-tools
+
+# javascript dependencies
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
+    apt-get install -y \ 
+    nodejs && \
+    npm install -g eslint prettier
+
 # perl dependencies
-RUN apt-get install -y perl libperl-critic-perl cpanminus
+RUN apt-get install -y \
+    perl libperl-critic-perl cpanminus
 
 # python dependencies
-RUN apt-get install pip pylint isort black -y
-
-# general dependencies
-RUN apt-get install pandoc inotify-tools -y
+RUN apt-get install -y \
+    pip pylint isort black
 
 # cleanup
 RUN apt-get clean && \

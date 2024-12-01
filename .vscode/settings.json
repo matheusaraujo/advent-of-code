@@ -1,5 +1,5 @@
 {
-    "cSpell.words": [
+    "cSpell.userWords": [
         "closedir",
         "cpanminus",
         "devcontainers",
@@ -15,5 +15,7 @@
         "perltidy",
         "pylint",
         "zhiyuan"
-    ]
+    ],
+    "javascript.validate.enable": true,
+    "javascript.suggestionActions.enabled": false
 }

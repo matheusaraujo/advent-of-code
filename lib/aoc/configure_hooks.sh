@@ -1,5 +1,9 @@
 #!/bin/bash
 
+COMMIT_MSG_SCRIPT=".githooks/commit-msg.sh"
+GIT_HOOKS_DIR=".git/hooks"
+COMMIT_MSG_HOOK_NAME="commit-msg"
+
 aoc_configure_hooks() {
     print_success "Installing Git hooks..."
     if [ ! -f "$COMMIT_MSG_SCRIPT" ]; then

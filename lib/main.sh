@@ -1,13 +1,16 @@
 #!/bin/bash
 
+YEARS=$(seq -w 2015 2035)
+DAYS=$(seq -w 1 25)
+
 source lib/aoc/check.sh
 source lib/aoc/commit.sh
 source lib/aoc/configure_hooks.sh
-source lib/aoc/consts.sh
 source lib/aoc/create.sh
 source lib/aoc/format.sh
 source lib/aoc/generate_input.sh
 source lib/aoc/help.sh
+source lib/aoc/langs.sh
 source lib/aoc/parse_args.sh
 source lib/aoc/progress.sh
 source lib/aoc/puzzle_text.sh
@@ -56,7 +59,7 @@ run_all() {
     done
 }
 
-# COMMAND: format: Format code for given year and day
+# COMMAND: format: Format for given year and day
 format() {
     aoc_format
 }
