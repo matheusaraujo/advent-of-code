@@ -16,7 +16,6 @@ source lib/aoc/progress.sh
 source lib/aoc/puzzle_text.sh
 source lib/aoc/run.sh
 source lib/aoc/utils.sh
-source lib/aoc/validate.sh
 source lib/aoc/validate_args.sh
 
 # COMMAND: help: Show help message
@@ -65,19 +64,19 @@ format() {
     aoc_format
 }
 
-# COMMAND: validate: Run validatiosn for given year and day
-validate() {
-    aoc_validate
+# COMMAND: check: Run checks for given year and day
+check() {
+    aoc_check
 }
 
-# COMMAND: validate-all: Run validations for all solutions
-validate_all() {
+# COMMAND: check-all: Run validations for all solutions
+check_all() {
     for year in $YEARS; do
         for day in $DAYS; do
             if [ -d "$year/day$day" ]; then
                 echo "----------------------------------------------------------------------"
                 echo -e "${GREEN}Running validation for $year day $day...${NC}"
-                validate || {
+                check || {
                     echo -e "${RED}[ERROR] Validation failed for $year day $day.${NC}"
                     exit 1
                 }
@@ -103,9 +102,7 @@ commit() {
     fi
     run
     format
-    validate
-    format
-    analysis
+    check
     puzzle_text
     progress
     aoc_commit
@@ -127,8 +124,8 @@ main() {
             run) run ;;
             run-all) run_all ;;
             format) format ;;
-            analysis) analysis ;;
-            analysis-all) analysis_all ;;
+            check) check ;;
+            check-all) check_all ;;
             commit) commit ;;
             generate-input) generate_input ;;
             tree) lib/tree.sh ;;
