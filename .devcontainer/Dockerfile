@@ -6,6 +6,10 @@ RUN apt-get update
 RUN apt-get install -y \
     pandoc inotify-tools
 
+# c dependencies
+RUN apt-get install -y \
+    clang-format
+
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y \ 
