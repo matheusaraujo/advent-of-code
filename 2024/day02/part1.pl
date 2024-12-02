@@ -3,11 +3,11 @@ use strict;
 use warnings;
 
 sub part1 {
-    my @input        = @_;
+    my @puzzle_input = @_;
     my $safe_reports = 0;
 
-    foreach (@input) {
-        my @report = split " ", $_;
+    foreach my $line (@puzzle_input) {
+        my @report = split m/\s/sxm, $line;
         if ( is_safe_report(@report) ) {
             $safe_reports++;
         }
