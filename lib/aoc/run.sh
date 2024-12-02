@@ -37,7 +37,7 @@ process_language_puzzle() {
         print_success "$lang: AoC $year - Day $day"
 
         if [ -f "lib/$lang/build.sh" ]; then
-            lib/$lang/run.sh "$year" "$day"
+            lib/$lang/build.sh "$year" "$day"
         fi
 
         process_language_part "$lang" "part1"

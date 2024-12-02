@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "helpers.h"
 
 char *part1(const char *puzzle_input) {
