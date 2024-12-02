@@ -3,12 +3,12 @@ use strict;
 use warnings;
 
 sub part2 {
-    my @input   = @_;
-    my $result  = 0;
-    my %history = ( 0 => 1 );
+    my @puzzle_input = @_;
+    my $result       = 0;
+    my %history      = ( 0 => 1 );
 
     while (1) {
-        for my $line (@input) {
+        for my $line (@puzzle_input) {
             if ( $line =~ /^[+]/smx ) {
                 $result += substr $line, 1;
             }

@@ -3,10 +3,10 @@ use strict;
 use warnings;
 
 sub part1 {
-    my @input = @_;
+    my @puzzle_input = @_;
     my ( $count2, $count3 ) = ( 0, 0 );
 
-    foreach my $word (@input) {
+    foreach my $word (@puzzle_input) {
         my %letters;
         foreach my $letter ( split //sm, $word ) {
             $letters{$letter}++;

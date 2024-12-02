@@ -3,10 +3,11 @@ use strict;
 use warnings;
 
 sub part1 {
-    my @input  = @_;
-    my $result = 0;
+    my @puzzle_input = @_;
+    my $result       = 0;
 
-    $result = ( ( $input[0] =~ tr/(// ) ) - ( $input[0] =~ tr/)// );
+    $result =
+      ( ( $puzzle_input[0] =~ tr/(// ) ) - ( $puzzle_input[0] =~ tr/)// );
 
     return $result;
 }
