@@ -6,18 +6,18 @@
 #include "part2.h"
 
 #define MAX_LENGTH 10000
-#define MAX_LINES 1000
+#define MAX_LINES 1001
 
 int main(int argc, char *argv[]) {
-    char *puzzle_input = (char *)malloc(MAX_LENGTH * sizeof(char));
-    char *line[MAX_LINES];
+    char *line = (char *)malloc(MAX_LENGTH * sizeof(char));
+    char *puzzle_input[MAX_LINES];
     int line_count = 0;
 
-    while (fgets(puzzle_input, MAX_LENGTH, stdin) != NULL) {
-        puzzle_input[strcspn(puzzle_input, "\n")] = 0;
+    while (fgets(line, MAX_LENGTH, stdin) != NULL) {
+        line[strcspn(line, "\n")] = 0;
 
-        line[line_count] = (char *)malloc((strlen(puzzle_input) + 1) * sizeof(char));
-        strcpy(line[line_count], puzzle_input);
+        puzzle_input[line_count] = (char *)malloc((strlen(line) + 1) * sizeof(char));
+        strcpy(puzzle_input[line_count], line);
 
         line_count++;
         if (line_count >= MAX_LINES) {
@@ -26,24 +26,19 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    puzzle_input[0] = '\0';
+    line[0] = '\0';
     for (int i = 0; i < line_count; i++) {
-        strcat(puzzle_input, line[i]);
+        strcat(line, puzzle_input[i]);
         if (i < line_count - 1) {
-            strcat(puzzle_input, "\n");
+            strcat(line, "\n");
         }
     }
 
     if (strcmp("part1", argv[3]) == 0) {
-        printf("%s\n", part1(puzzle_input));
+        printf("%s\n", part1(puzzle_input, line_count));
     } else {
-        printf("%s\n", part2(puzzle_input));
+        printf("%s\n", part2(puzzle_input, line_count));
     }
-
-    for (int i = 0; i < line_count; i++) {
-        free(line[i]);
-    }
-    free(puzzle_input);
 
     return 0;
 }
