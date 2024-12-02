@@ -5,10 +5,10 @@ use warnings;
 use feature 'say';
 
 sub part1 {
-    my @input  = @_;
-    my $result = 0;
+    my @puzzle_input = @_;
+    my $result       = 0;
 
-    for my $line (@input) {
+    for my $line (@puzzle_input) {
         if ( $line =~ /^[+]/smx ) {
             $result += substr $line, 1;
         }

@@ -3,12 +3,12 @@ use strict;
 use warnings;
 
 sub parse_input {
-    my @input = @_;
+    my @puzzle_input = @_;
     my ( @list1, @list2 );
 
-    chomp @input;
+    chomp @puzzle_input;
 
-    for my $line (@input) {
+    for my $line (@puzzle_input) {
         my ( $item1, $item2 ) = split /\s\s\s/sxm, $line;
         push @list1, $item1;
         push @list2, $item2;
