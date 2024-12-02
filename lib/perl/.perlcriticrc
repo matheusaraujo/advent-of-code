@@ -1,7 +1,7 @@
 severity = 1
 verbose = 8
 
-exclude = Modules::RequireVersionVar
+exclude = Modules::RequireVersionVar Modules::RequireExplicitPackage
 
 color-severity-highest = bold red underline
 color-severity-high = bold magenta
