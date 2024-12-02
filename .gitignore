@@ -4,6 +4,7 @@ node_modules/
 # perl
 *.pl.bak
 *.pl.tdy
+*.pl.ERR
 
 # python
 __pycache__/
