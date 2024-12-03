@@ -9,7 +9,9 @@
             "extensions": [
                 "zairian-lin.simple-perl",
                 "ms-python.python",
-                "ms-python.black-formatter"
+                "ms-python.black-formatter",
+                "xaver.clang-format",
+                "zhiyuan-lin.simple-perl"
             ],
             "settings": {
                 "[python]": {
@@ -18,6 +20,10 @@
                 },
                 "[perl]": {
                     "editor.defaultFormatter": "zhiyuan-lin.simple-perl",
+                    "editor.formatOnSave": true
+                },
+                "[c]": {
+                    "editor.defaultFormatter": "xaver.clang-format",
                     "editor.formatOnSave": true
                 }
             }
