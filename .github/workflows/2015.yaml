@@ -10,9 +10,7 @@ on:
 
 jobs:
   run-2015:
-    name: 2015
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/run-year
+    - uses: ./.github/run-year
+      with:
+        year: 2015
         
