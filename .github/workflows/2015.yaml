@@ -9,6 +9,6 @@ on:
 
 jobs:
   run-2015:
-    uses: .github/workflows/_run.yml
+    uses: .github/workflows/_run.yml@feat/workflow-per-year
     with:
       year: "2015"
