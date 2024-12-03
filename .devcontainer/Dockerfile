@@ -4,7 +4,7 @@ RUN apt-get update
 
 # general dependencies
 RUN apt-get install -y \
-    pandoc inotify-tools
+    pandoc inotify-tools bc
 
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
