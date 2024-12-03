@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/workflows/_run-year.yml
+      - uses: ./.github/_run-year
         with:
           year: "2015"
