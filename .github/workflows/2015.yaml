@@ -5,6 +5,7 @@ on:
     paths:
       - 'lib/**'
       - '2015/**'
+      - '.github/run-year/**'
       - '.github/workflows/2015.yaml'
 
 jobs:
