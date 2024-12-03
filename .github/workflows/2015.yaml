@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-2015:
-    - uses: matheusaraujo/advent-of-code-runner/.github/run-year@feat/workflow-per-year
+    - uses: matheusaraujo/advent-of-code/.github/run-year@feat/workflow-per-year
       with:
         year: 2015
         
