@@ -23,7 +23,9 @@ jobs:
           npm install -g eslint prettier
 
       - name: Check
-        run: lib/main.sh check-year ${{ inputs.year }}
+        env:
+          YEAR: ${{ inputs.year }}
+        run: lib/main.sh check-year $YEAR
 
   run:
     name: Run
@@ -35,4 +37,6 @@ jobs:
           perl-version: "5.34"
       
       - name: Run
-        run: lib/main.sh run-year ${{ inputs.year }}
+        env:
+          YEAR: ${{ inputs.year }}
+        run: lib/main.sh run-year $YEAR
