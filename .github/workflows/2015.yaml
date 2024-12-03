@@ -2,7 +2,7 @@ name: 2015
 
 on:
   push:
-    - paths:
+    paths:
       - 'lib/**'
       - '2015/**'
       - '.github/workflows/2015.yaml'
