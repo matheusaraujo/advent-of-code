@@ -10,6 +10,7 @@ on:
 jobs:
   check:
     name: Check
+    runs-on: ubuntu-latest
     steps:
       - uses: shogo82148/actions-setup-perl@v1
         with:
@@ -23,12 +24,11 @@ jobs:
           npm install -g eslint prettier
 
       - name: Check
-        env:
-          YEAR: ${{ inputs.year }}
-        run: lib/main.sh check-year $YEAR
+        run: lib/main.sh check-year ${{ inputs.year }}
 
   run:
     name: Run
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -37,6 +37,4 @@ jobs:
           perl-version: "5.34"
       
       - name: Run
-        env:
-          YEAR: ${{ inputs.year }}
-        run: lib/main.sh run-year $YEAR
+        run: lib/main.sh run-year ${{ inputs.year }}
