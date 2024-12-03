@@ -9,7 +9,8 @@ on:
 
 jobs:
   run-2015:
-    - uses: actions/checkout@v4
-    - uses: ./.github/workflows/_run-year.yml
-      with:
-        year: "2015"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/workflows/_run-year.yml
+        with:
+          year: "2015"
