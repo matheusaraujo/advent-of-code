@@ -1,10 +1,16 @@
 #!/bin/bash
 
-validate_year_day() {
+validate_year() {
     if [ -z "$year" ]; then
         print_error "${RED}[ERROR] Year must be defined.${NC}"
         exit 1
-    elif [ -z "$day" ]; then
+    fi
+}
+
+validate_year_day() {
+    validate_year
+    
+    if [ -z "$day" ]; then
         print_error "${RED}[ERROR] Day must be defined.${NC}"
         exit 1
     fi

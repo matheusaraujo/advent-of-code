@@ -1,0 +1,14 @@
+name: 2015
+
+on:
+  push:
+    - paths:
+      - 'lib/**'
+      - '2015/**'
+      - '.github/workflows/2015.yaml'
+
+jobs:
+  run-2015:
+    uses: .github/workflows/_run.yml
+    with:
+      year: "2015"

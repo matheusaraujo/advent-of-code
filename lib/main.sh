@@ -59,6 +59,21 @@ run_all() {
     done
 }
 
+# COMMAND: run-year: Execute all solutions for given year
+run_year() {
+    validate_year
+    for day in $DAYS; do
+        if [ -d "$year/day$day" ]; then
+            echo "----------------------------------------------------------------------"
+            echo -e "${GREEN}Running $year day $day...${NC}"
+            run || {
+                echo -e "${RED}[ERROR] Test failed for $year day $day.${NC}"
+                exit 1
+            }
+        fi
+    done
+}
+
 # COMMAND: format: Format for given year and day
 format() {
     aoc_format
@@ -82,6 +97,21 @@ check_all() {
                 }
             fi
         done
+    done
+}
+
+# COMMAND: check-year: Run validations for all solutions in given year
+check_year() {
+    validate_year
+    for day in $DAYS; do
+        if [ -d "$year/day$day" ]; then
+            echo "----------------------------------------------------------------------"
+            echo -e "${GREEN}Running validation for $year day $day...${NC}"
+            check || {
+                echo -e "${RED}[ERROR] Validation failed for $year day $day.${NC}"
+                exit 1
+            }
+        fi
     done
 }
 
@@ -123,9 +153,11 @@ main() {
             create) create ;;
             run) run ;;
             run-all) run_all ;;
+            run-year) run_year ;;
             format) format ;;
             check) check ;;
             check-all) check_all ;;
+            check-year) check_year ;;
             commit) commit ;;
             generate-input) generate_input ;;
             tree) lib/tree.sh ;;
