@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-2015:
-    - uses: ./.github/workflows/run.yaml
+    - uses: matheusaraujo/advent-of-code/.github/workflows/run.yaml@feat/workflow-per-year
       with:
         year: 2015
         
