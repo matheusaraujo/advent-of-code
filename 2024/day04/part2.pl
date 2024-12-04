@@ -2,55 +2,50 @@
 use strict;
 use warnings;
 
-use Readonly;
-
-Readonly my $PAIR1 => 'MS';
-Readonly my $PAIR2 => 'SM';
-
 sub part2 {
     my @puzzle_input = @_;
-    my @word_search  = parse_input(@puzzle_input);
-    my ( $rows, $cols ) = ( scalar @word_search, scalar @{ $word_search[0] } );
-    my $result = 0;
+    my $result       = 0;
+    my @xmas         = qw( X M A S );
+    my @directions   = (
+        [ -1, -1 ], [ -1, 0 ],  [ -1, 1 ], [ 0, -1 ],
+        [ 0,  1 ],  [ 1,  -1 ], [ 1,  0 ], [ 1, 1 ],
+    );
 
-    for my $row ( 0 .. $rows - 1 ) {
-        for my $col ( 0 .. $cols - 1 ) {
-            if ( $word_search[$row][$col] eq 'A' ) {
-                $result += count_diagonal_matches( \@word_search,
-                    $row, $col, $rows, $cols );
+    my @word_search = parse_input(@puzzle_input);
+    my ( $m, $n ) = ( scalar @word_search, scalar @{ $word_search[0] } );
+
+    for my $i ( 0 .. $m - 1 ) {
+        for my $j ( 0 .. $n - 1 ) {
+            if ( $word_search[$i][$j] eq 'A' ) {
+                my $left_up =
+                  ( $i > 0 && $j > 0 )
+                  ? $word_search[ $i - 1 ][ $j - 1 ]
+                  : q{};
+                my $right_up =
+                  ( $i > 0 && $j < $n - 1 )
+                  ? $word_search[ $i - 1 ][ $j + 1 ]
+                  : q{};
+                my $left_down =
+                  ( $i < $m - 1 && $j > 0 )
+                  ? $word_search[ $i + 1 ][ $j - 1 ]
+                  : q{};
+                my $right_down =
+                  ( $i < $m - 1 && $j < $n - 1 )
+                  ? $word_search[ $i + 1 ][ $j + 1 ]
+                  : q{};
+
+                my $diagonal1 = $left_up . $right_down;
+                my $diagonal2 = $right_up . $left_down;
+
+                if (   ( $diagonal1 eq 'MS' || $diagonal1 eq 'SM' )
+                    && ( $diagonal2 eq 'SM' || $diagonal2 eq 'MS' ) )
+                {
+                    $result++;
+                }
             }
         }
     }
-
     return $result;
-}
-
-sub count_diagonal_matches {
-    my ( $grid, $row, $col, $rows, $cols ) = @_;
-
-    my $left_up    = get_cell( $grid, $row - 1, $col - 1, $rows, $cols );
-    my $right_up   = get_cell( $grid, $row - 1, $col + 1, $rows, $cols );
-    my $left_down  = get_cell( $grid, $row + 1, $col - 1, $rows, $cols );
-    my $right_down = get_cell( $grid, $row + 1, $col + 1, $rows, $cols );
-
-    my $diagonal1 = $left_up . $right_down;
-    my $diagonal2 = $right_up . $left_down;
-
-    return ( is_valid_pair($diagonal1) && is_valid_pair($diagonal2) ) ? 1 : 0;
-}
-
-sub get_cell {
-    my ( $grid, $row, $col, $rows, $cols ) = @_;
-    return
-         $row < 0
-      || $row >= $rows
-      || $col < 0
-      || $col >= $cols ? q{} : $grid->[$row][$col];
-}
-
-sub is_valid_pair {
-    my ($diagonal) = @_;
-    return $diagonal eq $PAIR1 || $diagonal eq $PAIR2;
 }
 
 1;
