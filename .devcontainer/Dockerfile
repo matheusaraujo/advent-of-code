@@ -8,7 +8,7 @@ RUN apt-get install -y \
 
 # c dependencies
 RUN apt-get install -y \
-    clang-format
+    clang clang-format clang-tidy
 
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \

@@ -11,11 +11,11 @@ char *part2(const char **puzzle_input, int size) {
   int left[size], right[size];
   int count[MAX_SIZE];
 
-  memset(count, 0, sizeof(count));
+  memset_s(count, 0, sizeof(count));
 
   for (int i = 0; i < size; i++) {
-    int num1, num2;
-    sscanf(puzzle_input[i], "%d %d", &num1, &num2);
+    int num1 = 0, num2 = 0;
+    sscanf(puzzle_input[i], "%d %d", &num1, &num2); // NOLINT(*)
     left[i] = num1, right[i] = num2;
   }
 

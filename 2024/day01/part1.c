@@ -8,16 +8,17 @@ char *part1(char **puzzle_input, int size) {
   int left[size + 1], right[size + 1];
 
   for (int i = 0; i < size; i++) {
-    int num1, num2;
-    sscanf(puzzle_input[i], "%d %d", &num1, &num2);
+    int num1 = 0, num2 = 0;
+    sscanf(puzzle_input[i], "%d %d", &num1, &num2); // NOLINT(*)
     left[i] = num1, right[i] = num2;
   }
 
   qsort(left, size, sizeof(int), cmp_asc);
   qsort(right, size, sizeof(int), cmp_asc);
 
-  for (int i = 0; i < size; i++)
+  for (int i = 0; i < size; i++) {
     result += abs(left[i] - right[i]);
+  }
 
   return intToString(result);
 }
