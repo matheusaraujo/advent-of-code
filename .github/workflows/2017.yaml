@@ -1,15 +1,15 @@
-name: "2015"
+name: "2017"
 
 on: 
  push:
   paths:
-    - "2015/**"
+    - "2017/**"
     - "lib/**"
     - ".github/workflows/run.yaml"
-    - ".github/workflows/2015.yaml"
+    - ".github/workflows/2017.yaml"
  
 jobs:
   y2015:
     uses: ./.github/workflows/run.yaml
     with:
-      year: "2015"
+      year: "2017"
