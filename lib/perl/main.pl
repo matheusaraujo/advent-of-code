@@ -6,12 +6,20 @@ use Carp;
 my ( $year, $day, $part ) = @ARGV;
 my $solution_path = "./$year/day$day/$part.pl";
 my $helpers_path  = "./$year/day$day/helpers.pl";
-my $func          = \&{$part};
+my $func;
 
 if ( -e $helpers_path ) {
-    do $helpers_path or croak "Could not load helpers: $!";
+    eval {
+        do $helpers_path;
+        1;
+    } or croak "Could not load helpers file '$helpers_path': $@ $!";
 }
-do $solution_path or croak "Could not load script '$solution_path': $!";
+
+eval {
+    do $solution_path;
+    $func = \&{$part};
+    1;
+} or croak "Could not load solution script '$solution_path': $@ $!";
 
 sub main {
     my @input_data = <STDIN>;
