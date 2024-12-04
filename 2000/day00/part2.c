@@ -2,5 +2,5 @@
 
 char *part2(const char *puzzle_input, int size) {
   int result = 0;
-  return intToString(result);
+  return aoc_int_to_str(result);
 }

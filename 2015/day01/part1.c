@@ -7,5 +7,5 @@ char *part1(char **puzzle_input) {
     count += puzzle_input[0][i] == '(' ? 1 : -1;
   }
 
-  return intToString(count);
+  return aoc_int_to_str(count);
 }

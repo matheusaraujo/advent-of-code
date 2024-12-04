@@ -11,11 +11,11 @@ char *part2(const char **puzzle_input, int size) {
   int left[size], right[size];
   int count[MAX_SIZE];
 
-  memset_s(count, 0, sizeof(count));
+  aoc_memset(count, 0, sizeof(count));
 
   for (int i = 0; i < size; i++) {
     int num1 = 0, num2 = 0;
-    sscanf(puzzle_input[i], "%d %d", &num1, &num2); // NOLINT(*)
+    aoc_scanf(puzzle_input[i], "%d %d", &num1, &num2);
     left[i] = num1, right[i] = num2;
   }
 
@@ -27,5 +27,5 @@ char *part2(const char **puzzle_input, int size) {
     result += left[i] * count[left[i]];
   }
 
-  return intToString(result);
+  return aoc_int_to_str(result);
 }
