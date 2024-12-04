@@ -1,3 +1,5 @@
+#include <stddef.h> 
+
 #ifndef WORKSPACES_ADVENT_OF_CODE_LIB_C_HELPERS_H
 #define WORKSPACES_ADVENT_OF_CODE_LIB_C_HELPERS_H
 
