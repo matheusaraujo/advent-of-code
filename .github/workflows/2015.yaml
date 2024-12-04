@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-2015:
-    - uses: ./.github/run-year/action.yaml
+    - uses: ./.github/workflows/run.yaml
       with:
         year: 2015
         
