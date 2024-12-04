@@ -1,15 +1,19 @@
 name: run
 
 on:
-  push
-
+  workflow_call:
+    inputs:
+      year:
+        description: "Year to process"
+        required: true
+        
 jobs:
-  critic:
+  check:
     name: Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      
       - uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: "5.34"
@@ -22,7 +26,7 @@ jobs:
           npm install -g eslint prettier
 
       - name: Check
-        run: lib/main.sh check-all
+        run: lib/main.sh check-year ${{ inputs.year }}
 
   run:
     name: Run
@@ -35,5 +39,4 @@ jobs:
           perl-version: "5.34"
       
       - name: Run
-        run: lib/main.sh run-all
-  
+        run: lib/main.sh run-year ${{ inputs.year }}
