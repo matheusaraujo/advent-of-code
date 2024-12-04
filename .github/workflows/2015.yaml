@@ -1,10 +1,9 @@
-name: 2015
+name: "2015"
 
 on: push
 
 jobs:
   run-2015:
-    - uses: ./.github/workflows/run.yaml
-      with:
-        year: 2015
-        
+    uses: ./.github/workflows/run.yaml
+    with:
+      year: "2015"
