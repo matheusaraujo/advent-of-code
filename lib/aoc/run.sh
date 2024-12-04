@@ -78,15 +78,16 @@ execute_solution_script() {
     local input_file=$5
     local output_file=$6
 
-    local start_time=$(date +%s%3N)
+    local start_time=$(date +%s%N)
     local script_output=$(lib/$lang/run.sh "$year" "$day" "$part" "$input_file")
+    local end_time=$(date +%s%N)
+    local elapsed_time=$((end_time - start_time))
+    local elapsed_ms=$(echo "scale=3; $elapsed_time / 1000000" | bc)
 
     if [ $? -ne 0 ]; then
         exit 1
     fi
-
-    local end_time=$(date +%s%3N)
-    local elapsed_time=$((end_time - start_time))
+    
     local result_symbol=""
     local input_label=$(generate_input_label "$input_file")
 
@@ -95,13 +96,13 @@ execute_solution_script() {
         local expected_output=$(cat "$output_file")
 
         if [ "$script_output" != "$expected_output" ]; then
-            print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_time}ms)\033[91m ✘ Expected: $expected_output \033[0m"
+            print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_ms}ms)\033[91m ✘ Expected: $expected_output \033[0m"
             exit 1
         fi
         result_symbol="\033[32m✔\033[0m"
     fi
 
-    print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_time}ms) $result_symbol\033[0m"
+    print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (executed in ${elapsed_ms}ms) $result_symbol\033[0m"
 }
 
 validate_output_file() {

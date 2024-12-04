@@ -1,6 +1,13 @@
 # advent-of-code
 
-[![run](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml/badge.svg?branch=main)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/run.yaml)
+[![2015](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2015.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2015.yaml) &nbsp;
+[![2016](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2016.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2016.yaml) &nbsp;
+[![2017](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2017.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2017.yaml) &nbsp;
+[![2018](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2018.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2018.yaml) &nbsp;
+[![2019](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2019.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2019.yaml) &nbsp;
+[![2020](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2020.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2020.yaml) &nbsp;
+[![2023](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2023.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2023.yaml) &nbsp;
+[![2024](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2024.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2024.yaml)
 
 ![AOC](docs/logo.png)
 
@@ -33,19 +40,13 @@ $ aoc commit
 | YEAR          | PROGRESS                      | COMPLETED (Out of 25) |
 |---------------|-------------------------------|-----------------------|
 | 👩‍💻 2015 | ██████------------------- | 6 (24%) |
-| 🎉 2016 | ██----------------------- | 2 (8%) |
+| ❄️ 2016 | ██----------------------- | 2 (8%) |
 | 🎅 2017 | █------------------------ | 1 (4%) |
-| 🎄 2018 | ██----------------------- | 2 (8%) |
-| 🎄 2019 | █████████---------------- | 9 (36%) |
-| 🧑‍🎄 2020 | █------------------------ | 1 (4%) |
-| 🧑‍💻 2021 | ------------------------- | 0 (0%) |
+| 🎉 2018 | ██----------------------- | 2 (8%) |
+| 🧑‍🎄 2019 | █████████---------------- | 9 (36%) |
+| 💻 2020 | █------------------------ | 1 (4%) |
+| 🎉 2021 | ------------------------- | 0 (0%) |
 | ❄️ 2022 | ------------------------- | 0 (0%) |
-| 🎁 2023 | █████████████████████████ | 25 (100%) |
-| ❄️ 2024 | █------------------------ | 1 (4%) |
-| ❄️ 2025 | ------------------------- | 0 (0%) |
-| 🎅 2026 | ------------------------- | 0 (0%) |
-| 🎁 2027 | ------------------------- | 0 (0%) |
-| 💻 2028 | ------------------------- | 0 (0%) |
-| 👨‍💻 2029 | ------------------------- | 0 (0%) |
-| 🎁 2030 | ------------------------- | 0 (0%) |
+| 💻 2023 | █████████████████████████ | 25 (100%) |
+| 🎄 2024 | ████--------------------- | 4 (16%) |
 <!-- progress-end -->
