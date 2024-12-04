@@ -1,0 +1,12 @@
+Checks: >
+  *,
+  -clang-analyzer-alpha.*,
+  -modernize-use-trailing-return-type,
+  -altera-unroll-loops,
+  -readability-identifier-length,
+  -llvmlibc-restrict-system-libc-headers,
+  -readability-isolate-declaration
+WarningsAsErrors: >
+  *
+AnalyzeTemporaryDtors: false
+FormatStyle: none

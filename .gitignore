@@ -17,3 +17,7 @@ session.cookie
 
 # env
 .aoc-env
+
+# c
+lib/c/run
+*.plist

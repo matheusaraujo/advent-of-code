@@ -22,6 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install bc -y
+          sudo apt-get install build-essential clang clang-format clang-tidy
           sudo apt-get install libperl-critic-perl -y
           sudo apt-get install pylint isort black -y
           npm install -g eslint prettier
@@ -39,5 +40,13 @@ jobs:
         with:
           perl-version: "5.34"
       
+      - name: Install dependencies
+        run: |
+          sudo apt-get install bc -y
+          sudo apt-get install build-essential clang clang-format clang-tidy
+          sudo apt-get install libperl-critic-perl -y
+          sudo apt-get install pylint isort black -y
+          npm install -g eslint prettier
+
       - name: Run
         run: lib/main.sh run-year ${{ inputs.year }}

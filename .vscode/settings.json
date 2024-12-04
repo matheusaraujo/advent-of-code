@@ -1,21 +1,4 @@
 {
-    "cSpell.userWords": [
-        "closedir",
-        "cpanminus",
-        "devcontainers",
-        "inotify",
-        "inotifywait",
-        "isort",
-        "libperl",
-        "matheusaraujo",
-        "opendir",
-        "pandoc",
-        "perlcritic",
-        "perlcriticrc",
-        "perltidy",
-        "pylint",
-        "zhiyuan"
-    ],
     "javascript.validate.enable": true,
     "javascript.suggestionActions.enabled": false
 }

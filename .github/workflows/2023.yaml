@@ -9,7 +9,7 @@ on:
     - ".github/workflows/2023.yaml"
  
 jobs:
-  y2015:
+  ci:
     uses: ./.github/workflows/run.yaml
     with:
       year: "2023"
