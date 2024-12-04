@@ -4,6 +4,7 @@ on:
   workflow_call:
     inputs:
       year:
+        type: string
         description: "Year to process"
         required: true
         
