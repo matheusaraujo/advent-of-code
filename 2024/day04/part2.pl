@@ -12,25 +12,25 @@ sub part2 {
     );
 
     my @word_search = parse_input(@puzzle_input);
-    my ( $m, $n ) = ( scalar @word_search, scalar @{ $word_search[0] } );
+    my ( $m, $n ) = ( $#word_search, $#{ $word_search[0] } );
 
-    for my $i ( 0 .. $m - 1 ) {
-        for my $j ( 0 .. $n - 1 ) {
+    for my $i ( 0 .. $m ) {
+        for my $j ( 0 .. $n ) {
             if ( $word_search[$i][$j] eq 'A' ) {
                 my $left_up =
                   ( $i > 0 && $j > 0 )
                   ? $word_search[ $i - 1 ][ $j - 1 ]
                   : q{};
                 my $right_up =
-                  ( $i > 0 && $j < $n - 1 )
+                  ( $i > 0 && $j < $n )
                   ? $word_search[ $i - 1 ][ $j + 1 ]
                   : q{};
                 my $left_down =
-                  ( $i < $m - 1 && $j > 0 )
+                  ( $i < $m && $j > 0 )
                   ? $word_search[ $i + 1 ][ $j - 1 ]
                   : q{};
                 my $right_down =
-                  ( $i < $m - 1 && $j < $n - 1 )
+                  ( $i < $m && $j < $n )
                   ? $word_search[ $i + 1 ][ $j + 1 ]
                   : q{};
 

@@ -23,7 +23,7 @@ sub part2 {
         $rules++;
     }
 
-    for my $i ( $rules + 1 .. scalar @puzzle_input - 1 ) {
+    for my $i ( $rules + 1 .. $#puzzle_input ) {
         my $line  = $puzzle_input[$i];
         my @pages = split /,/sxm, $line;
 

@@ -4,10 +4,10 @@ use warnings;
 
 sub part2 {
     my @puzzle_input = @_;
-    my $size         = scalar @puzzle_input;
+    my $size         = $#puzzle_input;
 
-    foreach my $i ( 0 .. $size - 1 ) {
-        foreach my $j ( $i + 1 .. $size - 1 ) {
+    foreach my $i ( 0 .. $size ) {
+        foreach my $j ( $i + 1 .. $size ) {
 
             my $diff = 0;
             my $common;

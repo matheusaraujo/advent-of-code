@@ -13,19 +13,19 @@ sub part1 {
 
     my @word_search = parse_input(@puzzle_input);
 
-    my ( $m, $n ) = ( scalar @word_search, scalar @{ $word_search[0] } );
+    my ( $m, $n ) = ( $#word_search, $#{ $word_search[0] } );
 
-    for my $i ( 0 .. $m - 1 ) {
-        for my $j ( 0 .. $n - 1 ) {
+    for my $i ( 0 .. $m ) {
+        for my $j ( 0 .. $n ) {
             foreach my $dir (@directions) {
                 my ( $dx, $dy ) = @{$dir};
                 my ( $x,  $y )  = ( $i, $j );
                 my $found = 1;
                 for my $k ( 0 .. 3 ) {
                     if (   $x < 0
-                        || $x >= $m
+                        || $x > $m
                         || $y < 0
-                        || $y >= $n
+                        || $y > $n
                         || $word_search[$x][$y] ne $xmas[$k] )
                     {
                         $found = 0;

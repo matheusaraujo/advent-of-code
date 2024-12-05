@@ -23,12 +23,12 @@ sub part1 {
         $rules++;
     }
 
-    for my $i ( $rules + 1 .. scalar @puzzle_input - 1 ) {
+    for my $i ( $rules + 1 .. $#puzzle_input ) {
         my $line        = $puzzle_input[$i];
         my @pages       = split /,/sxm, $line;
         my $right_order = 1;
 
-        for my $j ( 1 .. scalar @pages - 1 ) {
+        for my $j ( 1 .. $#pages ) {
 
             for my $k ( 0 .. $j - 1 ) {
                 if ( any { $pages[$k] eq $_ } @{ $before{ $pages[$j] } } ) {
@@ -37,7 +37,7 @@ sub part1 {
                 }
             }
 
-            for my $k ( $j + 1 .. scalar @pages - 1 ) {
+            for my $k ( $j + 1 .. $#pages ) {
                 if ( any { $pages[$k] eq $_ } @{ $after{ $pages[$j] } } ) {
                     $right_order = 0;
                     last;
