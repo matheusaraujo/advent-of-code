@@ -29,7 +29,6 @@ sub part1 {
         my $right_order = 1;
 
         for my $j ( 1 .. $#pages ) {
-
             for my $k ( 0 .. $j - 1 ) {
                 if ( any { $pages[$k] eq $_ } @{ $before{ $pages[$j] } } ) {
                     $right_order = 0;
