@@ -51,6 +51,7 @@ jobs:
       - name: Run
         run: |
           echo "$AOC_SESSION_COOKIE" > session.cookie
+          cat session.cookie
           lib/main.sh run-year ${{ inputs.year }}
         env:
           AOC_SESSION_COOKIE: ${{ secrets.AOC_SESSION_COOKIE }}
