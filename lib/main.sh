@@ -13,7 +13,7 @@ source lib/aoc/help.sh
 source lib/aoc/langs.sh
 source lib/aoc/parse_args.sh
 source lib/aoc/progress.sh
-source lib/aoc/puzzle_text.sh
+source lib/aoc/extract_answers.sh
 source lib/aoc/run.sh
 source lib/aoc/utils.sh
 source lib/aoc/validate_args.sh
@@ -115,8 +115,8 @@ check_year() {
     done
 }
 
-# COMMAND: puzzle-text: Fetch puzzle text for given year and day
-puzzle_text() {
+# COMMAND: extract-answers: Fetch puzzle text for given year and day
+extract_answers() {
     aoc_puzzle_text
 }
 
@@ -133,7 +133,7 @@ commit() {
     run
     format
     check
-    puzzle_text
+    extract_answers
     progress
     aoc_commit
 }
@@ -161,7 +161,7 @@ main() {
             commit) commit ;;
             generate-input) generate_input ;;
             tree) lib/tree.sh ;;
-            puzzle-text) puzzle_text ;;
+            extract-answers) extract_answers ;;
             progress) progress ;;
             *) print_error "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
         esac

@@ -2,11 +2,18 @@
 
 aoc_run() {
     validate_year_day_directory
+    ensure_input_file_exists
     
     if [ "$watch_mode" == "true" ]; then
         run_watch_mode
     else
         run_full_puzzle
+    fi
+}
+
+ensure_input_file_exists() {
+    if [ ! -f "$year/day$day/data/input.txt" ]; then
+        curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//')/input -o $year/day$day/data/input.txt
     fi
 }
 

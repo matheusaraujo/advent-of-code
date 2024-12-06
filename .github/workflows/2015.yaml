@@ -7,6 +7,8 @@ on:
     - "lib/**"
     - ".github/workflows/run.yaml"
     - ".github/workflows/2015.yaml"
+  branches:
+    - main
  
 jobs:
   ci:
