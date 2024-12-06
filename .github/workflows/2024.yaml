@@ -7,7 +7,7 @@ on:
     - "lib/**"
     - ".github/workflows/run.yaml"
     - ".github/workflows/2024.yaml"
- branches:
+  branches:
     - main
 
 jobs:
@@ -15,3 +15,5 @@ jobs:
     uses: ./.github/workflows/run.yaml
     with:
       year: "2024"
+    secrets: inherit
+

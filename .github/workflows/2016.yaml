@@ -7,11 +7,12 @@ on:
     - "lib/**"
     - ".github/workflows/run.yaml"
     - ".github/workflows/2016.yaml"
- branches:
+  branches:
     - main
-    
+
 jobs:
   ci:
     uses: ./.github/workflows/run.yaml
     with:
       year: "2016"
+    secrets: inherit

@@ -15,3 +15,4 @@ jobs:
     uses: ./.github/workflows/run.yaml
     with:
       year: "2018"
+    secrets: inherit
