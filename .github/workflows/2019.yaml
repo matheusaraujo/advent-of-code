@@ -7,7 +7,9 @@ on:
     - "lib/**"
     - ".github/workflows/run.yaml"
     - ".github/workflows/2019.yaml"
- 
+ branches:
+    - main
+
 jobs:
   ci:
     uses: ./.github/workflows/run.yaml
