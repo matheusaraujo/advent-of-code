@@ -49,4 +49,8 @@ jobs:
           npm install -g eslint prettier
 
       - name: Run
-        run: lib/main.sh run-year ${{ inputs.year }}
+        run: |
+          echo "$AOC_SESSION_COOKIE" > session.cookie
+          lib/main.sh run-year ${{ inputs.year }}
+        env:
+          AOC_SESSION_COOKIE: ${{ secrets.AOC_SESSION_COOKIE }}
