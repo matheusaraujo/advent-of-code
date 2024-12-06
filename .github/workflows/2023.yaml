@@ -15,3 +15,4 @@ jobs:
     uses: ./.github/workflows/run.yaml
     with:
       year: "2023"
+    secrets: inherit
