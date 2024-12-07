@@ -13,26 +13,26 @@
 
 ## running
 
-#### - all commands
+#### all commands
 ```bash
 $ aoc help
 ```
-#### - starting a new day
+#### starting a new day
 ```bash
 $ aoc create perl
 ```
 
-#### - running
+#### running
 ```bash
 $ aoc run
 ```
 
-#### - watch mode
+#### watch mode
 ```bash
 $ aoc run --watch
 ```
 
-#### - preparing commit
+#### preparing commit
 ```bash
 $ aoc commit
 ```
