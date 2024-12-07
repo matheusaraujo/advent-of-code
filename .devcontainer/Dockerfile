@@ -3,7 +3,10 @@ FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
 # general dependencies
 RUN apt-get update && \
     apt-get install -y \
-    pandoc inotify-tools bc time
+    pandoc \ 
+    inotify-tools \ 
+    bc \ 
+    time
 
 # c dependencies
 RUN apt-get install -y \
@@ -16,8 +19,12 @@ RUN apt-get install -y software-properties-common && \
     apt-get install -y dotnet-sdk-9.0
 
 # go dependencies
-RUN apt-get install -y \
-    golang-go
+RUN curl -Lo go1.23.4.linux-amd64.tar.gz https://go.dev/dl/go1.23.4.linux-amd64.tar.gz && \
+    tar -C /usr/local -xvzf go1.23.4.linux-amd64.tar.gz && \
+    rm go1.23.4.linux-amd64.tar.gz
+ENV GOROOT=/usr/local/go
+ENV GOPATH=/root/go
+ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
