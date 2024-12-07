@@ -7,17 +7,26 @@ on:
         type: string
         description: "Year to process"
         required: true
-        
+
 jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - uses: shogo82148/actions-setup-perl@v1
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: "5.34"
+
+      - name: Set up dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Set up dotnet - step 2
+        run: dotnet tool install -g csharpier
 
       - name: Install dependencies
         run: |
@@ -39,7 +48,7 @@ jobs:
       - uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: "5.34"
-      
+
       - name: Install dependencies
         run: |
           sudo apt-get install bc -y

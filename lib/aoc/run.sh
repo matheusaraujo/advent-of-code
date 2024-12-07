@@ -45,6 +45,10 @@ process_language_puzzle() {
 
         if [ -f "lib/$lang/build.sh" ]; then
             lib/$lang/build.sh "$year" "$day"
+
+            if [ $? -ne 0 ]; then
+                exit 1
+            fi
         fi
 
         process_language_part "$lang" "part1"

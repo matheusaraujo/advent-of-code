@@ -1,18 +1,23 @@
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
-
-RUN apt-get update
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
 
 # general dependencies
-RUN apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y \
     pandoc inotify-tools bc
 
 # c dependencies
 RUN apt-get install -y \
     clang clang-format clang-tidy
 
+# csharp dependencies
+RUN apt-get install -y software-properties-common && \
+    add-apt-repository ppa:dotnet/backports && \
+    apt-get update && \
+    apt-get install -y dotnet-sdk-9.0
+
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
-    apt-get install -y \ 
+    apt-get install -y \
     nodejs && \
     npm install -g eslint prettier
 
@@ -36,3 +41,7 @@ RUN echo '/workspaces/advent-of-code/lib/tree.sh' >> /home/vscode/.bashrc
 
 # Start the shell with the updated .bashrc
 CMD ["/bin/sh", "-c", "source /home/vscode/.bashrc && exec /bin/sh"]
+
+# csharp additional dependencies (needs user vscode)
+USER vscode
+RUN dotnet tool install -g csharpier
