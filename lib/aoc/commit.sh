@@ -15,6 +15,10 @@ aoc_commit() {
     puzzle_title=$(head -2 "$readme_path" | tail -1 | sed 's/^.\{6\}//; s/.\{6\}$//' | xargs)
 
     if [ -z "$puzzle_title" ]; then
+        puzzle_title=$(head -2 "$readme_path" | tail -2 | sed 's/^--- \(.*\) ---$/\1/' | xargs)
+    fi
+
+    if [ -z "$puzzle_title" ]; then
         print_error "Error: Unable to extract puzzle title from $readme_path"
         exit 1
     fi

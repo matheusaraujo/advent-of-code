@@ -22,19 +22,23 @@ aoc_puzzle_text() {
   fi
 
   if [ "${_AOC_FORCE_PUZZLE_TEXT:-}" == "true" ]; then
-    echo -e "\e[31m⚠️ WARNING: According to the Advent of Code FAQ (https://adventofcode.com/2024/about#faq_copying), this action is discouraged.\e[0m"
-    echo -e "\e[31m⚠️ Proceed at your own risk.\e[0m"
+    echo -e "\e[31m⚠️ DISCLAIMER ⚠️\e[0m"
+    echo -e "\e[33m⚠️ WARNING: According to the Advent of Code FAQ (https://adventofcode.com/2024/about#faq_copying), this action is discouraged.\e[0m"
+    echo -e "\e[33m⚠️ Proceed at your own risk.\e[0m"
+
     sed -n '/<main>/,/<\/main>/p' $year/day$day/_readme1.html > $year/day$day/_readme2.html
     sed '/<p class="day-success">Both parts of this puzzle are complete!/q' $year/day$day/_readme2.html | sed '$a</main>' > $year/day$day/_readme3.html
     pandoc --from=html --to=markdown --output=$year/day$day/README.md $year/day$day/_readme3.html
     sed -i 's/::: {role="main"}//g' $year/day$day/README.md
     sed -i 's/{#part2}//g' $year/day$day/README.md
     sed -i '${/^:::$/d}' $year/day$day/README.md
-    print_success "readme $year/day$day generated \033[32m✔\033[0m"  
+    print_success "readme $year/day$day generated \033[32m✔\033[0m"
   else
-    readme_content="# advent-of-code ${year} day ${day}\n\nhttps://adventofcode.com/${year}/day/$(echo $day | sed 's/^0*//')"
+    sed -n '/<main>/,/<\/main>/p' $year/day$day/_readme1.html > $year/day$day/_readme2.html
+    extracted_title=$(sed -n 's/.*<h2>\(.*\)<\/h2>.*/\1/p' $year/day$day/_readme2.html)
+    readme_content="${extracted_title}\n\nhttps://adventofcode.com/${year}/day/$(echo $day | sed 's/^0*//')\n"
     echo -e "$readme_content" > $year/day$day/README.md
-    print_success "readme $year/day$day generated \033[32m✔\033[0m"  
+    print_success "readme $year/day$day generated \033[32m✔\033[0m"
   fi
 
   rm $year/day$day/_readme*.html
