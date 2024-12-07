@@ -6,6 +6,5 @@ public static class Part1
     {
         var (left, right) = Helpers.ParseInput(puzzleInput);
         return left.Zip(right, (l, r) => Math.Abs(l - r)).Sum();
-        ;
     }
 }
