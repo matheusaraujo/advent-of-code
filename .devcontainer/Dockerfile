@@ -30,6 +30,12 @@ ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 RUN apt-get update && \
     apt-get install -y openjdk-21-jdk
 
+ENV GJF_VERSION=1.25.0
+RUN mkdir -p /opt/google-java-format \
+    && curl -L -o /opt/google-java-format/google-java-format-${GJF_VERSION}.jar \
+    "https://github.com/google/google-java-format/releases/download/v${GJF_VERSION}/google-java-format-${GJF_VERSION}-all-deps.jar" \
+    && ln -sf /opt/google-java-format/google-java-format-${GJF_VERSION}.jar /usr/local/bin/google-java-format
+    
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y \

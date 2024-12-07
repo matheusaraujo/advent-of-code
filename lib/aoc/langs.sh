@@ -2,7 +2,7 @@
 
 # Languages
 #available_languages=(c csharp go java javascript python perl)
-available_languages=(c csharp go java)
+available_languages=(java)
 
 declare -A language_extensions
 language_extensions=(
