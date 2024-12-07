@@ -15,6 +15,10 @@ RUN apt-get install -y software-properties-common && \
     apt-get update && \
     apt-get install -y dotnet-sdk-9.0
 
+# go dependencies
+RUN apt-get install -y \
+    golang-go
+
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y \

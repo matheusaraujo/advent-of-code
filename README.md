@@ -13,21 +13,27 @@
 
 ## running
 
+#### all commands
 ```bash
-# help
 $ aoc help
-
-# starting
-# supported langs: c, javascript, perl, python, 
+```
+#### starting a new day
+```bash
 $ aoc create perl
+```
 
-# running
+#### running
+```bash
 $ aoc run
+```
 
-# watch mode
+#### watch mode
+```bash
 $ aoc run --watch
+```
 
-# committing code
+# preparing commit
+```bash
 $ aoc commit
 ```
 
