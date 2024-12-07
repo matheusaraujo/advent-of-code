@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
 # general dependencies
 RUN apt-get update && \
     apt-get install -y \
-    pandoc inotify-tools bc
+    pandoc inotify-tools bc time
 
 # c dependencies
 RUN apt-get install -y \
