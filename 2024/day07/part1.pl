@@ -4,7 +4,7 @@ use warnings;
 
 sub part1 {
     my @puzzle_input = @_;
-    return solve( \@puzzle_input, [qw(+ *)] );
+    return solve( 0, \@puzzle_input );
 }
 
 1;
