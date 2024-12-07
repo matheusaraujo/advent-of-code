@@ -12,6 +12,12 @@ helpers.sh
 lib/c/run
 *.plist
 
+# csharp
+lib/csharp/Part1.cs
+lib/csharp/Part2.cs
+lib/csharp/obj/
+lib/csharp/bin/
+
 # javascript
 node_modules/
 
