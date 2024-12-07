@@ -1,4 +1,4 @@
-#include "helpers.h"
+#include "aoc_helpers.h"
 
 char *part2(char **puzzle_input) {
   int floor = 0;

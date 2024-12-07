@@ -1,4 +1,4 @@
-#include "helpers.h"
+#include "aoc_helpers.h"
 
 char *part1(char **puzzle_input) {
   int count = 0;
