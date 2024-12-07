@@ -41,3 +41,7 @@ RUN echo '/workspaces/advent-of-code/lib/tree.sh' >> /home/vscode/.bashrc
 
 # Start the shell with the updated .bashrc
 CMD ["/bin/sh", "-c", "source /home/vscode/.bashrc && exec /bin/sh"]
+
+# csharp additional dependencies (needs user vscode)
+USER vscode
+RUN dotnet tool install -g csharpier

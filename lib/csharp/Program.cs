@@ -1,6 +1,7 @@
 ﻿namespace aoc;
 
-public class Program{
+public class Program
+{
     static void Main(string[] args)
     {
         string part = args[2];

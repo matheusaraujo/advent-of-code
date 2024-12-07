@@ -2,9 +2,11 @@ namespace aoc;
 
 public static class Helpers
 {
-    public static (List<int>, List<int>) ParseInput(string puzzleInput){
-        List<int> left = new(), right = new();
-        
+    public static (List<int>, List<int>) ParseInput(string puzzleInput)
+    {
+        List<int> left = new(),
+            right = new();
+
         foreach (var line in puzzleInput.Trim().Split('\n'))
         {
             var parts = line.Split("   ");
