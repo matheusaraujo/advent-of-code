@@ -1,5 +1,5 @@
 # Advent of Code - 2023 Day 16
 
-${extracted_title}
+--- Day 16: The Floor Will Be Lava ---
 
 https://adventofcode.com/2023/day/16

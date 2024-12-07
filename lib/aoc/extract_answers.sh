@@ -36,7 +36,7 @@ aoc_puzzle_text() {
   else
     sed -n '/<main>/,/<\/main>/p' $year/day$day/_readme1.html > $year/day$day/_readme2.html
     extracted_title=$(sed -n 's/.*<h2>\(.*\)<\/h2>.*/\1/p' $year/day$day/_readme2.html)
-    readme_content="# Advent of Code - ${year} Day ${day}\n\n\${extracted_title}\n\nhttps://adventofcode.com/${year}/day/$(echo $day | sed 's/^0*//')"
+    readme_content="# Advent of Code - ${year} Day ${day}\n\n${extracted_title}\n\nhttps://adventofcode.com/${year}/day/$(echo $day | sed 's/^0*//')"
     echo -e "$readme_content" > $year/day$day/README.md
     print_success "readme $year/day$day generated \033[32m✔\033[0m"
   fi

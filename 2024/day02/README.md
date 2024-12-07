@@ -1,5 +1,5 @@
 # Advent of Code - 2024 Day 02
 
-${extracted_title}
+--- Day 2: Red-Nosed Reports ---
 
 https://adventofcode.com/2024/day/2

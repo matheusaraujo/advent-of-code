@@ -1,5 +1,5 @@
 # Advent of Code - 2023 Day 04
 
-${extracted_title}
+--- Day 4: Scratchcards ---
 
 https://adventofcode.com/2023/day/4
