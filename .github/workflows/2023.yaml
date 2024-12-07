@@ -1,14 +1,22 @@
 name: "2023"
 
 on: 
- push:
-  paths:
-    - "2023/**"
-    - "lib/**"
-    - ".github/workflows/run.yaml"
-    - ".github/workflows/2023.yaml"
-  branches:
-    - main
+  push:
+    paths:
+      - "2023/**"
+      - "lib/**"
+      - ".github/workflows/run.yaml"
+      - ".github/workflows/2023.yaml"
+    branches:
+      - main
+  pull_request:
+    paths:
+      - "2023/**"
+      - "lib/**"
+      - ".github/workflows/run.yaml"
+      - ".github/workflows/2023.yaml"
+    branches:
+      - main
 
 jobs:
   ci:

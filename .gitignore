@@ -22,6 +22,10 @@ lib/csharp/bin/
 **/check.csproj
 **/day**/Program.cs
 
+# go
+lib/go/part1.go
+lib/go/part2.go
+
 # javascript
 node_modules/
 
