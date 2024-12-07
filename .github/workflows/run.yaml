@@ -49,6 +49,14 @@ jobs:
         with:
           perl-version: "5.34"
 
+      - name: Set up dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Set up dotnet - step 2
+        run: dotnet tool install -g csharpier
+
       - name: Install dependencies
         run: |
           sudo apt-get install bc -y
