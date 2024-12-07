@@ -26,6 +26,10 @@ ENV GOROOT=/usr/local/go
 ENV GOPATH=/root/go
 ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
+# java dependencies
+RUN apt-get update && \
+    apt-get install -y openjdk-21-jdk
+
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y \
