@@ -37,7 +37,7 @@ parse_args() {
         shift
     done
     
-    if [[ -z "$year" && -z "$day" ]]; then
+    if [[ -z "$year" && -z "$day" && -f ".aoc-env" ]]; then
         source .aoc-env
     fi
 }
