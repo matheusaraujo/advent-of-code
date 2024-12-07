@@ -3,7 +3,10 @@
 year=$1
 day=$2
 
-additional_files="../../$year/day$day/part1.cs;../../$year/day$day/part2.cs"
+additional_files="../../$year/day$day/part1.cs"
+if [ -f "$year/day$day/part2.cs" ]; then
+    additional_files="$additional_files;../../$year/day$day/part2.cs"
+fi
 if [ -f "$year/day$day/helpers.cs" ]; then
     additional_files="$additional_files;../../$year/day$day/helpers.cs"
 fi
