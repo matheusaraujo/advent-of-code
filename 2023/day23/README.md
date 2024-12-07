@@ -1,3 +1,5 @@
-# advent-of-code 2023 day 23
+# Advent of Code - 2023 Day 23
+
+${extracted_title}
 
 https://adventofcode.com/2023/day/23

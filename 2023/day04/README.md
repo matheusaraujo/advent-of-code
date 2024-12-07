@@ -1,3 +1,5 @@
-# advent-of-code 2023 day 04
+# Advent of Code - 2023 Day 04
+
+${extracted_title}
 
 https://adventofcode.com/2023/day/4

@@ -15,7 +15,7 @@ aoc_commit() {
     puzzle_title=$(head -2 "$readme_path" | tail -1 | sed 's/^.\{6\}//; s/.\{6\}$//' | xargs)
 
     if [ -z "$puzzle_title" ]; then
-        puzzle_title=$(head -2 "$readme_path" | tail -2 | sed 's/^--- \(.*\) ---$/\1/' | xargs)
+        puzzle_title=$(head -3 "$readme_path" | tail -1 | sed 's/^--- \(.*\) ---$/\1/' | xargs)
     fi
 
     if [ -z "$puzzle_title" ]; then

@@ -1,3 +1,5 @@
-# advent-of-code 2023 day 16
+# Advent of Code - 2023 Day 16
+
+${extracted_title}
 
 https://adventofcode.com/2023/day/16

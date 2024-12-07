@@ -1,3 +1,5 @@
-# advent-of-code 2023 day 07
+# Advent of Code - 2023 Day 07
+
+${extracted_title}
 
 https://adventofcode.com/2023/day/7

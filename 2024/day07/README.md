@@ -1,4 +1,5 @@
---- Day 7: Bridge Repair ---
+# Advent of Code - 2024 Day 07
+
+${extracted_title}
 
 https://adventofcode.com/2024/day/7
-
