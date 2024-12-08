@@ -1,6 +1,6 @@
 name: "2018"
 
-on: 
+on:
   push:
     paths:
       - "2018/**"

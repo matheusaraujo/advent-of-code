@@ -2,7 +2,7 @@
 
 aoc_create() {
     validate_year_day_lang
-    
+
     ext=${language_extensions[$lang]}
     mkdir -p $year/day$day/data
     if [ -e $year/day$day/part1.$ext ] || [ -e $year/day$day/part2.$ext ]; then

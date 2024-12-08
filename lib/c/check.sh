@@ -15,7 +15,7 @@ for file in "${files[@]}"; do
         else
             echo -e "clang --analyze $year/day$day/$file \033[32m✔\033[0m"
         fi
-        
+
         tidy_output=$(clang-tidy "$year/day$day/$file" -extra-arg=-w --quiet --use-color --config-file=lib/c/.clang-tidy -- -Ilib/c -std=c11 2>&1)
         if [[ -n "$tidy_output" && ! "$tidy_output" =~ ^[0-9]+[[:space:]]+warnings[[:space:]]+generated\.$ ]]; then
             echo -e "clang-tidy $year/day$day/$file \033[31m✘\033[0m"

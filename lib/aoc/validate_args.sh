@@ -9,7 +9,7 @@ validate_year() {
 
 validate_year_day() {
     validate_year
-    
+
     if [ -z "$day" ]; then
         print_error "${RED}[ERROR] Day must be defined.${NC}"
         exit 1
@@ -40,7 +40,7 @@ validate_year_day_lang() {
 
 validate_year_day_directory()  {
     validate_year_day
-    
+
     if [ ! -d "$year/day$day" ]; then
         print_error "${RED}[ERROR] Directory does not exist for $year, day $day.${NC}"
         exit 1

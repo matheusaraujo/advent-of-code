@@ -10,7 +10,7 @@ c=$((col-1))
 est=$((c-2))
 color=0
 tput setaf 2; tput bold
- 
+
 # Tree
 for ((i=1; i<20; i+=2))
 {
@@ -22,9 +22,9 @@ for ((i=1; i<20; i+=2))
     let lin++
     let col--
 }
- 
+
 tput sgr0; tput setaf 3
- 
+
 # Trunk
 for ((i=1; i<=2; i++))
 {
@@ -38,7 +38,7 @@ tput setaf 1; tput bold
 tput cup $((lin + 0)) $((c - 11)); echo Welcome to Advent of CODE!!!
 let c++
 k=1
- 
+
 # Lights and decorations
 for ((i=1; i<=35; i++)) {
     # Turn off the lights
