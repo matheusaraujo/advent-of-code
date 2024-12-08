@@ -1,4 +1,22 @@
 {
     "javascript.validate.enable": true,
-    "javascript.suggestionActions.enabled": false
+    "javascript.suggestionActions.enabled": false,
+    "cSpell.words": [
+        "antinodes",
+        "closedir",
+        "cpanminus",
+        "devcontainers",
+        "inotify",
+        "inotifywait",
+        "isort",
+        "libperl",
+        "matheusaraujo",
+        "opendir",
+        "pandoc",
+        "perlcritic",
+        "perlcriticrc",
+        "perltidy",
+        "pylint",
+        "zhiyuan"
+    ]
 }
