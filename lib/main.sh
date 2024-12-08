@@ -146,11 +146,7 @@ main() {
         cmd="$1"
         shift
         if [ "$cmd" == "create" ]; then
-            rm -rf .aoc-env
-            if [ "$(date +%m%d)" -ge "1201" ] && [ "$(date +%m%d)" -le "1225" ]; then
-                year=$(date +%Y)
-                day=$(date +%d)
-            fi
+            infer_year_day
         fi
         parse_args "$@"
         case "$cmd" in
