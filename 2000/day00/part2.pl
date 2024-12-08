@@ -1,10 +1,9 @@
-#!/usr/bin/perl
 use strict;
 use warnings;
 
 sub part2 {
-    my @puzzle_input  = @_;
-    my $result = 0;
+    my @puzzle_input = @_;
+    my $result       = 0;
     return $result;
 }
 
