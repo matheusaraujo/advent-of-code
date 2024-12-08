@@ -7,7 +7,7 @@ if [ -f "$year/day$day/requirements.txt" ]; then
     pip install -q -r "$year/day$day/requirements.txt"
 fi
 
-files=("part1.py" "part2.py" "helpers.py" "utils.py")
+files=("part1.py" "part2.py" "helpers.py")
 
 for file in "${files[@]}"; do
     if [ -f "$year/day$day/$file" ]; then

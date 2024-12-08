@@ -5,12 +5,12 @@ day=$2
 
 files=("$year/day$day/part1.go")
 
-if [ -f "$year/day$day/helpers.go" ]; then
-    files+=("$year/day$day/helpers.go")
-fi
-
 if [ -f "$year/day$day/part2.go" ]; then
     files+=("$year/day$day/part2.go")
+fi
+
+if [ -f "$year/day$day/helpers.go" ]; then
+    files+=("$year/day$day/helpers.go")
 fi
 
 output=$(go vet "${files[@]}" 2>&1)
