@@ -1,28 +1,11 @@
-#!/usr/bin/perl
 use strict;
 use warnings;
 
 sub part2 {
     my @puzzle_input = @_;
-    chomp @puzzle_input;
-
-    my @map = map { [ split //sm ] } @puzzle_input;
-    my ( $m, $n ) = ( $#map, $#{ $map[0] } );
-    my $result    = 0;
-    my %antennas  = ();
+    my ( $m, $n, $antennas_ref ) = parse_input(@puzzle_input);
+    my %antennas  = %{$antennas_ref};
     my %antinodes = ();
-
-    for my $i ( 0 .. $m ) {
-        for my $j ( 0 .. $n ) {
-            my $freq = $map[$i][$j];
-            if ( !( $freq eq q{.} ) ) {
-                if ( !exists $antennas{$freq} ) {
-                    $antennas{$freq} = ();
-                }
-                push @{ $antennas{$freq} }, [ $i, $j ];
-            }
-        }
-    }
 
     for my $freq ( keys %antennas ) {
         my @positions = @{ $antennas{$freq} };
@@ -31,25 +14,16 @@ sub part2 {
                 my @p1 = @{ $positions[$i] };
                 my @p2 = @{ $positions[$j] };
 
-                my $delta_x = $p1[0] - $p2[0];
-                my $delta_y = $p1[1] - $p2[1];
+                my ( $delta_x, $delta_y ) =
+                  ( $p1[0] - $p2[0], $p1[1] - $p2[1] );
 
-                my $x1 = $p1[0];
-                my $y1 = $p1[1];
-
-                while ( $x1 >= 0 && $x1 <= $m && $y1 >= 0 && $y1 <= $n ) {
-                    $antinodes{"$x1,$y1"} = 1;
-                    $x1 += $delta_x;
-                    $y1 += $delta_y;
-                }
-
-                $x1 = $p1[0];
-                $y1 = $p1[1];
-
-                while ( $x1 >= 0 && $x1 <= $m && $y1 >= 0 && $y1 <= $n ) {
-                    $antinodes{"$x1,$y1"} = 1;
-                    $x1 -= $delta_x;
-                    $y1 -= $delta_y;
+                for my $direction ( -1, 1 ) {
+                    my ( $x, $y ) = @p1;
+                    while ( valid_point $x, $y, $m, $n ) {
+                        $antinodes{"$x,$y"} = 1;
+                        $x += $direction * $delta_x;
+                        $y += $direction * $delta_y;
+                    }
                 }
             }
         }
