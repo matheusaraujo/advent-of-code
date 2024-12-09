@@ -1,51 +1,34 @@
-#!/usr/bin/perl
 use strict;
 use warnings;
 
-sub part2 {
+sub part2() {
     my @puzzle_input = @_;
-    my $result       = 0;
-    chomp @puzzle_input;
 
-    my ( $is_file, $file_id, $left_pointer, $right_pointer, $file_size,
-        $free_size )
-      = ( 1, 0, 0, 0, 0, 0 );
-    my @memory = ();
-
-    foreach my $char ( split //sm, $puzzle_input[0] ) {
-        my $id = $is_file ? $file_id : q{.};
-        for ( 1 .. $char ) {
-            $memory[ $left_pointer++ ] = $id;
-        }
-        $file_id += $is_file ? 1 : 0;
-        $is_file = !$is_file;
-    }
-
-    $right_pointer = $#memory;
-    $file_id       = $file_id - 1;
+    my ( $file_id,      @memory )        = map_input_to_memory(@puzzle_input);
+    my ( $left_pointer, $right_pointer ) = ( 0, $#memory );
 
     while ( $file_id >= 0 ) {
-
-        while ( $right_pointer > -1 && $memory[$right_pointer] ne $file_id ) {
+        while ( $memory[$right_pointer] ne $file_id ) {
             $right_pointer--;
         }
 
-        $file_size = 0;
-        while ( $right_pointer > -1 && $memory[$right_pointer] eq $file_id ) {
+        my $file_size = 0;
+        while ( $memory[$right_pointer] eq $file_id ) {
             $right_pointer--;
             $file_size++;
         }
 
         $left_pointer = 0;
         while ( $left_pointer < $right_pointer ) {
-
-            while ($left_pointer < $right_pointer
-                && $memory[$left_pointer] ne q{.} )
-            {
+            while ( $memory[$left_pointer] ne q{.} ) {
                 $left_pointer++;
             }
 
-            $free_size = 0;
+            if ( $left_pointer >= $right_pointer ) {
+                last;
+            }
+
+            my $free_size = 0;
             while ( $memory[$left_pointer] eq q{.} ) {
                 $left_pointer++;
                 $free_size++;
@@ -58,18 +41,11 @@ sub part2 {
                 }
                 last;
             }
-
         }
 
         $file_id--;
     }
-
-    for my $i ( 0 .. $#memory ) {
-        $result += $memory[$i] eq q{.} ? 0 : $i * $memory[$i];
-    }
-
-    return $result;
-
+    return calculate_checksum(@memory);
 }
 
 1;
