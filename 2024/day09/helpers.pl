@@ -30,3 +30,5 @@ sub calculate_checksum {
 
     return $result;
 }
+
+1;
