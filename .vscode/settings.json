@@ -3,9 +3,11 @@
     "javascript.suggestionActions.enabled": false,
     "cSpell.words": [
         "antinodes",
+        "bestpractices",
         "closedir",
         "cpanminus",
         "devcontainers",
+        "errorprone",
         "inotify",
         "inotifywait",
         "isort",
@@ -17,6 +19,7 @@
         "perlcriticrc",
         "perltidy",
         "pylint",
+        "ruleset",
         "zhiyuan"
     ]
 }
