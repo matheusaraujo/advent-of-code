@@ -26,6 +26,9 @@ lib/csharp/bin/
 lib/go/part1.go
 lib/go/part2.go
 
+# java
+*.class
+
 # javascript
 node_modules/
 

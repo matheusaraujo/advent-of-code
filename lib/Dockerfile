@@ -26,6 +26,10 @@ ENV GOROOT=/usr/local/go
 ENV GOPATH=/root/go
 ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
+# java dependencies
+COPY java/setup.sh /tmp/setup-java.sh
+RUN chmod +x /tmp/setup-java.sh && /tmp/setup-java.sh && rm /tmp/setup-java.sh
+    
 # javascript dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y \

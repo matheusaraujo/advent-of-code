@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Languages
-available_languages=(c csharp go javascript python perl)
+available_languages=(c csharp go java javascript python perl)
 
 declare -A language_extensions
 language_extensions=(
     ["c"]="c"
     ["csharp"]="cs"
     ["go"]="go"
+    ["java"]="java"
     ["javascript"]="js"
     ["perl"]="pl"
     ["python"]="py"
@@ -21,6 +22,7 @@ language_aliases=(
     ["c#"]="csharp"
     ["go"]="go"
     ["golang"]="go"
+    ["java"]="java"
     ["js"]="javascript"
     ["javascript"]="javascript"
     ["pl"]="perl"
