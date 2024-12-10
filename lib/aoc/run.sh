@@ -3,7 +3,7 @@
 aoc_run() {
     validate_year_day_directory
     ensure_input_file_exists
-    
+
     if [ "$watch_mode" == "true" ]; then
         run_watch_mode
     else
@@ -122,7 +122,7 @@ execute_solution_script() {
     local max_memory_kb=$(echo "$resource_usage" | grep "Max Memory" | awk '{print $3}')
     local cpu_usage=$(echo "$resource_usage" | grep "CPU Usage" | awk '{print $3}')
 
-    
+
     local max_memory=""
     if [ "$max_memory_kb" -ge 1048576 ]; then
         max_memory=$(echo "scale=2; $max_memory_kb / 1048576" | bc)GB

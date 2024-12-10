@@ -1,6 +1,6 @@
 name: "2024"
 
-on: 
+on:
   push:
     paths:
       - "2024/**"

@@ -1,6 +1,6 @@
 name: "2015"
 
-on: 
+on:
   push:
     paths:
       - "2015/**"
@@ -17,7 +17,7 @@ on:
       - ".github/workflows/2015.yaml"
     branches:
     - main
- 
+
 jobs:
   ci:
     uses: ./.github/workflows/run.yaml

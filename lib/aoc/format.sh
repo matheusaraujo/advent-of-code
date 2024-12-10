@@ -2,7 +2,7 @@
 
 aoc_format() {
     validate_year_day_directory
-    
+
     for lang in "${available_languages[@]}"; do
         local ext=${language_extensions[$lang]}
 

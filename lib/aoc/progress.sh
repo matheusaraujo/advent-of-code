@@ -29,7 +29,7 @@ aoc_progress() {
 
     for y in {2015..2024}; do
         solved_days=0
-        
+
         for d in $(seq -f "%02g" 1 25); do
             if [ -d "$y/day$d" ] && [ -f "$y/day$d/README.md" ]; then
                 solved_days=$((solved_days + 1))
