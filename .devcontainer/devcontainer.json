@@ -1,8 +1,8 @@
 {
     "name": "Advent of Code",
     "build": {
-        "dockerfile": "Dockerfile",
-        "context": "."
+        "dockerfile": "../lib/Dockerfile",
+        "context": "../lib"
     },
     "customizations": {
         "vscode": {

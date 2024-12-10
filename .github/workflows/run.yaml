@@ -30,6 +30,9 @@ jobs:
         with:
           perl-version: "5.34"
 
+      - name: Set up Java
+        run: lib/java/setup.sh
+
       - name: Install dependencies
         run: |
           sudo apt-get install -y bc time
