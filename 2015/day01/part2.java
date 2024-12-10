@@ -1,19 +1,21 @@
 public class part2 {
-        public static Object solve(String puzzleInput) {
-        int floor = 0;
+  private static final char OPEN = '(';
 
-        for (int i = 0; i < puzzleInput.length(); i++) {
-            if (puzzleInput.charAt(i) == '(') {
-                floor++;
-            } else {
-                floor--;
-            }
+  public static Object solve(final String puzzleInput) {
+    int floor = 0;
+    int i = 0;
 
-            if (floor == -1) {
-                return i + 1;
-            }
-        }
+    for (; i < puzzleInput.length(); i++) {
+      if (puzzleInput.charAt(i) == OPEN) {
+        floor++;
+      } else {
+        floor--;
+      }
 
-        return 0;
+      if (floor == -1) {
+        break;
+      }
     }
+    return floor == -1 ? i + 1 : 0;
+  }
 }

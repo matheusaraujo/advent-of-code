@@ -13,6 +13,7 @@
     <rule ref="category/java/codestyle.xml">
         <exclude name="NoPackage" />
         <exclude name="ClassNamingConventions" />
+        <exclude name="ShortVariable" />
     </rule>
     <!-- <rule ref="category/java/design.xml" /> -->
     <!-- <rule ref="category/java/documentation.xml" /> -->
