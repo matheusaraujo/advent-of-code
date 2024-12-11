@@ -12,32 +12,35 @@ Update the following sections of the script:
 - Define its file extensions in the `language_extensions` array.
 - Add any alternative names or abbreviations in the `language_aliases` array.
 
-2. **Create the Main Program File**
-Add `lib/lang/main.lang`. This file should:
-- Read input from **standard input (_stdin_)**.
-- Print the puzzle solution to **standard output (_stdout_)**.
+2. **Create a Setup Script**
+- `lib/lang/setup.sh`
+- This script should install all dependencies for the language
+- Remember to update `Dockerfile` to run this file
 
-3. **Set Up a Run Script**
-Add `lib/lang/run.sh`.
+3. **Create the Main Program File**
+- `lib/lang/main.lang`. 
+- This file should:
+    - Read input from **standard input (_stdin_)**.
+    - Print the puzzle solution to **standard output (_stdout_)**.
+
+4. **Set Up a Run Script**
+- `lib/lang/run.sh`
 - This script should define how to execute `main.lang`.
 
-_(Optional)_ Add `lib/lang/build.sh`.
-- If the languages requires a pre build step (like c), do it on this file.
+_(Optional)_ If the languages requires a pre build step (like c), do it on this file.
+- `lib/lang/build.sh`.
 
-4. **Add a Code Check Script**
-Add `lib/lang/check.sh`.
+5. **Add a Code Check Script**
+- `lib/lang/check.sh`.
 - Use this script to perform code linting or other validation checks.
 
-5. **Add a Code Format Script**
-Add `lib/lang/format.sh`.
+6. **Add a Code Format Script**
+- `lib/lang/format.sh`.
 - This script should handle code formatting for the language.
 
-6. **Add Puzzle Example Files**
-Create `part1.lang` and `part2.lang` files in `2000/day00`.
+7. **Add Puzzle Example Files**
+- Create `part1.lang` and `part2.lang` files in `2000/day00`.
 - These serve as example solutions for the language.
-
-7. **Update the Docker Configuration**
-Modify the `Dockerfile` to install any necessary dependencies for the new language.
 
 8. **Update the Development Environment**
 Modify `devcontainer.json` to include relevant extensions and settings for the new language.
@@ -46,7 +49,7 @@ Modify `devcontainer.json` to include relevant extensions and settings for the n
 Adjust `.github/workflows` as needed to include support for the new language in the project's pipelines.
 
 10. **Test and Have Fun!**
-Verify your setup by solving a sample puzzle, such as _2015 - Day 1_!
+Verify your setup by solving a sample puzzle, such as _2015 - Day 1_ and _2024 - Day 1_!
 
 ---
 
