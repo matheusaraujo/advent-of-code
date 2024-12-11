@@ -10,7 +10,7 @@ sub part2 {
 
             my $diff = 0;
             my $common;
-            foreach my $k ( 0 .. length( $puzzle_input[$i] ) - 2 ) {
+            foreach my $k ( 0 .. length( $puzzle_input[$i] ) - 1 ) {
 
                 if ( ( substr $puzzle_input[$i], $k, 1 ) ne
                     ( substr $puzzle_input[$j], $k, 1 ) )
