@@ -3,7 +3,6 @@ use warnings;
 
 sub part1 {
     my @puzzle_input = @_;
-    chomp @puzzle_input;
     @puzzle_input = map { split } $puzzle_input[0];
     return blinks( \@puzzle_input, 25 );
 }

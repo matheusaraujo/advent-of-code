@@ -23,6 +23,7 @@ eval {
 
 sub main {
     my @input_data = <STDIN>;
+    chomp @input_data;
     print $func->(@input_data);
 }
 

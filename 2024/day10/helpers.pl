@@ -48,8 +48,6 @@ sub solve {
     my ( $rating, @puzzle_input ) = @_;
     my $result = 0;
 
-    chomp @puzzle_input;
-
     my @map = map { [ split //sm ] } @puzzle_input;
     my ( $m, $n ) = ( $#map, $#{ $map[0] } );
 

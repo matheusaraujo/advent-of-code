@@ -10,8 +10,6 @@ sub solve {
     my %before = ();
     my %after  = ();
 
-    chomp @puzzle_input;
-
     for my $line (@puzzle_input) {
         if ( $line eq q{} ) {
             last;

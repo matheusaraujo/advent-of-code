@@ -5,7 +5,6 @@ use List::Util qw/sum/;
 
 sub part2 {
     my @puzzle_input = @_;
-    chomp @puzzle_input;
     @puzzle_input = map { split } $puzzle_input[0];
 
     return blinks( \@puzzle_input, 75 );

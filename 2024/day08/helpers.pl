@@ -3,7 +3,6 @@ use warnings;
 
 sub parse_input {
     my @puzzle_input = @_;
-    chomp @puzzle_input;
 
     my @map = map { [ split //sm ] } @puzzle_input;
     my ( $m, $n ) = ( $#map, $#{ $map[0] } );

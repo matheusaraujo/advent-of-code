@@ -4,7 +4,6 @@ use warnings;
 sub map_input_to_memory {
     my @puzzle_input = @_;
     my @memory       = ();
-    chomp @puzzle_input;
 
     my ( $is_file, $file_id, $left_pointer ) = ( 1, 0, 0 );
 

@@ -4,7 +4,6 @@ use warnings;
 sub get_initial_position {
     my @puzzle_input = @_;
 
-    chomp @puzzle_input;
     my @map = map { [ split //sm ] } @puzzle_input;
     my ( $x, $y, $m, $n ) = ( -1, -1, $#map, $#{ $map[0] } );
 
