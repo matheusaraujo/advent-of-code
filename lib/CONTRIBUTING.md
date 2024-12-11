@@ -43,13 +43,13 @@ _(Optional)_ If the languages requires a pre build step (like c), do it on this 
 - These serve as example solutions for the language.
 
 8. **Update the Development Environment**
-Modify `devcontainer.json` to include relevant extensions and settings for the new language.
+- Modify `devcontainer.json` to include relevant extensions and settings for the new language.
 
 9. **Update CI/CD Pipelines**
-Adjust `.github/workflows` as needed to include support for the new language in the project's pipelines.
+- Adjust `.github/workflows` as needed to include support for the new language in the project's pipelines.
 
 10. **Test and Have Fun!**
-Verify your setup by solving a sample puzzle, such as _2015 - Day 1_ and _2024 - Day 1_!
+- Verify your setup by solving a sample puzzle, such as _2015 - Day 1_ and _2024 - Day 1_!
 
 ---
 
