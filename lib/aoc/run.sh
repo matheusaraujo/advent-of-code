@@ -3,6 +3,7 @@
 aoc_run() {
     validate_year_day_directory
     ensure_input_file_exists
+    try_to_extract_answers_from_website
 
     if [ "$watch_mode" == "true" ]; then
         run_watch_mode
@@ -12,9 +13,32 @@ aoc_run() {
 }
 
 ensure_input_file_exists() {
-    if [ ! -f "$year/day$day/data/input.txt" ]; then
-        curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//')/input -o $year/day$day/data/input.txt
+    input_file="$year/day$day/data/input.txt"
+    if [ ! -f "$input_file" ] || [ ! -s "$input_file" ]; then
+        mkdir -p "$(dirname "$input_file")"
+        curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//')/input -o "$input_file"
+        if [ ! -s "$input_file" ]; then
+            echo "Failed to fetch input file or file is empty."
+        fi
     fi
+}
+
+try_to_extract_answers_from_website() {
+    curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//') -o $year/day$day/_readme1.html
+
+    answers=($(grep -oP '<p>Your puzzle answer was <code>\K[^<]+' $year/day$day/_readme1.html))
+    if [ ${#answers[@]} -eq 0 ]; then
+        exit 0
+    fi
+
+    mkdir -p $year/day$day/data
+
+    printf "%s" "${answers[0]}" > $year/day$day/data/output.part1.txt
+    if [ ${#answers[@]} -eq 2 ]; then
+        printf "%s" "${answers[1]}" > $year/day$day/data/output.part2.txt
+    fi
+
+    rm $year/day$day/_readme*.html
 }
 
 run_watch_mode() {

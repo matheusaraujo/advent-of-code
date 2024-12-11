@@ -1,8 +1,7 @@
 # data
 **/_readme*.html
 **/data/*
-!**/data/output.part1.txt
-!**/data/output.part2.txt
+
 
 # env
 .aoc-env
