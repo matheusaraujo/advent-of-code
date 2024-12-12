@@ -27,15 +27,14 @@ try_to_extract_answers_from_website() {
     curl -s -b session=$(cat session.cookie) https://adventofcode.com/$year/day/$(echo $day | sed 's/^0*//') -o $year/day$day/_readme1.html
 
     answers=($(grep -oP '<p>Your puzzle answer was <code>\K[^<]+' $year/day$day/_readme1.html))
-    if [ ${#answers[@]} -eq 0 ]; then
-        exit 0
-    fi
+    if [ ${#answers[@]} -ne 0 ]; then
+        mkdir -p $year/day$day/data
 
-    mkdir -p $year/day$day/data
+        printf "%s" "${answers[0]}" > $year/day$day/data/output.part1.txt
+        if [ ${#answers[@]} -eq 2 ]; then
+            printf "%s" "${answers[1]}" > $year/day$day/data/output.part2.txt
+        fi
 
-    printf "%s" "${answers[0]}" > $year/day$day/data/output.part1.txt
-    if [ ${#answers[@]} -eq 2 ]; then
-        printf "%s" "${answers[1]}" > $year/day$day/data/output.part2.txt
     fi
 
     rm $year/day$day/_readme*.html
