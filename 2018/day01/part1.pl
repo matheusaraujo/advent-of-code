@@ -1,8 +1,6 @@
 use strict;
 use warnings;
 
-use feature 'say';
-
 sub part1 {
     my @puzzle_input = @_;
     my $result       = 0;
