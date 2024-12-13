@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MAX_SIZE 100000
+enum { MAX_SIZE = 100000 };
 
 #include "aoc_helpers.h"
 #include "helpers.h"
