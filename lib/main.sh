@@ -24,8 +24,8 @@ help() {
     aoc_help
 }
 
-# COMMAND: setup: Configure git hooks
-setup() {
+# COMMAND: configure_hooks: Configure git hooks
+configure_hooks() {
     aoc_configure_hooks
 }
 
@@ -157,7 +157,7 @@ main() {
         parse_args "$@"
         case "$cmd" in
             help) help ;;
-            setup) setup ;;
+            configure_hooks) configure_hooks ;;
             create) create ;;
             run) run ;;
             run-all) run_all ;;
