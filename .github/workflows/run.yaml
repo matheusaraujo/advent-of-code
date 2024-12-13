@@ -43,7 +43,7 @@ jobs:
           dotnet tool install -g csharpier
       
       - name: Show versions
-        sun: |
+        run: |
           ./lib/main.sh version
 
       - name: Check
