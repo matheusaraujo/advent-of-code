@@ -8,5 +8,4 @@ Checks: >
   -readability-isolate-declaration
 WarningsAsErrors: >
   *
-AnalyzeTemporaryDtors: false
 FormatStyle: none
