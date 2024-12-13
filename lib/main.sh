@@ -17,6 +17,7 @@ source lib/aoc/extract_answers.sh
 source lib/aoc/run.sh
 source lib/aoc/utils.sh
 source lib/aoc/validate_args.sh
+source lib/aoc/version.sh
 
 # COMMAND: help: Show help message
 help() {
@@ -82,6 +83,11 @@ format() {
 # COMMAND: check: Run checks for given year and day
 check() {
     aoc_check
+}
+
+# COMMAND: version: Show versions of all tools
+version() {
+    aoc_version
 }
 
 # COMMAND: check-all: Run validations for all solutions
@@ -165,6 +171,7 @@ main() {
             tree) lib/tree.sh ;;
             extract-answers) extract_answers ;;
             progress) progress ;;
+            version) version ;;
             *) print_error "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
         esac
     fi

@@ -172,8 +172,6 @@ execute_solution_script() {
     print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (execution time: ${elapsed}, memory: ${max_memory}, cpu: ${cpu_usage}) $result_symbol\033[0m"
 }
 
-
-
 validate_output_file() {
     local output_file=$1
     if [ ! -f "$output_file" ]; then

@@ -41,6 +41,10 @@ jobs:
           sudo apt-get install -y pylint isort black
           npm install -g eslint prettier
           dotnet tool install -g csharpier
+      
+      - name: Show versions
+        sun: |
+          ./lib/main.sh version
 
       - name: Check
         run: lib/main.sh check-year ${{ inputs.year }}
