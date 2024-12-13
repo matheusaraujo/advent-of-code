@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt-get install -y perl libperl-critic-perl cpanminus
+sudo apt-get install -y perl libperl-critic-perl cpanminus
