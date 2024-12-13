@@ -25,11 +25,6 @@ jobs:
         with:
           go-version: '1.23'
 
-      - name: Set up Perl
-        uses: shogo82148/actions-setup-perl@v1
-        with:
-          perl-version: "5.34"
-
       - name: Set up Java
         run: lib/java/setup.sh
 
@@ -41,6 +36,7 @@ jobs:
           sudo apt-get install -y pylint isort black
           npm install -g eslint prettier
           dotnet tool install -g csharpier
+          ./lib/perl/setup.sh
       
       - name: Show versions
         run: |
