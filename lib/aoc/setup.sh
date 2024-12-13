@@ -2,8 +2,8 @@
 
 source lib/aoc/langs.sh
 
-apt-get update
-apt-get install -y \
+sudo apt-get update
+sudo apt-get install -y \
     pandoc \
     inotify-tools \
     bc \
