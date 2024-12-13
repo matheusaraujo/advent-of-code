@@ -15,24 +15,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up
+      - name: Set up dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: "5.34"
+
+      - name: Set up Java
+        run: lib/java/setup.sh
+
+      - name: Install dependencies
         run: |
-          lib/aoc/setup.sh
-          lib/c/setup.sh
-          lib/csharp/setup.sh
-          lib/go/setup.sh
-          lib/java/setup.sh
-          lib/javascript/setup.sh
-          lib/perl/setup.sh
-          lib/python/setup.sh
-          lib/aoc/post-setup.sh
-          lib/aoc/version.sh
-
-      - name: Set up dotnet - step 2
-        run: dotnet tool install -g csharpier
-
+          sudo apt-get install -y bc time
+          sudo apt-get install -y build-essential clang clang-format clang-tidy
+          sudo apt-get install -y libperl-critic-perl
+          sudo apt-get install -y pylint isort black
+          npm install -g eslint prettier
+          dotnet tool install -g csharpier
+      
       - name: Show versions
-        run: lib/main.sh version
+        sun: |
+          ./lib/main.sh version
 
       - name: Check
         run: lib/main.sh check-year ${{ inputs.year }}
@@ -43,11 +55,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up
-        run: lib/aoc/setup.sh
-      
-      - name: Show versions
-        run: lib/main.sh version
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: "5.34"
+
+      - name: Set up dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Set up dotnet - step 2
+        run: dotnet tool install -g csharpier
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install bc -y
+          sudo apt-get install build-essential clang clang-format clang-tidy
+          sudo apt-get install libperl-critic-perl -y
+          sudo apt-get install pylint isort black -y
+          npm install -g eslint prettier
 
       - name: Run
         run: |
