@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt-get install -y clang clang-format clang-tidy
+sudo apt-get install -y clang clang-format clang-tidy

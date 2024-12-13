@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install -y software-properties-common
-add-apt-repository ppa:dotnet/backports
-apt-get update
-apt-get install -y dotnet-sdk-9.0
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:dotnet/backports
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-9.0

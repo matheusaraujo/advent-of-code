@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt-get install -y pip pylint isort black
+sudo apt-get install -y pip pylint isort black

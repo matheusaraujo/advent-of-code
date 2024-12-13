@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # java
-apt-get update
-apt-get install -y openjdk-21-jdk
+sudo apt-get update
+sudo apt-get install -y openjdk-21-jdk
 
 # google-java-format
 export GJF_VERSION=1.25.0
