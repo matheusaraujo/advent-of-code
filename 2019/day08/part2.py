@@ -25,4 +25,7 @@ def part2(puzzle_input, rows=6, cols=25):
 
     result = "".join(final_layer).replace("0", "-").replace("1", "#")
 
+    for i in range(0, len(result), cols):
+        print(result[i : i + cols])
+
     return "RLAKF" if result == RLAKF else result

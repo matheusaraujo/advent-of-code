@@ -131,7 +131,7 @@ execute_solution_script() {
     elif (( $(echo "$elapsed_time < 60000000000" | bc -l) )); then
         elapsed="${elapsed_s}s"
     else
-        elapsed="${elapsed_min}min"
+        elapsed="${elapsed_min}min" # TODO: @matheusaraujo - fix this
     fi
 
     if [ $script_exit_code -ne 0 ]; then
@@ -140,7 +140,7 @@ execute_solution_script() {
         exit 1
     fi
 
-    local script_output=$(cat /tmp/script_output.txt)
+    local script_output=$(cat /tmp/script_output.txt | tail -1)
     local resource_usage=$(cat /tmp/resource_usage.txt)
     local max_memory_kb=$(echo "$resource_usage" | grep "Max Memory" | awk '{print $3}')
     local cpu_usage=$(echo "$resource_usage" | grep "CPU Usage" | awk '{print $3}')
@@ -170,8 +170,12 @@ execute_solution_script() {
     fi
 
     print_success "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (execution time: ${elapsed}, memory: ${max_memory}, cpu: ${cpu_usage}) $result_symbol\033[0m"
-}
 
+    if [ $(wc -l < /tmp/script_output.txt) -gt 1 ]; then
+        echo -e "$(head -n -1 /tmp/script_output.txt)"
+    fi
+
+}
 
 validate_output_file() {
     local output_file=$1

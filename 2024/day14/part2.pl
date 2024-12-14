@@ -23,6 +23,12 @@ sub part2 {
             $positions{"$px,$py"} = 1;
         }
         if ( scalar keys %positions == scalar @robots ) {
+            for my $j ( 0 .. $x - 1 ) {
+                for my $i ( 0 .. $y - 1 ) {
+                    print $positions{"$i,$j"} ? '#' : '.';
+                }
+                print "\n";
+            }
             last;
         }
         $seconds++;

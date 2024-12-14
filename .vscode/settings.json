@@ -19,6 +19,7 @@
         "perlcriticrc",
         "perltidy",
         "pylint",
+        "RLAKF",
         "ruleset",
         "zhiyuan"
     ]
