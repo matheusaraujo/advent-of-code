@@ -21,6 +21,7 @@
         "pylint",
         "RLAKF",
         "ruleset",
+        "Syscalls",
         "zhiyuan"
     ]
 }
