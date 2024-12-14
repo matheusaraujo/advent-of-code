@@ -10,7 +10,7 @@ color-severity-low =
 color-severity-lowest =
 
 [ValuesAndExpressions::ProhibitMagicNumbers]
-allowed_values = -1 0 1 2 3 4 9 25 75 1000 2024 10000000000000
+allowed_values = -1 0 1 2 3 4 9 25 50 51 75 100 101 103 1000 2024 10000000000000
 
 [InputOutput::RequireCheckedSyscalls]
 functions = :builtins
