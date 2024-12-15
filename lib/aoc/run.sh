@@ -164,6 +164,9 @@ execute_solution_script() {
 
         if [ "$script_output" != "$expected_output" ]; then
             print_error "\033[35m$part$input_label: \033[0m\033[32m$script_output\033[3;90m (execution time: ${elapsed}, memory: ${max_memory}, cpu: ${cpu_usage})\033[91m ✘ Expected: $expected_output \033[0m"
+            if [ $(wc -l < /tmp/script_output.txt) -gt 1 ]; then
+                echo -e "$(head -n -1 /tmp/script_output.txt)"
+            fi
             exit 1
         fi
         result_symbol="\033[32m✔\033[0m"
@@ -174,7 +177,6 @@ execute_solution_script() {
     if [ $(wc -l < /tmp/script_output.txt) -gt 1 ]; then
         echo -e "$(head -n -1 /tmp/script_output.txt)"
     fi
-
 }
 
 validate_output_file() {
