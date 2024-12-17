@@ -4,8 +4,8 @@ import math
 
 
 # based on https://www.reddit.com/r/adventofcode/comments/18mmfxb/comment/ke5sgxs
-# todo: create a graph view of the input
-# todo: write the solution explanation
+# TODO: @matheusaraujo create a graph view of the input
+# TODO: @matheusaraujo write the solution explanation
 def part2(puzzle_input):
     graph, cycles = {}, []
 

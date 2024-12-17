@@ -3,7 +3,7 @@
 ## no critic (RegularExpressions::RequireExtendedFormatting)
 
 # TODO: @matheusaraujo - this code strongly needs refactoring
-# TODO: @matheusaraujo - write this solution explanation
+# TODO: @matheusaraujo - write this solution explanation, based on https://www.reddit.com/r/adventofcode/comments/1hg38ah/comment/m2gge90/
 
 use strict;
 use warnings;
@@ -28,10 +28,10 @@ sub part2 {
     my $program_str = join q{,}, @program;
     my $output      = q{};
 
-    return get_best_quine_input( $#program, 0, @program );
+    return get_register_a_candidate( $#program, 0, @program );
 }
 
-sub get_best_quine_input {
+sub get_register_a_candidate {
     my ( $cursor, $sofar, @program ) = @_;
 
     for my $candidate ( 0 .. 7 ) {
@@ -42,7 +42,7 @@ sub get_best_quine_input {
             if ( $cursor == 0 ) {
                 return $sofar * 8 + $candidate;
             }
-            my $ret = get_best_quine_input( $cursor - 1,
+            my $ret = get_register_a_candidate( $cursor - 1,
                 $sofar * 8 + $candidate, @program );
             if ( $ret != -1 ) {
                 return $ret;
