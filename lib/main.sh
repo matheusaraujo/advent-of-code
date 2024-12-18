@@ -136,9 +136,9 @@ commit() {
     if ! validate_year_day; then
         return 1
     fi
-    run
     format
     check
+    run
     extract_answers
     progress
     aoc_commit
