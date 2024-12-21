@@ -1,3 +1,5 @@
+# TODO: @matheusaraujo, this code needs to be refactored
+
 ## no critic (BuiltinFunctions::ProhibitUselessTopic)
 ## no critic (ControlStructures::ProhibitPostfixControls)
 ## no critic (RegularExpressions::RequireDotMatchAnything)
