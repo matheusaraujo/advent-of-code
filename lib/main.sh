@@ -4,6 +4,7 @@ YEARS=$(seq -w 2015 2035)
 DAYS=$(seq -w 1 25)
 
 source lib/aoc/check.sh
+source lib/aoc/clean.sh
 source lib/aoc/commit.sh
 source lib/aoc/configure_hooks.sh
 source lib/aoc/create.sh
@@ -144,6 +145,11 @@ commit() {
     aoc_commit
 }
 
+# COMMAND: clean: Clean temporary files
+clean() {
+    aoc_clean
+}
+
 # Parse the command and run the corresponding function
 main() {
     if [ $# -eq 0 ]; then
@@ -172,6 +178,7 @@ main() {
             extract-answers) extract_answers ;;
             progress) progress ;;
             version) version ;;
+            clean) clean ;;
             *) print_error "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
         esac
     fi

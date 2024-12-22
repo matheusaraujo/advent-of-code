@@ -18,6 +18,7 @@
         "perlcritic",
         "perlcriticrc",
         "perltidy",
+        "pycache",
         "pylint",
         "RLAKF",
         "ruleset",

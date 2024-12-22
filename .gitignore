@@ -6,6 +6,7 @@
 # env
 .aoc-env
 helpers.sh
+session.cookie
 
 # c
 lib/c/run
@@ -39,8 +40,7 @@ node_modules/
 # python
 __pycache__/
 
-# session
-session.cookie
+
 
 
 
