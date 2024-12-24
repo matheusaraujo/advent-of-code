@@ -10,7 +10,7 @@ RUN /usr/local/aoc/java/setup.sh
 RUN /usr/local/aoc/javascript/setup.sh
 RUN /usr/local/aoc/perl/setup.sh
 RUN /usr/local/aoc/python/setup.sh
-RUN /usr/local/aoc/aoc/post-setup.sh
+RUN /usr/local/aoc/aoc/post_setup.sh
 
 CMD ["/bin/sh", "-c", "source /home/vscode/.bashrc && exec /bin/sh"]
 
