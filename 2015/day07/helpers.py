@@ -12,17 +12,14 @@ def simulate(puzzle_input) -> int:
         if isinstance(circuit[symbol], int):
             return circuit[symbol]
 
-        operation = circuit[symbol]
-        parts = operation.split()
+        parts = circuit[symbol].split()
 
         if len(parts) == 1:
             result = get_value(parts[0])
         elif parts[0] == "NOT":
             result = ~get_value(parts[1]) & 0xFFFF
         else:
-
-            left = get_value(parts[0])
-            right = get_value(parts[2])
+            left, right = get_value(parts[0]), get_value(parts[2])
             operators = {
                 "AND": lambda x, y: x & y,
                 "OR": lambda x, y: x | y,
