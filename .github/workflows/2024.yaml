@@ -24,4 +24,3 @@ jobs:
     with:
       year: "2024"
     secrets: inherit
-
