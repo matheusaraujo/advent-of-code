@@ -2,7 +2,7 @@
 
 
 def part2(puzzle_input):
-    house = 700_000
+    house = 1
     while sum_of_presents(house) < int(puzzle_input[0]):
         house += 1
     return house
