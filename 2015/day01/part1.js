@@ -4,7 +4,8 @@ function countOccurrences(str, char) {
 
 function part1(puzzleInput) {
   return (
-    countOccurrences(puzzleInput, "(") - countOccurrences(puzzleInput, ")")
+    countOccurrences(puzzleInput[0], "(") -
+    countOccurrences(puzzleInput[0], ")")
   );
 }
 
