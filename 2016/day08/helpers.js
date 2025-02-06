@@ -16,60 +16,26 @@ function swapCard(operations) {
   }
 
   return screen;
+}
 
-  function createRect(screen, width, height) {
-    for (let row = 0; row < height; row++) {
-      for (let col = 0; col < width; col++) {
-        screen[row][col] = "#";
-      }
+function createRect(screen, width, height) {
+  for (let row = 0; row < height; row++) {
+    for (let col = 0; col < width; col++) {
+      screen[row][col] = "#";
     }
-  }
-
-  function rotateRow(screen, row, shift) {
-    screen[row] = [
-      ...screen[row].slice(-shift),
-      ...screen[row].slice(0, -shift),
-    ];
-  }
-
-  function rotateColumn(screen, col, shift) {
-    const height = screen.length;
-    const column = screen.map((row) => row[col]);
-    const rotated = column.map(
-      (_, i, arr) => arr[(i - shift + height) % height],
-    );
-    screen.forEach((row, i) => (row[col] = rotated[i]));
   }
 }
 
-// const LETTERS = {
-//   "#####.#...#.#####.#...#": "A",
-//   "####..#...#.####..#...#": "B",
-//   "#####.#....#....#.#....": "C",
-//   "####..#...#.#...#.####.": "D",
-//   "#####.#....####.#....#": "E",
-//   "#####.#....####.#.....": "F",
-//   "#####.#....#.###.#...#": "G",
-//   "#...#.#...#.#####.#...#": "H",
-//   ".###...#....#....###..": "I",
-//   "...##....#....#..###..": "J",
-//   "#...#.#..#..##...#..#.": "K",
-//   "#....#....#....#####..": "L",
-//   "#...##.#.#.#...#.#...#": "M",
-//   "#...##...#.##..#.#...#": "N",
-//   ".###..#...#.#...#.###.": "O",
-//   "####..#...#.####.#....": "P",
-//   ".###..#...#.#..##.####": "Q",
-//   "####..#...#.####.#..#.": "R",
-//   ".####.#.....###....###": "S",
-//   "#####..#....#....#....": "T",
-//   "#...#.#...#.#...#.###.": "U",
-//   "#...#.#...#..#.#...#..": "V",
-//   "#...#.#.#.#.#.#.#.#.#.": "W",
-//   "#...#..#.#...#...#...#": "X",
-//   "#...#..#.#....#....#..": "Y",
-//   "#####....#..#..#....#": "Z",
-// };
+function rotateRow(screen, row, shift) {
+  screen[row] = [...screen[row].slice(-shift), ...screen[row].slice(0, -shift)];
+}
+
+function rotateColumn(screen, col, shift) {
+  const height = screen.length;
+  const column = screen.map((row) => row[col]);
+  const rotated = column.map((_, i, arr) => arr[(i - shift + height) % height]);
+  screen.forEach((row, i) => (row[col] = rotated[i]));
+}
 
 const LETTERS = {
   "####.#....###..#....#....####.": "E",
