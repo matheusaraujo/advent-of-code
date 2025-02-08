@@ -27,7 +27,7 @@ aoc_progress() {
 | YEAR          | PROGRESS                      | COMPLETED (Out of 25) |
 |---------------|-------------------------------|-----------------------|"
 
-    for y in {2015..2024}; do
+    for ((y=START_YEAR; y<=END_YEAR; y++)); do
         solved_days=0
 
         for d in $(seq -f "%02g" 1 25); do

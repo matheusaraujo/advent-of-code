@@ -6,7 +6,7 @@ aoc_lang_stats() {
         lang_count[$lang]=0
     done
     
-    for y in {2015..2024}; do
+    for ((y=START_YEAR; y<=END_YEAR; y++)); do
         for d in $(seq -f "%02g" 1 25); do
             if [ -d "$y/day$d" ]; then
                 for lang in "${!language_extensions[@]}"; do
