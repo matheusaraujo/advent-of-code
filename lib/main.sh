@@ -12,6 +12,7 @@ source lib/aoc/format.sh
 source lib/aoc/generate_input.sh
 source lib/aoc/help.sh
 source lib/aoc/langs.sh
+source lib/aoc/langs_stats.sh
 source lib/aoc/parse_args.sh
 source lib/aoc/progress.sh
 source lib/aoc/extract_answers.sh
@@ -132,6 +133,11 @@ progress() {
     aoc_progress
 }
 
+# COMMAND: lang-stats: Update the language stats session in README
+langs_stats() {
+    aoc_lang_stats
+}
+
 # COMMAND: commit: Validate and commit for given year and day
 commit() {
     if ! validate_year_day; then
@@ -142,6 +148,7 @@ commit() {
     run
     extract_answers
     progress
+    langs_stats
     aoc_commit
 }
 
@@ -177,6 +184,7 @@ main() {
             tree) lib/tree.sh ;;
             extract-answers) extract_answers ;;
             progress) progress ;;
+            lang-stats) langs_stats ;;
             version) version ;;
             clean) clean ;;
             *) print_error "${RED}[ERROR] Unknown command: $cmd${NC}"; help ;;
