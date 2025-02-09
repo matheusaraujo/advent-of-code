@@ -23,18 +23,17 @@ aoc_lang_stats() {
         echo "$lang ${lang_count[$lang]}"
     done | sort -k2 -nr)
     
-    lang_stats_content="<!-- langs-stats-begin -->\n"
-    lang_stats_content+="| LANGUAGE   | SOLVED PROBLEMS |\n"
-    lang_stats_content+="|------------|----------------|"
+    lang_stats_content="<!-- langs-stats-begin -->\\
+| LANGUAGE   | SOLVED PROBLEMS |\\
+|------------|----------------|"
     
     while IFS=' ' read -r lang count; do
-        lang_stats_content+=$"\n| $lang | $count |"
+        lang_stats_content+="\n| $lang | $count |"
     done <<< "$sorted_langs"
     
-    lang_stats_content+=$"\n<!-- lang-stats-end -->"
+    lang_stats_content+="\n<!-- langs-stats-end -->"
     
-    sed -i -e '/<!-- langs-stats-begin -->/,/<!-- langs-stats-end -->/d' "$README_FILE"
-    echo -e "$lang_stats_content" >> "$README_FILE"
+    sed -i -e "/<!-- langs-stats-begin -->/,/<!-- langs-stats-end -->/c\\$lang_stats_content" "$README_FILE"
     
-    print_success "Language statistics updated! \033[32m✔\033[0m"
+    print_success "language statistics updated! \033[32m✔\033[0m"
 }

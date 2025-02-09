@@ -23,8 +23,8 @@ aoc_progress() {
 
     README_FILE="README.md"
 
-    new_content="<!-- progress-begin -->\n
-| YEAR          | PROGRESS                      | COMPLETED (Out of 25) |
+    progress_content="<!-- progress-begin -->\\
+| YEAR          | PROGRESS                      | COMPLETED (Out of 25) |\\
 |---------------|-------------------------------|-----------------------|"
 
     for ((y=START_YEAR; y<=END_YEAR; y++)); do
@@ -38,14 +38,12 @@ aoc_progress() {
 
         emoji=${emojis[$RANDOM % ${#emojis[@]}]}
         progress=$(generate_progress_bar $solved_days)
-        new_content+=$"\n| $emoji $y | $progress | $solved_days ($((solved_days * 100 / 25))%) |"
+        progress_content+="\n| $emoji $y | $progress | $solved_days ($((solved_days * 100 / 25))%) |"
     done
 
-    new_content+=$"\n<!-- progress-end -->"
+    progress_content+="\n<!-- progress-end -->"
 
-    sed -i -e '/<!-- progress-begin -->/,/<!-- progress-end -->/d' "$README_FILE"
-    echo -e "$new_content" >> "$README_FILE"
+    sed -i -e "/<!-- progress-begin -->/,/<!-- progress-end -->/c\\$progress_content" "$README_FILE"
 
     print_success "progress updated! \033[32m✔\033[0m"
-
 }
