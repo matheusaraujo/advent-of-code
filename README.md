@@ -1,5 +1,7 @@
 # advent-of-code
 
+> Moved to [matheusaraujo/coding-challenges](https://github.com/matheusaraujo/coding-challenges)
+
 [![2015](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2015.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2015.yaml) &nbsp;
 [![2016](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2016.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2016.yaml) &nbsp;
 [![2017](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2017.yaml/badge.svg)](https://github.com/matheusaraujo/advent-of-code/actions/workflows/2017.yaml) &nbsp;
